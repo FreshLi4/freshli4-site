@@ -5,10 +5,10 @@ import test from "node:test";
 const root = new URL("../", import.meta.url);
 
 test("build emits the native Vite site", async () => {
-  const html = await readFile(new URL("../dist/client/index.html", import.meta.url), "utf8");
+  const html = await readFile(new URL("../dist/index.html", import.meta.url), "utf8");
   assert.match(html, /FreshLi4/);
   assert.match(html, /<script type="module"/);
-  await access(new URL("../dist/client/assets/", import.meta.url));
+  await access(new URL("../dist/assets/", import.meta.url));
 });
 
 test("source keeps the dynamic visual-content convention", async () => {

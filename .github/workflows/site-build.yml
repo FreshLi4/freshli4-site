@@ -35,5 +35,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: freshli4-site-dist
-          path: dist/client
+          path: dist
           if-no-files-found: error
