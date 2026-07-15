@@ -1,4 +1,4 @@
-name: Build FreshLi4 site
+name: Deploy FreshLi4 site to Vercel
 
 on:
   push:
@@ -12,8 +12,12 @@ concurrency:
   group: freshli4-site-build
   cancel-in-progress: true
 
+env:
+  VERCEL_ORG_ID: team_fgZDKAyd5k5UrtCgyFCqs7At
+  VERCEL_PROJECT_ID: prj_MaJCD4zvFmlX9VGuWlq3oyuE0bPt
+
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -31,9 +35,11 @@ jobs:
         run: npm run build
       - name: Run static checks
         run: node --test tests/rendered-html.test.mjs
-      - name: Upload built site
-        uses: actions/upload-artifact@v4
-        with:
-          name: freshli4-site-dist
-          path: dist
-          if-no-files-found: error
+      - name: Install Vercel CLI
+        run: npm install --global vercel@54.14.5
+      - name: Pull Vercel project settings
+        run: vercel pull --yes --environment=production --token="${{ secrets.VERCEL_TOKEN }}"
+      - name: Build Vercel production output
+        run: vercel build --prod --token="${{ secrets.VERCEL_TOKEN }}"
+      - name: Deploy to Vercel production
+        run: vercel deploy --prebuilt --prod --token="${{ secrets.VERCEL_TOKEN }}"

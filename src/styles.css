@@ -262,8 +262,9 @@ main > section { position: relative; color: var(--ink); background: transparent;
 .hero-cn { margin:0; font-size:clamp(20px, 2.6vw, 40px); font-weight:800; letter-spacing:-.06em; }
 .hero-copy { margin:0; font-size:13px; line-height:1.6; justify-self:center; }
 .round-link { width:92px; height:92px; border:2px solid var(--ink); border-radius:50%; display:grid; place-items:center; position:relative; transition:background .35s, color .35s, transform .35s; }
-.round-link span:first-child { font-size:8px; font-weight:800; letter-spacing:.13em; transform:none; }
-.round-link span:last-child { position:absolute; bottom:11px; font-size:28px; font-weight:800; line-height:1; transform:none; }
+.round-link-content { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; transform:translateY(-1px); }
+.round-link-content span:first-child { font-size:8px; font-weight:800; line-height:1; letter-spacing:.13em; }
+.round-link-content span:last-child { font-size:28px; font-weight:800; line-height:.7; }
 .round-link:hover { background:var(--ink); color:var(--bg); transform:rotate(5deg) scale(1.04); }
 
 .studio-section { min-height:100svh; padding:clamp(120px, 15vw, 220px) var(--page-pad) 100px; display:flex; flex-direction:column; justify-content:center; }
@@ -362,7 +363,7 @@ main > section { position: relative; color: var(--ink); background: transparent;
 
 /* 调查深入：纸质案卷、盖章与不规整裁切 */
 .investigation-font .floating-note {
-  overflow:visible;
+  overflow:hidden;
   background:#E7E1D5;
   color:#15110F;
   border:3px solid var(--accent);
@@ -370,6 +371,11 @@ main > section { position: relative; color: var(--ink); background: transparent;
   font-family:var(--font-investigation);
 }
 .investigation-font .note-a {
+  padding:8px;
+  font-family:var(--font-studio);
+  font-size:7px;
+  line-height:1.08;
+  letter-spacing:.04em;
   clip-path:polygon(0 5%, 94% 0, 100% 92%, 8% 100%);
 }
 .investigation-font .note-a::after {
