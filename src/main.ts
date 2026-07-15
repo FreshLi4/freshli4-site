@@ -137,8 +137,26 @@ languageSelect?.addEventListener("change", updateMobileMenu);
 
 const revealObserver = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add("visible"); revealObserver.unobserve(entry.target); } }), { threshold: 0.1 });
 document.querySelectorAll<HTMLElement>(".reveal").forEach((element, index) => { element.style.transitionDelay = `${Math.min(index % 4, 3) * 65}ms`; revealObserver.observe(element); });
-const themeObserver = new IntersectionObserver((entries) => { const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]; if (visible) { const theme = (visible.target as HTMLElement).dataset.theme ?? "studio"; body.dataset.theme = theme; if (themeMeta && themeColors[theme]) themeMeta.setAttribute("content", themeColors[theme]); } }, { threshold: [0.1, 0.25, 0.45, 0.65, 0.85], rootMargin: "-18% 0px -18% 0px" });
-document.querySelectorAll<HTMLElement>(".theme-trigger").forEach((section) => themeObserver.observe(section));
+const themeSections = [...document.querySelectorAll<HTMLElement>(".theme-trigger")];
+let themeFrame = 0;
+const updateTheme = () => {
+  themeFrame = 0;
+  const viewportCenter = window.innerHeight / 2;
+  const active = themeSections.reduce<{ section: HTMLElement; distance: number } | undefined>((closest, section) => {
+    const rect = section.getBoundingClientRect();
+    const distance = Math.abs(rect.top + rect.height / 2 - viewportCenter);
+    return !closest || distance < closest.distance ? { section, distance } : closest;
+  }, undefined)?.section;
+  if (!active) return;
+  const theme = active.dataset.theme ?? "studio";
+  if (body.dataset.theme === theme) return;
+  body.dataset.theme = theme;
+  if (themeMeta && themeColors[theme]) themeMeta.setAttribute("content", themeColors[theme]);
+};
+const requestThemeUpdate = () => { if (!themeFrame) themeFrame = window.requestAnimationFrame(updateTheme); };
+window.addEventListener("scroll", requestThemeUpdate, { passive: true });
+window.addEventListener("resize", requestThemeUpdate, { passive: true });
+requestThemeUpdate();
 
 document.querySelectorAll<HTMLElement>(".media-stage").forEach((stage) => {
   const slides = [...stage.querySelectorAll<HTMLElement>(".media-slide")]; const buttons = [...stage.querySelectorAll<HTMLButtonElement>(".media-pagination button")]; let current = 0; let timer: number | undefined;
