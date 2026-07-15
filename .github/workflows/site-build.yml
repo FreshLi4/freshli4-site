@@ -1,0 +1,39 @@
+name: Build FreshLi4 site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: freshli4-site-build
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Build site
+        run: npm run build
+      - name: Run static checks
+        run: node --test tests/rendered-html.test.mjs
+      - name: Upload built site
+        uses: actions/upload-artifact@v4
+        with:
+          name: freshli4-site-dist
+          path: dist/client
+          if-no-files-found: error

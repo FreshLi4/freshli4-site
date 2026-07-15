@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#201b18"/>
+  <g stroke="#8a8174" stroke-width="3" opacity=".8">
+    <path d="M280 250 565 390 890 220 1230 360 1350 650"/>
+    <path d="M565 390 470 670 805 720 1230 360"/>
+    <path d="M890 220 805 720"/>
+  </g>
+  <g fill="#e8e0d2" stroke="#7b1e24" stroke-width="6">
+    <rect x="165" y="145" width="230" height="160"/>
+    <rect x="450" y="315" width="230" height="160"/>
+    <rect x="775" y="135" width="230" height="160"/>
+    <rect x="1115" y="285" width="230" height="160"/>
+    <rect x="350" y="590" width="230" height="160"/>
+    <rect x="690" y="635" width="230" height="160"/>
+    <rect x="1235" y="575" width="230" height="160"/>
+  </g>
+  <g fill="#171310" font-family="serif" font-size="24">
+    <text x="210" y="220">PERSON</text><text x="210" y="258">A-014</text>
+    <text x="500" y="390">ASSET</text><text x="500" y="428">B-032</text>
+    <text x="825" y="210">MAIL</text><text x="825" y="248">17:42</text>
+    <text x="1160" y="360">FAX</text><text x="1160" y="398">PAGE 03</text>
+    <text x="400" y="665">SITE</text><text x="400" y="703">ROOM 8</text>
+    <text x="735" y="710">CLAIM</text><text x="735" y="748">0417</text>
+    <text x="1280" y="650">CAUSE</text><text x="1280" y="688">UNKNOWN</text>
+  </g>
+  <circle cx="805" cy="720" r="112" fill="none" stroke="#7b1e24" stroke-width="12" opacity=".8"/>
+</svg>

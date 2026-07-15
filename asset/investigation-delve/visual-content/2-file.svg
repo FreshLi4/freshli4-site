@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#dad1c3"/>
+  <rect x="90" y="70" width="1420" height="760" fill="#f6f0e7" stroke="#171310" stroke-width="4"/>
+  <rect x="90" y="70" width="1420" height="68" fill="#171310"/>
+  <text x="135" y="115" fill="#f6f0e7" font-size="24" font-family="serif">INSURANCE REVIEW TERMINAL / CLAIM FILE</text>
+  <line x1="570" y1="138" x2="570" y2="830" stroke="#171310" stroke-width="3"/>
+  <g fill="#171310">
+    <rect x="145" y="195" width="330" height="26"/>
+    <rect x="145" y="252" width="360" height="11" opacity=".55"/>
+    <rect x="145" y="284" width="320" height="11" opacity=".55"/>
+    <rect x="145" y="316" width="345" height="11" opacity=".55"/>
+    <rect x="145" y="396" width="350" height="212" opacity=".12"/>
+    <rect x="625" y="195" width="545" height="36"/>
+    <rect x="625" y="272" width="765" height="13" opacity=".5"/>
+    <rect x="625" y="309" width="700" height="13" opacity=".5"/>
+    <rect x="625" y="346" width="735" height="13" opacity=".5"/>
+    <rect x="625" y="420" width="600" height="13" opacity=".5"/>
+    <rect x="625" y="457" width="730" height="13" opacity=".5"/>
+    <rect x="625" y="494" width="660" height="13" opacity=".5"/>
+  </g>
+  <rect x="1040" y="610" width="340" height="100" fill="#7b1e24"/>
+  <text x="1090" y="672" fill="#f6f0e7" font-size="32" font-family="serif">REQUEST ACCESS</text>
+  <text x="130" y="775" fill="#7b1e24" font-size="27" font-family="serif">STATUS: INCONSISTENT TESTIMONY</text>
+</svg>
