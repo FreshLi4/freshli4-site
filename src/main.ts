@@ -131,7 +131,7 @@ languageSelect?.addEventListener("change", () => applyLanguage(languageSelect.va
 
 const mobileMenu = document.querySelector<HTMLElement>("#mobile-menu");
 if (mobileMenu) { mobileMenu.innerHTML = [{ href: "#studio", key: "nav.studio" }, ...games.map((game) => ({ href: `#${game.slug}`, key: `game.${game.slug}.title` })), { href: "#contact", key: "nav.contact" }].map((item) => `<a href="${item.href}" data-menu-key="${item.key}"></a>`).join(""); }
-const updateMobileMenu = () => mobileMenu?.querySelectorAll<HTMLElement>("[data-menu-key]").forEach((item) => { const key = item.dataset.menuKey ?? ""; const game = games.find((candidate) => key === `game.${candidate.slug}.title`); item.textContent = game ? `${game.title[getLanguage()]} / ${game.englishTitle}` : translations[key]?.[getLanguage()] ?? key; });
+const updateMobileMenu = () => mobileMenu?.querySelectorAll<HTMLElement>("[data-menu-key]").forEach((item) => { const key = item.dataset.menuKey ?? ""; const game = games.find((candidate) => key === `game.${candidate.slug}.title`); item.textContent = game ? game.title[getLanguage()] : translations[key]?.[getLanguage()] ?? key; });
 updateMobileMenu();
 languageSelect?.addEventListener("change", updateMobileMenu);
 
@@ -159,8 +159,17 @@ window.addEventListener("resize", requestThemeUpdate, { passive: true });
 requestThemeUpdate();
 
 document.querySelectorAll<HTMLElement>(".media-stage").forEach((stage) => {
-  const slides = [...stage.querySelectorAll<HTMLElement>(".media-slide")]; const buttons = [...stage.querySelectorAll<HTMLButtonElement>(".media-pagination button")]; let current = 0; let timer: number | undefined;
-  const show = (index: number) => { window.clearTimeout(timer); current = (index + slides.length) % slides.length; slides.forEach((slide, i) => { slide.classList.toggle("active", i === current); slide.querySelectorAll<HTMLVideoElement>("video").forEach((video) => { if (i === current) void video.play().catch(() => undefined); else { video.pause(); video.currentTime = 0; } }); }); buttons.forEach((button, i) => button.classList.toggle("active", i === current)); updateMediaLabel(stage); const active = slides[current]; const video = active.querySelector<HTMLVideoElement>("video"); if (video) { video.onended = () => show(current + 1); video.onerror = () => { timer = window.setTimeout(() => show(current + 1), 3000); }; } else timer = window.setTimeout(() => show(current + 1), 3000); };
+  const slides = [...stage.querySelectorAll<HTMLElement>(".media-slide")]; const buttons = [...stage.querySelectorAll<HTMLButtonElement>(".media-pagination button")]; let current = 0; let timer: number | undefined; let progressFrame = 0; let startedAt = 0;
+  const setProgress = (progress: number) => buttons.forEach((button, index) => button.style.setProperty("--progress", index === current ? `${Math.max(0, Math.min(1, progress)) * 100}%` : "0%"));
+  const updateProgress = () => {
+    progressFrame = 0;
+    const active = slides[current];
+    const video = active?.querySelector<HTMLVideoElement>("video");
+    const progress = video && Number.isFinite(video.duration) && video.duration > 0 ? video.currentTime / video.duration : (performance.now() - startedAt) / 3000;
+    setProgress(progress);
+    if (progress < 1) progressFrame = window.requestAnimationFrame(updateProgress);
+  };
+  const show = (index: number) => { window.clearTimeout(timer); window.cancelAnimationFrame(progressFrame); current = (index + slides.length) % slides.length; startedAt = performance.now(); slides.forEach((slide, i) => { slide.classList.toggle("active", i === current); slide.querySelectorAll<HTMLVideoElement>("video").forEach((video) => { if (i === current) void video.play().catch(() => undefined); else { video.pause(); video.currentTime = 0; } }); }); buttons.forEach((button, i) => { button.classList.toggle("active", i === current); button.style.setProperty("--progress", "0%"); }); updateMediaLabel(stage); const active = slides[current]; const video = active.querySelector<HTMLVideoElement>("video"); if (video) { video.onended = () => { setProgress(1); show(current + 1); }; video.onerror = () => { timer = window.setTimeout(() => show(current + 1), 3000); }; } else timer = window.setTimeout(() => show(current + 1), 3000); progressFrame = window.requestAnimationFrame(updateProgress); };
   buttons.forEach((button) => button.addEventListener("click", () => show(Number(button.dataset.target)))); stage.querySelector<HTMLButtonElement>(".media-expand")?.addEventListener("click", () => show(current + 1)); stage.querySelectorAll<HTMLButtonElement>("[data-preview-trigger]").forEach((button) => button.addEventListener("click", () => document.querySelector(".video-modal")?.classList.add("open"))); show(0);
 });
 

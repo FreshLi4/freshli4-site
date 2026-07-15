@@ -234,7 +234,7 @@ img { display: block; width: 100%; }
   padding:calc(var(--header-h) + 30px) var(--page-pad) 40px; transform:translateY(-105%); transition:transform .6s var(--ease), background-color .78s var(--ease), color .78s var(--ease); font-family:var(--font-studio);
 }
 .mobile-menu.open { transform:translateY(0); }
-.mobile-menu a { font-size:clamp(26px, 7vw, 54px); font-weight:800; letter-spacing:-.05em; border-bottom:1px solid var(--line); padding-bottom:12px; }
+.mobile-menu a { font-size:clamp(16px, 4.5vw, 32px); font-weight:800; letter-spacing:-.03em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; border-bottom:1px solid var(--line); padding-bottom:10px; }
 
 main > section { position: relative; color: var(--ink); background: transparent; transition: color .78s var(--ease); }
 
@@ -342,10 +342,13 @@ main > section { position: relative; color: var(--ink); background: transparent;
 }
 .media-pagination button {
   border:0; padding:4px 2px; background:none; opacity:.48; cursor:pointer;
-  font-size:clamp(11px, .95vw, 13px); font-weight:800; color:var(--panel-ink);
-  text-shadow:0 1px 0 rgba(255,255,255,.32); transition:opacity .25s var(--ease), color .25s var(--ease), transform .25s var(--ease);
+  font-size:clamp(11px, .95vw, 13px); font-weight:800; color:transparent;
+  --progress:0%;
+  background:linear-gradient(to right, var(--accent) var(--progress), var(--panel-ink) var(--progress));
+  background-clip:text; -webkit-background-clip:text;
+  text-shadow:0 1px 0 rgba(255,255,255,.32); transition:opacity .25s var(--ease), transform .25s var(--ease);
 }
-.media-pagination button.active { color:var(--accent); opacity:1; transform:translateY(-1px); }
+.media-pagination button.active { opacity:1; transform:translateY(-1px); }
 .play-button { position:absolute; left:50%; top:50%; width:108px; height:108px; transform:translate(-50%,-50%); border:1px solid rgba(255,255,255,.75); border-radius:50%; color:#fff; background:rgba(0,0,0,.3); backdrop-filter:blur(8px); cursor:pointer; display:grid; place-items:center; transition:transform .3s, background .3s; }
 .play-button:hover { transform:translate(-50%,-50%) scale(1.08) rotate(5deg); background:var(--accent); }
 .play-button span { font:800 9px/1 var(--font-studio); letter-spacing:.14em; }
