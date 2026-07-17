@@ -20,38 +20,6 @@
   font-display: swap;
 }
 @font-face {
-  font-family: "FreshLi4 Maple";
-  src: url("../asset/freshli4/font/maple-mono_nl_cn/MapleMonoNormalNL-CN-Regular.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  unicode-range: U+2E80-2FFF, U+3000-303F, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF;
-}
-@font-face {
-  font-family: "FreshLi4 Maple";
-  src: url("../asset/freshli4/font/maple-mono_nl_cn/MapleMonoNormalNL-CN-Bold.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 700 900;
-  font-display: swap;
-  unicode-range: U+2E80-2FFF, U+3000-303F, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF;
-}
-@font-face {
-  font-family: "FreshLi4 Maple CJK";
-  src: url("../asset/freshli4/font/maple-mono_nl_cn/MapleMonoNormalNL-CN-Regular.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  unicode-range: U+2E80-2FFF, U+3000-303F, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF;
-}
-@font-face {
-  font-family: "FreshLi4 Maple CJK";
-  src: url("../asset/freshli4/font/maple-mono_nl_cn/MapleMonoNormalNL-CN-Bold.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 700 900;
-  font-display: swap;
-  unicode-range: U+2E80-2FFF, U+3000-303F, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF;
-}
-@font-face {
   font-family: "FreshLi4 Source Han";
   src: url("../asset/investigation-delve/font/source-han-serif-sc/SourceHanSerifSC-Regular.otf") format("opentype");
   font-style: normal;
@@ -59,18 +27,20 @@
   font-display: swap;
 }
 @font-face {
-  font-family: "FreshLi4 Studio CJK";
-  src: url("../asset/investigation-delve/font/source-han-serif-sc/SourceHanSerifSC-Regular.otf") format("opentype");
+  font-family: "FreshLi4 Studio Sans CJK";
+  src: url("../asset/freshli4/font/source-han-sans-sc/SourceHanSansSC-Regular.otf") format("opentype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
+  unicode-range: U+2E80-2FFF, U+3000-303F, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF;
 }
 @font-face {
-  font-family: "FreshLi4 Studio CJK";
-  src: url("../asset/investigation-delve/font/source-han-serif-sc/SourceHanSerifSC-Bold.otf") format("opentype");
+  font-family: "FreshLi4 Studio Sans CJK";
+  src: url("../asset/freshli4/font/source-han-sans-sc/SourceHanSansSC-Bold.otf") format("opentype");
   font-style: normal;
   font-weight: 700 900;
   font-display: swap;
+  unicode-range: U+2E80-2FFF, U+3000-303F, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF;
 }
 @font-face {
   font-family: "FreshLi4 Source Han";
@@ -129,7 +99,7 @@
   --glass: transparent;
 
   --font-jetbrains: "FreshLi4 JetBrains", "JetBrains Mono", ui-monospace, monospace;
-  --font-studio: "FreshLi4 Maple", "FreshLi4 Studio CJK", "FreshLi4 JetBrains", "Maple Mono NL", ui-monospace, monospace;
+  --font-studio: "FreshLi4 Maple", "FreshLi4 Studio Sans CJK", "FreshLi4 JetBrains", "Maple Mono NL", ui-monospace, monospace;
   --font-investigation: "FreshLi4 Source Han", "Source Han Serif SC", "Noto Serif SC", "Songti SC", var(--font-studio);
   --font-dive: "FreshLi4 Dive Black", "狮尾快腿黑体", var(--font-studio);
   --font-maze: "FreshLi4 Fusion Pixel", "Fusion Pixel Mono", var(--font-studio);
@@ -141,7 +111,7 @@
 }
 
 body[data-lang="zh"] {
-  --font-studio: "FreshLi4 Maple CJK", var(--font-jetbrains), "FreshLi4 Studio CJK", ui-monospace, monospace;
+  --font-studio: "FreshLi4 Studio Sans CJK", var(--font-jetbrains), ui-monospace, monospace;
 }
 
 * { box-sizing: border-box; }
