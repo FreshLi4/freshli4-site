@@ -20,6 +20,22 @@
   font-display: swap;
 }
 @font-face {
+  font-family: "FreshLi4 Maple";
+  src: url("../asset/freshli4/font/maple-mono_nl_cn/MapleMonoNormalNL-CN-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+2E80-2FFF, U+3000-303F, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF;
+}
+@font-face {
+  font-family: "FreshLi4 Maple";
+  src: url("../asset/freshli4/font/maple-mono_nl_cn/MapleMonoNormalNL-CN-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700 900;
+  font-display: swap;
+  unicode-range: U+2E80-2FFF, U+3000-303F, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF;
+}
+@font-face {
   font-family: "FreshLi4 Source Han";
   src: url("../asset/investigation-delve/font/source-han-serif-sc/SourceHanSerifSC-Regular.otf") format("opentype");
   font-style: normal;
