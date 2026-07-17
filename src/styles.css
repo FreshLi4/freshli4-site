@@ -27,6 +27,20 @@
   font-display: swap;
 }
 @font-face {
+  font-family: "FreshLi4 Studio CJK";
+  src: url("../asset/investigation-delve/font/source-han-serif-sc/SourceHanSerifSC-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "FreshLi4 Studio CJK";
+  src: url("../asset/investigation-delve/font/source-han-serif-sc/SourceHanSerifSC-Bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700 900;
+  font-display: swap;
+}
+@font-face {
   font-family: "FreshLi4 Source Han";
   src: url("../asset/investigation-delve/font/source-han-serif-sc/SourceHanSerifSC-Bold.otf") format("opentype");
   font-style: normal;
@@ -82,7 +96,8 @@
   --line: rgba(17, 17, 17, .23);
   --glass: transparent;
 
-  --font-studio: "FreshLi4 JetBrains", "FreshLi4 Maple", "JetBrains Mono", "Maple Mono NL", ui-monospace, monospace;
+  --font-jetbrains: "FreshLi4 JetBrains", "JetBrains Mono", ui-monospace, monospace;
+  --font-studio: "FreshLi4 Maple", "FreshLi4 Studio CJK", "FreshLi4 JetBrains", "Maple Mono NL", ui-monospace, monospace;
   --font-investigation: "FreshLi4 Source Han", "Source Han Serif SC", "Noto Serif SC", "Songti SC", var(--font-studio);
   --font-dive: "FreshLi4 Dive Black", "狮尾快腿黑体", var(--font-studio);
   --font-maze: "FreshLi4 Fusion Pixel", "Fusion Pixel Mono", var(--font-studio);
@@ -241,7 +256,7 @@ main > section { position: relative; color: var(--ink); background: transparent;
 .hero { min-height: 100svh; display:flex; flex-direction:column; justify-content:center; padding:calc(var(--header-h) + 28px) var(--page-pad) 34px; overflow:hidden; }
 .hero-grid { position:absolute; inset:0; opacity:.17; background-image:linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px); background-size:clamp(56px,7vw,110px) clamp(56px,7vw,110px); mask-image:linear-gradient(to bottom, black, transparent 86%); }
 .eyebrow { position:absolute; top:calc(var(--header-h) + 28px); left:var(--page-pad); margin:0; font-size:10px; font-weight:800; letter-spacing:.16em; }
-.hero-title { position:relative; z-index:2; margin:0; font-size:clamp(100px, 21.4vw, 326px); font-weight:900; line-height:.7; letter-spacing:-.095em; text-transform:uppercase; }
+.hero-title { position:relative; z-index:2; margin:0; font-family:var(--font-jetbrains); font-size:clamp(100px, 21.4vw, 326px); font-weight:900; line-height:.7; letter-spacing:-.095em; text-transform:uppercase; }
 .hero-line { display:block; }
 .hero-line-accent { display:flex; align-items:flex-end; justify-content:flex-end; transform:translateX(-1.2vw); }
 .hero-line-accent > span {
