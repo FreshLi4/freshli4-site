@@ -348,7 +348,7 @@ main > section { position: relative; color: var(--ink); background: transparent;
   transform:translate3d(100%, 0, 0); will-change:transform; backface-visibility:hidden;
 }
 .game-slide.is-active { z-index:2; pointer-events:auto; }
-.game-layout { width:100%; display:grid; grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr); gap:clamp(42px, 7vw, 120px); align-items:center; }
+.game-layout { width:100%; display:grid; grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr); gap:clamp(42px, 7vw, 120px); align-items:center; transform:translateY(clamp(24px, 3.2vw, 40px)); }
 .game-section-alt .game-layout { grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr); }
 .game-section-alt .game-copy-panel { order:2; }
 .game-section-alt .media-stage { order:1; }
@@ -570,9 +570,9 @@ main > section { position: relative; color: var(--ink); background: transparent;
   .studio-grid, .contact-row { grid-template-columns:1fr; }
   .studio-grid { gap:52px; }
   .studio-copy { max-width:760px; }
-  .game-slide { min-height:100%; padding-top:112px; padding-bottom:100px; align-items:flex-start; overflow-y:auto; scrollbar-width:none; }
+  .game-slide { min-height:100%; padding-top:130px; padding-bottom:100px; align-items:flex-start; overflow-y:auto; scrollbar-width:none; }
   .game-slide::-webkit-scrollbar { display:none; }
-  .game-layout { grid-template-columns:1fr; gap:64px; }
+  .game-layout { grid-template-columns:1fr; gap:64px; transform:none; }
   .game-section-alt .game-layout { grid-template-columns:1fr; }
   .game-section-alt .game-copy-panel, .game-section-alt .media-stage { order:initial; }
   .game-copy-panel { min-height:auto; }
@@ -596,7 +596,7 @@ main > section { position: relative; color: var(--ink); background: transparent;
   .studio-facts { grid-template-columns:1fr; }
   .studio-facts div { justify-content:space-between; border-bottom:1px solid var(--ink); }
   .studio-facts div:last-child { border-bottom:0; }
-  .game-slide { padding-top:100px; padding-bottom:86px; }
+  .game-slide { padding-top:124px; padding-bottom:86px; }
   .game-layout { gap:44px; }
   .game-meta { align-items:flex-end; }
   .game-copy-main { padding:48px 0; }
