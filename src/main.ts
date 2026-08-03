@@ -121,6 +121,9 @@ let projectIndex = 0;
 let snapTimer: number | undefined;
 let snapFrame = 0;
 let isSnapping = false;
+let lastScrollY = window.scrollY;
+let scrollDirection: 1 | -1 = 1;
+const projectSwitchThreshold = 0.3;
 
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 const getShowcaseMetrics = () => {
@@ -267,7 +270,12 @@ const snapToNearestProject = () => {
   const rect = gameShowcase.getBoundingClientRect();
   if (rect.top >= window.innerHeight || rect.bottom <= 0) return;
   const progress = clamp((window.scrollY - metrics.top) / metrics.range, 0, 1);
-  const targetSlot = clamp(Math.round(progress * games.length), 0, games.length);
+  const position = progress * games.length;
+  const lowerSlot = Math.floor(position);
+  const upperSlot = Math.ceil(position);
+  const targetSlot = scrollDirection > 0
+    ? lowerSlot + (position - lowerSlot >= projectSwitchThreshold ? 1 : 0)
+    : upperSlot - (upperSlot - position >= projectSwitchThreshold ? 1 : 0);
   const targetTop = metrics.top + (targetSlot / games.length) * metrics.range;
   if (Math.abs(targetTop - window.scrollY) < 1) return;
   animateScrollTo(targetTop);
@@ -291,7 +299,12 @@ const updateScrollState = () => {
   updateTheme();
   scheduleProjectSnap();
 };
-const requestScrollUpdate = () => { if (!scrollFrame) scrollFrame = window.requestAnimationFrame(updateScrollState); };
+const requestScrollUpdate = () => {
+  const currentScrollY = window.scrollY;
+  if (currentScrollY !== lastScrollY) scrollDirection = currentScrollY > lastScrollY ? 1 : -1;
+  lastScrollY = currentScrollY;
+  if (!scrollFrame) scrollFrame = window.requestAnimationFrame(updateScrollState);
+};
 window.addEventListener("scroll", requestScrollUpdate, { passive: true });
 window.addEventListener("resize", requestScrollUpdate, { passive: true });
 const interruptProjectSnap = () => { if (isSnapping) cancelSnapAnimation(); };
