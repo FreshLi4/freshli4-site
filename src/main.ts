@@ -103,7 +103,7 @@ const renderGame = (game: GameConfig, index: number) => {
 };
 
 const gamesMount = document.querySelector<HTMLElement>("#games-mount")!;
-gamesMount.innerHTML = `<section id="games" class="games-showcase" aria-label="游戏项目"><div class="games-sticky"><div class="games-slides">${games.map(renderGame).join("")}</div><div class="games-controls"><button class="project-arrow" type="button" data-project-direction="-1" aria-label="上一个项目">←</button><div class="project-tabs" role="tablist" aria-label="游戏项目列表">${games.map((game, index) => `<button class="project-tab${index === 0 ? " active" : ""}" type="button" role="tab" data-project-tab="${escapeHtml(game.slug)}" aria-selected="${index === 0 ? "true" : "false"}"><span class="project-tab-number">0${index + 1}</span><span data-project-tab-title="${escapeHtml(game.slug)}"></span></button>`).join("")}</div><button class="project-arrow" type="button" data-project-direction="1" aria-label="下一个项目">→</button></div></div></section>`;
+gamesMount.innerHTML = `<section id="games" class="games-showcase" aria-label="游戏项目"><div class="games-sticky"><div class="games-slides">${games.map(renderGame).join("")}</div><div class="games-controls"><div class="project-tabs" role="tablist" aria-label="游戏项目列表">${games.map((game, index) => `<button class="project-tab${index === 0 ? " active" : ""}" type="button" role="tab" data-project-tab="${escapeHtml(game.slug)}" aria-selected="${index === 0 ? "true" : "false"}"><span class="project-tab-number">0${index + 1}</span><span data-project-tab-title="${escapeHtml(game.slug)}"></span></button>`).join("")}</div></div></div></section>`;
 document.querySelector(".brand-logo")?.setAttribute("src", "/brand-logo.png");
 
 const languageSelect = document.querySelector<HTMLSelectElement>("#language-select");
@@ -234,9 +234,6 @@ updateMobileMenu();
 languageSelect?.addEventListener("change", updateMobileMenu);
 
 projectTabs.forEach((tab, index) => tab.addEventListener("click", () => scrollToProject(index)));
-document.querySelectorAll<HTMLButtonElement>("[data-project-direction]").forEach((button) => button.addEventListener("click", () => {
-  scrollToProject(projectIndex + Number(button.dataset.projectDirection ?? 0));
-}));
 mobileMenu?.querySelectorAll<HTMLElement>("[data-project-link]").forEach((link) => link.addEventListener("click", (event) => {
   event.preventDefault();
   scrollToProject(Number(link.dataset.projectLink ?? 0));

@@ -356,14 +356,9 @@ main > section { position: relative; color: var(--ink); background: transparent;
 
 .games-controls {
   position:absolute; z-index:12; top:calc(var(--header-h) + 18px); left:var(--page-pad); right:var(--page-pad);
-  display:grid; grid-template-columns:42px minmax(0, 1fr) 42px; align-items:center; gap:18px;
+  display:flex; justify-content:center; align-items:center;
   pointer-events:none;
 }
-.project-arrow {
-  width:40px; height:40px; border:1px solid currentColor; border-radius:50%; color:inherit; background:transparent;
-  font:800 21px/1 var(--font-jetbrains); cursor:pointer; pointer-events:auto; transition:background .25s, color .25s, transform .25s;
-}
-.project-arrow:hover { color:var(--bg); background:var(--ink); transform:scale(1.06); }
 .project-tabs {
   min-width:0; display:flex; justify-content:center; align-items:center; gap:clamp(14px, 3vw, 48px); overflow-x:auto; scrollbar-width:none; pointer-events:auto;
 }
@@ -375,7 +370,6 @@ main > section { position: relative; color: var(--ink); background: transparent;
 .project-tab:hover { opacity:.9; transform:translateY(-1px); }
 .project-tab.active { opacity:1; border-color:currentColor; }
 .project-tab-number { color:var(--accent); font:800 12px/1 var(--font-jetbrains); }
-.project-arrow:last-child { justify-self:end; }
 
 .game-copy-panel { min-height:min(660px, 72svh); display:flex; flex-direction:column; justify-content:space-between; padding:8px 0; }
 .game-meta { display:flex; align-items:center; justify-content:space-between; gap:20px; padding-bottom:18px; border-bottom:1px solid var(--line); font-size:9px; font-weight:700; letter-spacing:.13em; }
@@ -585,8 +579,6 @@ main > section { position: relative; color: var(--ink); background: transparent;
   .game-copy-panel { min-height:auto; }
   .game-copy-main { padding:60px 0; }
   .media-stage { width:min(860px,100%); justify-self:center; }
-  .games-controls { grid-template-columns:36px minmax(0,1fr) 36px; gap:10px; }
-  .project-arrow { width:34px; height:34px; font-size:18px; }
   .project-tabs { justify-content:flex-start; gap:20px; }
   .contact-row p { justify-self:start; text-align:left; }
 }

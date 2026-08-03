@@ -17,8 +17,8 @@ test("source keeps the dynamic visual-content convention", async () => {
   assert.match(source, /videoExtensions/);
   assert.match(source, /setTimeout\(\(\) => show\(current \+ 1\), 3000\)/);
   assert.match(source, /class="games-showcase"/);
-  assert.match(source, /data-project-direction/);
   assert.match(source, /data-project-tab/);
+  assert.doesNotMatch(source, /data-project-direction/);
   assert.match(source, /updateProjectPosition\(progress \* games\.length\)/);
   assert.match(source, /target \/ games\.length/);
   assert.match(source, /snapToNearestProject/);
