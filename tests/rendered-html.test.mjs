@@ -16,4 +16,12 @@ test("source keeps the dynamic visual-content convention", async () => {
   assert.match(source, /import\.meta\.glob\("\/asset\/\*\/visual-content\/\*"/);
   assert.match(source, /videoExtensions/);
   assert.match(source, /setTimeout\(\(\) => show\(current \+ 1\), 3000\)/);
+  assert.match(source, /class="games-showcase"/);
+  assert.match(source, /data-project-direction/);
+  assert.match(source, /data-project-tab/);
+  assert.match(source, /updateProjectPosition\(progress \* games\.length\)/);
+  assert.match(source, /target \/ games\.length/);
+
+  const styles = await readFile(new URL("../src/styles.css", import.meta.url), "utf8");
+  assert.match(styles, /height:calc\(100svh \* \(var\(--game-count\) \+ 1\)\)/);
 });

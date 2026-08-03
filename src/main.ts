@@ -99,10 +99,11 @@ const renderGame = (game: GameConfig, index: number) => {
   translations[titleKey] = game.title;
   translations[textKey(game, "status")] = game.status; translations[textKey(game, "category")] = game.category; translations[textKey(game, "description")] = game.description; translations[textKey(game, "cta")] = game.cta;
   for (const [tagIndex, tag] of game.tags.entries()) translations[textKey(game, `tag${tagIndex}`)] = tag;
-  return `<section class="game-section${index % 2 === 1 ? " game-section-alt" : ""} theme-trigger ${game.fontClass}" id="${escapeHtml(game.slug)}" data-theme="${game.theme}" aria-labelledby="${escapeHtml(game.slug)}-title"><div class="game-layout"><article class="game-copy-panel reveal"><div class="game-meta"><span>0${index + 1}</span><span data-game-i18n="${textKey(game, "status")}"></span></div><div class="game-copy-main"><p class="game-category" data-game-i18n="${textKey(game, "category")}"></p><h2 id="${escapeHtml(game.slug)}-title" class="game-title" data-game-title="${escapeHtml(game.slug)}"></h2><p class="game-description" data-game-i18n="${textKey(game, "description")}"></p></div><div class="game-footer"><div class="tags">${tags}</div>${game.link ? `<a class="text-link project-cta" href="${escapeHtml(game.link)}" target="_blank" rel="noopener noreferrer"><span data-game-i18n="${textKey(game, "cta")}"></span><span aria-hidden="true">↗</span></a>` : `<span class="text-link project-cta is-disabled"><span data-game-i18n="${textKey(game, "cta")}"></span></span>`}</div></article><div class="media-stage reveal" data-game="${escapeHtml(game.slug)}"><div class="media-shadow" aria-hidden="true"></div><div class="media-frame tilt-card"><div class="media-topbar"><div class="media-dots"><i></i><i></i><i></i></div><div class="media-label"></div><button class="media-expand" type="button" aria-label="切换媒体">↗</button></div><div class="media-viewport">${media.map((item, mediaIndex) => renderMedia(game, item, mediaIndex)).join("")}</div><div class="media-pagination">${media.map((_, mediaIndex) => `<button class="${mediaIndex === 0 ? "active" : ""}" type="button" data-target="${mediaIndex}">0${mediaIndex + 1}</button>`).join("")}</div></div><div class="floating-note note-a">${game.noteA}</div><div class="floating-note note-b">${game.noteB}</div></div></div></section>`;
+  return `<article class="game-slide${index % 2 === 1 ? " game-section-alt" : ""} ${game.fontClass}" id="${escapeHtml(game.slug)}" data-game-slide="${escapeHtml(game.slug)}" data-theme="${game.theme}" aria-labelledby="${escapeHtml(game.slug)}-title" aria-hidden="true"><div class="game-layout"><div class="game-copy-panel reveal"><div class="game-meta"><span>0${index + 1}</span><span data-game-i18n="${textKey(game, "status")}"></span></div><div class="game-copy-main"><p class="game-category" data-game-i18n="${textKey(game, "category")}"></p><h2 id="${escapeHtml(game.slug)}-title" class="game-title" data-game-title="${escapeHtml(game.slug)}"></h2><p class="game-description" data-game-i18n="${textKey(game, "description")}"></p></div><div class="game-footer"><div class="tags">${tags}</div>${game.link ? `<a class="text-link project-cta" href="${escapeHtml(game.link)}" target="_blank" rel="noopener noreferrer"><span data-game-i18n="${textKey(game, "cta")}"></span><span aria-hidden="true">↗</span></a>` : `<span class="text-link project-cta is-disabled"><span data-game-i18n="${textKey(game, "cta")}"></span></span>`}</div></div><div class="media-stage reveal" data-game="${escapeHtml(game.slug)}"><div class="media-shadow" aria-hidden="true"></div><div class="media-frame tilt-card"><div class="media-topbar"><div class="media-dots"><i></i><i></i><i></i></div><div class="media-label"></div><button class="media-expand" type="button" aria-label="切换媒体">↗</button></div><div class="media-viewport">${media.map((item, mediaIndex) => renderMedia(game, item, mediaIndex)).join("")}</div><div class="media-pagination">${media.map((_, mediaIndex) => `<button class="${mediaIndex === 0 ? "active" : ""}" type="button" data-target="${mediaIndex}">0${mediaIndex + 1}</button>`).join("")}</div></div><div class="floating-note note-a">${game.noteA}</div><div class="floating-note note-b">${game.noteB}</div></div></div></article>`;
 };
 
-document.querySelector("#games-mount")!.innerHTML = games.map(renderGame).join("");
+const gamesMount = document.querySelector<HTMLElement>("#games-mount")!;
+gamesMount.innerHTML = `<section id="games" class="games-showcase" aria-label="游戏项目"><div class="games-sticky"><div class="games-slides">${games.map(renderGame).join("")}</div><div class="games-controls"><button class="project-arrow" type="button" data-project-direction="-1" aria-label="上一个项目">←</button><div class="project-tabs" role="tablist" aria-label="游戏项目列表">${games.map((game, index) => `<button class="project-tab${index === 0 ? " active" : ""}" type="button" role="tab" data-project-tab="${escapeHtml(game.slug)}" aria-selected="${index === 0 ? "true" : "false"}"><span class="project-tab-number">0${index + 1}</span><span data-project-tab-title="${escapeHtml(game.slug)}"></span></button>`).join("")}</div><button class="project-arrow" type="button" data-project-direction="1" aria-label="下一个项目">→</button></div></div></section>`;
 document.querySelector(".brand-logo")?.setAttribute("src", "/brand-logo.png");
 
 const languageSelect = document.querySelector<HTMLSelectElement>("#language-select");
@@ -111,6 +112,48 @@ const themeMeta = document.querySelector('meta[name="theme-color"]');
 const themeColors: Record<string, string> = { studio: "#F3FF59", investigation: "#000000", ballmaze: "#45AEA4", diveup: "#000000" };
 const languageNames: Record<Lang, string> = { zh: "中文", ja: "日本語", en: "English" };
 const getLanguage = (): Lang => (localStorage.getItem("freshli4-language") as Lang) || "zh";
+const gameShowcase = document.querySelector<HTMLElement>(".games-showcase");
+const projectSlides = [...document.querySelectorAll<HTMLElement>("[data-game-slide]")];
+const projectTabs = [...document.querySelectorAll<HTMLButtonElement>("[data-project-tab]")];
+gameShowcase?.style.setProperty("--game-count", String(games.length));
+let projectPosition = 0;
+let projectIndex = 0;
+
+const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
+const setTheme = (theme: string) => {
+  if (body.dataset.theme === theme) return;
+  body.dataset.theme = theme;
+  if (themeMeta && themeColors[theme]) themeMeta.setAttribute("content", themeColors[theme]);
+};
+const updateProjectTabs = (lang: Lang = getLanguage()) => projectTabs.forEach((tab, index) => {
+  const game = games[index];
+  const title = tab.querySelector<HTMLElement>("[data-project-tab-title]");
+  if (game && title) title.textContent = lang === "en" ? game.englishTitle : game.title[lang];
+  tab.classList.toggle("active", index === projectIndex);
+  tab.setAttribute("aria-selected", String(index === projectIndex));
+});
+const updateProjectPosition = (position: number) => {
+  const maxPosition = Math.max(games.length - 1, 0);
+  projectPosition = clamp(position, 0, maxPosition);
+  const nextIndex = Math.round(projectPosition);
+  projectSlides.forEach((slide, index) => {
+    slide.style.transform = `translate3d(${(index - projectPosition) * 100}%, 0, 0)`;
+    slide.classList.toggle("is-active", index === nextIndex);
+    slide.setAttribute("aria-hidden", String(index !== nextIndex));
+  });
+  projectIndex = nextIndex;
+  updateProjectTabs();
+  setTheme(games[projectIndex]?.theme ?? "studio");
+};
+const scrollToProject = (index: number) => {
+  if (!gameShowcase || games.length < 2) return;
+  const target = clamp(index, 0, games.length - 1);
+  const range = Math.max(gameShowcase.offsetHeight - window.innerHeight, 0);
+  const targetTop = window.scrollY + gameShowcase.getBoundingClientRect().top + (target / games.length) * range;
+  updateProjectPosition(target);
+  window.scrollTo({ top: targetTop, behavior: "smooth" });
+};
+updateProjectPosition(0);
 
 const applyLanguage = (language: Lang) => {
   const lang = translations["nav.studio"][language] ? language : "zh";
@@ -121,6 +164,7 @@ const applyLanguage = (language: Lang) => {
   document.querySelectorAll<HTMLElement>("[data-game-i18n]").forEach((element) => { const value = translations[element.dataset.gameI18n ?? ""]?.[lang]; if (value !== undefined) element.textContent = value; });
   document.querySelectorAll<HTMLElement>("[data-game-title]").forEach((element) => { const game = games.find((item) => item.slug === element.dataset.gameTitle); if (!game) return; element.innerHTML = lang === "en" ? `<em>${escapeHtml(game.englishTitle)}</em>` : `<span>${escapeHtml(game.title[lang])}</span><em>${escapeHtml(game.englishTitle)}</em>`; });
   if (languageSelect) { languageSelect.value = lang; languageSelect.title = languageNames[lang]; }
+  updateProjectTabs(lang);
   document.querySelectorAll<HTMLElement>(".media-stage").forEach((stage) => updateMediaLabel(stage));
   localStorage.setItem("freshli4-language", lang);
 };
@@ -130,17 +174,32 @@ applyLanguage(getLanguage());
 languageSelect?.addEventListener("change", () => applyLanguage(languageSelect.value as Lang));
 
 const mobileMenu = document.querySelector<HTMLElement>("#mobile-menu");
-if (mobileMenu) { mobileMenu.innerHTML = [{ href: "#studio", key: "nav.studio" }, ...games.map((game) => ({ href: `#${game.slug}`, key: `game.${game.slug}.title` })), { href: "#contact", key: "nav.contact" }].map((item) => `<a href="${item.href}" data-menu-key="${item.key}"></a>`).join(""); }
+if (mobileMenu) { mobileMenu.innerHTML = [{ href: "#studio", key: "nav.studio" }, ...games.map((game, index) => ({ href: "#games", key: `game.${game.slug}.title`, projectIndex: index })), { href: "#contact", key: "nav.contact" }].map((item) => `<a href="${item.href}" data-menu-key="${item.key}"${"projectIndex" in item ? ` data-project-link="${item.projectIndex}"` : ""}></a>`).join(""); }
 const updateMobileMenu = () => mobileMenu?.querySelectorAll<HTMLElement>("[data-menu-key]").forEach((item) => { const key = item.dataset.menuKey ?? ""; const game = games.find((candidate) => key === `game.${candidate.slug}.title`); item.textContent = game ? game.title[getLanguage()] : translations[key]?.[getLanguage()] ?? key; });
 updateMobileMenu();
 languageSelect?.addEventListener("change", updateMobileMenu);
 
+projectTabs.forEach((tab, index) => tab.addEventListener("click", () => scrollToProject(index)));
+document.querySelectorAll<HTMLButtonElement>("[data-project-direction]").forEach((button) => button.addEventListener("click", () => {
+  scrollToProject(projectIndex + Number(button.dataset.projectDirection ?? 0));
+}));
+mobileMenu?.querySelectorAll<HTMLElement>("[data-project-link]").forEach((link) => link.addEventListener("click", (event) => {
+  event.preventDefault();
+  scrollToProject(Number(link.dataset.projectLink ?? 0));
+  closeMenu();
+}));
+
 const revealObserver = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add("visible"); revealObserver.unobserve(entry.target); } }), { threshold: 0.1 });
 document.querySelectorAll<HTMLElement>(".reveal").forEach((element, index) => { element.style.transitionDelay = `${Math.min(index % 4, 3) * 65}ms`; revealObserver.observe(element); });
 const themeSections = [...document.querySelectorAll<HTMLElement>(".theme-trigger")];
-let themeFrame = 0;
 const updateTheme = () => {
-  themeFrame = 0;
+  if (gameShowcase) {
+    const showcaseRect = gameShowcase.getBoundingClientRect();
+    if (showcaseRect.top <= 1 && showcaseRect.bottom >= window.innerHeight - 1) {
+      setTheme(games[projectIndex]?.theme ?? "studio");
+      return;
+    }
+  }
   const viewportCenter = window.innerHeight / 2;
   const active = themeSections.reduce<{ section: HTMLElement; distance: number } | undefined>((closest, section) => {
     const rect = section.getBoundingClientRect();
@@ -148,15 +207,22 @@ const updateTheme = () => {
     return !closest || distance < closest.distance ? { section, distance } : closest;
   }, undefined)?.section;
   if (!active) return;
-  const theme = active.dataset.theme ?? "studio";
-  if (body.dataset.theme === theme) return;
-  body.dataset.theme = theme;
-  if (themeMeta && themeColors[theme]) themeMeta.setAttribute("content", themeColors[theme]);
+  setTheme(active.dataset.theme ?? "studio");
 };
-const requestThemeUpdate = () => { if (!themeFrame) themeFrame = window.requestAnimationFrame(updateTheme); };
-window.addEventListener("scroll", requestThemeUpdate, { passive: true });
-window.addEventListener("resize", requestThemeUpdate, { passive: true });
-requestThemeUpdate();
+let scrollFrame = 0;
+const updateScrollState = () => {
+  scrollFrame = 0;
+  if (gameShowcase) {
+    const range = Math.max(gameShowcase.offsetHeight - window.innerHeight, 0);
+    const progress = range ? clamp(-gameShowcase.getBoundingClientRect().top / range, 0, 1) : 0;
+    updateProjectPosition(progress * games.length);
+  }
+  updateTheme();
+};
+const requestScrollUpdate = () => { if (!scrollFrame) scrollFrame = window.requestAnimationFrame(updateScrollState); };
+window.addEventListener("scroll", requestScrollUpdate, { passive: true });
+window.addEventListener("resize", requestScrollUpdate, { passive: true });
+requestScrollUpdate();
 
 document.querySelectorAll<HTMLElement>(".media-stage").forEach((stage) => {
   const slides = [...stage.querySelectorAll<HTMLElement>(".media-slide")]; const buttons = [...stage.querySelectorAll<HTMLButtonElement>(".media-pagination button")]; let current = 0; let timer: number | undefined; let progressFrame = 0; let startedAt = 0;
