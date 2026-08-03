@@ -29,4 +29,6 @@ test("source keeps the dynamic visual-content convention", async () => {
   const styles = await readFile(new URL("../src/styles.css", import.meta.url), "utf8");
   assert.match(styles, /height:calc\(100svh \* \(var\(--game-count\) \+ 1\)\)/);
   assert.match(styles, /html\.is-project-snapping \{ scroll-behavior: auto; \}/);
+  assert.match(styles, /opacity:1; visibility:visible; pointer-events:none;/);
+  assert.match(styles, /backface-visibility:hidden/);
 });
