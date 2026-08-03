@@ -21,7 +21,11 @@ test("source keeps the dynamic visual-content convention", async () => {
   assert.match(source, /data-project-tab/);
   assert.match(source, /updateProjectPosition\(progress \* games\.length\)/);
   assert.match(source, /target \/ games\.length/);
+  assert.match(source, /snapToNearestProject/);
+  assert.match(source, /Math\.round\(progress \* games\.length\)/);
+  assert.match(source, /touchstart/);
 
   const styles = await readFile(new URL("../src/styles.css", import.meta.url), "utf8");
   assert.match(styles, /height:calc\(100svh \* \(var\(--game-count\) \+ 1\)\)/);
+  assert.match(styles, /html\.is-project-snapping \{ scroll-behavior: auto; \}/);
 });

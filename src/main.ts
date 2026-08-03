@@ -118,8 +118,56 @@ const projectTabs = [...document.querySelectorAll<HTMLButtonElement>("[data-proj
 gameShowcase?.style.setProperty("--game-count", String(games.length));
 let projectPosition = 0;
 let projectIndex = 0;
+let snapTimer: number | undefined;
+let snapFrame = 0;
+let isSnapping = false;
 
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
+const getShowcaseMetrics = () => {
+  if (!gameShowcase) return undefined;
+  const rect = gameShowcase.getBoundingClientRect();
+  const range = Math.max(gameShowcase.offsetHeight - window.innerHeight, 0);
+  return { top: window.scrollY + rect.top, range };
+};
+const cancelSnapAnimation = () => {
+  window.cancelAnimationFrame(snapFrame);
+  snapFrame = 0;
+  isSnapping = false;
+  document.documentElement.classList.remove("is-project-snapping");
+};
+const setScrollPosition = (top: number) => window.scrollTo({ top, left: window.scrollX, behavior: "auto" });
+const animateScrollTo = (targetTop: number) => {
+  cancelSnapAnimation();
+  const startTop = window.scrollY;
+  if (Math.abs(targetTop - startTop) < 1) { setScrollPosition(targetTop); return; }
+  isSnapping = true;
+  document.documentElement.classList.add("is-project-snapping");
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    setScrollPosition(targetTop);
+    cancelSnapAnimation();
+    return;
+  }
+  let position = startTop;
+  let velocity = 0;
+  let previousTime = performance.now();
+  const startedAt = previousTime;
+  const step = (now: number) => {
+    const deltaTime = Math.min((now - previousTime) / 16.667, 2);
+    previousTime = now;
+    const distance = targetTop - position;
+    velocity += (distance * 0.12 - velocity * 0.6) * deltaTime;
+    position += velocity * deltaTime;
+    if ((Math.abs(distance) < 0.6 && Math.abs(velocity) < 0.6) || now - startedAt > 1500) {
+      setScrollPosition(targetTop);
+      cancelSnapAnimation();
+      updateScrollState();
+      return;
+    }
+    setScrollPosition(position);
+    snapFrame = window.requestAnimationFrame(step);
+  };
+  snapFrame = window.requestAnimationFrame(step);
+};
 const setTheme = (theme: string) => {
   if (body.dataset.theme === theme) return;
   body.dataset.theme = theme;
@@ -148,10 +196,13 @@ const updateProjectPosition = (position: number) => {
 const scrollToProject = (index: number) => {
   if (!gameShowcase || games.length < 2) return;
   const target = clamp(index, 0, games.length - 1);
-  const range = Math.max(gameShowcase.offsetHeight - window.innerHeight, 0);
-  const targetTop = window.scrollY + gameShowcase.getBoundingClientRect().top + (target / games.length) * range;
+  const metrics = getShowcaseMetrics();
+  if (!metrics) return;
+  const targetTop = metrics.top + (target / games.length) * metrics.range;
+  window.clearTimeout(snapTimer);
+  snapTimer = undefined;
   updateProjectPosition(target);
-  window.scrollTo({ top: targetTop, behavior: "smooth" });
+  animateScrollTo(targetTop);
 };
 updateProjectPosition(0);
 
@@ -209,19 +260,44 @@ const updateTheme = () => {
   if (!active) return;
   setTheme(active.dataset.theme ?? "studio");
 };
+const snapToNearestProject = () => {
+  if (isSnapping || !gameShowcase || games.length < 2) return;
+  const metrics = getShowcaseMetrics();
+  if (!metrics || metrics.range <= 0) return;
+  const rect = gameShowcase.getBoundingClientRect();
+  if (rect.top >= window.innerHeight || rect.bottom <= 0) return;
+  const progress = clamp((window.scrollY - metrics.top) / metrics.range, 0, 1);
+  const targetSlot = clamp(Math.round(progress * games.length), 0, games.length);
+  const targetTop = metrics.top + (targetSlot / games.length) * metrics.range;
+  if (Math.abs(targetTop - window.scrollY) < 1) return;
+  animateScrollTo(targetTop);
+};
+const scheduleProjectSnap = () => {
+  if (isSnapping) return;
+  window.clearTimeout(snapTimer);
+  snapTimer = window.setTimeout(() => {
+    snapTimer = undefined;
+    snapToNearestProject();
+  }, 180);
+};
 let scrollFrame = 0;
 const updateScrollState = () => {
   scrollFrame = 0;
   if (gameShowcase) {
-    const range = Math.max(gameShowcase.offsetHeight - window.innerHeight, 0);
-    const progress = range ? clamp(-gameShowcase.getBoundingClientRect().top / range, 0, 1) : 0;
+    const metrics = getShowcaseMetrics();
+    const progress = metrics?.range ? clamp((window.scrollY - metrics.top) / metrics.range, 0, 1) : 0;
     updateProjectPosition(progress * games.length);
   }
   updateTheme();
+  scheduleProjectSnap();
 };
 const requestScrollUpdate = () => { if (!scrollFrame) scrollFrame = window.requestAnimationFrame(updateScrollState); };
 window.addEventListener("scroll", requestScrollUpdate, { passive: true });
 window.addEventListener("resize", requestScrollUpdate, { passive: true });
+const interruptProjectSnap = () => { if (isSnapping) cancelSnapAnimation(); };
+window.addEventListener("wheel", interruptProjectSnap, { passive: true });
+window.addEventListener("touchstart", interruptProjectSnap, { passive: true });
+window.addEventListener("pointerdown", interruptProjectSnap, { passive: true });
 requestScrollUpdate();
 
 document.querySelectorAll<HTMLElement>(".media-stage").forEach((stage) => {

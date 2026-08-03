@@ -148,6 +148,7 @@ body[data-lang="zh"] {
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+html.is-project-snapping { scroll-behavior: auto; }
 body {
   margin: 0;
   color: var(--ink);
