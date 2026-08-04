@@ -115,62 +115,13 @@ const getLanguage = (): Lang => (localStorage.getItem("freshli4-language") as La
 const gameShowcase = document.querySelector<HTMLElement>(".games-showcase");
 const projectSlides = [...document.querySelectorAll<HTMLElement>("[data-game-slide]")];
 const projectTabs = [...document.querySelectorAll<HTMLButtonElement>("[data-project-tab]")];
-gameShowcase?.style.setProperty("--game-count", String(games.length));
 let projectPosition = 0;
 let projectIndex = 0;
-let snapTimer: number | undefined;
-let snapFrame = 0;
-let isSnapping = false;
-let lastScrollY = window.scrollY;
-let scrollDirection: 1 | -1 = 1;
-const projectSwitchThreshold = 0.3;
+const projectAutoplayDelay = 6000;
+let projectAutoplayTimer: number | undefined;
+let showcaseVisible = false;
 
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
-const getShowcaseMetrics = () => {
-  if (!gameShowcase) return undefined;
-  const rect = gameShowcase.getBoundingClientRect();
-  const range = Math.max(gameShowcase.offsetHeight - window.innerHeight, 0);
-  return { top: window.scrollY + rect.top, range };
-};
-const cancelSnapAnimation = () => {
-  window.cancelAnimationFrame(snapFrame);
-  snapFrame = 0;
-  isSnapping = false;
-  document.documentElement.classList.remove("is-project-snapping");
-};
-const setScrollPosition = (top: number) => window.scrollTo({ top, left: window.scrollX, behavior: "auto" });
-const animateScrollTo = (targetTop: number) => {
-  cancelSnapAnimation();
-  const startTop = window.scrollY;
-  if (Math.abs(targetTop - startTop) < 1) { setScrollPosition(targetTop); return; }
-  isSnapping = true;
-  document.documentElement.classList.add("is-project-snapping");
-  if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    setScrollPosition(targetTop);
-    cancelSnapAnimation();
-    return;
-  }
-  let position = startTop;
-  let velocity = 0;
-  let previousTime = performance.now();
-  const startedAt = previousTime;
-  const step = (now: number) => {
-    const deltaTime = Math.min((now - previousTime) / 16.667, 2);
-    previousTime = now;
-    const distance = targetTop - position;
-    velocity += (distance * 0.12 - velocity * 0.6) * deltaTime;
-    position += velocity * deltaTime;
-    if ((Math.abs(distance) < 0.6 && Math.abs(velocity) < 0.6) || now - startedAt > 1500) {
-      setScrollPosition(targetTop);
-      cancelSnapAnimation();
-      updateScrollState();
-      return;
-    }
-    setScrollPosition(position);
-    snapFrame = window.requestAnimationFrame(step);
-  };
-  snapFrame = window.requestAnimationFrame(step);
-};
 const setTheme = (theme: string) => {
   if (body.dataset.theme === theme) return;
   body.dataset.theme = theme;
@@ -196,16 +147,34 @@ const updateProjectPosition = (position: number) => {
   updateProjectTabs();
   setTheme(games[projectIndex]?.theme ?? "studio");
 };
+const isShowcaseVisible = () => {
+  if (!gameShowcase) return false;
+  const rect = gameShowcase.getBoundingClientRect();
+  return rect.top < window.innerHeight && rect.bottom > 0;
+};
+const clearProjectAutoplay = () => {
+  window.clearTimeout(projectAutoplayTimer);
+  projectAutoplayTimer = undefined;
+};
+const scheduleProjectAutoplay = () => {
+  clearProjectAutoplay();
+  if (!gameShowcase || games.length < 2 || !showcaseVisible || document.hidden) return;
+  projectAutoplayTimer = window.setTimeout(() => {
+    projectAutoplayTimer = undefined;
+    if (!showcaseVisible || !isShowcaseVisible()) return;
+    updateProjectPosition((projectIndex + 1) % games.length);
+    scheduleProjectAutoplay();
+  }, projectAutoplayDelay);
+};
+const resetProjectAutoplay = () => {
+  scheduleProjectAutoplay();
+};
 const scrollToProject = (index: number) => {
   if (!gameShowcase || games.length < 2) return;
   const target = clamp(index, 0, games.length - 1);
-  const metrics = getShowcaseMetrics();
-  if (!metrics) return;
-  const targetTop = metrics.top + (target / games.length) * metrics.range;
-  window.clearTimeout(snapTimer);
-  snapTimer = undefined;
   updateProjectPosition(target);
-  animateScrollTo(targetTop);
+  resetProjectAutoplay();
+  if (!isShowcaseVisible()) gameShowcase.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 updateProjectPosition(0);
 
@@ -244,12 +213,9 @@ const revealObserver = new IntersectionObserver((entries) => entries.forEach((en
 document.querySelectorAll<HTMLElement>(".reveal").forEach((element, index) => { element.style.transitionDelay = `${Math.min(index % 4, 3) * 65}ms`; revealObserver.observe(element); });
 const themeSections = [...document.querySelectorAll<HTMLElement>(".theme-trigger")];
 const updateTheme = () => {
-  if (gameShowcase) {
-    const showcaseRect = gameShowcase.getBoundingClientRect();
-    if (showcaseRect.top <= 1 && showcaseRect.bottom >= window.innerHeight - 1) {
-      setTheme(games[projectIndex]?.theme ?? "studio");
-      return;
-    }
+  if (gameShowcase && isShowcaseVisible()) {
+    setTheme(games[projectIndex]?.theme ?? "studio");
+    return;
   }
   const viewportCenter = window.innerHeight / 2;
   const active = themeSections.reduce<{ section: HTMLElement; distance: number } | undefined>((closest, section) => {
@@ -260,55 +226,29 @@ const updateTheme = () => {
   if (!active) return;
   setTheme(active.dataset.theme ?? "studio");
 };
-const snapToNearestProject = () => {
-  if (isSnapping || !gameShowcase || games.length < 2) return;
-  const metrics = getShowcaseMetrics();
-  if (!metrics || metrics.range <= 0) return;
-  const rect = gameShowcase.getBoundingClientRect();
-  if (rect.top >= window.innerHeight || rect.bottom <= 0) return;
-  const progress = clamp((window.scrollY - metrics.top) / metrics.range, 0, 1);
-  const position = progress * games.length;
-  const lowerSlot = Math.floor(position);
-  const upperSlot = Math.ceil(position);
-  const targetSlot = scrollDirection > 0
-    ? lowerSlot + (position - lowerSlot >= projectSwitchThreshold ? 1 : 0)
-    : upperSlot - (upperSlot - position >= projectSwitchThreshold ? 1 : 0);
-  const targetTop = metrics.top + (targetSlot / games.length) * metrics.range;
-  if (Math.abs(targetTop - window.scrollY) < 1) return;
-  animateScrollTo(targetTop);
+const projectVisibilityObserver = gameShowcase ? new IntersectionObserver(([entry]) => {
+  showcaseVisible = entry.isIntersecting;
+  if (showcaseVisible) {
+    setTheme(games[projectIndex]?.theme ?? "studio");
+    resetProjectAutoplay();
+  } else clearProjectAutoplay();
+}, { threshold: 0.35 }) : undefined;
+if (gameShowcase) projectVisibilityObserver?.observe(gameShowcase);
+let themeFrame = 0;
+const requestThemeUpdate = () => {
+  if (themeFrame) return;
+  themeFrame = window.requestAnimationFrame(() => {
+    themeFrame = 0;
+    updateTheme();
+  });
 };
-const scheduleProjectSnap = () => {
-  if (isSnapping) return;
-  window.clearTimeout(snapTimer);
-  snapTimer = window.setTimeout(() => {
-    snapTimer = undefined;
-    snapToNearestProject();
-  }, 180);
-};
-let scrollFrame = 0;
-const updateScrollState = () => {
-  scrollFrame = 0;
-  if (gameShowcase) {
-    const metrics = getShowcaseMetrics();
-    const progress = metrics?.range ? clamp((window.scrollY - metrics.top) / metrics.range, 0, 1) : 0;
-    updateProjectPosition(progress * games.length);
-  }
-  updateTheme();
-  scheduleProjectSnap();
-};
-const requestScrollUpdate = () => {
-  const currentScrollY = window.scrollY;
-  if (currentScrollY !== lastScrollY) scrollDirection = currentScrollY > lastScrollY ? 1 : -1;
-  lastScrollY = currentScrollY;
-  if (!scrollFrame) scrollFrame = window.requestAnimationFrame(updateScrollState);
-};
-window.addEventListener("scroll", requestScrollUpdate, { passive: true });
-window.addEventListener("resize", requestScrollUpdate, { passive: true });
-const interruptProjectSnap = () => { if (isSnapping) cancelSnapAnimation(); };
-window.addEventListener("wheel", interruptProjectSnap, { passive: true });
-window.addEventListener("touchstart", interruptProjectSnap, { passive: true });
-window.addEventListener("pointerdown", interruptProjectSnap, { passive: true });
-requestScrollUpdate();
+window.addEventListener("scroll", requestThemeUpdate, { passive: true });
+window.addEventListener("resize", requestThemeUpdate, { passive: true });
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) clearProjectAutoplay();
+  else if (showcaseVisible) resetProjectAutoplay();
+});
+requestThemeUpdate();
 
 document.querySelectorAll<HTMLElement>(".media-stage").forEach((stage) => {
   const slides = [...stage.querySelectorAll<HTMLElement>(".media-slide")]; const buttons = [...stage.querySelectorAll<HTMLButtonElement>(".media-pagination button")]; let current = 0; let timer: number | undefined; let progressFrame = 0; let startedAt = 0;

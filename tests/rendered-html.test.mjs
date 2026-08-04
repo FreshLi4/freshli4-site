@@ -19,16 +19,13 @@ test("source keeps the dynamic visual-content convention", async () => {
   assert.match(source, /class="games-showcase"/);
   assert.match(source, /data-project-tab/);
   assert.doesNotMatch(source, /data-project-direction/);
-  assert.match(source, /updateProjectPosition\(progress \* games\.length\)/);
-  assert.match(source, /target \/ games\.length/);
-  assert.match(source, /snapToNearestProject/);
-  assert.match(source, /projectSwitchThreshold = 0\.3/);
-  assert.match(source, /scrollDirection/);
-  assert.match(source, /touchstart/);
+  assert.match(source, /projectAutoplayDelay = 6000/);
+  assert.match(source, /projectVisibilityObserver/);
+  assert.doesNotMatch(source, /animateScrollTo|snapToNearestProject|projectSwitchThreshold/);
 
   const styles = await readFile(new URL("../src/styles.css", import.meta.url), "utf8");
-  assert.match(styles, /height:calc\(100svh \* \(var\(--game-count\) \+ 1\)\)/);
-  assert.match(styles, /html\.is-project-snapping \{ scroll-behavior: auto; \}/);
+  assert.match(styles, /height:100svh/);
+  assert.doesNotMatch(styles, /is-project-snapping/);
   assert.match(styles, /opacity:1; visibility:visible; pointer-events:none;/);
   assert.match(styles, /backface-visibility:hidden/);
 });
