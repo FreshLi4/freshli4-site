@@ -362,7 +362,7 @@ main > section { position: relative; color: var(--ink); background: transparent;
 .studio-facts span { font-size:8px; font-weight:800; letter-spacing:.13em; }
 
 .games-flow { position:relative; }
-.games-list { width:100%; padding-left:clamp(108px, 12vw, 176px); }
+.games-list { width:100%; }
 .game-section { min-height:100svh; padding:clamp(120px, 11vw, 170px) var(--page-pad) clamp(90px, 9vw, 140px); display:flex; align-items:center; overflow:hidden; }
 .game-layout { width:100%; display:grid; grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr); gap:clamp(42px, 7vw, 120px); align-items:center; transform:translateY(clamp(24px, 3.2vw, 40px)); }
 .game-section-alt .game-layout { grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr); }
@@ -587,7 +587,7 @@ main > section { position: relative; color: var(--ink); background: transparent;
   .studio-grid, .contact-row { grid-template-columns:1fr; }
   .studio-grid { gap:52px; }
   .studio-copy { max-width:760px; }
-  .games-list { padding-left:clamp(100px, 18vw, 150px); }
+  .games-list { width:100%; }
   .game-section { min-height:auto; padding-top:130px; padding-bottom:100px; align-items:flex-start; }
   .game-layout { grid-template-columns:1fr; gap:64px; transform:none; }
   .game-section-alt .game-layout { grid-template-columns:1fr; }
