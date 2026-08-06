@@ -2,7 +2,9 @@
   "rewrites": [
     { "source": "/investigation-delve-boardgame", "destination": "/" },
     { "source": "/investigation-delve-boardgame/", "destination": "/" },
+    { "source": "/investigation-delve-boardgame/:path*", "destination": "/" },
     { "source": "/games/investigation-delve/rules", "destination": "/" },
-    { "source": "/games/investigation-delve/rules/", "destination": "/" }
+    { "source": "/games/investigation-delve/rules/", "destination": "/" },
+    { "source": "/games/investigation-delve/rules/:path*", "destination": "/" }
   ]
 }
