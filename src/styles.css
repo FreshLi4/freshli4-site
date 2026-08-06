@@ -385,6 +385,8 @@ main > section { position: relative; color: var(--ink); background: transparent;
 .text-link:hover span:last-child { transform:translate(4px,-4px); }
 .project-cta { white-space:nowrap; }
 .project-cta.is-disabled { opacity:.58; cursor:default; }
+.project-links { display:flex; flex-wrap:wrap; justify-content:flex-end; align-items:center; gap:clamp(14px, 2vw, 26px); }
+.project-rules-link { color:var(--accent); }
 
 .media-stage { position:relative; min-width:0; perspective:1400px; padding:18px 24px 30px 0; }
 .media-shadow {
@@ -601,6 +603,7 @@ main > section { position: relative; color: var(--ink); background: transparent;
   .game-title { font-size:clamp(58px, 18vw, 94px); }
   .game-description { margin-top:32px; font-size:16px; }
   .game-footer { align-items:flex-start; flex-direction:column; }
+  .project-links { justify-content:flex-start; }
   .games-controls { top:calc(var(--header-h) + 10px); left:var(--page-pad); right:var(--page-pad); }
   .project-tab { font-size:9px; }
   .media-stage { padding:14px 12px 20px 0; }

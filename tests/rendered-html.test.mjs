@@ -29,3 +29,14 @@ test("source keeps the dynamic visual-content convention", async () => {
   assert.match(styles, /opacity:1; visibility:visible; pointer-events:none;/);
   assert.match(styles, /backface-visibility:hidden/);
 });
+
+test("source exposes the investigation rulebook as a second-level page", async () => {
+  const source = await readFile(new URL("../src/main.ts", import.meta.url), "utf8");
+  const rules = await readFile(new URL("../src/rules.ts", import.meta.url), "utf8");
+  assert.match(source, /\/games\/investigation-delve\/rules\//);
+  assert.match(source, /阅读规则书/);
+  assert.match(rules, /bootRulesPage/);
+  assert.match(rules, /规则指引书 v1\.1/);
+  assert.match(rules, /调查附录/);
+  assert.match(rules, /FAQ/);
+});
