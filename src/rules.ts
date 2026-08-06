@@ -36,7 +36,7 @@ const rulesHeader = (active: RulesRoute) => `
   <header class="rules-header">
     <a class="rules-brand" href="/" aria-label="返回 FreshLi4 首页"><span class="rules-brand-mark" aria-hidden="true"><i></i><b></b></span><span><strong>调查深入</strong><small>INVESTIGATION : DELVE</small></span></a>
     ${routeLinks(active)}
-    <div class="rules-header-meta"><label class="rules-language"><span>文字选择</span><select id="rules-language-select" aria-label="文字选择"><option value="zh">中文</option><option value="en">English</option><option value="ja">日本語</option></select></label><a href="/">返回官网 <b aria-hidden="true">↗</b></a></div>
+    <div class="rules-header-meta"><label class="rules-language"><select id="rules-language-select" aria-label="选择语言"><option value="zh">中文</option><option value="en">English</option><option value="ja">日本語</option></select></label><a href="/">返回官网 <b aria-hidden="true">↗</b></a></div>
   </header>`;
 
 const referenceFigure = (src: string, alt: string, caption: string, note: string) => `

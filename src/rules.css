@@ -40,12 +40,13 @@ body.is-rules-page a { text-decoration: none; }
 .rules-brand-mark::after { width: 32px; height: 1px; top: 12px; left: -4px; transform: rotate(-45deg); }
 .rules-brand-mark i { width: 7px; height: 7px; top: 9px; left: 9px; border-radius: 50%; }
 .rules-brand-mark b { width: 3px; height: 3px; top: 4px; right: 4px; }
-.rules-header-meta { display: flex; align-items: center; gap: clamp(18px, 3vw, 44px); color: var(--rules-muted); font: 700 9px/1 var(--font-jetbrains); letter-spacing: .1em; }
-.rules-header-meta a { color: var(--rules-ink); letter-spacing: .02em; }
+.rules-header-meta { display: flex; align-items: flex-start; gap: clamp(18px, 3vw, 44px); color: var(--rules-muted); font: 700 9px/1 var(--font-jetbrains); letter-spacing: .1em; }
+.rules-header-meta a { display: inline-flex; align-items: flex-start; min-height: 22px; color: var(--rules-ink); line-height: 22px; letter-spacing: .02em; }
 .rules-header-meta b { color: var(--rules-red); font: 700 15px/1 Arial, sans-serif; margin-left: 5px; }
-.rules-language { display: inline-flex; align-items: center; gap: 9px; color: var(--rules-muted); }
+.rules-language { position: relative; display: inline-flex; align-items: flex-start; min-width: 70px; color: var(--rules-muted); }
+.rules-language::after { content: "⌄"; position: absolute; top: 1px; right: 0; color: var(--rules-muted); font: 700 12px/1 Arial, sans-serif; pointer-events: none; }
 .rules-language span { color: var(--rules-faint); font: 700 8px/1 var(--font-jetbrains); letter-spacing: .1em; }
-.rules-language select { min-width: 70px; padding: 5px 18px 5px 0; border: 0; border-bottom: 1px solid var(--rules-faint); border-radius: 0; outline: 0; appearance: none; background: transparent; color: var(--rules-ink); cursor: pointer; font: 700 10px/1 var(--font-investigation); }
+.rules-language select { width: 70px; height: 22px; padding: 0 17px 7px 0; border: 0; border-bottom: 1px solid var(--rules-faint); border-radius: 0; outline: 0; appearance: none; background: transparent; color: var(--rules-ink); cursor: pointer; font: 700 10px/15px var(--font-investigation); }
 .rules-language select:focus { border-color: var(--rules-brass); }
 .rules-route-nav { display: flex; align-items: center; justify-content: center; gap: clamp(12px, 2.5vw, 34px); margin-left: auto; }
 .rules-route-nav a { position: relative; display: grid; gap: 5px; color: var(--rules-muted); font-size: 12px; letter-spacing: -.03em; transition: color .2s, transform .2s; }
