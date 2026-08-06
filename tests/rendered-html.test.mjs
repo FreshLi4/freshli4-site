@@ -33,7 +33,7 @@ test("source keeps the dynamic visual-content convention", async () => {
 test("source exposes the investigation rulebook as a second-level page", async () => {
   const source = await readFile(new URL("../src/main.ts", import.meta.url), "utf8");
   const rules = await readFile(new URL("../src/rules.ts", import.meta.url), "utf8");
-  assert.match(source, /\/games\/investigation-delve\/rules\//);
+  assert.match(source, /\/investigation-delve-boardgame/);
   assert.match(source, /阅读规则书/);
   assert.match(rules, /bootRulesPage/);
   assert.match(rules, /规则指引书 v1\.1/);

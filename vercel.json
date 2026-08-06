@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    { "source": "/investigation-delve-boardgame", "destination": "/" },
+    { "source": "/investigation-delve-boardgame/", "destination": "/" },
+    { "source": "/games/investigation-delve/rules", "destination": "/" },
+    { "source": "/games/investigation-delve/rules/", "destination": "/" }
+  ]
+}

@@ -160,7 +160,8 @@ const setupRulesInteractions = () => {
 };
 
 export const bootRulesPage = (): boolean => {
-  if (!window.location.pathname.startsWith("/games/investigation-delve/rules")) return false;
+  const pathname = window.location.pathname;
+  if (!pathname.startsWith("/investigation-delve-boardgame") && !pathname.startsWith("/games/investigation-delve/rules")) return false;
 
   document.documentElement.lang = "zh-CN";
   document.title = "调查深入 · 规则指引书 — FreshLi4";
