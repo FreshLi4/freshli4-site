@@ -19,19 +19,21 @@ const stat = (value: string, label: string, note: string) => `<div class="rule-s
 const escapeHtml = (value: string) => value.replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char] ?? char);
 const lineBreaks = (value: string) => escapeHtml(value).replace(/\n/g, "<br />");
 
-const routeLinks = (active: "rules" | "appendix" | "faq" | "wiki") => `
+type RulesRoute = "home" | "rules" | "appendix" | "faq" | "wiki";
+
+const routeLinks = (active: RulesRoute) => `
   <nav class="rules-route-nav" aria-label="调查深入资料导航">
-    <a class="${active === "rules" ? "is-current" : ""}" href="/investigation-delve-boardgame">规则书<span>RULEBOOK</span></a>
+    <a class="${active === "rules" ? "is-current" : ""}" href="/investigation-delve-boardgame/rules">规则书<span>RULEBOOK</span></a>
     <a class="${active === "appendix" ? "is-current" : ""}" href="/investigation-delve-boardgame/appendix">调查附录<span>APPENDIX</span></a>
     <a class="${active === "faq" ? "is-current" : ""}" href="/investigation-delve-boardgame/faq">FAQ<span>RULINGS</span></a>
     <a class="${active === "wiki" ? "is-current" : ""}" href="/investigation-delve-boardgame/wiki">卡牌 Wiki<span>CARD INDEX</span></a>
   </nav>`;
 
-const rulesHeader = (active: "rules" | "appendix" | "faq" | "wiki") => `
+const rulesHeader = (active: RulesRoute) => `
   <header class="rules-header">
-    <a class="rules-brand" href="/" aria-label="返回 FreshLi4 首页"><span class="rules-brand-mark" aria-hidden="true"><i></i><b></b></span><span><strong>新鲜李四</strong><small>FRESHLI4 GAME STUDIO</small></span></a>
+    <a class="rules-brand" href="/" aria-label="返回 FreshLi4 首页"><span class="rules-brand-mark" aria-hidden="true"><i></i><b></b></span><span><strong>调查深入</strong><small>INVESTIGATION : DELVE</small></span></a>
     ${routeLinks(active)}
-    <div class="rules-header-meta"><span>INVESTIGATION GUILD OF ANOMALY</span><a href="/">返回官网 <b aria-hidden="true">↗</b></a></div>
+    <div class="rules-header-meta"><label class="rules-language"><span>文字选择</span><select id="rules-language-select" aria-label="文字选择"><option value="zh">中文</option><option value="en">English</option><option value="ja">日本語</option></select></label><a href="/">返回官网 <b aria-hidden="true">↗</b></a></div>
   </header>`;
 
 const referenceFigure = (src: string, alt: string, caption: string, note: string) => `
@@ -55,6 +57,56 @@ const subpageShell = (active: "appendix" | "faq" | "wiki", hero: string, content
 
 const sourcePanel = (title: string, content: string, label = "SOURCE / 资料来源") => `<div class="source-panel"><p class="chapter-label">${label}</p><h3>${title}</h3><p>${content}</p><div><span>CANONICAL SOURCE</span><b>SHARED / DELVE</b></div></div>`;
 
+const renderInvestigationHome = () => `
+  <div class="rules-page rules-home">
+    ${rulesHeader("home")}
+
+    <main class="rules-layout" id="rules">
+      <section class="rules-home-hero" aria-labelledby="investigation-home-title">
+        <div class="rules-home-copy">
+          <p class="rules-kicker">INVESTIGATION : DELVE / 调查深入</p>
+          <h1 id="investigation-home-title">调查<br /><em>深入</em></h1>
+          <p class="rules-hero-english">A NON-DIRECT-CONFLICT TABLETOP GAME</p>
+          <p class="rules-dek">成为「指挥者」，在异常环境中带领调查员寻找情报，在调查中规避【禁忌真相】，并让对手先一步失去清醒。</p>
+          <div class="rules-hero-actions"><a class="rules-primary-link" href="#rules-ai">开始提问 <span aria-hidden="true">↓</span></a><span class="rules-edition">2—6 人<br />策略 · 调查 · 卡牌</span></div>
+        </div>
+        <div class="rules-home-visual">
+          <img src="/asset/investigation-delve/visual-content/3-游戏配件-1.png" alt="《调查深入》游戏配件与卡牌" />
+          <span class="home-visual-stamp">ANOMALY<br /><small>FILE / 0001</small></span>
+          <span class="home-visual-note">INVESTIGATION<br />STARTS HERE</span>
+        </div>
+      </section>
+
+      <section class="rules-home-intro" aria-labelledby="investigation-intro-title">
+        <div><p class="chapter-label">THE CASE / 案件简介</p><h2 id="investigation-intro-title">真相会改变<br /><em>调查的方向。</em></h2></div>
+        <div><p>《调查深入》是一款支持 2—6 人游玩的非直接对战美式桌游。每位指挥者操控调查员，使用策略牌、角色技能与行动顺位保护己方。</p><p>情报越多，风险越近。每一次调查都可能让你触及禁忌真相，也可能把对手更早推入疯狂。</p></div>
+      </section>
+
+      <section class="rules-ai" id="rules-ai" aria-labelledby="rules-ai-title">
+        <div class="rules-ai-heading"><p class="chapter-label">AI Q&A / 规则问答</p><h2 id="rules-ai-title">把问题留在桌面上。</h2><p>输入一个规则问题，先从当前规则资料中找到方向。</p></div>
+        <div class="rules-ai-panel">
+          <form id="rules-ai-form" class="rules-ai-form">
+            <label for="rules-ai-input">向调查助手提问</label>
+            <div><input id="rules-ai-input" type="search" placeholder="例如：调查到禁忌真相后会发生什么？" autocomplete="off" /><button type="submit">查询 <span aria-hidden="true">↗</span></button></div>
+          </form>
+          <div class="rules-ai-prompts" aria-label="常用问题"><button type="button" data-rules-ai-prompt="游戏支持几个人？">支持几个人？</button><button type="button" data-rules-ai-prompt="SAN 归零怎么办？">SAN 归零怎么办？</button><button type="button" data-rules-ai-prompt="怎样获胜？">怎样获胜？</button></div>
+          <div class="rules-ai-answer" id="rules-ai-answer" aria-live="polite"><span>ASSISTANT / READY</span><p>选择一个问题，或者输入你想确认的规则。</p></div>
+        </div>
+      </section>
+
+      <section class="rules-portals" aria-labelledby="rules-portals-title">
+        <div class="rules-portals-heading"><p class="chapter-label">CASE FILES / 资料入口</p><h2 id="rules-portals-title">四个页面，<br />从不同角度继续调查。</h2></div>
+        <div class="rules-portal-grid">
+          <a class="rules-portal-card" href="/investigation-delve-boardgame/rules"><span>01 / RULEBOOK</span><strong>规则书</strong><p>从快速游玩开始，按章节了解完整流程。</p><b aria-hidden="true">↗</b></a>
+          <a class="rules-portal-card" href="/investigation-delve-boardgame/appendix"><span>02 / APPENDIX</span><strong>调查附录</strong><p>统一行动词典、文本标识与版本边界。</p><b aria-hidden="true">↗</b></a>
+          <a class="rules-portal-card" href="/investigation-delve-boardgame/faq"><span>03 / RULINGS</span><strong>FAQ</strong><p>查看常见机制、调查员与印刷判例。</p><b aria-hidden="true">↗</b></a>
+          <a class="rules-portal-card" href="/investigation-delve-boardgame/wiki"><span>04 / CARD INDEX</span><strong>卡牌 Wiki</strong><p>搜索调查员、策略、环境、情报与辅助卡牌。</p><b aria-hidden="true">↗</b></a>
+        </div>
+      </section>
+    </main>
+    <footer class="rules-footer"><span>© FRESHLI4 GAME STUDIO / INVESTIGATION : DELVE</span><a href="#rules">返回顶部 ↑</a><a href="/">FreshLi4 官网 ↗</a></footer>
+  </div>`;
+
 const renderRulesPage = () => `
   <div class="rules-page">
     ${rulesHeader("rules")}
@@ -68,11 +120,11 @@ const renderRulesPage = () => `
           <p class="rules-dek">成为「指挥者」。在异常环境中带领调查员寻找情报、避开【禁忌真相】，并让对手先一步失去清醒。</p>
           <div class="rules-hero-actions"><a class="rules-primary-link" href="#quick-start">从这里开始 <span aria-hidden="true">↓</span></a><span class="rules-edition">规则指引书 v1.1<br />附录与 FAQ 持续更新</span></div>
         </div>
-        <div class="rules-hero-dossier" aria-label="调查工会档案封面">
+        <div class="rules-hero-dossier" aria-label="调查档案封面">
           <div class="dossier-grid"></div><div class="dossier-redline"></div>
           <div class="dossier-stamp">I.G.A.<br /><small>FILE 02—06</small></div>
           <div class="dossier-card"><span>ANOMALY</span><strong>?</strong><small>DO NOT LOOK<br />TOO DEEP</small></div>
-          <p class="dossier-caption">ARCHIVE / 0001<br /><b>异常联合调查工会</b></p>
+          <p class="dossier-caption">ARCHIVE / 0001<br /><b>异常联合调查档案</b></p>
         </div>
       </section>
 
@@ -107,8 +159,8 @@ const renderRulesPage = () => `
             ${callout("副官提示", "不要把一次轮次的输赢当成整局胜负。真正的目标，是让自己的队伍活到最后。", "is-red")}
           `)}
 
-          ${section("briefing", "01", "BRIEFING / 任务简报", "欢迎回到调查工会。", `
-            ${paragraph("这里是「异常联合调查工会」（Investigation Guild of Anomaly），一家跨国独立组织。异常环境的识别案例正在增加，而你是一名已经活过前几次任务、仍然保持清醒的「指挥者」。")}
+          ${section("briefing", "01", "BRIEFING / 任务简报", "欢迎回到调查现场。", `
+            ${paragraph("这里是一套用于记录异常环境的调查档案。异常环境的识别案例正在增加，而你是一名已经活过前几次任务、仍然保持清醒的「指挥者」。")}
             ${paragraph("你不再亲自踏入任务区域。你的工作，是通过策略指令、情报判断和调查员技能，带领自己的队伍完成任务。情报越多越好——但在情报卡组中，始终藏着一张不该被轻易触及的牌。")}
             <div class="briefing-columns"><div><span class="column-label">指挥者</span><p>管理自己的策略手牌，决定调查员在危险信息上的取舍。</p></div><div><span class="column-label">调查员</span><p>执行调查、承受 SAN 损耗，也可能在疯狂后获得新的能力。</p></div><div><span class="column-label">环境</span><p>每一轮改变桌面规则，带来新的限制、机会或陷阱。</p></div></div>
           `)}
@@ -301,15 +353,51 @@ const setupRulesInteractions = () => {
     filterButtons.forEach((item) => item.classList.toggle("is-active", item === button));
     updateWiki();
   }));
+
+  const aiForm = document.querySelector<HTMLFormElement>("#rules-ai-form");
+  const aiInput = document.querySelector<HTMLInputElement>("#rules-ai-input");
+  const aiAnswer = document.querySelector<HTMLElement>("#rules-ai-answer");
+  const aiPrompts = [...document.querySelectorAll<HTMLButtonElement>("[data-rules-ai-prompt]")];
+  const aiAnswers = [
+    { keywords: ["几个人", "人数", "玩家", "支持"], answer: "《调查深入》支持 2—6 名玩家。组队后，每位玩家扮演指挥者，通过调查员、策略牌和行动顺位管理自己的队伍。" },
+    { keywords: ["san", "理智", "归零", "疯狂"], answer: "调查员调查到禁忌真相时通常损失 1 点 SAN。SAN 归零后会陷入疯狂，失去操作阶段；通过规则允许的方式恢复 SAN 后，可以恢复清醒。" },
+    { keywords: ["获胜", "胜利", "怎么赢", "怎样赢", "结束"], answer: "当其他队伍的调查员全部陷入疯狂时，最后保持清醒的队伍获胜。如果一次操作让所有剩余调查员同时疯狂，则最后陷入疯狂的调查员所在队伍获胜。" },
+    { keywords: ["禁忌真相", "调查到", "真相"], answer: "禁忌真相是情报卡组中不应被轻易触及的牌。调查到它时，通常会触发 SAN 损耗并结束当前轮次，然后按规则结算并重洗情报卡组。" },
+    { keywords: ["调查", "操作阶段", "行动"], answer: "每位清醒调查员在自己的操作阶段调查 1—3 张情报牌，并可以按卡牌说明使用策略、技能或情报区中的效果。没有特殊描述时，每个操作阶段必须且只能调查一次。" },
+  ];
+  const answerQuestion = (question: string) => {
+    const normalized = question.toLocaleLowerCase();
+    const match = aiAnswers.find((item) => item.keywords.some((keyword) => normalized.includes(keyword)));
+    if (aiAnswer) aiAnswer.innerHTML = `<span>ASSISTANT / ${match ? "ANSWER" : "NO MATCH"}</span><p>${match?.answer ?? "当前资料中没有直接匹配的判例。可以换一种问法，或进入规则书、调查附录、FAQ 和卡牌 Wiki 继续查找。"}</p>`;
+  };
+  aiForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const question = aiInput?.value.trim() ?? "";
+    if (question) answerQuestion(question);
+  });
+  aiPrompts.forEach((button) => button.addEventListener("click", () => {
+    const question = button.dataset.rulesAiPrompt ?? "";
+    if (aiInput) aiInput.value = question;
+    answerQuestion(question);
+  }));
+
+  const languageSelect = document.querySelector<HTMLSelectElement>("#rules-language-select");
+  const savedLanguage = localStorage.getItem("freshli4-language");
+  if (languageSelect && (savedLanguage === "zh" || savedLanguage === "en" || savedLanguage === "ja")) languageSelect.value = savedLanguage;
+  languageSelect?.addEventListener("change", () => {
+    localStorage.setItem("freshli4-language", languageSelect.value);
+    document.documentElement.lang = languageSelect.value === "zh" ? "zh-CN" : languageSelect.value;
+  });
 };
 
 export const bootRulesPage = (): boolean => {
   const pathname = window.location.pathname;
   if (!pathname.startsWith("/investigation-delve-boardgame") && !pathname.startsWith("/games/investigation-delve/rules")) return false;
 
-  const route = pathname.includes("/appendix") ? "appendix" : pathname.includes("/faq") ? "faq" : pathname.includes("/wiki") ? "wiki" : "rules";
-  const renderPage = route === "appendix" ? renderAppendixPage : route === "faq" ? renderFaqPage : route === "wiki" ? renderWikiPage : renderRulesPage;
+  const route: RulesRoute = pathname.includes("/appendix") ? "appendix" : pathname.includes("/faq") ? "faq" : pathname.includes("/wiki") ? "wiki" : pathname.endsWith("/rules") || pathname.includes("/games/investigation-delve/rules") ? "rules" : "home";
+  const renderPage = route === "home" ? renderInvestigationHome : route === "rules" ? renderRulesPage : route === "appendix" ? renderAppendixPage : route === "faq" ? renderFaqPage : renderWikiPage;
   const titles = {
+    home: "调查深入",
     rules: "调查深入 · 规则指引书",
     appendix: "调查深入 · 调查附录",
     faq: "调查深入 · FAQ",
@@ -318,7 +406,7 @@ export const bootRulesPage = (): boolean => {
 
   document.documentElement.lang = "zh-CN";
   document.title = `${titles[route]} — FreshLi4`;
-  document.querySelector('meta[name="description"]')?.setAttribute("content", `《调查深入》${titles[route].replace("调查深入 · ", "")}：规则、判例、特殊行动与完整卡牌索引。FreshLi4 新鲜李四游戏工作室。` );
+  document.querySelector('meta[name="description"]')?.setAttribute("content", route === "home" ? "《调查深入》是一款支持 2—6 人游玩的非直接对战美式桌游。FreshLi4 新鲜李四游戏工作室。" : `《调查深入》${titles[route].replace("调查深入 · ", "")}：规则、判例、特殊行动与完整卡牌索引。FreshLi4 新鲜李四游戏工作室。` );
   document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#0d0d0d");
   document.body.dataset.theme = "investigation";
   document.body.classList.add("is-rules-page");
