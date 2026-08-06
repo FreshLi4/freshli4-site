@@ -110,7 +110,7 @@ const renderGame = (game: GameConfig, index: number) => {
 };
 
 const gamesMount = document.querySelector<HTMLElement>("#games-mount")!;
-gamesMount.innerHTML = `<div id="games" class="games-flow"><nav class="games-controls" aria-label="游戏项目快速跳转"><div class="project-tabs" role="tablist" aria-orientation="vertical" aria-label="游戏项目列表">${games.map((game, index) => `<button class="project-tab${index === 0 ? " active" : ""}" type="button" role="tab" data-project-tab="${escapeHtml(game.slug)}" aria-selected="${index === 0 ? "true" : "false"}"><span class="project-tab-number">0${index + 1}</span><span data-project-tab-title="${escapeHtml(game.slug)}"></span></button>`).join("")}</div></nav><div class="games-list">${games.map(renderGame).join("")}</div></div>`;
+gamesMount.innerHTML = `<div id="games" class="games-flow"><nav class="games-controls" aria-label="网站快速导航"><div class="project-tabs" role="tablist" aria-orientation="vertical" aria-label="网站快速导航"><a class="project-tab site-tab active" href="#studio" role="tab" data-site-nav="studio" aria-selected="true"><span class="project-tab-number">00</span><span data-i18n="nav.studio">工作室</span></a>${games.map((game, index) => `<button class="project-tab${index === 0 ? " active" : ""}" type="button" role="tab" data-project-tab="${escapeHtml(game.slug)}" data-site-nav="${escapeHtml(game.slug)}" aria-selected="${index === 0 ? "true" : "false"}"><span class="project-tab-number">0${index + 1}</span><span data-project-tab-title="${escapeHtml(game.slug)}"></span></button>`).join("")}</div></nav><div class="games-list">${games.map(renderGame).join("")}</div></div>`;
 document.querySelector(".brand-logo")?.setAttribute("src", "/brand-logo.png");
 
 const languageSelect = document.querySelector<HTMLSelectElement>("#language-select");
@@ -121,6 +121,7 @@ const languageNames: Record<Lang, string> = { zh: "中文", ja: "日本語", en:
 const getLanguage = (): Lang => (localStorage.getItem("freshli4-language") as Lang) || "zh";
 const gameSections = [...document.querySelectorAll<HTMLElement>(".game-section")];
 const projectTabs = [...document.querySelectorAll<HTMLButtonElement>("[data-project-tab]")];
+const siteNavItems = [...document.querySelectorAll<HTMLElement>("[data-site-nav]")];
 let projectIndex = 0;
 
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
@@ -136,6 +137,11 @@ const updateProjectTabs = (lang: Lang = getLanguage()) => projectTabs.forEach((t
   tab.classList.toggle("active", index === projectIndex);
   tab.setAttribute("aria-selected", String(index === projectIndex));
 });
+const updateSiteNav = (sectionId: string) => siteNavItems.forEach((item) => {
+  const active = item.dataset.siteNav === sectionId;
+  item.classList.toggle("active", active);
+  item.setAttribute("aria-selected", String(active));
+});
 const updateProjectPosition = (position: number) => {
   projectIndex = clamp(Math.round(position), 0, Math.max(games.length - 1, 0));
   updateProjectTabs();
@@ -144,6 +150,7 @@ const scrollToProject = (index: number) => {
   const target = gameSections[clamp(index, 0, gameSections.length - 1)];
   if (!target) return;
   updateProjectPosition(gameSections.indexOf(target));
+  updateSiteNav(target.id);
   target.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 
@@ -186,6 +193,7 @@ const updateTheme = () => {
   if (!active) return;
   const activeProjectIndex = gameSections.indexOf(active);
   if (activeProjectIndex >= 0) updateProjectPosition(activeProjectIndex);
+  updateSiteNav(active.id === "" ? "studio" : active.id);
   setTheme(active.dataset.theme ?? "studio");
 };
 let themeFrame = 0;

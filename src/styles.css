@@ -340,8 +340,8 @@ main > section { position: relative; color: var(--ink); background: transparent;
 .game-section-alt .media-stage { order:1; }
 
 .games-controls {
-  position:sticky; z-index:12; top:calc(var(--header-h) + 18px); width:0; height:0; margin-left:var(--page-pad);
-  overflow:visible; pointer-events:none;
+  position:fixed; z-index:50; top:50%; left:var(--page-pad); width:auto; height:auto; margin:0;
+  transform:translateY(-50%); overflow:visible; pointer-events:none;
 }
 .project-tabs {
   min-width:0; display:flex; flex-direction:column; justify-content:flex-start; align-items:flex-start; gap:12px; overflow:visible; scrollbar-width:none; pointer-events:auto;
@@ -557,8 +557,7 @@ main > section { position: relative; color: var(--ink); background: transparent;
   .studio-grid, .contact-row { grid-template-columns:1fr; }
   .studio-grid { gap:52px; }
   .studio-copy { max-width:760px; }
-  .games-controls { position:relative; top:auto; width:auto; height:auto; margin:0; padding:calc(var(--header-h) + 18px) var(--page-pad) 20px; }
-  .games-list { padding-left:0; }
+  .games-list { padding-left:clamp(100px, 18vw, 150px); }
   .game-section { min-height:auto; padding-top:130px; padding-bottom:100px; align-items:flex-start; }
   .game-layout { grid-template-columns:1fr; gap:64px; transform:none; }
   .game-section-alt .game-layout { grid-template-columns:1fr; }

@@ -18,6 +18,7 @@ test("source keeps the dynamic visual-content convention", async () => {
   assert.match(source, /setTimeout\(\(\) => show\(current \+ 1\), 3000\)/);
   assert.match(source, /class="games-flow"/);
   assert.match(source, /class="game-section/);
+  assert.match(source, /data-site-nav="studio"/);
   assert.match(source, /data-project-tab/);
   assert.match(source, /aria-orientation="vertical"/);
   assert.doesNotMatch(source, /data-project-direction/);
@@ -25,7 +26,7 @@ test("source keeps the dynamic visual-content convention", async () => {
 
   const styles = await readFile(new URL("../src/styles.css", import.meta.url), "utf8");
   assert.match(styles, /\.game-section \{ min-height:100svh/);
-  assert.match(styles, /position:sticky; z-index:12; top:calc\(var\(--header-h\) \+ 18px\)/);
+  assert.match(styles, /position:fixed; z-index:50; top:50%; left:var\(--page-pad\)/);
   assert.match(styles, /flex-direction:column; justify-content:flex-start; align-items:flex-start/);
   assert.doesNotMatch(styles, /games-showcase|games-sticky|games-slides|game-slide|is-project-snapping/);
 });
