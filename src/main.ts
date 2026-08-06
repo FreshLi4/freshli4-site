@@ -106,11 +106,11 @@ const renderGame = (game: GameConfig, index: number) => {
   if (game.slug === "investigation-delve") translations[rulebookKey] = copy("阅读规则书", "READ RULEBOOK", "ルールブック");
   const rulebookLink = game.slug === "investigation-delve" ? `<a class="text-link project-cta project-rules-link" href="/investigation-delve-boardgame"><span data-game-i18n="${rulebookKey}"></span><span aria-hidden="true">↗</span></a>` : "";
   const purchaseLink = game.link ? `<a class="text-link project-cta" href="${escapeHtml(game.link)}" target="_blank" rel="noopener noreferrer"><span data-game-i18n="${textKey(game, "cta")}"></span><span aria-hidden="true">↗</span></a>` : `<span class="text-link project-cta is-disabled"><span data-game-i18n="${textKey(game, "cta")}"></span></span>`;
-  return `<article class="game-slide${index % 2 === 1 ? " game-section-alt" : ""} ${game.fontClass}" id="${escapeHtml(game.slug)}" data-game-slide="${escapeHtml(game.slug)}" data-theme="${game.theme}" aria-labelledby="${escapeHtml(game.slug)}-title" aria-hidden="true"><div class="game-layout"><div class="game-copy-panel reveal"><div class="game-meta"><span>0${index + 1}</span><span data-game-i18n="${textKey(game, "status")}"></span></div><div class="game-copy-main"><p class="game-category" data-game-i18n="${textKey(game, "category")}"></p><h2 id="${escapeHtml(game.slug)}-title" class="game-title" data-game-title="${escapeHtml(game.slug)}"></h2><p class="game-description" data-game-i18n="${textKey(game, "description")}"></p></div><div class="game-footer"><div class="tags">${tags}</div><div class="project-links">${rulebookLink}${purchaseLink}</div></div></div><div class="media-stage reveal" data-game="${escapeHtml(game.slug)}"><div class="media-shadow" aria-hidden="true"></div><div class="media-frame tilt-card"><div class="media-topbar"><div class="media-dots"><i></i><i></i><i></i></div><div class="media-label"></div><button class="media-expand" type="button" aria-label="切换媒体">↗</button></div><div class="media-viewport">${media.map((item, mediaIndex) => renderMedia(game, item, mediaIndex)).join("")}</div><div class="media-pagination">${media.map((_, mediaIndex) => `<button class="${mediaIndex === 0 ? "active" : ""}" type="button" data-target="${mediaIndex}">0${mediaIndex + 1}</button>`).join("")}</div></div><div class="floating-note note-a">${game.noteA}</div><div class="floating-note note-b">${game.noteB}</div></div></div></article>`;
+  return `<section class="game-section${index % 2 === 1 ? " game-section-alt" : ""} theme-trigger ${game.fontClass}" id="${escapeHtml(game.slug)}" data-theme="${game.theme}" aria-labelledby="${escapeHtml(game.slug)}-title"><div class="game-layout"><article class="game-copy-panel reveal"><div class="game-meta"><span>0${index + 1}</span><span data-game-i18n="${textKey(game, "status")}"></span></div><div class="game-copy-main"><p class="game-category" data-game-i18n="${textKey(game, "category")}"></p><h2 id="${escapeHtml(game.slug)}-title" class="game-title" data-game-title="${escapeHtml(game.slug)}"></h2><p class="game-description" data-game-i18n="${textKey(game, "description")}"></p></div><div class="game-footer"><div class="tags">${tags}</div><div class="project-links">${rulebookLink}${purchaseLink}</div></div></article><div class="media-stage reveal" data-game="${escapeHtml(game.slug)}"><div class="media-shadow" aria-hidden="true"></div><div class="media-frame tilt-card"><div class="media-topbar"><div class="media-dots"><i></i><i></i><i></i></div><div class="media-label"></div><button class="media-expand" type="button" aria-label="切换媒体">↗</button></div><div class="media-viewport">${media.map((item, mediaIndex) => renderMedia(game, item, mediaIndex)).join("")}</div><div class="media-pagination">${media.map((_, mediaIndex) => `<button class="${mediaIndex === 0 ? "active" : ""}" type="button" data-target="${mediaIndex}">0${mediaIndex + 1}</button>`).join("")}</div></div><div class="floating-note note-a">${game.noteA}</div><div class="floating-note note-b">${game.noteB}</div></div></div></section>`;
 };
 
 const gamesMount = document.querySelector<HTMLElement>("#games-mount")!;
-gamesMount.innerHTML = `<section id="games" class="games-showcase" aria-label="游戏项目"><div class="games-sticky"><div class="games-slides">${games.map(renderGame).join("")}</div><div class="games-controls"><div class="project-tabs" role="tablist" aria-label="游戏项目列表">${games.map((game, index) => `<button class="project-tab${index === 0 ? " active" : ""}" type="button" role="tab" data-project-tab="${escapeHtml(game.slug)}" aria-selected="${index === 0 ? "true" : "false"}"><span class="project-tab-number">0${index + 1}</span><span data-project-tab-title="${escapeHtml(game.slug)}"></span></button>`).join("")}</div></div></div></section>`;
+gamesMount.innerHTML = `<div id="games" class="games-flow"><nav class="games-controls" aria-label="游戏项目快速跳转"><div class="project-tabs" role="tablist" aria-orientation="vertical" aria-label="游戏项目列表">${games.map((game, index) => `<button class="project-tab${index === 0 ? " active" : ""}" type="button" role="tab" data-project-tab="${escapeHtml(game.slug)}" aria-selected="${index === 0 ? "true" : "false"}"><span class="project-tab-number">0${index + 1}</span><span data-project-tab-title="${escapeHtml(game.slug)}"></span></button>`).join("")}</div></nav><div class="games-list">${games.map(renderGame).join("")}</div></div>`;
 document.querySelector(".brand-logo")?.setAttribute("src", "/brand-logo.png");
 
 const languageSelect = document.querySelector<HTMLSelectElement>("#language-select");
@@ -119,14 +119,9 @@ const themeMeta = document.querySelector('meta[name="theme-color"]');
 const themeColors: Record<string, string> = { studio: "#F3FF59", investigation: "#000000", ballmaze: "#45AEA4", diveup: "#000000" };
 const languageNames: Record<Lang, string> = { zh: "中文", ja: "日本語", en: "English" };
 const getLanguage = (): Lang => (localStorage.getItem("freshli4-language") as Lang) || "zh";
-const gameShowcase = document.querySelector<HTMLElement>(".games-showcase");
-const projectSlides = [...document.querySelectorAll<HTMLElement>("[data-game-slide]")];
+const gameSections = [...document.querySelectorAll<HTMLElement>(".game-section")];
 const projectTabs = [...document.querySelectorAll<HTMLButtonElement>("[data-project-tab]")];
-let projectPosition = 0;
 let projectIndex = 0;
-const projectAutoplayDelay = 6000;
-let projectAutoplayTimer: number | undefined;
-let showcaseVisible = false;
 
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 const setTheme = (theme: string) => {
@@ -142,48 +137,15 @@ const updateProjectTabs = (lang: Lang = getLanguage()) => projectTabs.forEach((t
   tab.setAttribute("aria-selected", String(index === projectIndex));
 });
 const updateProjectPosition = (position: number) => {
-  const maxPosition = Math.max(games.length - 1, 0);
-  projectPosition = clamp(position, 0, maxPosition);
-  const nextIndex = Math.round(projectPosition);
-  projectSlides.forEach((slide, index) => {
-    slide.style.transform = `translate3d(${(index - projectPosition) * 100}%, 0, 0)`;
-    slide.classList.toggle("is-active", index === nextIndex);
-    slide.setAttribute("aria-hidden", String(index !== nextIndex));
-  });
-  projectIndex = nextIndex;
+  projectIndex = clamp(Math.round(position), 0, Math.max(games.length - 1, 0));
   updateProjectTabs();
-  setTheme(games[projectIndex]?.theme ?? "studio");
-};
-const isShowcaseVisible = () => {
-  if (!gameShowcase) return false;
-  const rect = gameShowcase.getBoundingClientRect();
-  return rect.top < window.innerHeight && rect.bottom > 0;
-};
-const clearProjectAutoplay = () => {
-  window.clearTimeout(projectAutoplayTimer);
-  projectAutoplayTimer = undefined;
-};
-const scheduleProjectAutoplay = () => {
-  clearProjectAutoplay();
-  if (!gameShowcase || games.length < 2 || !showcaseVisible || document.hidden) return;
-  projectAutoplayTimer = window.setTimeout(() => {
-    projectAutoplayTimer = undefined;
-    if (!showcaseVisible || !isShowcaseVisible()) return;
-    updateProjectPosition((projectIndex + 1) % games.length);
-    scheduleProjectAutoplay();
-  }, projectAutoplayDelay);
-};
-const resetProjectAutoplay = () => {
-  scheduleProjectAutoplay();
 };
 const scrollToProject = (index: number) => {
-  if (!gameShowcase || games.length < 2) return;
-  const target = clamp(index, 0, games.length - 1);
-  updateProjectPosition(target);
-  resetProjectAutoplay();
-  if (!isShowcaseVisible()) gameShowcase.scrollIntoView({ behavior: "smooth", block: "start" });
+  const target = gameSections[clamp(index, 0, gameSections.length - 1)];
+  if (!target) return;
+  updateProjectPosition(gameSections.indexOf(target));
+  target.scrollIntoView({ behavior: "smooth", block: "start" });
 };
-updateProjectPosition(0);
 
 const applyLanguage = (language: Lang) => {
   const lang = translations["nav.studio"][language] ? language : "zh";
@@ -204,26 +166,17 @@ applyLanguage(getLanguage());
 languageSelect?.addEventListener("change", () => applyLanguage(languageSelect.value as Lang));
 
 const mobileMenu = document.querySelector<HTMLElement>("#mobile-menu");
-if (mobileMenu) { mobileMenu.innerHTML = [{ href: "#studio", key: "nav.studio" }, ...games.map((game, index) => ({ href: "#games", key: `game.${game.slug}.title`, projectIndex: index })), { href: "#contact", key: "nav.contact" }].map((item) => `<a href="${item.href}" data-menu-key="${item.key}"${"projectIndex" in item ? ` data-project-link="${item.projectIndex}"` : ""}></a>`).join(""); }
+if (mobileMenu) { mobileMenu.innerHTML = [{ href: "#studio", key: "nav.studio" }, ...games.map((game) => ({ href: `#${game.slug}`, key: `game.${game.slug}.title` })), { href: "#contact", key: "nav.contact" }].map((item) => `<a href="${item.href}" data-menu-key="${item.key}"></a>`).join(""); }
 const updateMobileMenu = () => mobileMenu?.querySelectorAll<HTMLElement>("[data-menu-key]").forEach((item) => { const key = item.dataset.menuKey ?? ""; const game = games.find((candidate) => key === `game.${candidate.slug}.title`); item.textContent = game ? game.title[getLanguage()] : translations[key]?.[getLanguage()] ?? key; });
 updateMobileMenu();
 languageSelect?.addEventListener("change", updateMobileMenu);
 
 projectTabs.forEach((tab, index) => tab.addEventListener("click", () => scrollToProject(index)));
-mobileMenu?.querySelectorAll<HTMLElement>("[data-project-link]").forEach((link) => link.addEventListener("click", (event) => {
-  event.preventDefault();
-  scrollToProject(Number(link.dataset.projectLink ?? 0));
-  closeMenu();
-}));
 
 const revealObserver = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add("visible"); revealObserver.unobserve(entry.target); } }), { threshold: 0.1 });
 document.querySelectorAll<HTMLElement>(".reveal").forEach((element, index) => { element.style.transitionDelay = `${Math.min(index % 4, 3) * 65}ms`; revealObserver.observe(element); });
 const themeSections = [...document.querySelectorAll<HTMLElement>(".theme-trigger")];
 const updateTheme = () => {
-  if (gameShowcase && isShowcaseVisible()) {
-    setTheme(games[projectIndex]?.theme ?? "studio");
-    return;
-  }
   const viewportCenter = window.innerHeight / 2;
   const active = themeSections.reduce<{ section: HTMLElement; distance: number } | undefined>((closest, section) => {
     const rect = section.getBoundingClientRect();
@@ -231,16 +184,10 @@ const updateTheme = () => {
     return !closest || distance < closest.distance ? { section, distance } : closest;
   }, undefined)?.section;
   if (!active) return;
+  const activeProjectIndex = gameSections.indexOf(active);
+  if (activeProjectIndex >= 0) updateProjectPosition(activeProjectIndex);
   setTheme(active.dataset.theme ?? "studio");
 };
-const projectVisibilityObserver = gameShowcase ? new IntersectionObserver(([entry]) => {
-  showcaseVisible = entry.isIntersecting;
-  if (showcaseVisible) {
-    setTheme(games[projectIndex]?.theme ?? "studio");
-    resetProjectAutoplay();
-  } else clearProjectAutoplay();
-}, { threshold: 0.35 }) : undefined;
-if (gameShowcase) projectVisibilityObserver?.observe(gameShowcase);
 let themeFrame = 0;
 const requestThemeUpdate = () => {
   if (themeFrame) return;
@@ -251,10 +198,6 @@ const requestThemeUpdate = () => {
 };
 window.addEventListener("scroll", requestThemeUpdate, { passive: true });
 window.addEventListener("resize", requestThemeUpdate, { passive: true });
-document.addEventListener("visibilitychange", () => {
-  if (document.hidden) clearProjectAutoplay();
-  else if (showcaseVisible) resetProjectAutoplay();
-});
 requestThemeUpdate();
 
 document.querySelectorAll<HTMLElement>(".media-stage").forEach((stage) => {

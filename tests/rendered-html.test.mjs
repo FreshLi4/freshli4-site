@@ -16,18 +16,18 @@ test("source keeps the dynamic visual-content convention", async () => {
   assert.match(source, /import\.meta\.glob\("\/asset\/\*\/visual-content\/\*"/);
   assert.match(source, /videoExtensions/);
   assert.match(source, /setTimeout\(\(\) => show\(current \+ 1\), 3000\)/);
-  assert.match(source, /class="games-showcase"/);
+  assert.match(source, /class="games-flow"/);
+  assert.match(source, /class="game-section/);
   assert.match(source, /data-project-tab/);
+  assert.match(source, /aria-orientation="vertical"/);
   assert.doesNotMatch(source, /data-project-direction/);
-  assert.match(source, /projectAutoplayDelay = 6000/);
-  assert.match(source, /projectVisibilityObserver/);
-  assert.doesNotMatch(source, /animateScrollTo|snapToNearestProject|projectSwitchThreshold/);
+  assert.doesNotMatch(source, /projectAutoplayDelay|projectVisibilityObserver|data-game-slide/);
 
   const styles = await readFile(new URL("../src/styles.css", import.meta.url), "utf8");
-  assert.match(styles, /height:100svh/);
-  assert.doesNotMatch(styles, /is-project-snapping/);
-  assert.match(styles, /opacity:1; visibility:visible; pointer-events:none;/);
-  assert.match(styles, /backface-visibility:hidden/);
+  assert.match(styles, /\.game-section \{ min-height:100svh/);
+  assert.match(styles, /position:sticky; z-index:12; top:calc\(var\(--header-h\) \+ 18px\)/);
+  assert.match(styles, /flex-direction:column; justify-content:flex-start; align-items:flex-start/);
+  assert.doesNotMatch(styles, /games-showcase|games-sticky|games-slides|game-slide|is-project-snapping/);
 });
 
 test("source exposes the investigation rulebook as a second-level page", async () => {
