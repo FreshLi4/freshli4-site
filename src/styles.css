@@ -66,6 +66,34 @@
   font-display: swap;
 }
 @font-face {
+  font-family: "FreshLi4 Rules Source Han";
+  src: url("../asset/freshli4/font/source-han-sans-sc/SourceHanSansSC-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "FreshLi4 Rules Source Han";
+  src: url("../asset/freshli4/font/source-han-sans-sc/SourceHanSansSC-Bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "FreshLi4 Rules Serif";
+  src: url("../asset/investigation-delve/font/source-han-serif-sc/SourceHanSerifSC-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "FreshLi4 Rules Serif";
+  src: url("../asset/investigation-delve/font/source-han-serif-sc/SourceHanSerifSC-Bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700 900;
+  font-display: swap;
+}
+@font-face {
   font-family: "FreshLi4 Fusion Pixel";
   src: url("../asset/ball-maze/font/fusion-pixel-font-12px-monospaced-otf.woff-v2026.07.01/fusion-pixel-12px-monospaced-latin.otf.woff") format("woff");
   font-style: normal;
@@ -135,6 +163,8 @@
   --font-investigation: "FreshLi4 Investigation CJK", var(--font-jetbrains), "FreshLi4 Source Han", "Noto Serif SC", "Songti SC", var(--font-studio);
   --font-dive: "FreshLi4 Dive CJK", var(--font-jetbrains), "FreshLi4 Dive Black", "狮尾快腿黑体", var(--font-studio);
   --font-maze: "FreshLi4 Fusion Pixel CJK", var(--font-jetbrains), "FreshLi4 Fusion Pixel", "Fusion Pixel Mono", var(--font-studio);
+  --font-rules-original: "FreshLi4 Rules Source Han", sans-serif;
+  --font-rules-display: "Times New Roman", "FreshLi4 Rules Serif", serif;
 
   --page-pad: clamp(20px, 4vw, 72px);
   --header-h: 72px;

@@ -15,6 +15,9 @@ const section = (id: string, number: string, label: string, title: string, conte
 const paragraph = (content: string) => `<p>${content}</p>`;
 const list = (items: string[], ordered = false) => `<${ordered ? "ol" : "ul"}>${items.map((item) => `<li>${item}</li>`).join("")}</${ordered ? "ol" : "ul"}>`;
 const callout = (label: string, content: string, tone = "") => `<aside class="rules-callout ${tone}"><span class="callout-label">${label}</span><p>${content}</p></aside>`;
+const originalParagraph = (content: string) => `<p class="rules-original">${content}</p>`;
+const originalList = (items: string[], ordered = false) => `<div class="rules-original">${list(items, ordered)}</div>`;
+const originalCallout = (label: string, content: string, tone = "") => `<aside class="rules-callout rules-original ${tone}"><span class="callout-label">${label}</span><p>${content}</p></aside>`;
 const stat = (value: string, label: string, note: string) => `<div class="rule-stat"><strong>${value}</strong><span>${label}</span><small>${note}</small></div>`;
 const escapeHtml = (value: string) => value.replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char] ?? char);
 const lineBreaks = (value: string) => escapeHtml(value).replace(/\n/g, "<br />");
@@ -67,7 +70,7 @@ const renderInvestigationHome = () => `
           <p class="rules-kicker">INVESTIGATION : DELVE / 调查深入</p>
           <h1 id="investigation-home-title">调查<br /><em>深入</em></h1>
           <p class="rules-hero-english">A NON-DIRECT-CONFLICT TABLETOP GAME</p>
-          <p class="rules-dek">成为「指挥者」，在异常环境中带领调查员寻找情报，在调查中规避【禁忌真相】，并让对手先一步失去清醒。</p>
+          <p class="rules-dek rules-original">在《调查 : 深入》的游戏中，每名玩家扮演一位「指挥者」，指挥「调查员」对「情报卡组」进行调查，尝试了解【禁忌真相】在「情报卡组」中的位置，让自己的「调查员」规避它，并让其他队伍的「调查员」调查到【禁忌真相】。</p>
           <div class="rules-hero-actions"><a class="rules-primary-link" href="#rules-ai">开始提问 <span aria-hidden="true">↓</span></a><span class="rules-edition">2—6 人<br />策略 · 调查 · 卡牌</span></div>
         </div>
         <div class="rules-home-visual">
@@ -79,7 +82,7 @@ const renderInvestigationHome = () => `
 
       <section class="rules-home-intro" aria-labelledby="investigation-intro-title">
         <div><p class="chapter-label">THE CASE / 案件简介</p><h2 id="investigation-intro-title">真相会改变<br /><em>调查的方向。</em></h2></div>
-        <div><p>《调查深入》是一款支持 2—6 人游玩的非直接对战美式桌游。每位指挥者操控调查员，使用策略牌、角色技能与行动顺位保护己方。</p><p>情报越多，风险越近。每一次调查都可能让你触及禁忌真相，也可能把对手更早推入疯狂。</p></div>
+        <div><p class="rules-original">在《调查 : 深入》的游戏中，每名玩家扮演一位「指挥者」，指挥「调查员」对「情报卡组」进行调查，尝试了解【禁忌真相】在「情报卡组」中的位置，让自己的「调查员」规避它，并让其他队伍的「调查员」调查到【禁忌真相】。</p><p class="rules-original">「调查员」调查到【禁忌真相】会损失「SAN」，「SAN」消耗完的「调查员」会「陷入疯狂」。</p></div>
       </section>
 
       <section class="rules-ai" id="rules-ai" aria-labelledby="rules-ai-title">
@@ -117,7 +120,7 @@ const renderRulesPage = () => `
           <p class="rules-kicker">FIELD MANUAL / 规则指引书</p>
           <h1 id="rules-title">调查<br /><em>深入</em></h1>
           <p class="rules-hero-english">INVESTIGATION : DELVE</p>
-          <p class="rules-dek">成为「指挥者」。在异常环境中带领调查员寻找情报、避开【禁忌真相】，并让对手先一步失去清醒。</p>
+          <p class="rules-dek rules-original">你要通过「情报」卡牌获取关于【禁忌真相】在「情报卡组」中位置的信息，巧妙地使用「策略」和「情报」卡牌，运用你「调查员」的技能，利用与众不同的「环境」与敌对「指挥者」对抗。</p>
           <div class="rules-hero-actions"><a class="rules-primary-link" href="#quick-start">从这里开始 <span aria-hidden="true">↓</span></a><span class="rules-edition">规则指引书 v1.1<br />附录与 FAQ 持续更新</span></div>
         </div>
         <div class="rules-hero-dossier" aria-label="调查档案封面">
@@ -129,7 +132,7 @@ const renderRulesPage = () => `
       </section>
 
       <section class="rules-overview" aria-label="规则书概览">
-        <div class="rules-overview-intro"><p class="chapter-label">READING NOTES / 阅读提示</p><h2>规则是地图，<br />不是答案。</h2><p>第一次游玩，建议先用标注 Vol.1 的卡牌组成卡组；熟悉流程后，再加入 Vol.2 及后续补充内容。</p></div>
+        <div class="rules-overview-intro"><p class="chapter-label">READING NOTES / 阅读提示</p><h2>规则是地图，<br />不是答案。</h2><p class="rules-original">规则指引书里没说怎么办？</p><p class="rules-original">对于首次体验《调查 : 深入》的玩家，我们建议先以标注了Vol.1脚标的卡牌组成卡组，进行游戏。</p><p class="rules-original">当你熟悉了游戏流程，将标注了Vol.2脚标的卡牌加入各个卡组，以获得完整体验。</p></div>
         <div class="rules-stats">
           ${stat("2—6", "PLAYERS", "玩家人数")}
           ${stat("4", "DECKS", "四类卡组")}
@@ -145,29 +148,32 @@ const renderRulesPage = () => `
         </aside>
 
         <div class="rules-content">
-          ${section("quick-start", "00", "QUICK START / 快速游玩流程", "先让调查开始。", `
-            ${paragraph("《调查：深入》是一款 2—6 人游玩的非直接对战美式桌游。每一轮，调查员依照调查顺位行动，在情报卡组中寻找线索；有人先触及【禁忌真相】，这一轮便结束。")}
-            <div class="flow-list">
-              <div><b>01</b><span>确认组队，选择调查员，随机分配调查顺位。</span></div>
-              <div><b>02</b><span>每位指挥者按顺位抽取 4 张策略牌。</span></div>
-              <div><b>03</b><span>翻开一张新的环境牌，开始一轮游戏。</span></div>
-              <div><b>04</b><span>调查员依次进入自己的操作阶段。</span></div>
-              <div><b>05</b><span>调查情报、使用策略与技能，管理队伍的 SAN。</span></div>
-              <div><b>06</b><span>有人调查到【禁忌真相】时，结算 SAN 并结束本轮。</span></div>
-              <div><b>07</b><span>重复以上流程，直到只剩一个队伍的调查员保持清醒。</span></div>
+          ${section("quick-start", "00", "QUICK START / 快速游玩流程", "快速游玩流程指南。", `
+            ${originalCallout("规则指引书里没说怎么办？", "即使你已经玩过很多次《调查 : 深入》，即使我们已经尽力让这份《规则指引书》尽善尽美，有时也会遇到规则指引书中未明确规定的情况。请不要过于纠结，和大家商量达成共识后继续游戏。", "is-red")}
+            ${originalParagraph("对于首次体验《调查 : 深入》的玩家，我们建议先以标注了Vol.1脚标的卡牌组成卡组，进行游戏。")}
+            ${originalParagraph("当你熟悉了游戏流程，将标注了Vol.2脚标的卡牌加入各个卡组，以获得完整体验。")}
+            <div class="flow-list rules-original">
+              <div><b>01</b><span>「指挥者」确认组队情况，选择「调查员」，随机分配「调查顺位」</span></div>
+              <div><b>02</b><span>「指挥者」抽取(4)张初始手牌</span></div>
+              <div><b>03</b><span>开始一「轮」游戏，触发一张新的「环境」卡牌</span></div>
+              <div><b>04</b><span>「调查员」依照「调查顺位」轮流进行「操作阶段」</span></div>
+              <div><b>05</b><span>「操作阶段」开始、进入与结束时，依照规则执行对应操作</span></div>
+              <div><b>06</b><span>【禁忌真相】被调查，（或基于其他「环境」效果本「轮」结束）</span></div>
+              <div><b>07</b><span>结算「SAN」消耗，收回场上所有「情报」卡牌，开始下一「轮」游戏。回到步骤3。</span></div>
+              <div><b>08</b><span>仅剩一个队伍「调查员」存活，胜负已定。</span></div>
             </div>
-            ${callout("副官提示", "不要把一次轮次的输赢当成整局胜负。真正的目标，是让自己的队伍活到最后。", "is-red")}
           `)}
 
           ${section("briefing", "01", "BRIEFING / 任务简报", "欢迎回到调查现场。", `
-            ${paragraph("这里是一套用于记录异常环境的调查档案。异常环境的识别案例正在增加，而你是一名已经活过前几次任务、仍然保持清醒的「指挥者」。")}
-            ${paragraph("你不再亲自踏入任务区域。你的工作，是通过策略指令、情报判断和调查员技能，带领自己的队伍完成任务。情报越多越好——但在情报卡组中，始终藏着一张不该被轻易触及的牌。")}
-            <div class="briefing-columns"><div><span class="column-label">指挥者</span><p>管理自己的策略手牌，决定调查员在危险信息上的取舍。</p></div><div><span class="column-label">调查员</span><p>执行调查、承受 SAN 损耗，也可能在疯狂后获得新的能力。</p></div><div><span class="column-label">环境</span><p>每一轮改变桌面规则，带来新的限制、机会或陷阱。</p></div></div>
+            ${originalParagraph("欢迎回来，这里是「异常联合调查工会」（Investigation Guild of Anomaly），通常被简称为「调查工会」。我们是一个跨国独立组织，成员围绕一些基本的规则，各自在自己的行动范围内执行任务。")}
+            ${originalParagraph("你是「调查工会」的一名「指挥者」，能有这样的身份，说明你已经熬过了最困难的头几年，不仅活了下来，而且还神志清醒地坚持留在了这里。坐到这个位置，你已经不需要实地执行任务，你的工作就是为你的「调查员」在任务过程中下发「策略」指令，通过经验、直觉和智慧引领他们完成任务。")}
+            ${originalParagraph("每次任务中，你都需要应对不同的异常「环境」，你将会揭示其中的【禁忌真相】所在。「情报」虽然是多多益善，但调查到【禁忌真相】却十分危险，频繁调查到【禁忌真相】的「调查员」往往都会「陷入疯狂」。")}
+            <div class="briefing-columns"><div><span class="column-label">指挥者</span>${originalParagraph("你的工作就是为你的「调查员」在任务过程中下发「策略」指令，通过经验、直觉和智慧引领他们完成任务。")}</div><div><span class="column-label">调查员</span>${originalParagraph("「调查员」调查到【禁忌真相】会损失「SAN」，「SAN」消耗完的「调查员」会「陷入疯狂」。")}</div><div><span class="column-label">环境</span>${originalParagraph("每一「轮」游戏都伴随与众不同的「环境」卡牌开展，给玩家们带来新的威胁（又或者机遇？）。")}</div></div>
           `)}
 
           ${section("components", "02", "COMPONENTS / 游戏配件", "四类卡组，一张真相。", `
-            ${paragraph("开始前，将「策略」「情报」「环境」「辅助」卡牌分别洗切成四组。详细卡牌构成以当前的《调查深入 · 卡牌统计表》为准。")}
-            <div class="component-grid"><div><strong>策略</strong><span>Strategy</span><p>指挥者手中的行动、机制与反制。</p></div><div><strong>情报</strong><span>Intel</span><p>调查员在任务区域中翻开的线索。</p></div><div><strong>环境</strong><span>Environment</span><p>贯穿一轮、影响所有人的异常条件。</p></div><div><strong>辅助</strong><span>Support</span><p>由技能或效果召唤的临时支援。</p></div></div>
+            ${originalParagraph("关于卡牌的详细介绍，以及众筹版/补充包信息，请参考《调查深入 · 卡牌统计表》。")}
+            <div class="component-grid rules-original"><div><strong>策略</strong><span>STRATEGY</span><p>将「策略」卡牌各自洗切整理成一堆。</p></div><div><strong>情报</strong><span>INTEL</span><p>将「情报」卡牌各自洗切整理成一堆。</p></div><div><strong>环境</strong><span>ENVIRONMENT</span><p>将「环境」卡牌各自洗切整理成一堆。</p></div><div><strong>辅助</strong><span>SUPPORT</span><p>将「辅助」卡牌各自洗切整理成一堆。</p></div></div>
             <div class="rules-reference-grid">
               ${referenceFigure("/asset/investigation-delve/visual-content/3-游戏配件-1.png", "《调查深入》打开的游戏盒与配件", "FIG. 02-A / 配件索引", "先认出四类卡组，再开始布置。")}
               ${referenceFigure("/asset/investigation-delve/visual-content/6-游戏配件-4.png", "《调查深入》盒内的卡牌与骰子配件", "FIG. 02-B / COMPONENTS", "骰子记录 SAN，卡牌按类型分区。")}
@@ -176,37 +182,44 @@ const renderRulesPage = () => `
           `)}
 
           ${section("setup", "03", "SETUP / 游戏准备", "把桌面变成调查现场。", `
-            <h3>确定指挥者人数与队伍</h3>
-            ${paragraph("游戏支持 2—6 名玩家。组队时，同队指挥者共享情报区和窥探信息，但不能互相检视手牌；每位指挥者只能指挥自己的调查员、使用自己的手牌。")}
+            <h3>准备卡组</h3>
+            ${originalParagraph("将「策略」、「情报」、「环境」、「辅助」卡牌各自洗切整理成一堆，分别组成(4)组卡组。")}
+            <h3>确定「指挥者」人数</h3>
+            ${originalParagraph("《调查 : 深入》支持2~6名玩家游玩。若是组队对战，同一队伍的各位「指挥者」会共享「情报区」的「情报」卡牌（使用或消耗），共享获得的信息（手牌或「情报」相关），但只能指挥自己的「调查员」、使用自己的手牌。")}
+            ${originalParagraph("原则上，同一队伍的信息共享仅限于窥探的信息，队友间不可互相检视手牌，沟通信息需公开对话。但玩家们可以按照实际游戏情况，选择合适的信息共享规则。")}
             <div class="rules-layout-guide"><div class="layout-guide-copy"><span>TABLE MAP / 桌面布置</span><h3>先给每一叠牌找到位置。</h3><p>将调查员顺位、情报区与四类卡组拉开距离。桌面布局不是装饰，它让“谁能看见什么”变得清楚。</p></div><div class="layout-guide-map"><i class="layout-zone zone-turn">调查员顺位</i><i class="layout-zone zone-intel">情报区</i><i class="layout-zone zone-strategy">策略卡组</i><i class="layout-zone zone-env">环境卡组</i><i class="layout-zone zone-support">辅助卡组</i><i class="layout-zone zone-deck">情报卡组</i><span class="layout-arrow arrow-one">↘</span><span class="layout-arrow arrow-two">↗</span></div></div>
-            <div class="player-ratios"><div><b>2 人</b><span>2 队伍 · 每人 2 位调查员</span></div><div><b>3 人</b><span>3 队伍 · 每人 2 位调查员</span></div><div><b>4 人</b><span>2 队伍 · 每人 1 位调查员</span></div><div><b>6 人</b><span>2 或 3 队伍 · 每人 1 位调查员</span></div></div>
-            <h3>选择调查员</h3>
-            ${paragraph("每位指挥者获得 2 × N 张候选调查员，选择其中 N 位加入自己的队伍。你也可以自定义配比，但开局场上的调查员总数必须至少为 4。")}
-            <h3>排定调查顺位与 SAN</h3>
-            ${list(["将参与本局的调查员指示卡洗切，随机布置到顺位指示卡旁。", "查看调查员卡右上角的骰子点数，那是 SAN 上限；用骰子记录当前 SAN。", "按调查顺位依次从策略卡组抽取 4 张初始手牌。"])}
+            <h3>分配「调查员」</h3>
+            ${originalParagraph("每位「指挥者」会被派发(2 × N)张候选的「调查员」卡牌，从中选取指挥(N)位「调查员」，建议以如下配比进行游戏：")}
+            <div class="player-ratios rules-original"><div><b>2 位玩家</b><span>分别在2个队伍；每人指挥2位「调查员」</span></div><div><b>3 位玩家</b><span>分别在3个队伍；每人指挥2位「调查员」</span></div><div><b>4 位玩家</b><span>分别在2个队伍；每人指挥1位「调查员」</span></div><div><b>6 位玩家</b><span>分别在2个或3个队伍；每人指挥1位「调查员」</span></div></div>
+            ${originalParagraph("玩家也可以其他配比开始游戏，场上开局时调查员数量需≥4。")}
+            <h3>分配「调查顺位」</h3>
+            ${originalParagraph("将参与本局游戏的「调查员指示卡」洗切，随机布置到场上的「顺位指示卡」边。")}
+            <h3>记录「SAN」与抽取初始手牌</h3>
+            ${originalList(["卡牌右上角的骰子点数，标识该「调查员」的「SAN」上限。", "将(1)个骰子以「SAN」上限的点数朝上，放到该处，用以记录该「调查员」的当前「SAN」。多余的骰子可以放置到一边待用。", "各位「指挥者」需要按「调查员」的「调查顺位」，依次从「策略卡组」抽取(4)张「策略」卡牌纳入手牌。", "确认完成以上步骤后，你们可以参照下图“场地布置”，设置你们的桌面（以6位玩家，分属2个队伍为例），或选择适合你们的布局。"])}
           `)}
 
           ${section("round", "04", "ROUND / 轮次结构", "每一轮，真相都更近一点。", `
-            <div class="timeline"><div class="timeline-step"><span>01</span><div><b>触发环境</b><p>从环境卡组顶部抽 1 张。它在本轮持续生效；下一轮的新环境会替代它。</p></div></div><div class="timeline-step"><span>02</span><div><b>确定起始调查员</b><p>第一轮由第 1 顺位开始；之后由上一轮调查到【禁忌真相】的调查员开始。</p></div></div><div class="timeline-step"><span>03</span><div><b>轮流操作</b><p>每位清醒调查员依照调查顺位执行一个操作阶段。</p></div></div><div class="timeline-step"><span>04</span><div><b>结束本轮</b><p>任意调查员调查到【禁忌真相】时，结算 SAN，收回所有情报并重洗情报卡组。</p></div></div></div>
-            ${callout("注意", "上一轮的环境牌不会洗回环境卡组。指挥者的手牌和已布置的个体机制也不会因为轮次结束而清除。", "is-red")}
+            ${originalParagraph("每局游戏开始后，将以多「轮」游戏进行推进。")}
+            <div class="timeline rules-original"><div class="timeline-step"><span>01</span><div><b>触发「环境」卡牌</b><p>每「轮」游戏开始前，从「环境卡组」顶部抽取(1)张「环境」卡牌，该卡牌卡面效果在本「轮」内会对所有「调查员」持续生效。若本「轮」并非第一「轮」游戏，这张新的「环境」卡牌会代替上一轮的「环境」卡牌生效（上一「轮」的「环境」卡牌不洗回「环境卡组」）。</p></div></div><div class="timeline-step"><span>02</span><div><b>新一「轮」游戏开始</b><p>每「轮」游戏由上一「轮」调查到【禁忌真相】的「调查员」先执行「操作阶段」。如果这是第一「轮」游戏，第(1)顺位的「调查员」先执行「操作阶段」。</p></div></div><div class="timeline-step"><span>03</span><div><b>轮流进行「操作阶段」</b><p>每一「轮」游戏包含不限数量的「操作阶段」，每位「指挥者」指挥对应「调查员」在其「操作阶段」内行动。</p></div></div><div class="timeline-step"><span>04</span><div><b>结束一「轮」游戏</b><p>任意「调查员」调查到【禁忌真相】时，本「轮」游戏结束。该「调查员」的「SAN」将相应减少（无特殊效果时，减少(1)点「SAN」）。收回场上所有的「情报」卡牌，洗切组成新的「情报卡组」。</p></div></div></div>
+            ${originalCallout("规则指引书原文", "各位「指挥者」的手牌、场上已布置的「个体机制」均不变。此后，下一「轮」游戏开始。", "is-red")}
           `)}
 
           ${section("operation", "05", "OPERATION / 操作阶段", "三段式行动，顺序很重要。", `
-            <div class="operation-grid"><div class="operation-card"><span>01 / START</span><h3>开始操作阶段</h3>${list(["结算环境、个体机制或调查员技能的触发。", "从策略卡组顶部抽取 1 张牌加入手牌。"])}</div><div class="operation-card is-active"><span>02 / MAIN</span><h3>进入操作阶段</h3>${list(["对情报卡组进行调查，通常为 1—3 张。", "使用情报区中的情报牌。", "使用手牌中的策略牌（通常需要支付情报）。", "触发个体机制，使用调查员技能。"])}<small>除卡牌特别说明外，可按任意顺序执行。</small></div><div class="operation-card"><span>03 / END</span><h3>结束操作阶段</h3>${list(["再次结算环境、个体机制或调查员技能。", "将手牌弃置到不超过 8 张。"])} </div></div>
-            <div class="investigate-rule"><span class="rule-sigil">↳</span><div><strong>调查</strong><p>从情报卡组顶部顺序翻看并公示 1—3 张情报牌，然后将它们纳入自己的情报区。除非有特殊描述，每位调查员每个操作阶段必须且只能调查一次。</p></div></div>
+            ${originalParagraph("每一「轮」游戏包含不限数量的「操作阶段」，每位「指挥者」指挥对应「调查员」在其「操作阶段」内行动。「操作阶段」分为以下3个步骤：")}
+            <div class="operation-grid rules-original"><div class="operation-card"><span>01 / START</span><h3>开始「操作阶段」</h3>${originalList(["判定「环境」、已经对「调查员」布置的「个体机制」或「调查员」技能，是否有可以/必须触发生效的，如有，触发卡牌或技能。", "从「策略卡组」顶部抽(1)张牌，加入手牌。"])}</div><div class="operation-card is-active"><span>02 / MAIN</span><h3>进入「操作阶段」</h3>${originalList(["对「情报卡组」进行调查（从「情报卡组」顶部，顺序翻看并公示(1)~(3)张「情报」卡牌，然后纳入自己的「情报区」）。如无特殊描述，每位「调查员」每个「操作阶段」必须、且只能执行一次调查。", "使用「情报区」的「情报」卡牌，执行其卡面效果。该行动可以不限次数自由执行。", "使用自己手牌中的「策略」卡牌（通常需要消耗「情报区」的「情报」卡牌），该行动可以不限次数自由执行。", "触发可以或必须在「操作阶段」使用的的「个体机制」，如无特殊说明，可以不限数量使用所有布置在当前「调查员」身上的「个体机制」。", "使用「调查员」的技能，如无特殊说明，可以不限次数使用任意技能。"])}</div><div class="operation-card"><span>03 / END</span><h3>结束「操作阶段」</h3>${originalList(["判定「环境」卡牌、已经对「调查员」布置的「个体机制」，或「调查员」技能是否有可以/必须触发生效的，如有，触发卡牌或技能。", "「调查员」的「指挥者」需要将手牌弃置到 ≤ (8)张。"])}</div></div>
+            <div class="investigate-rule rules-original"><span class="rule-sigil">↳</span><div><strong>调查</strong><p>从「情报卡组」顶部，顺序翻看并公示(1)~(3)张「情报」卡牌，然后纳入自己的「情报区」。如无特殊描述，每位「调查员」每个「操作阶段」必须、且只能执行一次调查。</p></div></div>
           `)}
 
           ${section("san", "06", "SAN / 理智与疯狂", "你可以知道很多，但不能承受一切。", `
-            ${paragraph("调查到【禁忌真相】时，调查员通常损失 1 点 SAN。SAN 归零，调查员便会「陷入疯狂」；卡牌或环境可以修改伤害，也可能让疯狂的调查员恢复清醒。")}
+            ${originalParagraph("任意「调查员」调查到【禁忌真相】时，本「轮」游戏结束。该「调查员」的「SAN」将相应减少（无特殊效果时，减少(1)点「SAN」）。")}
             <div class="rules-reference-grid rules-reference-grid-single">${referenceFigure("/asset/investigation-delve/visual-content/13-游戏配件-11.png", "《调查深入》情报卡牌与禁忌真相示例", "FIG. 06-A / 情报牌面", "情报区应当保持公示；禁忌真相是这一轮的警示线。")}</div>
             <div class="san-meter"><div class="san-meter-track"><span></span><span></span><span></span><span></span><span></span></div><div class="san-meter-legend"><b>清醒</b><span>每一次真相命中，压力都会留下痕迹。</span><b>疯狂</b></div></div>
-            <div class="madness-columns"><div><h3>陷入疯狂</h3>${list(["翻转调查员卡牌与调查员指示卡。", "弃置所有布置在其身上的个体机制。", "不再拥有操作阶段，调查顺位判定时自然跳过。", "获得额外的【禁忌知识】与【疯狂蔓延】技能。", "除非特殊说明，不能成为卡牌指定对象或受其影响。"])} </div><div><h3>恢复清醒</h3>${paragraph("疯狂的调查员通过任意手段恢复 SAN 后，会恢复清醒，并拥有恢复后的 SAN 点数。没有 SAN 的特殊调查员不能以此方式恢复清醒。")}${callout("最后的警告", "只有让自己的队伍保持到最后，才算真正完成任务。", "is-red")}</div></div>
+            <div class="madness-columns rules-original"><div><h3>「SAN」归零的「调查员」</h3>${originalList(["若「调查员」因此导致「SAN」归零，其将会「陷入疯狂」。将其「调查员」卡牌与「调查员指示卡」翻面，所有对其布置的「个体机制」被弃置。", "「陷入疯狂」的「调查员」没有「操作阶段」，其调查顺位在所有判定中被自然跳过（如：下一顺位的「调查员」「陷入疯狂」，则针对下一顺位的效果将顺延到下下顺位）。", "「陷入疯狂」的「调查员」具有额外的【禁忌知识】和【疯狂蔓延】技能，如无特殊说明，在「调查员」「陷入疯狂」时立即触发。", "如无特殊说明，「陷入疯狂」的「调查员」无法成为卡牌的指定对象、也不受卡牌或技能的效果影响。", "由「调查员」的【疯狂蔓延】技能带来的「辅助」卡牌，依旧可以受到其他「策略」卡牌的影响，但需要检查其卡面文本。"])} </div><div><h3>恢复清醒</h3>${originalParagraph("「陷入疯狂」的「调查员」若通过任意手段恢复「SAN」，其将会「恢复清醒」并拥有恢复点数的「SAN」，没有「SAN」的特殊「调查员」无法用此手段「恢复清醒」。")}${originalCallout("规则指引书原文", "各位「指挥者」的手牌、场上已布置的「个体机制」均不变。此后，下一「轮」游戏开始。", "is-red")}</div></div>
           `)}
 
           ${section("victory", "07", "VICTORY / 胜负判定", "让别人的调查先结束。", `
-            ${paragraph("当除某一队伍外，其他队伍的调查员全部陷入疯狂时，最后存活的队伍及其指挥者获得胜利。")}
-            <div class="victory-card"><span>END CONDITION</span><strong>只剩一个队伍<br /><em>保持清醒</em></strong><p>若一次操作导致所有剩余调查员同时陷入疯狂，则最后陷入疯狂的调查员所在队伍获得胜利。</p></div>
-            ${callout("战略提示", "情报是资源，SAN 是时间。你要同时管理两者：知道真相的位置，也要决定谁来承担接近它的风险。", "is-ink")}
+            ${originalParagraph("其他队伍的所有「调查员」都「陷入疯狂」时，最后一只队伍及其「指挥者」获得游戏胜利。")}
+            <div class="victory-card rules-original"><span>END CONDITION</span><strong>只剩一个队伍<br /><em>保持清醒</em></strong><p>若出现一个操作导致所有剩余「调查员」都「陷入疯狂」的情况，最后「陷入疯狂」的「调查员」及其所在队伍获得游戏胜利。</p></div>
           `)}
 
           ${section("appendix", "08", "APPENDIX / 调查附录", "特殊行动词典。", `
