@@ -47,7 +47,7 @@ const referenceFigure = (src: string, alt: string, caption: string, note: string
 
 const subpageHero = (kicker: string, title: string, dek: string, active: "appendix" | "faq" | "wiki") => `
   <section class="rules-subpage-hero" aria-labelledby="subpage-title">
-    <div><p class="rules-kicker">${kicker}</p><h1 id="subpage-title">${title}</h1><p class="rules-dek">${dek}</p></div>
+    <div><p class="rules-kicker">${kicker}</p><h1 id="subpage-title">${title}</h1><p class="rules-dek rules-editorial">${dek}</p></div>
     <div class="subpage-index"><span>INVESTIGATION : DELVE</span><strong>FILE / ${active.toUpperCase()}</strong><small>v1.1 · LIVE REFERENCE</small></div>
   </section>`;
 
@@ -58,7 +58,7 @@ const subpageShell = (active: "appendix" | "faq" | "wiki", hero: string, content
     <footer class="rules-footer"><span>© FRESHLI4 GAME STUDIO / INVESTIGATION : DELVE</span><a href="#rules">返回顶部 ↑</a><a href="/">FreshLi4 官网 ↗</a></footer>
   </div>`;
 
-const sourcePanel = (title: string, content: string, label = "SOURCE / 资料来源") => `<div class="source-panel"><p class="chapter-label">${label}</p><h3>${title}</h3><p>${content}</p><div><span>CANONICAL SOURCE</span><b>SHARED / DELVE</b></div></div>`;
+const sourcePanel = (title: string, content: string, label = "SOURCE / 资料来源") => `<div class="source-panel"><p class="chapter-label">${label}</p><h3>${title}</h3><p class="rules-editorial">${content}</p><div><span>CANONICAL SOURCE</span><b>SHARED / DELVE</b></div></div>`;
 
 const renderInvestigationHome = () => `
   <div class="rules-page rules-home">
@@ -70,7 +70,7 @@ const renderInvestigationHome = () => `
           <p class="rules-kicker">INVESTIGATION : DELVE / 调查深入</p>
           <h1 id="investigation-home-title">调查<br /><em>深入</em></h1>
           <p class="rules-hero-english">A NON-DIRECT-CONFLICT TABLETOP GAME</p>
-          <p class="rules-dek">一款支持 2–6 人游玩的非直接对战美式桌游。你将扮演“指挥者”，操控调查员，在调查中规避禁忌真相，并诱导对手比你更早陷入疯狂。</p>
+          <p class="rules-dek rules-editorial">一款支持 2–6 人游玩的非直接对战美式桌游。你将扮演“指挥者”，操控调查员，在调查中规避禁忌真相，并诱导对手比你更早陷入疯狂。</p>
           <div class="rules-hero-actions"><span class="rules-edition">2—6 人<br />策略 · 调查 · 卡牌</span></div>
         </div>
         <div class="rules-home-visual">
@@ -93,7 +93,7 @@ const renderInvestigationHome = () => `
             <div><input id="rules-ai-input" type="search" placeholder="例如：调查到禁忌真相后会发生什么？" autocomplete="off" /><button type="submit">查询 <span aria-hidden="true">↗</span></button></div>
           </form>
           <div class="rules-ai-prompts" aria-label="常用问题"><button type="button" data-rules-ai-prompt="游戏支持几个人？">支持几个人？</button><button type="button" data-rules-ai-prompt="SAN 归零怎么办？">SAN 归零怎么办？</button><button type="button" data-rules-ai-prompt="怎样获胜？">怎样获胜？</button></div>
-          <div class="rules-ai-answer" id="rules-ai-answer" aria-live="polite"><span>ASSISTANT / READY</span><p>选择一个问题，或者输入你想确认的规则。</p></div>
+          <div class="rules-ai-answer" id="rules-ai-answer" aria-live="polite"><span>ASSISTANT / READY</span><p class="rules-editorial">选择一个问题，或者输入你想确认的规则。</p></div>
         </div>
       </section>
 
@@ -120,7 +120,7 @@ const renderRulesPage = () => `
           <p class="rules-kicker">FIELD MANUAL / 规则指引书</p>
           <h1 id="rules-title">调查<br /><em>深入</em></h1>
           <p class="rules-hero-english">INVESTIGATION : DELVE</p>
-          <p class="rules-dek rules-original">你要通过「情报」卡牌获取关于【禁忌真相】在「情报卡组」中位置的信息，巧妙地使用「策略」和「情报」卡牌，运用你「调查员」的技能，利用与众不同的「环境」与敌对「指挥者」对抗。</p>
+          <p class="rules-dek rules-editorial">翻开情报，真相就离你更近一步。读懂线索，也别让自己的队伍先一步陷入疯狂。</p>
           <div class="rules-hero-actions"><a class="rules-primary-link" href="#quick-start">从这里开始 <span aria-hidden="true">↓</span></a><span class="rules-edition">规则指引书 v1.1<br />附录与 FAQ 持续更新</span></div>
         </div>
         <div class="rules-hero-dossier" aria-label="调查档案封面">
@@ -239,7 +239,7 @@ const renderRulesPage = () => `
     <footer class="rules-footer"><span>© FRESHLI4 GAME STUDIO / INVESTIGATION : DELVE</span><a href="#rules">返回顶部 ↑</a><a href="/">FreshLi4 官网 ↗</a></footer>
   </div>`;
 
-const appendixItem = (name: string, description: string, note = "") => `<div class="appendix-entry"><div class="appendix-entry-heading"><b>${name}</b>${note ? `<span>${note}</span>` : ""}</div><p>${description}</p></div>`;
+const appendixItem = (name: string, description: string, note = "") => `<div class="appendix-entry"><div class="appendix-entry-heading"><b>${name}</b>${note ? `<span>${note}</span>` : ""}</div><p class="rules-editorial">${description}</p></div>`;
 
 const renderAppendixPage = () => subpageShell(
   "appendix",
@@ -271,7 +271,7 @@ const renderAppendixPage = () => subpageShell(
   `<div class="subpage-sidebar-card"><span>APPENDIX / 08</span><strong>行动词典</strong><p>8 个特殊行动，构成所有卡面文本的共同语法。</p></div><nav class="subpage-sidebar-links" aria-label="附录导航"><a href="#markers">特殊文本标识</a><a href="#actions">特殊行动列表</a><a href="/investigation-delve-boardgame/faq">FAQ 判例 →</a><a href="/investigation-delve-boardgame/wiki">卡牌 Wiki →</a></nav>`
 );
 
-const faqDetail = (question: string, answer: string, open = false) => `<details${open ? " open" : ""}><summary>${question}<span>+</span></summary><div class="faq-answer">${answer}</div></details>`;
+const faqDetail = (question: string, answer: string, open = false) => `<details${open ? " open" : ""}><summary>${question}<span>+</span></summary><div class="faq-answer rules-original">${answer}</div></details>`;
 const faqGroup = (label: string, title: string, details: string) => `<section class="faq-group"><p class="chapter-label">${label}</p><h3>${title}</h3><div class="faq-list">${details}</div></section>`;
 
 const renderFaqPage = () => subpageShell(
@@ -294,8 +294,8 @@ const cardMarkup = (card: InvestigationCard) => {
     ? [cardMeta("职业", card.type), cardMeta("调查风格", card.style), cardMeta("SAN", card.san), cardMeta("包含版本", card.edition), cardMeta("说明更新", card.update)].join("")
     : [cardMeta("类型", card.type), cardMeta("费用", card.cost), cardMeta("数量", card.quantity), cardMeta("包含版本", card.edition), cardMeta("说明更新", card.update)].join("");
   const abilities = card.category === "investigator"
-    ? `<div class="card-text-block"><span>清醒技能</span><p>${lineBreaks(card.awake) || "暂无独立文本"}</p></div><div class="card-text-block is-madness"><span>疯狂技能</span><p>${lineBreaks(card.madness) || "暂无独立文本"}</p></div>`
-    : `<div class="card-text-block"><span>卡牌效果</span><p>${lineBreaks(card.effect) || "暂无独立文本"}</p></div>`;
+    ? `<div class="card-text-block rules-original"><span>清醒技能</span><p>${lineBreaks(card.awake) || "暂无独立文本"}</p></div><div class="card-text-block rules-original is-madness"><span>疯狂技能</span><p>${lineBreaks(card.madness) || "暂无独立文本"}</p></div>`
+    : `<div class="card-text-block rules-original"><span>卡牌效果</span><p>${lineBreaks(card.effect) || "暂无独立文本"}</p></div>`;
   return `<article class="wiki-card wiki-card-${card.category}" data-card-searchable data-card-category="${card.category}" data-card-name="${escapeHtml(`${card.name} ${card.type} ${card.style} ${card.effect} ${card.awake} ${card.madness}`.toLocaleLowerCase())}"><details><summary><span class="wiki-card-index">${card.categoryLabel}</span><strong>${escapeHtml(card.name)}</strong><small>${escapeHtml(card.edition || "SHARED")}</small><i>+</i></summary><div class="wiki-card-body"><div class="wiki-card-meta">${meta}</div>${abilities}</div></details></article>`;
 };
 

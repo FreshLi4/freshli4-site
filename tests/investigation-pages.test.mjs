@@ -42,9 +42,12 @@ test("rulebook teaching text keeps canonical wording and font roles", async () =
   assert.match(rules, /「操作阶段」分为以下3个步骤/);
   assert.match(rules, /其他队伍的所有「调查员」都「陷入疯狂」时/);
   assert.match(rules, /class="rules-original"/);
+  assert.match(rules, /class="rules-dek rules-editorial">翻开情报，真相就离你更近一步/);
   assert.match(styles, /SourceHanSansSC-Regular\.otf/);
   assert.match(styles, /SourceHanSerifSC-Regular\.otf/);
   assert.match(styles, /--font-rules-display: "Times New Roman"/);
+  assert.match(rulesStyles, /\.rules-page \{ font-family: var\(--font-rules-display\); \}/);
   assert.match(rulesStyles, /\.rules-page \.rules-original \{ font-family: var\(--font-rules-original\); \}/);
+  assert.match(rulesStyles, /\.rules-page \.rules-editorial \{ font-family: var\(--font-rules-display\); \}/);
   assert.match(rulesStyles, /\.rules-page \.rules-content h2, \.rules-page \.rules-content h3 \{ font-family: var\(--font-rules-display\); \}/);
 });
