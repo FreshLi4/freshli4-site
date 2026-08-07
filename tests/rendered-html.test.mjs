@@ -27,6 +27,7 @@ test("source keeps the dynamic visual-content convention", async () => {
   const styles = await readFile(new URL("../src/styles.css", import.meta.url), "utf8");
   assert.match(styles, /\.game-section \{ min-height:100svh/);
   assert.match(styles, /position:fixed; z-index:50; top:50%; left:var\(--page-pad\)/);
+  assert.match(styles, /will-change:opacity; transition:opacity \.55s ease/);
   assert.match(styles, /flex-direction:column; justify-content:flex-start; align-items:flex-start/);
   assert.doesNotMatch(styles, /games-showcase|games-sticky|games-slides|game-slide|is-project-snapping/);
 });
