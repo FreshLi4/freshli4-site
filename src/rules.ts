@@ -371,27 +371,79 @@ const setupRulesInteractions = () => {
   const aiInput = document.querySelector<HTMLInputElement>("#rules-ai-input");
   const aiAnswer = document.querySelector<HTMLElement>("#rules-ai-answer");
   const aiPrompts = [...document.querySelectorAll<HTMLButtonElement>("[data-rules-ai-prompt]")];
-  const aiAnswers = [
-    { keywords: ["几个人", "人数", "玩家", "支持"], answer: "《调查深入》支持 2—6 名玩家。组队后，每位玩家扮演指挥者，通过调查员、策略牌和行动顺位管理自己的队伍。" },
-    { keywords: ["san", "理智", "归零", "疯狂"], answer: "调查员调查到禁忌真相时通常损失 1 点 SAN。SAN 归零后会陷入疯狂，失去操作阶段；通过规则允许的方式恢复 SAN 后，可以恢复清醒。" },
-    { keywords: ["获胜", "胜利", "怎么赢", "怎样赢", "结束"], answer: "当其他队伍的调查员全部陷入疯狂时，最后保持清醒的队伍获胜。如果一次操作让所有剩余调查员同时疯狂，则最后陷入疯狂的调查员所在队伍获胜。" },
-    { keywords: ["禁忌真相", "调查到", "真相"], answer: "禁忌真相是情报卡组中不应被轻易触及的牌。调查到它时，通常会触发 SAN 损耗并结束当前轮次，然后按规则结算并重洗情报卡组。" },
-    { keywords: ["调查", "操作阶段", "行动"], answer: "每位清醒调查员在自己的操作阶段调查 1—3 张情报牌，并可以按卡牌说明使用策略、技能或情报区中的效果。没有特殊描述时，每个操作阶段必须且只能调查一次。" },
-  ];
-  const answerQuestion = (question: string) => {
-    const normalized = question.toLocaleLowerCase();
-    const match = aiAnswers.find((item) => item.keywords.some((keyword) => normalized.includes(keyword)));
-    if (aiAnswer) aiAnswer.innerHTML = `<span>ASSISTANT / ${match ? "ANSWER" : "NO MATCH"}</span><p>${match?.answer ?? "当前资料中没有直接匹配的判例。可以换一种问法，或进入规则书、调查附录、FAQ 和卡牌 Wiki 继续查找。"}</p>`;
+  let activeAiRequest: AbortController | undefined;
+  const renderAiAnswer = (status: string, content: string) => {
+    if (!aiAnswer) return;
+    const label = document.createElement("span");
+    label.textContent = `ASSISTANT / ${status}`;
+    const paragraph = document.createElement("p");
+    paragraph.textContent = content;
+    aiAnswer.replaceChildren(label, paragraph);
+  };
+  const answerQuestion = async (question: string) => {
+    activeAiRequest?.abort();
+    activeAiRequest = new AbortController();
+    aiPrompts.forEach((button) => { button.disabled = true; });
+    renderAiAnswer("CONNECTING", "正在查阅规则指引书和卡牌资料……");
+    try {
+      const response = await fetch("/api/rules-ai", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ question }),
+        signal: activeAiRequest.signal,
+      });
+      if (!response.ok) {
+        const error = await response.json().catch(() => ({})) as { error?: string };
+        throw new Error(error.error ?? "AI 暂时无法回答，请稍后再试。");
+      }
+      if (!response.body) throw new Error("AI 没有返回可读取的回答。");
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = "";
+      let answer = "";
+      const consume = (event: string) => {
+        for (const line of event.split("\n")) {
+          if (!line.startsWith("data:")) continue;
+          const data = line.slice(5).trim();
+          if (!data || data === "[DONE]") continue;
+          try {
+            const chunk = JSON.parse(data) as { choices?: Array<{ delta?: { content?: string } }> };
+            const content = chunk.choices?.[0]?.delta?.content;
+            if (content) {
+              answer += content;
+              renderAiAnswer("STREAMING", answer);
+            }
+          } catch {
+            // Ignore incomplete SSE payloads; the next chunk completes them.
+          }
+        }
+      };
+      while (true) {
+        const { done, value } = await reader.read();
+        buffer += decoder.decode(value ?? new Uint8Array(), { stream: !done });
+        const events = buffer.split("\n\n");
+        buffer = events.pop() ?? "";
+        events.forEach(consume);
+        if (done) break;
+      }
+      if (buffer) consume(buffer);
+      renderAiAnswer("ANSWER", answer || "资料库中没有明确记载，可以换一种问法，或查看规则书、调查附录、FAQ 和卡牌 Wiki。");
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") return;
+      renderAiAnswer("ERROR", error instanceof Error ? error.message : "AI 暂时无法回答，请稍后再试。");
+    } finally {
+      aiPrompts.forEach((button) => { button.disabled = false; });
+    }
   };
   aiForm?.addEventListener("submit", (event) => {
     event.preventDefault();
     const question = aiInput?.value.trim() ?? "";
-    if (question) answerQuestion(question);
+    if (question) void answerQuestion(question);
   });
   aiPrompts.forEach((button) => button.addEventListener("click", () => {
     const question = button.dataset.rulesAiPrompt ?? "";
     if (aiInput) aiInput.value = question;
-    answerQuestion(question);
+    void answerQuestion(question);
   }));
 
   const languageSelect = document.querySelector<HTMLSelectElement>("#rules-language-select");

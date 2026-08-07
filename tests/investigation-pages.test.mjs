@@ -5,6 +5,8 @@ import test from "node:test";
 test("investigation reference pages are source-driven and routed", async () => {
   const rules = await readFile(new URL("../src/rules.ts", import.meta.url), "utf8");
   const data = await readFile(new URL("../src/investigation-data.ts", import.meta.url), "utf8");
+  const api = await readFile(new URL("../api/rules-ai.ts", import.meta.url), "utf8");
+  const server = await readFile(new URL("../server/rules-ai.ts", import.meta.url), "utf8");
   const vercel = await readFile(new URL("../vercel.json", import.meta.url), "utf8");
   assert.match(rules, /renderInvestigationHome/);
   assert.match(rules, /renderAppendixPage/);
@@ -23,6 +25,12 @@ test("investigation reference pages are source-driven and routed", async () => {
   assert.match(vercel, /investigation-delve-boardgame\/:path\*/);
   assert.match(rules, /aria-label="选择语言"/);
   assert.doesNotMatch(rules, /文字选择/);
+  assert.match(api, /handleRulesAiRequest/);
+  assert.match(server, /OPENROUTER_API_KEY/);
+  assert.match(server, /nvidia\/nemotron-3-super-120b-a12b:free/);
+  assert.match(server, /src\/data\/investigation\/调查员\.csv/);
+  assert.match(server, /stream: true/);
+  assert.match(vercel, /api\/rules-ai\.ts/);
 });
 
 test("rulebook teaching text keeps canonical wording and font roles", async () => {
