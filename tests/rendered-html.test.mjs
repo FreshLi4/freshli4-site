@@ -35,6 +35,7 @@ test("source exposes the investigation rulebook as a second-level page", async (
   const source = await readFile(new URL("../src/main.ts", import.meta.url), "utf8");
   const rules = await readFile(new URL("../src/rules.ts", import.meta.url), "utf8");
   assert.match(source, /\/investigation-delve-boardgame/);
+  assert.match(source, /project-rules-link.*href="\/investigation-delve-boardgame"/);
   assert.match(source, /了解详情/);
   assert.match(rules, /class="rules-brand" href="\/investigation-delve-boardgame"/);
   assert.match(rules, /bootRulesPage/);
