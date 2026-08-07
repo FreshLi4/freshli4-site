@@ -122,7 +122,9 @@ const getLanguage = (): Lang => (localStorage.getItem("freshli4-language") as La
 const gameSections = [...document.querySelectorAll<HTMLElement>(".game-section")];
 const projectTabs = [...document.querySelectorAll<HTMLButtonElement>("[data-project-tab]")];
 const siteNavItems = [...document.querySelectorAll<HTMLElement>("[data-site-nav]")];
+const gamesControls = document.querySelector<HTMLElement>(".games-controls");
 let projectIndex = 0;
+let navigationIdleTimer: number | undefined;
 
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 const setTheme = (theme: string) => {
@@ -153,6 +155,14 @@ const scrollToProject = (index: number) => {
   updateSiteNav(target.id);
   target.scrollIntoView({ behavior: "smooth", block: "start" });
 };
+
+const keepNavigationVisible = () => {
+  if (!gamesControls) return;
+  gamesControls.classList.remove("is-idle");
+  window.clearTimeout(navigationIdleTimer);
+  navigationIdleTimer = window.setTimeout(() => gamesControls.classList.add("is-idle"), 2000);
+};
+keepNavigationVisible();
 
 const applyLanguage = (language: Lang) => {
   const lang = translations["nav.studio"][language] ? language : "zh";
@@ -205,6 +215,7 @@ const requestThemeUpdate = () => {
   });
 };
 window.addEventListener("scroll", requestThemeUpdate, { passive: true });
+window.addEventListener("scroll", keepNavigationVisible, { passive: true });
 window.addEventListener("resize", requestThemeUpdate, { passive: true });
 requestThemeUpdate();
 

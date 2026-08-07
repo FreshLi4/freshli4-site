@@ -371,8 +371,10 @@ main > section { position: relative; color: var(--ink); background: transparent;
 
 .games-controls {
   position:fixed; z-index:50; top:50%; left:var(--page-pad); width:auto; height:auto; margin:0;
-  transform:translateY(-50%); overflow:visible; pointer-events:none;
+  transform:translateY(-50%); overflow:visible; pointer-events:none; opacity:1; transition:opacity .25s ease;
 }
+.games-controls.is-idle { opacity:.3; }
+.games-controls:hover, .games-controls:focus-within { opacity:1; }
 .project-tabs {
   min-width:0; display:flex; flex-direction:column; justify-content:flex-start; align-items:flex-start; gap:12px; overflow:visible; scrollbar-width:none; pointer-events:auto;
 }
