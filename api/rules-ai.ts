@@ -1,4 +1,4 @@
-import { handleRulesAiRequest } from "../server/rules-ai";
+import { handleRulesAiRequest } from "../server/rules-ai.js";
 
 export const config = { maxDuration: 60 };
 

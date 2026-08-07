@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import { sites } from "./build/sites-vite-plugin";
-import { handleRulesAiRequest } from "./server/rules-ai";
+import { handleRulesAiRequest } from "./server/rules-ai.js";
 
 const rulesAiDevApi = () => ({
   name: "rules-ai-dev-api",
