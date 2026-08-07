@@ -45,5 +45,5 @@ test("source exposes the investigation rulebook as a second-level page", async (
   assert.match(rules, /一款支持 2–6 人游玩的非直接对战美式桌游/);
   assert.doesNotMatch(rules, /开始提问/);
   assert.match(rules, /THE ANOMALY/);
-  assert.match(rules, /我们是<br \/><em>异常调查。<\/em>/);
+  assert.match(rules, /调查异常环境，<br \/><em>谨慎追寻真相。<\/em>/);
 });

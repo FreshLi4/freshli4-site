@@ -81,7 +81,7 @@ const renderInvestigationHome = () => `
       </section>
 
       <section class="rules-home-intro" aria-labelledby="investigation-intro-title">
-        <div><p class="chapter-label">THE ANOMALY</p><h2 id="investigation-intro-title">我们是<br /><em>异常调查。</em></h2></div>
+        <div><p class="chapter-label">THE ANOMALY</p><h2 id="investigation-intro-title">调查异常环境，<br /><em>谨慎追寻真相。</em></h2></div>
         <div><p class="rules-original">在《调查 : 深入》的游戏中，每名玩家扮演一位「指挥者」，指挥「调查员」对「情报卡组」进行调查，尝试了解【禁忌真相】在「情报卡组」中的位置，让自己的「调查员」规避它，并让其他队伍的「调查员」调查到【禁忌真相】。</p><p class="rules-original">「调查员」调查到【禁忌真相】会损失「SAN」，「SAN」消耗完的「调查员」会「陷入疯狂」。</p></div>
       </section>
 
