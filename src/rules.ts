@@ -372,19 +372,45 @@ const setupRulesInteractions = () => {
   const aiAnswer = document.querySelector<HTMLElement>("#rules-ai-answer");
   const aiPrompts = [...document.querySelectorAll<HTMLButtonElement>("[data-rules-ai-prompt]")];
   let activeAiRequest: AbortController | undefined;
-  const renderAiAnswer = (status: string, content: string) => {
+  const formatAiContent = (content: string) => {
+    const normalized = content
+      .replace(/\r\n?/g, "\n")
+      .replace(/\*\*/g, "")
+      .replace(/\s*>\s*/g, "\n")
+      .replace(/\s+(?=[-•]\s+)/g, "\n")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+    if (normalized.includes("\n") || normalized.length <= 80) return normalized;
+    return normalized.replace(/([。！？；])\s*/g, "$1\n").replace(/\n{3,}/g, "\n").trim();
+  };
+  const renderAiAnswer = (status: string, content: string, pending = false) => {
     if (!aiAnswer) return;
+    aiAnswer.classList.toggle("is-pending", pending);
     const label = document.createElement("span");
     label.textContent = `ASSISTANT / ${status}`;
     const paragraph = document.createElement("p");
-    paragraph.textContent = content;
-    aiAnswer.replaceChildren(label, paragraph);
+    paragraph.className = "rules-ai-response";
+    paragraph.textContent = formatAiContent(content);
+    if (!pending) {
+      aiAnswer.replaceChildren(label, paragraph);
+      return;
+    }
+    const thinking = document.createElement("span");
+    thinking.className = "rules-ai-thinking";
+    thinking.setAttribute("role", "status");
+    thinking.setAttribute("aria-label", "AI 正在思考");
+    [0, 1, 2, 3, 4].forEach((index) => {
+      const orb = document.createElement("i");
+      orb.style.setProperty("--rules-ai-orb-index", String(index));
+      thinking.append(orb);
+    });
+    aiAnswer.replaceChildren(label, thinking, paragraph);
   };
   const answerQuestion = async (question: string) => {
     activeAiRequest?.abort();
     activeAiRequest = new AbortController();
     aiPrompts.forEach((button) => { button.disabled = true; });
-    renderAiAnswer("CONNECTING", "正在查阅规则指引书和卡牌资料……");
+    renderAiAnswer("CONNECTING", "正在查阅规则指引书和卡牌资料……", true);
     try {
       const response = await fetch("/api/rules-ai", {
         method: "POST",
