@@ -132,7 +132,7 @@ body.is-rules-page a { text-decoration: none; }
 .rule-stat small { margin-top: 8px; color: var(--rules-muted); font-size: 12px; }
 
 .rules-body { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: clamp(40px, 8vw, 130px); align-items: start; }
-.rules-sidebar { align-self: start; padding-bottom: 40px; }
+.rules-sidebar { position: static; align-self: start; padding-bottom: 40px; }
 .rules-search { padding-bottom: 25px; border-bottom: 1px solid var(--rules-line); }
 .rules-search label { display: block; margin-bottom: 10px; }
 .rules-search div { position: relative; }
@@ -272,7 +272,7 @@ body.is-rules-page a { text-decoration: none; }
 .rules-page .rules-ai-form label, .rules-page .rules-ai-form button, .rules-page .rules-ai-prompts button { font-family: var(--font-rules-display); }
 
 @media (max-width: 980px) {
-  .rules-hero, .rules-home-hero { grid-template-columns: 1fr; min-height: 0; padding-top: 85px; }.rules-hero-copy, .rules-home-copy { max-width: 760px; }.rules-hero-dossier, .rules-home-visual { width: min(620px, 100%); min-height: 420px; justify-self: center; }.rules-overview, .rules-home-intro, .rules-ai { grid-template-columns: 1fr; }.rules-stats { width: min(680px, 100%); }.rules-body { grid-template-columns: 1fr; }.rules-sidebar { position: relative; top: 0; display: grid; grid-template-columns: minmax(210px, .7fr) 1fr; gap: 34px; }.rules-sidebar-note { display: none; }.rules-toc { padding-top: 0; grid-template-columns: repeat(3, 1fr); align-content: start; }.rules-toc p { grid-column: 1 / -1; }.rules-toc a { padding: 5px 0; }.rules-search { padding-bottom: 0; border-bottom: 0; }.rules-ai-panel { max-width: 760px; }.rules-portals-heading { align-items: start; flex-direction: column; }
+  .rules-hero, .rules-home-hero { grid-template-columns: 1fr; min-height: 0; padding-top: 85px; }.rules-hero-copy, .rules-home-copy { max-width: 760px; }.rules-hero-dossier, .rules-home-visual { width: min(620px, 100%); min-height: 420px; justify-self: center; }.rules-overview, .rules-home-intro, .rules-ai { grid-template-columns: 1fr; }.rules-stats { width: min(680px, 100%); }.rules-body { grid-template-columns: 1fr; }.rules-sidebar { position: static; display: grid; grid-template-columns: minmax(210px, .7fr) 1fr; gap: 34px; }.rules-sidebar-note { display: none; }.rules-toc { padding-top: 0; grid-template-columns: repeat(3, 1fr); align-content: start; }.rules-toc p { grid-column: 1 / -1; }.rules-toc a { padding: 5px 0; }.rules-search { padding-bottom: 0; border-bottom: 0; }.rules-ai-panel { max-width: 760px; }.rules-portals-heading { align-items: start; flex-direction: column; }
 }
 
 @media (max-width: 640px) {
