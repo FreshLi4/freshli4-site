@@ -70,8 +70,8 @@ const renderInvestigationHome = () => `
           <p class="rules-kicker">INVESTIGATION : DELVE / 调查深入</p>
           <h1 id="investigation-home-title">调查<br /><em>深入</em></h1>
           <p class="rules-hero-english">A NON-DIRECT-CONFLICT TABLETOP GAME</p>
-          <p class="rules-dek rules-original">在《调查 : 深入》的游戏中，每名玩家扮演一位「指挥者」，指挥「调查员」对「情报卡组」进行调查，尝试了解【禁忌真相】在「情报卡组」中的位置，让自己的「调查员」规避它，并让其他队伍的「调查员」调查到【禁忌真相】。</p>
-          <div class="rules-hero-actions"><a class="rules-primary-link" href="#rules-ai">开始提问 <span aria-hidden="true">↓</span></a><span class="rules-edition">2—6 人<br />策略 · 调查 · 卡牌</span></div>
+          <p class="rules-dek">一款支持 2–6 人游玩的非直接对战美式桌游。你将扮演“指挥者”，操控调查员，在调查中规避禁忌真相，并诱导对手比你更早陷入疯狂。</p>
+          <div class="rules-hero-actions"><span class="rules-edition">2—6 人<br />策略 · 调查 · 卡牌</span></div>
         </div>
         <div class="rules-home-visual">
           <img src="/asset/investigation-delve/visual-content/3-游戏配件-1.png" alt="《调查深入》游戏配件与卡牌" />
@@ -81,7 +81,7 @@ const renderInvestigationHome = () => `
       </section>
 
       <section class="rules-home-intro" aria-labelledby="investigation-intro-title">
-        <div><p class="chapter-label">THE CASE / 案件简介</p><h2 id="investigation-intro-title">真相会改变<br /><em>调查的方向。</em></h2></div>
+        <div><p class="chapter-label">THE ANOMALY</p><h2 id="investigation-intro-title">我们是<br /><em>异常调查。</em></h2></div>
         <div><p class="rules-original">在《调查 : 深入》的游戏中，每名玩家扮演一位「指挥者」，指挥「调查员」对「情报卡组」进行调查，尝试了解【禁忌真相】在「情报卡组」中的位置，让自己的「调查员」规避它，并让其他队伍的「调查员」调查到【禁忌真相】。</p><p class="rules-original">「调查员」调查到【禁忌真相】会损失「SAN」，「SAN」消耗完的「调查员」会「陷入疯狂」。</p></div>
       </section>
 
