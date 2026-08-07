@@ -13,6 +13,8 @@ test("investigation reference pages are source-driven and routed", async () => {
   assert.match(rules, /renderFaqPage/);
   assert.match(rules, /renderWikiPage/);
   assert.match(rules, /rules-ai-form/);
+  assert.match(rules, /问你想问的，<br \/>「调查工会」总有答案/);
+  assert.match(rules, /输入任意问题，获得规则解答或者指引/);
   assert.match(rules, /rules-portal-card/);
   assert.match(rules, /investigation-delve-boardgame\/rules/);
   assert.match(rules, /type RulesRoute = "home"/);

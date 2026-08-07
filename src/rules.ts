@@ -86,7 +86,7 @@ const renderInvestigationHome = () => `
       </section>
 
       <section class="rules-ai" id="rules-ai" aria-labelledby="rules-ai-title">
-        <div class="rules-ai-heading"><p class="chapter-label">AI Q&A / 规则问答</p><h2 id="rules-ai-title">把问题留在桌面上。</h2><p>输入一个规则问题，先从当前规则资料中找到方向。</p></div>
+        <div class="rules-ai-heading"><p class="chapter-label">AI Q&A / 规则问答</p><h2 id="rules-ai-title">问你想问的，<br />「调查工会」总有答案</h2><p>输入任意问题，获得规则解答或者指引</p></div>
         <div class="rules-ai-panel">
           <form id="rules-ai-form" class="rules-ai-form">
             <label for="rules-ai-input">向调查助手提问</label>
