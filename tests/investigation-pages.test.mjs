@@ -25,6 +25,7 @@ test("investigation reference pages are source-driven and routed", async () => {
   assert.match(vercel, /investigation-delve-boardgame\/:path\*/);
   assert.match(rules, /aria-label="选择语言"/);
   assert.doesNotMatch(rules, /文字选择/);
+  assert.match(api, /IncomingMessage/);
   assert.match(api, /handleRulesAiRequest/);
   assert.match(server, /OPENROUTER_API_KEY/);
   assert.match(server, /nvidia\/nemotron-3-super-120b-a12b:free/);
