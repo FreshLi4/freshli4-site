@@ -29,6 +29,9 @@ test("investigation reference pages are source-driven and routed", async () => {
   assert.match(api, /handleRulesAiRequest/);
   assert.match(server, /OPENROUTER_API_KEY/);
   assert.match(server, /nvidia\/nemotron-3-super-120b-a12b:free/);
+  assert.match(server, /通常只回答 1—3 句/);
+  assert.match(server, /最多引用一句/);
+  assert.match(server, /max_tokens: 256/);
   assert.match(server, /src\/data\/investigation\/调查员\.csv/);
   assert.match(server, /stream: true/);
   assert.match(vercel, /api\/rules-ai\.ts/);
