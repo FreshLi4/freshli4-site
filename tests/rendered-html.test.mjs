@@ -50,7 +50,7 @@ test("source exposes the investigation rulebook as a second-level page", async (
   assert.match(rules, /调查附录/);
   assert.match(rules, /FAQ/);
   assert.match(rules, /一款支持 2–6 人游玩的非直接对战美式桌游/);
-  assert.match(rules, /问你想问的，<br \/>「调查工会」总有答案/);
+  assert.match(rules, /问你想问的，<br \/>工会总有答案/);
   assert.match(rulesStyles, /\.rules-ai h2 \{ white-space: nowrap; \}/);
   assert.match(rulesStyles, /@media \(max-width: 640px\) \{ \.rules-ai h2 \{ font-size: clamp\(34px, 9vw, 55px\); \} \}/);
   assert.match(aiServer, /const OPENCODE_URL = "https:\/\/opencode\.ai\/zen\/v1\/chat\/completions"/);
