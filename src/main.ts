@@ -156,12 +156,27 @@ const scrollToProject = (index: number) => {
   target.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 
+const pauseNavigationIdleTimer = () => {
+  if (!gamesControls) return;
+  window.clearTimeout(navigationIdleTimer);
+  navigationIdleTimer = undefined;
+  gamesControls.classList.remove("is-idle");
+};
 const keepNavigationVisible = () => {
   if (!gamesControls) return;
-  gamesControls.classList.remove("is-idle");
-  window.clearTimeout(navigationIdleTimer);
-  navigationIdleTimer = window.setTimeout(() => gamesControls.classList.add("is-idle"), 2000);
+  pauseNavigationIdleTimer();
+  if (gamesControls.matches(":hover, :focus-within")) return;
+  navigationIdleTimer = window.setTimeout(() => {
+    if (!gamesControls.matches(":hover, :focus-within")) gamesControls.classList.add("is-idle");
+  }, 1000);
 };
+const navigationHoverTarget = gamesControls?.querySelector<HTMLElement>(".project-tabs");
+navigationHoverTarget?.addEventListener("mouseenter", pauseNavigationIdleTimer);
+navigationHoverTarget?.addEventListener("mouseleave", keepNavigationVisible);
+gamesControls?.addEventListener("focusin", pauseNavigationIdleTimer);
+gamesControls?.addEventListener("focusout", (event) => {
+  if (!gamesControls.contains(event.relatedTarget as Node | null)) keepNavigationVisible();
+});
 keepNavigationVisible();
 
 const applyLanguage = (language: Lang) => {
