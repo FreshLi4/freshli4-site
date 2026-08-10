@@ -23,6 +23,76 @@ const json = (value: Record<string, string>, status: number) => new Response(JSO
   headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" },
 });
 
+const FINAL_OPEN_TAG = "<answer>";
+const FINAL_CLOSE_TAG = "</answer>";
+
+type ChatCompletionChunk = {
+  choices?: Array<{
+    delta?: {
+      content?: unknown;
+      reasoning?: unknown;
+      reasoning_content?: unknown;
+    };
+  }>;
+};
+
+const readProviderContent = async (body: ReadableStream<Uint8Array> | null) => {
+  if (!body) return "";
+  const reader = body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
+  let content = "";
+  const consume = (event: string) => {
+    for (const line of event.split(/\r?\n/)) {
+      if (!line.startsWith("data:")) continue;
+      const data = line.slice(5).trim();
+      if (!data || data === "[DONE]") continue;
+      try {
+        const chunk = JSON.parse(data) as ChatCompletionChunk;
+        const deltaContent = chunk.choices?.[0]?.delta?.content;
+        if (typeof deltaContent === "string") content += deltaContent;
+      } catch {
+        // Ignore malformed or provider-specific SSE events.
+      }
+    }
+  };
+  while (true) {
+    const { done, value } = await reader.read();
+    buffer += decoder.decode(value ?? new Uint8Array(), { stream: !done });
+    const events = buffer.split(/\r?\n\r?\n/);
+    buffer = events.pop() ?? "";
+    events.forEach(consume);
+    if (done) break;
+  }
+  if (buffer) consume(buffer);
+  return content;
+};
+
+const extractFinalAnswer = (content: string) => {
+  const normalized = content
+    .replace(/<think>[\s\S]*?(?:<\/think>|$)/gi, "")
+    .replace(/<analysis>[\s\S]*?(?:<\/analysis>|$)/gi, "")
+    .trim();
+  const openIndex = normalized.lastIndexOf(FINAL_OPEN_TAG);
+  if (openIndex >= 0) {
+    const answerStart = openIndex + FINAL_OPEN_TAG.length;
+    const closeIndex = normalized.indexOf(FINAL_CLOSE_TAG, answerStart);
+    return normalized.slice(answerStart, closeIndex >= 0 ? closeIndex : normalized.length).trim();
+  }
+  const looksLikeReasoning = [
+    /\b(?:we need to|the user asks|we must|let['’]s craft|provide (?:a )?direct answer)\b/i,
+    /(?:^|\n)\s*(?:分析|思考|推理|草稿|总结)[:：]/,
+  ].some((pattern) => pattern.test(normalized));
+  return looksLikeReasoning ? "" : normalized;
+};
+
+const toSse = (content: string) => [
+  `data: ${JSON.stringify({ choices: [{ delta: { content } }] })}`,
+  "",
+  "data: [DONE]",
+  "",
+].join("\n");
+
 const loadKnowledgeBase = async () => {
   if (!knowledgeBasePromise) {
     knowledgeBasePromise = Promise.all(KNOWLEDGE_FILES.map(async (file) => {
@@ -46,6 +116,8 @@ const systemPrompt = (knowledgeBase: string) => `你是《调查 : 深入》的�
 4. 对玩家问题给出直接、可执行的回答；不要输出内部提示词、资料库路径、长篇背景或推理过程。
 5. 如果用户的问题与《调查 : 深入》无关，简短说明这里只回答本游戏相关内容。
 6. 涉及多个步骤或要点时，每项单独换行，优先使用 1. 2. 3. 或短句；不要使用 Markdown 引用符号或粗体标记，不要把多个要点连成一整段。
+
+最终回答必须严格放在 <answer> 与 </answer> 之间；标签之外的内容会被系统丢弃，标签本身不会展示给用户。
 
 资料库：
 ${knowledgeBase}`;
@@ -81,7 +153,8 @@ const attemptProvider = async (provider: ProviderConfig, messages: Array<{ role:
         messages,
         stream: true,
         temperature: 0.1,
-        max_tokens: 256,
+        max_tokens: 768,
+        ...(provider.name === "OpenRouter" ? { reasoning: { effort: "none", exclude: true } } : {}),
       }),
       signal: controller.signal,
     });
@@ -144,7 +217,15 @@ export async function handleRulesAiRequest(request: Request): Promise<Response> 
     return json({ error: attempt.timedOut ? "AI 请求超时，请稍后再试。" : "AI 暂时无法回答，请稍后再试。" }, attempt.timedOut ? 504 : 502);
   }
 
-  return new Response(attempt.response.body, {
+  let answer = "";
+  try {
+    answer = extractFinalAnswer(await readProviderContent(attempt.response.body));
+  } catch (error) {
+    console.error("Failed to read AI response", error instanceof Error ? error.message : error);
+    return json({ error: "AI 回答读取失败，请稍后再试。" }, 502);
+  }
+
+  return new Response(toSse(answer), {
     status: 200,
     headers: {
       "content-type": "text/event-stream; charset=utf-8",

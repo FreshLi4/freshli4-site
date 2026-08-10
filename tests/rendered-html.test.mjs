@@ -66,6 +66,11 @@ test("source exposes the investigation rulebook as a second-level page", async (
   assert.match(aiServer, /process\.env\.OPENROUTER_API_KEY/);
   assert.match(aiServer, /const OPENCODE_TIMEOUT_MS = 20_000/);
   assert.match(aiServer, /falling back to OpenRouter/);
+  assert.match(aiServer, /max_tokens: 768/);
+  assert.match(aiServer, /reasoning: \{ effort: "none", exclude: true \}/);
+  assert.match(aiServer, /const FINAL_OPEN_TAG = "<answer>"/);
+  assert.match(aiServer, /reasoning_content/);
+  assert.match(aiServer, /extractFinalAnswer/);
   assert.match(aiServer, /最终输出只能是对用户当前问题的直接回答/);
   assert.match(aiServer, /最终输出永远只使用用户输入的语言/);
   assert.doesNotMatch(rules, /开始提问/);

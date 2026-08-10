@@ -34,7 +34,10 @@ test("investigation reference pages are source-driven and routed", async () => {
   assert.match(server, /通常只回答 1—3 句/);
   assert.match(server, /最多引用一句/);
   assert.match(server, /每项单独换行/);
-  assert.match(server, /max_tokens: 256/);
+  assert.match(server, /max_tokens: 768/);
+  assert.match(server, /reasoning: \{ effort: "none", exclude: true \}/);
+  assert.match(server, /<answer>/);
+  assert.match(server, /reasoning_content/);
   assert.match(server, /src\/data\/investigation\/调查员\.csv/);
   assert.match(server, /stream: true/);
   assert.match(vercel, /api\/rules-ai\.ts/);
