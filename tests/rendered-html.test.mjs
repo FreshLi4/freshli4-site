@@ -45,10 +45,16 @@ test("source exposes the investigation rulebook as a second-level page", async (
   assert.match(source, /project-rules-link.*href="\/investigation-delve-boardgame"/);
   assert.match(source, /了解详情/);
   assert.match(rules, /class="rules-brand" href="\/investigation-delve-boardgame"/);
+  assert.match(rules, /class="rules-brand-logo" src="\/investigation-delve-logo\.png"/);
+  assert.match(rulesStyles, /\.rules-brand-logo \{[^}]*object-fit: contain/);
+  assert.match(rules, /const investigationVisualFiles = import\.meta\.glob\("\/asset\/investigation-delve\/visual-content\/\*"/);
+  assert.match(rules, /investigationVisual\("3-游戏配件-1\.png"\)/);
   assert.match(rules, /bootRulesPage/);
   assert.match(rules, /规则指引书 v1\.1/);
   assert.match(rules, /调查附录/);
   assert.match(rules, /FAQ/);
+  assert.match(rules, /class="rules-route-nav"[\s\S]*class="rules-route-tools"/);
+  assert.doesNotMatch(rules, /rules-header-meta/);
   assert.match(rules, /一款支持 2–6 人游玩的非直接对战美式桌游/);
   assert.match(rules, /问你想问的，<br \/>工会总有答案/);
   assert.match(rulesStyles, /\.rules-ai h2 \{ white-space: nowrap; \}/);

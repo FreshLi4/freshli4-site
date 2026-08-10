@@ -66,6 +66,6 @@ test("rulebook teaching text keeps canonical wording and font roles", async () =
   assert.match(rulesStyles, /\.rules-ai-thinking/);
   assert.match(rulesStyles, /\.rules-ai-response a/);
   assert.match(rulesStyles, /white-space: pre-wrap/);
-  assert.match(rulesStyles, /\.rules-header-meta a \{[^}]*line-height: 15px/);
+  assert.match(rulesStyles, /\.rules-route-tools a \{[^}]*line-height: 15px/);
   assert.match(rulesStyles, /\.rules-page \.rules-content h2, \.rules-page \.rules-content h3 \{ font-family: var\(--font-rules-display\); \}/);
 });

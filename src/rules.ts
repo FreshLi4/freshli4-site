@@ -1,6 +1,9 @@
 import "./rules.css";
 import { allInvestigationCards, cardCategoryMeta, cardSets, type CardCategory, type InvestigationCard } from "./investigation-data";
 
+const investigationVisualFiles = import.meta.glob("/asset/investigation-delve/visual-content/*", { eager: true, query: "?url", import: "default" }) as Record<string, string>;
+const investigationVisual = (fileName: string) => investigationVisualFiles[`/asset/investigation-delve/visual-content/${fileName}`] ?? "";
+
 const section = (id: string, number: string, label: string, title: string, content: string, extra = "") => `
   <article class="rules-chapter" id="${id}" data-rule-searchable>
     <div class="chapter-marker"><span>${number}</span><i aria-hidden="true"></i></div>
@@ -30,13 +33,16 @@ const routeLinks = (active: RulesRoute) => `
     <a class="${active === "appendix" ? "is-current" : ""}" href="/investigation-delve-boardgame/appendix">调查附录<span>APPENDIX</span></a>
     <a class="${active === "faq" ? "is-current" : ""}" href="/investigation-delve-boardgame/faq">FAQ<span>RULINGS</span></a>
     <a class="${active === "wiki" ? "is-current" : ""}" href="/investigation-delve-boardgame/wiki">卡牌 Wiki<span>CARD INDEX</span></a>
+    <div class="rules-route-tools">
+      <label class="rules-language"><select id="rules-language-select" aria-label="选择语言"><option value="zh">中文</option><option value="en">English</option><option value="ja">日本語</option></select></label>
+      <a href="/">返回官网 <b aria-hidden="true">↗</b></a>
+    </div>
   </nav>`;
 
 const rulesHeader = (active: RulesRoute) => `
   <header class="rules-header">
-    <a class="rules-brand" href="/investigation-delve-boardgame" aria-label="返回调查深入桌游首页"><span class="rules-brand-mark" aria-hidden="true"><i></i><b></b></span><span><strong>调查深入</strong><small>INVESTIGATION : DELVE</small></span></a>
+    <a class="rules-brand" href="/investigation-delve-boardgame" aria-label="返回调查深入桌游首页"><img class="rules-brand-logo" src="/investigation-delve-logo.png" alt="" aria-hidden="true" /><span><strong>调查深入</strong><small>INVESTIGATION : DELVE</small></span></a>
     ${routeLinks(active)}
-    <div class="rules-header-meta"><label class="rules-language"><select id="rules-language-select" aria-label="选择语言"><option value="zh">中文</option><option value="en">English</option><option value="ja">日本語</option></select></label><a href="/">返回官网 <b aria-hidden="true">↗</b></a></div>
   </header>`;
 
 const referenceFigure = (src: string, alt: string, caption: string, note: string) => `
@@ -74,7 +80,7 @@ const renderInvestigationHome = () => `
           <div class="rules-hero-actions"><span class="rules-edition">2—6 人<br />策略 · 调查 · 卡牌</span></div>
         </div>
         <div class="rules-home-visual">
-          <img src="/asset/investigation-delve/visual-content/3-游戏配件-1.png" alt="《调查深入》游戏配件与卡牌" />
+          <img src="${investigationVisual("3-游戏配件-1.png")}" alt="《调查深入》游戏配件与卡牌" />
           <span class="home-visual-stamp">ANOMALY<br /><small>FILE / 0001</small></span>
           <span class="home-visual-note">INVESTIGATION<br />STARTS HERE</span>
         </div>
@@ -175,8 +181,8 @@ const renderRulesPage = () => `
             ${originalParagraph("关于卡牌的详细介绍，以及众筹版/补充包信息，请参考《调查深入 · 卡牌统计表》。")}
             <div class="component-grid rules-original"><div><strong>策略</strong><span>STRATEGY</span><p>将「策略」卡牌各自洗切整理成一堆。</p></div><div><strong>情报</strong><span>INTEL</span><p>将「情报」卡牌各自洗切整理成一堆。</p></div><div><strong>环境</strong><span>ENVIRONMENT</span><p>将「环境」卡牌各自洗切整理成一堆。</p></div><div><strong>辅助</strong><span>SUPPORT</span><p>将「辅助」卡牌各自洗切整理成一堆。</p></div></div>
             <div class="rules-reference-grid">
-              ${referenceFigure("/asset/investigation-delve/visual-content/3-游戏配件-1.png", "《调查深入》打开的游戏盒与配件", "FIG. 02-A / 配件索引", "先认出四类卡组，再开始布置。")}
-              ${referenceFigure("/asset/investigation-delve/visual-content/6-游戏配件-4.png", "《调查深入》盒内的卡牌与骰子配件", "FIG. 02-B / COMPONENTS", "骰子记录 SAN，卡牌按类型分区。")}
+              ${referenceFigure(investigationVisual("3-游戏配件-1.png"), "《调查深入》打开的游戏盒与配件", "FIG. 02-A / 配件索引", "先认出四类卡组，再开始布置。")}
+              ${referenceFigure(investigationVisual("6-游戏配件-4.png"), "《调查深入》盒内的卡牌与骰子配件", "FIG. 02-B / COMPONENTS", "骰子记录 SAN，卡牌按类型分区。")}
             </div>
             ${callout("卡牌统计", "当前数据源包含 20 位调查员、39 种策略、21 种环境、8 种辅助，以及 25 张情报牌（其中包含 1 张【禁忌真相】）。", "is-ink")}
           `)}
@@ -212,7 +218,7 @@ const renderRulesPage = () => `
 
           ${section("san", "06", "SAN / 理智与疯狂", "你可以知道很多，但不能承受一切。", `
             ${originalParagraph("任意「调查员」调查到【禁忌真相】时，本「轮」游戏结束。该「调查员」的「SAN」将相应减少（无特殊效果时，减少(1)点「SAN」）。")}
-            <div class="rules-reference-grid rules-reference-grid-single">${referenceFigure("/asset/investigation-delve/visual-content/13-游戏配件-11.png", "《调查深入》情报卡牌与禁忌真相示例", "FIG. 06-A / 情报牌面", "情报区应当保持公示；禁忌真相是这一轮的警示线。")}</div>
+            <div class="rules-reference-grid rules-reference-grid-single">${referenceFigure(investigationVisual("13-游戏配件-11.png"), "《调查深入》情报卡牌与禁忌真相示例", "FIG. 06-A / 情报牌面", "情报区应当保持公示；禁忌真相是这一轮的警示线。")}</div>
             <div class="san-meter"><div class="san-meter-track"><span></span><span></span><span></span><span></span><span></span></div><div class="san-meter-legend"><b>清醒</b><span>每一次真相命中，压力都会留下痕迹。</span><b>疯狂</b></div></div>
             <div class="madness-columns rules-original"><div><h3>「SAN」归零的「调查员」</h3>${originalList(["若「调查员」因此导致「SAN」归零，其将会「陷入疯狂」。将其「调查员」卡牌与「调查员指示卡」翻面，所有对其布置的「个体机制」被弃置。", "「陷入疯狂」的「调查员」没有「操作阶段」，其调查顺位在所有判定中被自然跳过（如：下一顺位的「调查员」「陷入疯狂」，则针对下一顺位的效果将顺延到下下顺位）。", "「陷入疯狂」的「调查员」具有额外的【禁忌知识】和【疯狂蔓延】技能，如无特殊说明，在「调查员」「陷入疯狂」时立即触发。", "如无特殊说明，「陷入疯狂」的「调查员」无法成为卡牌的指定对象、也不受卡牌或技能的效果影响。", "由「调查员」的【疯狂蔓延】技能带来的「辅助」卡牌，依旧可以受到其他「策略」卡牌的影响，但需要检查其卡面文本。"])} </div><div><h3>恢复清醒</h3>${originalParagraph("「陷入疯狂」的「调查员」若通过任意手段恢复「SAN」，其将会「恢复清醒」并拥有恢复点数的「SAN」，没有「SAN」的特殊「调查员」无法用此手段「恢复清醒」。")}${originalCallout("规则指引书原文", "各位「指挥者」的手牌、场上已布置的「个体机制」均不变。此后，下一「轮」游戏开始。", "is-red")}</div></div>
           `)}
