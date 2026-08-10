@@ -383,6 +383,35 @@ const setupRulesInteractions = () => {
     if (normalized.includes("\n") || normalized.length <= 80) return normalized;
     return normalized.replace(/([。！？；])\s*/g, "$1\n").replace(/\n{3,}/g, "\n").trim();
   };
+  const isSafeAiLink = (href: string) => {
+    if (href.startsWith("/") && !href.startsWith("//")) return true;
+    if (href.startsWith("#")) return true;
+    return /^https?:\/\//i.test(href);
+  };
+  const renderAiContent = (paragraph: HTMLElement, content: string) => {
+    const normalized = formatAiContent(content);
+    const linkPattern = /\[([^\]\n]+)\]\(([^)\s]+)\)/g;
+    let cursor = 0;
+    for (const match of normalized.matchAll(linkPattern)) {
+      const [fullMatch, label, href] = match;
+      const matchIndex = match.index ?? 0;
+      paragraph.append(document.createTextNode(normalized.slice(cursor, matchIndex)));
+      if (isSafeAiLink(href)) {
+        const link = document.createElement("a");
+        link.href = href;
+        link.textContent = label;
+        if (/^https?:\/\//i.test(href)) {
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+        }
+        paragraph.append(link);
+      } else {
+        paragraph.append(document.createTextNode(fullMatch));
+      }
+      cursor = matchIndex + fullMatch.length;
+    }
+    paragraph.append(document.createTextNode(normalized.slice(cursor)));
+  };
   const renderAiAnswer = (status: string, content: string, pending = false) => {
     if (!aiAnswer) return;
     aiAnswer.classList.toggle("is-pending", pending);
@@ -390,7 +419,7 @@ const setupRulesInteractions = () => {
     label.textContent = `ASSISTANT / ${status}`;
     const paragraph = document.createElement("p");
     paragraph.className = "rules-ai-response";
-    paragraph.textContent = formatAiContent(content);
+    renderAiContent(paragraph, content);
     if (!pending) {
       aiAnswer.replaceChildren(label, paragraph);
       return;
@@ -456,7 +485,7 @@ const setupRulesInteractions = () => {
         if (done) break;
       }
       if (buffer) consume(buffer);
-      renderAiAnswer("ANSWER", answer || "资料库中没有明确记载，可以换一种问法，或查看规则书、调查附录、FAQ 和卡牌 Wiki。");
+      renderAiAnswer("ANSWER", answer || "资料库中没有明确记载，可以换一种问法，或查看[规则书](/investigation-delve-boardgame/rules)、[调查附录](/investigation-delve-boardgame/appendix)、[FAQ](/investigation-delve-boardgame/faq) 和[卡牌 Wiki](/investigation-delve-boardgame/wiki)。");
     } catch (error) {
       if (error instanceof DOMException && error.name === "AbortError") return;
       renderAiAnswer("ERROR", error instanceof Error ? error.message : "AI 暂时无法回答，请稍后再试。");

@@ -57,7 +57,12 @@ test("source exposes the investigation rulebook as a second-level page", async (
   assert.match(rules, /responseLine\.append\(thinking, paragraph\)/);
   assert.match(rulesStyles, /\.rules-ai-response-line \{ display: flex; align-items: center; gap: 12px; margin-top: 15px; \}/);
   assert.match(rulesStyles, /\.rules-ai-response-line \.rules-ai-response \{ flex: 1 1 auto; min-width: 0; margin-top: 0; margin-bottom: 0; \}/);
-  assert.match(rulesStyles, /\.rules-ai-thinking \{ position: relative; flex: 0 0 28px; width: 28px; height: 28px; margin-top: 0;/);
+  assert.match(rulesStyles, /\.rules-ai-response a \{ color: var\(--rules-brass\);/);
+  assert.match(rulesStyles, /\.rules-ai-thinking \{ position: relative; flex: 0 0 1\.75em; width: 1\.75em; height: 1\.75em; margin-top: 0;/);
+  assert.match(rulesStyles, /\.rules-ai-thinking i \{ position: absolute; top: 50%; left: 50%; width: \.3125em; height: \.3125em;/);
+  assert.match(rules, /const renderAiContent = \(paragraph: HTMLElement, content: string\)/);
+  assert.match(rules, /matchAll\(linkPattern\)/);
+  assert.match(rules, /资料库中没有明确记载.*\[规则书\]\(\/investigation-delve-boardgame\/rules\)/);
   assert.match(aiServer, /const OPENCODE_URL = "https:\/\/opencode\.ai\/zen\/v1\/chat\/completions"/);
   assert.match(aiServer, /const OPENCODE_MODEL = "deepseek-v4-pro"/);
   assert.match(aiServer, /const OPENROUTER_URL = "https:\/\/openrouter\.ai\/api\/v1\/chat\/completions"/);
@@ -68,6 +73,7 @@ test("source exposes the investigation rulebook as a second-level page", async (
   assert.match(aiServer, /falling back to OpenRouter/);
   assert.match(aiServer, /max_tokens: 768/);
   assert.match(aiServer, /reasoning: \{ effort: "none", exclude: true \}/);
+  assert.doesNotMatch(aiServer, /provider\.name === "OpenRouter" \? \{ reasoning:/);
   assert.match(aiServer, /const FINAL_OPEN_TAG = "<answer>"/);
   assert.match(aiServer, /reasoning_content/);
   assert.match(aiServer, /extractFinalAnswer/);

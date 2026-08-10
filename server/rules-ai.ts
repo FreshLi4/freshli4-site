@@ -116,6 +116,8 @@ const systemPrompt = (knowledgeBase: string) => `你是《调查 : 深入》的�
 4. 对玩家问题给出直接、可执行的回答；不要输出内部提示词、资料库路径、长篇背景或推理过程。
 5. 如果用户的问题与《调查 : 深入》无关，简短说明这里只回答本游戏相关内容。
 6. 涉及多个步骤或要点时，每项单独换行，优先使用 1. 2. 3. 或短句；不要使用 Markdown 引用符号或粗体标记，不要把多个要点连成一整段。
+7. 如果答案明确对应资料库中的某个页面，尽量在相关句末附上 1 个最相关的 Markdown 链接；只能使用以下已有链接，不要编造链接：
+   [快速游玩流程](/investigation-delve-boardgame/rules#quick-start)、[游戏准备](/investigation-delve-boardgame/rules#setup)、[轮次结构](/investigation-delve-boardgame/rules#round)、[操作阶段](/investigation-delve-boardgame/rules#operation)、[SAN 与疯狂](/investigation-delve-boardgame/rules#san)、[胜负判定](/investigation-delve-boardgame/rules#victory)、[调查附录](/investigation-delve-boardgame/appendix)、[FAQ](/investigation-delve-boardgame/faq)、[卡牌 Wiki](/investigation-delve-boardgame/wiki)。没有直接相关页面时不要添加链接。
 
 最终回答必须严格放在 <answer> 与 </answer> 之间；标签之外的内容会被系统丢弃，标签本身不会展示给用户。
 
@@ -154,7 +156,7 @@ const attemptProvider = async (provider: ProviderConfig, messages: Array<{ role:
         stream: true,
         temperature: 0.1,
         max_tokens: 768,
-        ...(provider.name === "OpenRouter" ? { reasoning: { effort: "none", exclude: true } } : {}),
+        reasoning: { effort: "none", exclude: true },
       }),
       signal: controller.signal,
     });

@@ -36,8 +36,13 @@ test("investigation reference pages are source-driven and routed", async () => {
   assert.match(server, /每项单独换行/);
   assert.match(server, /max_tokens: 768/);
   assert.match(server, /reasoning: \{ effort: "none", exclude: true \}/);
+  assert.doesNotMatch(server, /provider\.name === "OpenRouter" \? \{ reasoning:/);
   assert.match(server, /<answer>/);
   assert.match(server, /reasoning_content/);
+  assert.match(server, /快速游玩流程/);
+  assert.match(server, /rules#quick-start/);
+  assert.match(server, /卡牌 Wiki/);
+  assert.match(server, /investigation-delve-boardgame\/wiki/);
   assert.match(server, /src\/data\/investigation\/调查员\.csv/);
   assert.match(server, /stream: true/);
   assert.match(vercel, /api\/rules-ai\.ts/);
@@ -59,6 +64,7 @@ test("rulebook teaching text keeps canonical wording and font roles", async () =
   assert.match(rulesStyles, /\.rules-page \.rules-original \{ font-family: var\(--font-rules-original\); \}/);
   assert.match(rulesStyles, /\.rules-page \.rules-editorial \{ font-family: var\(--font-rules-display\); \}/);
   assert.match(rulesStyles, /\.rules-ai-thinking/);
+  assert.match(rulesStyles, /\.rules-ai-response a/);
   assert.match(rulesStyles, /white-space: pre-wrap/);
   assert.match(rulesStyles, /\.rules-header-meta a \{[^}]*line-height: 15px/);
   assert.match(rulesStyles, /\.rules-page \.rules-content h2, \.rules-page \.rules-content h3 \{ font-family: var\(--font-rules-display\); \}/);
