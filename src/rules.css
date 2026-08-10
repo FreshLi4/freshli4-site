@@ -100,7 +100,9 @@ body.is-rules-page a { text-decoration: none; }
 .rules-ai-answer > span:first-child { color: var(--rules-red); font: 800 8px/1 var(--font-jetbrains); letter-spacing: .13em; }
 .rules-ai-answer p { max-width: 720px; margin-top: 15px; color: var(--rules-ink); font-size: 16px; line-height: 1.75; }
 .rules-ai-response { white-space: pre-wrap; overflow-wrap: anywhere; }
-.rules-ai-thinking { position: relative; display: block; width: 30px; height: 30px; margin-top: 15px; color: var(--rules-brass); }
+.rules-ai-response-line { display: flex; align-items: center; gap: 12px; margin-top: 15px; }
+.rules-ai-response-line .rules-ai-response { flex: 1 1 auto; min-width: 0; margin-top: 0; margin-bottom: 0; }
+.rules-ai-thinking { position: relative; flex: 0 0 28px; width: 28px; height: 28px; margin-top: 0; color: var(--rules-brass); }
 .rules-ai-thinking i { position: absolute; top: 50%; left: 50%; width: 5px; height: 5px; border-radius: 50%; background: currentColor; transform: rotate(calc(var(--rules-ai-orb-index) * 72deg)) translateY(-11px); transform-origin: 0 11px; animation: rules-ai-orb 1.15s ease-in-out infinite; animation-delay: calc(var(--rules-ai-orb-index) * -0.12s); }
 @keyframes rules-ai-orb { 0%, 100% { opacity: .25; scale: .75; } 50% { opacity: 1; scale: 1.2; } }
 @media (prefers-reduced-motion: reduce) { .rules-ai-thinking i { animation: none; opacity: .8; } }

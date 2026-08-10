@@ -53,6 +53,11 @@ test("source exposes the investigation rulebook as a second-level page", async (
   assert.match(rules, /问你想问的，<br \/>工会总有答案/);
   assert.match(rulesStyles, /\.rules-ai h2 \{ white-space: nowrap; \}/);
   assert.match(rulesStyles, /@media \(max-width: 640px\) \{ \.rules-ai h2 \{ font-size: clamp\(34px, 9vw, 55px\); \} \}/);
+  assert.match(rules, /responseLine\.className = "rules-ai-response-line"/);
+  assert.match(rules, /responseLine\.append\(thinking, paragraph\)/);
+  assert.match(rulesStyles, /\.rules-ai-response-line \{ display: flex; align-items: center; gap: 12px; margin-top: 15px; \}/);
+  assert.match(rulesStyles, /\.rules-ai-response-line \.rules-ai-response \{ flex: 1 1 auto; min-width: 0; margin-top: 0; margin-bottom: 0; \}/);
+  assert.match(rulesStyles, /\.rules-ai-thinking \{ position: relative; flex: 0 0 28px; width: 28px; height: 28px; margin-top: 0;/);
   assert.match(aiServer, /const OPENCODE_URL = "https:\/\/opencode\.ai\/zen\/v1\/chat\/completions"/);
   assert.match(aiServer, /const OPENCODE_MODEL = "deepseek-v4-pro"/);
   assert.match(aiServer, /const OPENROUTER_URL = "https:\/\/openrouter\.ai\/api\/v1\/chat\/completions"/);

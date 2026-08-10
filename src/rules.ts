@@ -404,7 +404,10 @@ const setupRulesInteractions = () => {
       orb.style.setProperty("--rules-ai-orb-index", String(index));
       thinking.append(orb);
     });
-    aiAnswer.replaceChildren(label, thinking, paragraph);
+    const responseLine = document.createElement("div");
+    responseLine.className = "rules-ai-response-line";
+    responseLine.append(thinking, paragraph);
+    aiAnswer.replaceChildren(label, responseLine);
   };
   const answerQuestion = async (question: string) => {
     activeAiRequest?.abort();
