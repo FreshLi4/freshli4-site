@@ -105,7 +105,7 @@ body.is-rules-page a { text-decoration: none; }
 .rules-ai-response-line { display: flex; align-items: center; gap: 12px; margin-top: 15px; }
 .rules-ai-response-line .rules-ai-response { flex: 1 1 auto; min-width: 0; margin-top: 0; margin-bottom: 0; }
 .rules-ai-thinking { position: relative; flex: 0 0 1.75em; width: 1.75em; height: 1.75em; margin-top: 0; color: var(--rules-brass); }
-.rules-ai-thinking i { position: absolute; top: 50%; left: 50%; width: .3125em; height: .3125em; border-radius: 50%; background: currentColor; transform: rotate(calc(var(--rules-ai-orb-index) * 72deg)) translateY(-.6875em); transform-origin: 0 .6875em; animation: rules-ai-orb 1.15s ease-in-out infinite; animation-delay: calc(var(--rules-ai-orb-index) * -0.12s); }
+.rules-ai-thinking i { position: absolute; top: 50%; left: 50%; width: .3125em; height: .3125em; margin: -.15625em 0 0 -.15625em; border-radius: 50%; background: currentColor; transform: rotate(calc(var(--rules-ai-orb-index) * 72deg)) translateY(-.5em); transform-origin: center; animation: rules-ai-orb 1.15s ease-in-out infinite; animation-delay: calc(var(--rules-ai-orb-index) * -0.12s); }
 @keyframes rules-ai-orb { 0%, 100% { opacity: .25; scale: .75; } 50% { opacity: 1; scale: 1.2; } }
 @media (prefers-reduced-motion: reduce) { .rules-ai-thinking i { animation: none; opacity: .8; } }
 .rules-portals { padding: 70px 0 115px; border-top: 1px solid var(--rules-line); }

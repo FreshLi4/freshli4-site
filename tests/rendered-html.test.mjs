@@ -59,7 +59,8 @@ test("source exposes the investigation rulebook as a second-level page", async (
   assert.match(rulesStyles, /\.rules-ai-response-line \.rules-ai-response \{ flex: 1 1 auto; min-width: 0; margin-top: 0; margin-bottom: 0; \}/);
   assert.match(rulesStyles, /\.rules-ai-response a \{ color: var\(--rules-brass\);/);
   assert.match(rulesStyles, /\.rules-ai-thinking \{ position: relative; flex: 0 0 1\.75em; width: 1\.75em; height: 1\.75em; margin-top: 0;/);
-  assert.match(rulesStyles, /\.rules-ai-thinking i \{ position: absolute; top: 50%; left: 50%; width: \.3125em; height: \.3125em;/);
+  assert.match(rulesStyles, /\.rules-ai-thinking i \{ position: absolute; top: 50%; left: 50%; width: \.3125em; height: \.3125em; margin: -\.15625em 0 0 -\.15625em;/);
+  assert.match(rulesStyles, /transform: rotate\(calc\(var\(--rules-ai-orb-index\) \* 72deg\)\) translateY\(-\.5em\); transform-origin: center;/);
   assert.match(rules, /const renderAiContent = \(paragraph: HTMLElement, content: string\)/);
   assert.match(rules, /matchAll\(linkPattern\)/);
   assert.match(rules, /资料库中没有明确记载.*\[规则书\]\(\/investigation-delve-boardgame\/rules\)/);
