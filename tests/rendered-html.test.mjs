@@ -54,6 +54,18 @@ test("source exposes the investigation rulebook as a second-level page", async (
   assert.match(rules, /调查附录/);
   assert.match(rules, /FAQ/);
   assert.match(rules, /class="rules-route-nav"[\s\S]*class="rules-route-tools"/);
+  assert.match(rules, /class="rules-route-menu-toggle"[^>]*aria-controls="rules-route-menu-panel"/);
+  assert.match(rules, /const setRouteMenuOpen = \(isOpen: boolean\)/);
+  assert.match(rules, /rules-subpage-\$\{active\}/);
+  assert.match(rules, /一页查清所有卡牌。/);
+  assert.match(rules, /这里收录《调查深入》的全部卡牌。/);
+  assert.match(rulesStyles, /\.rules-route-menu-toggle \{ display: none/);
+  assert.match(rulesStyles, /\.rules-route-nav\.is-open \.rules-route-menu-panel \{ display: flex/);
+  assert.match(rulesStyles, /\.rules-subpage-wiki \.rules-subpage-hero \{ grid-template-columns: 1fr;/);
+  assert.match(rulesStyles, /\.rules-subpage-wiki \.rules-subpage-hero h1 \{ max-width: none;[^}]*white-space: nowrap;/);
+  assert.match(rulesStyles, /\.rules-home-visual img \{ position: absolute; inset: 0;/);
+  assert.match(rulesStyles, /\.rules-home-visual \{ min-height: 0; aspect-ratio: 1463 \/ 1003; \}/);
+  assert.match(rulesStyles, /\.home-visual-note \{ display: none; \}/);
   assert.doesNotMatch(rules, /rules-header-meta/);
   assert.match(rules, /一款支持 2–6 人游玩的非直接对战美式桌游/);
   assert.match(rules, /问你想问的，<br \/>工会总有答案/);
@@ -64,6 +76,8 @@ test("source exposes the investigation rulebook as a second-level page", async (
   assert.match(rulesStyles, /\.rules-ai-response-line \{ display: flex; align-items: center; gap: 12px; margin-top: 15px; \}/);
   assert.match(rulesStyles, /\.rules-ai-response-line \.rules-ai-response \{ flex: 1 1 auto; min-width: 0; margin-top: 0; margin-bottom: 0; \}/);
   assert.match(rulesStyles, /\.rules-ai-response a \{ color: var\(--rules-brass\);/);
+  assert.match(rulesStyles, /\.rules-ai-form button \{[^}]*white-space: nowrap;/);
+  assert.match(rulesStyles, /\.rules-ai-form > div \{ grid-template-columns: minmax\(0, 1fr\) auto; \}/);
   assert.match(rulesStyles, /\.rules-ai-thinking \{ position: relative; flex: 0 0 1\.75em; width: 1\.75em; height: 1\.75em; margin-top: 0;/);
   assert.match(rulesStyles, /\.rules-ai-thinking i \{ position: absolute; top: 50%; left: 50%; width: \.3125em; height: \.3125em; margin: -\.15625em 0 0 -\.15625em;/);
   assert.match(rulesStyles, /transform: rotate\(calc\(var\(--rules-ai-orb-index\) \* 72deg\)\) translateY\(-\.5em\); transform-origin: center;/);
@@ -89,4 +103,21 @@ test("source exposes the investigation rulebook as a second-level page", async (
   assert.doesNotMatch(rules, /开始提问/);
   assert.match(rules, /THE ANOMALY/);
   assert.match(rules, /调查异常环境，<br \/><em>谨慎追寻真相。<\/em>/);
+});
+
+test("source exposes the Ball Maze detail page and route", async () => {
+  const source = await readFile(new URL("../src/ball-maze.ts", import.meta.url), "utf8");
+  const styles = await readFile(new URL("../src/ball-maze.css", import.meta.url), "utf8");
+  const main = await readFile(new URL("../src/main.ts", import.meta.url), "utf8");
+  const vercel = await readFile(new URL("../vercel.json", import.meta.url), "utf8");
+  assert.match(source, /bootBallMazePage/);
+  assert.match(source, /旋转世界，<br \/><em>让重力带路。/);
+  assert.match(source, /data-ball-filter/);
+  assert.match(source, /Steam Workshop/);
+  assert.match(source, /class="bm-world-grid"/);
+  assert.match(styles, /\.ball-maze-page/);
+  assert.match(styles, /\.bm-reveal\.is-visible/);
+  assert.match(main, /href="\/ball-maze"/);
+  assert.match(main, /bootBallMazePage/);
+  assert.match(vercel, /\/ball-maze\/:path\*/);
 });

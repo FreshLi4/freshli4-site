@@ -29,13 +29,18 @@ type RulesRoute = "home" | "rules" | "appendix" | "faq" | "wiki";
 
 const routeLinks = (active: RulesRoute) => `
   <nav class="rules-route-nav" aria-label="调查深入资料导航">
-    <a class="${active === "rules" ? "is-current" : ""}" href="/investigation-delve-boardgame/rules">规则书<span>RULEBOOK</span></a>
-    <a class="${active === "appendix" ? "is-current" : ""}" href="/investigation-delve-boardgame/appendix">调查附录<span>APPENDIX</span></a>
-    <a class="${active === "faq" ? "is-current" : ""}" href="/investigation-delve-boardgame/faq">FAQ<span>RULINGS</span></a>
-    <a class="${active === "wiki" ? "is-current" : ""}" href="/investigation-delve-boardgame/wiki">卡牌 Wiki<span>CARD INDEX</span></a>
-    <div class="rules-route-tools">
-      <label class="rules-language"><select id="rules-language-select" aria-label="选择语言"><option value="zh">中文</option><option value="en">English</option><option value="ja">日本語</option></select></label>
-      <a href="/">返回官网 <b aria-hidden="true">↗</b></a>
+    <button class="rules-route-menu-toggle" type="button" aria-expanded="false" aria-controls="rules-route-menu-panel">资料导航 <span aria-hidden="true">⌄</span></button>
+    <div class="rules-route-menu-panel" id="rules-route-menu-panel">
+      <div class="rules-route-links">
+        <a class="${active === "rules" ? "is-current" : ""}" href="/investigation-delve-boardgame/rules">规则书<span>RULEBOOK</span></a>
+        <a class="${active === "appendix" ? "is-current" : ""}" href="/investigation-delve-boardgame/appendix">调查附录<span>APPENDIX</span></a>
+        <a class="${active === "faq" ? "is-current" : ""}" href="/investigation-delve-boardgame/faq">FAQ<span>RULINGS</span></a>
+        <a class="${active === "wiki" ? "is-current" : ""}" href="/investigation-delve-boardgame/wiki">卡牌 Wiki<span>CARD INDEX</span></a>
+      </div>
+      <div class="rules-route-tools">
+        <label class="rules-language"><select id="rules-language-select" aria-label="选择语言"><option value="zh">中文</option><option value="en">English</option><option value="ja">日本語</option></select></label>
+        <a href="/">返回官网 <b aria-hidden="true">↗</b></a>
+      </div>
     </div>
   </nav>`;
 
@@ -58,7 +63,7 @@ const subpageHero = (kicker: string, title: string, dek: string, active: "append
   </section>`;
 
 const subpageShell = (active: "appendix" | "faq" | "wiki", hero: string, content: string, sidebar: string) => `
-  <div class="rules-page rules-subpage">
+  <div class="rules-page rules-subpage rules-subpage-${active}">
     ${rulesHeader(active)}
     <main class="rules-layout" id="rules">${hero}<div class="rules-body"><aside class="rules-sidebar rules-subpage-sidebar">${sidebar}</aside><div class="rules-content">${content}</div></div></main>
     <footer class="rules-footer"><span>© FRESHLI4 GAME STUDIO / INVESTIGATION : DELVE</span><a href="#rules">返回顶部 ↑</a><a href="/">FreshLi4 官网 ↗</a></footer>
@@ -311,7 +316,7 @@ const renderWikiPage = () => {
   const cardCards = allInvestigationCards.map(cardMarkup).join("");
   return subpageShell(
     "wiki",
-    subpageHero("CARD WIKI / 卡牌索引", "所有卡牌，放回同一张桌面。", "这是《调查深入》的可检索卡牌 Wiki。数据直接来自共享卡牌统计表，按类别、版本、费用与效果整理；展开任意卡片即可查看完整文本。", "wiki"),
+    subpageHero("卡牌索引 / CARD WIKI", "一页查清所有卡牌。", "这里收录《调查深入》的全部卡牌。你可以按类别、版本、费用和效果查找；展开卡片即可查看完整文本，说明更新版本也一并标注。", "wiki"),
     `<article class="subpage-article wiki-article">
       <div class="wiki-intro-bar"><div><p class="chapter-label">LIVE CARD INDEX / 当前卡牌索引</p><h2>逐张查牌，不再翻箱倒柜。</h2></div><div class="wiki-counts">${categories.map((category) => `<div><strong>${cardSets[category].length}</strong><span>${cardCategoryMeta[category].label}</span></div>`).join("")}</div></div>
       <div class="wiki-controls"><label class="wiki-search"><span>SEARCH / 搜索卡牌</span><input id="wiki-search-input" type="search" placeholder="输入卡名、职业或效果" autocomplete="off" /><b>⌕</b></label><div class="wiki-filters" role="group" aria-label="卡牌类别筛选"><button type="button" class="is-active" data-card-filter="all">全部<span>${allInvestigationCards.length}</span></button>${categoryButtons}</div><p id="wiki-search-status">显示全部 ${allInvestigationCards.length} 张卡牌</p></div>
@@ -509,6 +514,23 @@ const setupRulesInteractions = () => {
     if (aiInput) aiInput.value = question;
     void answerQuestion(question);
   }));
+
+  const routeMenu = document.querySelector<HTMLElement>(".rules-route-nav");
+  const routeMenuToggle = routeMenu?.querySelector<HTMLButtonElement>(".rules-route-menu-toggle");
+  const setRouteMenuOpen = (isOpen: boolean) => {
+    routeMenu?.classList.toggle("is-open", isOpen);
+    routeMenuToggle?.setAttribute("aria-expanded", String(isOpen));
+  };
+  routeMenuToggle?.addEventListener("click", () => {
+    setRouteMenuOpen(!routeMenu?.classList.contains("is-open"));
+  });
+  routeMenu?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setRouteMenuOpen(false)));
+  document.addEventListener("click", (event) => {
+    if (routeMenu?.classList.contains("is-open") && event.target instanceof Node && !routeMenu.contains(event.target)) setRouteMenuOpen(false);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setRouteMenuOpen(false);
+  });
 
   const languageSelect = document.querySelector<HTMLSelectElement>("#rules-language-select");
   const savedLanguage = localStorage.getItem("freshli4-language");

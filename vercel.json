@@ -6,6 +6,9 @@
     }
   },
   "rewrites": [
+    { "source": "/ball-maze", "destination": "/" },
+    { "source": "/ball-maze/", "destination": "/" },
+    { "source": "/ball-maze/:path*", "destination": "/" },
     { "source": "/investigation-delve-boardgame", "destination": "/" },
     { "source": "/investigation-delve-boardgame/", "destination": "/" },
     { "source": "/investigation-delve-boardgame/:path*", "destination": "/" },

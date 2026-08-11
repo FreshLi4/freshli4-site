@@ -1,7 +1,9 @@
 import "./styles.css";
+import { bootBallMazePage } from "./ball-maze";
 import { bootRulesPage } from "./rules";
 
-bootRulesPage();
+const ballMazePageBooted = bootBallMazePage();
+if (!ballMazePageBooted) bootRulesPage();
 
 type Lang = "zh" | "ja" | "en";
 type Copy = Record<Lang, string>;
@@ -104,7 +106,10 @@ const renderGame = (game: GameConfig, index: number) => {
   for (const [tagIndex, tag] of game.tags.entries()) translations[textKey(game, `tag${tagIndex}`)] = tag;
   const rulebookKey = textKey(game, "rulebook");
   if (game.slug === "investigation-delve") translations[rulebookKey] = copy("了解详情", "READ RULEBOOK", "ルールブック");
-  const rulebookLink = game.slug === "investigation-delve" ? `<a class="text-link project-cta project-rules-link" href="/investigation-delve-boardgame"><span data-game-i18n="${rulebookKey}"></span><span aria-hidden="true">↗</span></a>` : "";
+  const detailsKey = textKey(game, "details");
+  if (game.slug === "ball-maze") translations[detailsKey] = copy("了解详情", "EXPLORE", "詳しく見る");
+  const detailsLink = game.slug === "ball-maze" ? `<a class="text-link project-cta project-details-link" href="/ball-maze"><span data-game-i18n="${detailsKey}"></span><span aria-hidden="true">↗</span></a>` : "";
+  const rulebookLink = game.slug === "ball-maze" ? detailsLink : game.slug === "investigation-delve" ? `<a class="text-link project-cta project-rules-link" href="/investigation-delve-boardgame"><span data-game-i18n="${rulebookKey}"></span><span aria-hidden="true">↗</span></a>` : "";
   const purchaseLink = game.link ? `<a class="text-link project-cta" href="${escapeHtml(game.link)}" target="_blank" rel="noopener noreferrer"><span data-game-i18n="${textKey(game, "cta")}"></span><span aria-hidden="true">↗</span></a>` : `<span class="text-link project-cta is-disabled"><span data-game-i18n="${textKey(game, "cta")}"></span></span>`;
   return `<section class="game-section${index % 2 === 1 ? " game-section-alt" : ""} theme-trigger ${game.fontClass}" id="${escapeHtml(game.slug)}" data-theme="${game.theme}" aria-labelledby="${escapeHtml(game.slug)}-title"><div class="game-layout"><article class="game-copy-panel reveal"><div class="game-meta"><span>0${index + 1}</span><span data-game-i18n="${textKey(game, "status")}"></span></div><div class="game-copy-main"><p class="game-category" data-game-i18n="${textKey(game, "category")}"></p><h2 id="${escapeHtml(game.slug)}-title" class="game-title" data-game-title="${escapeHtml(game.slug)}"></h2><p class="game-description" data-game-i18n="${textKey(game, "description")}"></p></div><div class="game-footer"><div class="tags">${tags}</div><div class="project-links">${rulebookLink}${purchaseLink}</div></div></article><div class="media-stage reveal" data-game="${escapeHtml(game.slug)}"><div class="media-shadow" aria-hidden="true"></div><div class="media-frame tilt-card"><div class="media-topbar"><div class="media-dots"><i></i><i></i><i></i></div><div class="media-label"></div><button class="media-expand" type="button" aria-label="切换媒体">↗</button></div><div class="media-viewport">${media.map((item, mediaIndex) => renderMedia(game, item, mediaIndex)).join("")}</div><div class="media-pagination">${media.map((_, mediaIndex) => `<button class="${mediaIndex === 0 ? "active" : ""}" type="button" data-target="${mediaIndex}">0${mediaIndex + 1}</button>`).join("")}</div></div><div class="floating-note note-a">${game.noteA}</div><div class="floating-note note-b">${game.noteB}</div></div></div></section>`;
 };
@@ -209,6 +214,7 @@ const revealObserver = new IntersectionObserver((entries) => entries.forEach((en
 document.querySelectorAll<HTMLElement>(".reveal").forEach((element, index) => { element.style.transitionDelay = `${Math.min(index % 4, 3) * 65}ms`; revealObserver.observe(element); });
 const themeSections = [...document.querySelectorAll<HTMLElement>(".theme-trigger")];
 const updateTheme = () => {
+  if (ballMazePageBooted) return;
   const viewportCenter = window.innerHeight / 2;
   const active = themeSections.reduce<{ section: HTMLElement; distance: number } | undefined>((closest, section) => {
     const rect = section.getBoundingClientRect();
