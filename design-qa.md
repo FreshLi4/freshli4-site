@@ -52,7 +52,18 @@ The source and implementation were reviewed together, with the app-owned visual 
 - Source: `/tmp/codex-remote-attachments/019fe6ec-68c4-7b31-b069-0c47c7cb6d44/10C4F263-1995-4374-B38B-388FDD97B767/1-照片-1.jpg` (588 × 1280, including browser chrome).
 - Implementation screenshot: `/tmp/freshli4-investigation-wiki-mobile.png` (390 × 844 at a 390 × 844 CSS viewport, 1:1 density).
 - Finding: the mobile Wiki hero kept a two-column desktop layout, squeezing the title into a vertical stack; the Chinese tagline also read like a literal translation of “all cards on the same table.”
-- Fix: added a Wiki-specific mobile one-column hero, changed the tagline to `一页查清所有卡牌。`, and rewrote the supporting description with Chinese-first wording.
-- Post-fix evidence: the title is one horizontal line at 390px and still fits at 320px (`scrollWidth` equals `clientWidth`); the index card moves below the copy without squeezing the title.
+- Fix: added a Wiki-specific mobile one-column hero, initially changed the tagline to `一页查清所有卡牌。`, and rewrote the supporting description with Chinese-first wording.
+- Follow-up evidence: the hero remains one column on mobile, and the title now uses the final requested two-line copy `所有卡牌，` / `一览无遗。`; the index card remains below the copy without squeezing the title.
+
+## Latest rulebook navigation, subpage copy, and Wiki card hierarchy QA
+
+- Reference: the current browser annotations for the rulebook, FAQ, appendix, and Wiki routes.
+- Implementation preview: local Browser at 1440 × 900 and 390 × 844 CSS viewports.
+- Rulebook: the first decorative `.rules-hero` block is absent; the `CASE INDEX` is sticky in the desktop sidebar and the mobile copy is hidden from the page body and exposed inside the top-bar dropdown.
+- Mobile interaction: opening `资料导航` exposes the mobile `CASE INDEX`; scrolling down adds `is-scroll-hidden`, and scrolling up removes it. The dropdown remains usable while open.
+- FAQ: all four large decorative group titles were removed while category labels and question lists remain.
+- Subpage copy: the Wiki, appendix, and FAQ titles now use the requested Chinese-first copy with an explicit line break after the first phrase. Generic mobile subpage heroes are single-column so the new appendix/FAQ titles do not collapse vertically.
+- Wiki investigator cards: the left `调查员` category marker is removed from investigator summaries; the occupation is shown above the investigator name at a larger size. Non-investigator card summaries retain their category marker.
+- Verification evidence: desktop `heroCount = 0`, desktop sidebar `position = sticky`, mobile sidebar TOC `display = none`, mobile route TOC `display = grid` when open, and the first investigator summary has no `.wiki-card-index` while its `.wiki-card-role` is visible.
 
 final result: passed

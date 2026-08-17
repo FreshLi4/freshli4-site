@@ -1,0 +1,120 @@
+msgid ""
+msgstr ""
+"Language: en\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgctxt "term"
+msgid "调查深入"
+msgstr "Investigation: Delve"
+
+msgctxt "term"
+msgid "调查员"
+msgstr "Investigator"
+
+msgctxt "term"
+msgid "指挥者"
+msgstr "Commander"
+
+msgctxt "term"
+msgid "调查"
+msgstr "Investigation"
+
+msgctxt "term"
+msgid "窥探"
+msgstr "Peek"
+
+msgctxt "term"
+msgid "调整"
+msgstr "Adjust"
+
+msgctxt "term"
+msgid "跳过"
+msgstr "Skip"
+
+msgctxt "term"
+msgid "反转"
+msgstr "Reverse"
+
+msgctxt "term"
+msgid "胁迫"
+msgstr "Pressure"
+
+msgctxt "term"
+msgid "盲从"
+msgstr "Obedience"
+
+msgctxt "term"
+msgid "回收"
+msgstr "Recover"
+
+msgctxt "term"
+msgid "情报"
+msgstr "Intel"
+
+msgctxt "term"
+msgid "策略"
+msgstr "Strategy"
+
+msgctxt "term"
+msgid "环境"
+msgstr "Environment"
+
+msgctxt "term"
+msgid "辅助"
+msgstr "Support"
+
+msgctxt "term"
+msgid "禁忌真相"
+msgstr "Forbidden Truth"
+
+msgctxt "term"
+msgid "陷入疯狂"
+msgstr "Fall Into Madness"
+
+msgctxt "term"
+msgid "恢复清醒"
+msgstr "Recover Sanity"
+
+msgctxt "term"
+msgid "操作阶段"
+msgstr "Operation Phase"
+
+msgctxt "term"
+msgid "调查顺位"
+msgstr "Investigation Order"
+
+msgctxt "term"
+msgid "情报区"
+msgstr "Intel Area"
+
+msgctxt "term"
+msgid "情报卡组"
+msgstr "Intel Deck"
+
+msgctxt "term"
+msgid "调查附录"
+msgstr "Investigation Appendix"
+
+msgctxt "term"
+msgid "判例"
+msgstr "Rulings"
+
+msgctxt "text"
+msgid "规则指引书"
+msgstr "Rulebook"
+
+msgctxt "text"
+msgid "调查附录"
+msgstr "Investigation Appendix"
+
+msgctxt "text"
+msgid "判例"
+msgstr "Rulings"
+
+msgctxt "text"
+msgid "输入任意问题，获得规则解答或者指引"
+msgstr "Ask anything to get a rule answer or a pointer."
+
+msgctxt "text"
+msgid "规则书中没有写明的情况，请与同桌讨论并达成共识后继续游戏；同一问题反复出现时，记录进下一版判例。"
+msgstr "If the rulebook does not cover a situation, discuss it with the table and agree on a ruling before continuing; record recurring questions in the next edition of the rulings."

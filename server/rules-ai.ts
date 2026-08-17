@@ -1,5 +1,4 @@
-import { readFile } from "node:fs/promises";
-import { join } from "node:path";
+import { searchWikiDocuments, type WikiSearchHit } from "../src/wiki-search.js";
 
 const OPENCODE_URL = "https://opencode.ai/zen/v1/chat/completions";
 const OPENCODE_MODEL = "deepseek-v4-pro";
@@ -7,17 +6,6 @@ const OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";
 const OPENROUTER_MODEL = "nvidia/nemotron-3-super-120b-a12b:free";
 const OPENCODE_TIMEOUT_MS = 20_000;
 const OPENROUTER_TIMEOUT_MS = 20_000;
-const KNOWLEDGE_FILES = [
-  "src/rules.ts",
-  "src/data/investigation/调查员.csv",
-  "src/data/investigation/策略卡牌.csv",
-  "src/data/investigation/环境卡牌.csv",
-  "src/data/investigation/情报卡牌.csv",
-  "src/data/investigation/辅助卡牌.csv",
-];
-
-let knowledgeBasePromise: Promise<string> | undefined;
-
 const json = (value: Record<string, string>, status: number) => new Response(JSON.stringify(value), {
   status,
   headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" },
@@ -93,14 +81,15 @@ const toSse = (content: string) => [
   "",
 ].join("\n");
 
-const loadKnowledgeBase = async () => {
-  if (!knowledgeBasePromise) {
-    knowledgeBasePromise = Promise.all(KNOWLEDGE_FILES.map(async (file) => {
-      const content = await readFile(join(process.cwd(), file), "utf8");
-      return `\n===== ${file} =====\n${content}`;
-    })).then((files) => files.join("\n"));
-  }
-  return knowledgeBasePromise;
+const buildRetrievedContext = (hits: WikiSearchHit[]) => {
+  if (!hits.length) return "传统检索没有直接命中任何资料。只能在资料库明确记载时回答；否则直接说明资料库中没有明确记载。";
+  let remaining = 6000;
+  return hits.slice(0, 5).map((hit) => {
+    if (remaining <= 0) return "";
+    const content = hit.document.markdown.slice(0, Math.min(1800, remaining));
+    remaining -= content.length;
+    return `\n===== ${hit.document.title} / ${hit.document.category} =====\n来源：${hit.document.route}\n${content}`;
+  }).filter(Boolean).join("\n");
 };
 
 const systemPrompt = (knowledgeBase: string) => `你是《调查 : 深入》的规则调查助手。
@@ -121,7 +110,7 @@ const systemPrompt = (knowledgeBase: string) => `你是《调查 : 深入》的�
 
 最终回答必须严格放在 <answer> 与 </answer> 之间；标签之外的内容会被系统丢弃，标签本身不会展示给用户。
 
-资料库：
+  传统检索返回的资料：
 ${knowledgeBase}`;
 
 type ProviderConfig = {
@@ -195,13 +184,7 @@ export async function handleRulesAiRequest(request: Request): Promise<Response> 
   if (!question) return json({ error: "请输入一个规则问题。" }, 400);
   if (question.length > 1000) return json({ error: "问题不能超过 1000 个字符。" }, 413);
 
-  let knowledgeBase: string;
-  try {
-    knowledgeBase = await loadKnowledgeBase();
-  } catch (error) {
-    console.error("Failed to load investigation knowledge base", error);
-    return json({ error: "规则资料暂时无法读取，请稍后再试。" }, 500);
-  }
+  const knowledgeBase = buildRetrievedContext(searchWikiDocuments(question, 5));
 
   const messages = [
     { role: "system" as const, content: systemPrompt(knowledgeBase) },

@@ -1,0 +1,120 @@
+msgid ""
+msgstr ""
+"Language: ja\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgctxt "term"
+msgid "调查深入"
+msgstr "調査：ディープダイブ"
+
+msgctxt "term"
+msgid "调查员"
+msgstr "調査員"
+
+msgctxt "term"
+msgid "指挥者"
+msgstr "指揮者"
+
+msgctxt "term"
+msgid "调查"
+msgstr "調査"
+
+msgctxt "term"
+msgid "窥探"
+msgstr "覗き見"
+
+msgctxt "term"
+msgid "调整"
+msgstr "調整"
+
+msgctxt "term"
+msgid "跳过"
+msgstr "スキップ"
+
+msgctxt "term"
+msgid "反转"
+msgstr "反転"
+
+msgctxt "term"
+msgid "胁迫"
+msgstr "強要"
+
+msgctxt "term"
+msgid "盲从"
+msgstr "盲従"
+
+msgctxt "term"
+msgid "回收"
+msgstr "回収"
+
+msgctxt "term"
+msgid "情报"
+msgstr "情報"
+
+msgctxt "term"
+msgid "策略"
+msgstr "戦略"
+
+msgctxt "term"
+msgid "环境"
+msgstr "環境"
+
+msgctxt "term"
+msgid "辅助"
+msgstr "補助"
+
+msgctxt "term"
+msgid "禁忌真相"
+msgstr "禁忌の真実"
+
+msgctxt "term"
+msgid "陷入疯狂"
+msgstr "狂気に陥る"
+
+msgctxt "term"
+msgid "恢复清醒"
+msgstr "正気を取り戻す"
+
+msgctxt "term"
+msgid "操作阶段"
+msgstr "操作フェーズ"
+
+msgctxt "term"
+msgid "调查顺位"
+msgstr "調査順"
+
+msgctxt "term"
+msgid "情报区"
+msgstr "情報エリア"
+
+msgctxt "term"
+msgid "情报卡组"
+msgstr "情報デッキ"
+
+msgctxt "term"
+msgid "调查附录"
+msgstr "調査付録"
+
+msgctxt "term"
+msgid "判例"
+msgstr "判例"
+
+msgctxt "text"
+msgid "规则指引书"
+msgstr "ルールブック"
+
+msgctxt "text"
+msgid "调查附录"
+msgstr "調査付録"
+
+msgctxt "text"
+msgid "判例"
+msgstr "判例集"
+
+msgctxt "text"
+msgid "输入任意问题，获得规则解答或者指引"
+msgstr "質問を入力すると、ルールの回答や手がかりを得られます。"
+
+msgctxt "text"
+msgid "规则书中没有写明的情况，请与同桌讨论并达成共识后继续游戏；同一问题反复出现时，记录进下一版判例。"
+msgstr "ルールブックに記載のない状況は、卓上で相談して裁定を決めてからゲームを続けてください。同じ質問が繰り返される場合は、次版の判例集に記録します。"

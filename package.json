@@ -6,15 +6,20 @@
     "node": ">=22.13.0"
   },
   "scripts": {
+    "generate:wiki": "node build/generate-investigation-wiki.mjs",
+    "predev": "npm run generate:wiki",
     "dev": "vite",
+    "prebuild": "npm run generate:wiki",
     "build": "vite build",
+    "postbuild": "pagefind --site dist --output-path dist/pagefind",
     "preview": "vite preview",
-    "test": "npm run build && node --test tests/rendered-html.test.mjs",
+    "test": "npm run build && node --test tests/rendered-html.test.mjs tests/investigation-pages.test.mjs tests/wiki-content.test.mjs",
+    "pretypecheck": "npm run generate:wiki",
     "typecheck": "tsc --noEmit"
   },
-  "dependencies": {},
   "devDependencies": {
     "@types/node": "22.19.19",
+    "pagefind": "^1.5.2",
     "typescript": "5.9.3",
     "vite": "8.0.13"
   },

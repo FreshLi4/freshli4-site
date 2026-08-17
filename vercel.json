@@ -2,7 +2,7 @@
   "functions": {
     "api/rules-ai.ts": {
       "maxDuration": 60,
-      "includeFiles": "{src/rules.ts,src/data/investigation/**/*.csv}"
+      "includeFiles": "{asset/dive-up/wiki/**/*.md,asset/dive-up/wiki/**/*.csv,asset/dive-up/translation/*.po,src/generated/*.ts}"
     }
   },
   "rewrites": [

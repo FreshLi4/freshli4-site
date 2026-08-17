@@ -20,9 +20,12 @@ test("investigation reference pages are source-driven and routed", async () => {
   assert.match(rules, /type RulesRoute = "home"/);
   assert.match(rules, /3-游戏配件-1\.png/);
   assert.match(rules, /13-游戏配件-11\.png/);
-  assert.match(data, /parseCsv/);
-  assert.match(data, /调查员\.csv\?raw/);
-  assert.match(data, /辅助卡牌\.csv\?raw/);
+  assert.match(data, /generated\/investigation-wiki/);
+  assert.doesNotMatch(data, /parseCsv/);
+  assert.doesNotMatch(data, /调查员\.csv\?raw/);
+  assert.match(rules, /wikiDocumentById/);
+  assert.match(rules, /data-wiki-localize/);
+  assert.match(rules, /localizeWikiHtml/);
   assert.match(rules, /allInvestigationCards/);
   assert.match(vercel, /investigation-delve-boardgame\/:path\*/);
   assert.match(rules, /aria-label="选择语言"/);
@@ -43,7 +46,11 @@ test("investigation reference pages are source-driven and routed", async () => {
   assert.match(server, /rules#quick-start/);
   assert.match(server, /卡牌 Wiki/);
   assert.match(server, /investigation-delve-boardgame\/wiki/);
-  assert.match(server, /src\/data\/investigation\/调查员\.csv/);
+  assert.match(server, /searchWikiDocuments/);
+  assert.match(server, /buildRetrievedContext/);
+  assert.doesNotMatch(server, /src\/data\/investigation\/调查员\.csv/);
+  assert.match(vercel, /asset\/dive-up\/wiki\/\*\*\/\*\.md/);
+  assert.match(vercel, /asset\/dive-up\/translation\/\*\.po/);
   assert.match(server, /stream: true/);
   assert.match(vercel, /api\/rules-ai\.ts/);
 });
@@ -56,7 +63,7 @@ test("rulebook teaching text keeps canonical wording and font roles", async () =
   assert.match(rules, /「操作阶段」分为以下3个步骤/);
   assert.match(rules, /其他队伍的所有「调查员」都「陷入疯狂」时/);
   assert.match(rules, /class="rules-original"/);
-  assert.match(rules, /class="rules-dek rules-editorial">翻开情报，真相就离你更近一步/);
+  assert.match(rules, /class="rules-dek rules-editorial">一款支持 2–6 人游玩的非直接对战美式桌游/);
   assert.match(styles, /SourceHanSansSC-Regular\.otf/);
   assert.match(styles, /SourceHanSerifSC-Regular\.otf/);
   assert.match(styles, /--font-rules-display: "Times New Roman"/);

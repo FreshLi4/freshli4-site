@@ -1,0 +1,120 @@
+msgid ""
+msgstr ""
+"Language: zh-CN\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgctxt "term"
+msgid "调查深入"
+msgstr "调查深入"
+
+msgctxt "term"
+msgid "调查员"
+msgstr "调查员"
+
+msgctxt "term"
+msgid "指挥者"
+msgstr "指挥者"
+
+msgctxt "term"
+msgid "调查"
+msgstr "调查"
+
+msgctxt "term"
+msgid "窥探"
+msgstr "窥探"
+
+msgctxt "term"
+msgid "调整"
+msgstr "调整"
+
+msgctxt "term"
+msgid "跳过"
+msgstr "跳过"
+
+msgctxt "term"
+msgid "反转"
+msgstr "反转"
+
+msgctxt "term"
+msgid "胁迫"
+msgstr "胁迫"
+
+msgctxt "term"
+msgid "盲从"
+msgstr "盲从"
+
+msgctxt "term"
+msgid "回收"
+msgstr "回收"
+
+msgctxt "term"
+msgid "情报"
+msgstr "情报"
+
+msgctxt "term"
+msgid "策略"
+msgstr "策略"
+
+msgctxt "term"
+msgid "环境"
+msgstr "环境"
+
+msgctxt "term"
+msgid "辅助"
+msgstr "辅助"
+
+msgctxt "term"
+msgid "禁忌真相"
+msgstr "禁忌真相"
+
+msgctxt "term"
+msgid "陷入疯狂"
+msgstr "陷入疯狂"
+
+msgctxt "term"
+msgid "恢复清醒"
+msgstr "恢复清醒"
+
+msgctxt "term"
+msgid "操作阶段"
+msgstr "操作阶段"
+
+msgctxt "term"
+msgid "调查顺位"
+msgstr "调查顺位"
+
+msgctxt "term"
+msgid "情报区"
+msgstr "情报区"
+
+msgctxt "term"
+msgid "情报卡组"
+msgstr "情报卡组"
+
+msgctxt "term"
+msgid "调查附录"
+msgstr "调查附录"
+
+msgctxt "term"
+msgid "判例"
+msgstr "判例"
+
+msgctxt "text"
+msgid "规则指引书"
+msgstr "规则指引书"
+
+msgctxt "text"
+msgid "调查附录"
+msgstr "调查附录"
+
+msgctxt "text"
+msgid "判例"
+msgstr "判例"
+
+msgctxt "text"
+msgid "输入任意问题，获得规则解答或者指引"
+msgstr "输入任意问题，获得规则解答或者指引"
+
+msgctxt "text"
+msgid "规则书中没有写明的情况，请与同桌讨论并达成共识后继续游戏；同一问题反复出现时，记录进下一版判例。"
+msgstr "规则书中没有写明的情况，请与同桌讨论并达成共识后继续游戏；同一问题反复出现时，记录进下一版判例。"

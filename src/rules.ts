@@ -1,5 +1,7 @@
 import "./rules.css";
-import { allInvestigationCards, cardCategoryMeta, cardSets, type CardCategory, type InvestigationCard } from "./investigation-data";
+import { allInvestigationCards, cardCategoryMeta, cardSets, wikiDocumentById, type CardCategory, type InvestigationCard } from "./investigation-data";
+import { searchWikiDocuments, shouldRouteToAi, type WikiSearchHit } from "./wiki-search";
+import { localizeWikiHtml, localizeWikiText, type WikiLanguage } from "./wiki-i18n";
 
 const investigationVisualFiles = import.meta.glob("/asset/investigation-delve/visual-content/*", { eager: true, query: "?url", import: "default" }) as Record<string, string>;
 const investigationVisual = (fileName: string) => investigationVisualFiles[`/asset/investigation-delve/visual-content/${fileName}`] ?? "";
@@ -25,7 +27,52 @@ const stat = (value: string, label: string, note: string) => `<div class="rule-s
 const escapeHtml = (value: string) => value.replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char] ?? char);
 const lineBreaks = (value: string) => escapeHtml(value).replace(/\n/g, "<br />");
 
+type PagefindResult = {
+  url?: string;
+  excerpt?: string;
+  plain_excerpt?: string;
+  meta?: Record<string, string>;
+};
+
+type PagefindRuntime = {
+  search: (query: string) => Promise<{ results: Array<{ data: () => Promise<PagefindResult> }> }>;
+};
+
+let pagefindRuntimePromise: Promise<PagefindRuntime | null> | undefined;
+const loadPagefind = () => {
+  if (!pagefindRuntimePromise) {
+    const pagefindPath = "/pagefind/pagefind.js";
+    pagefindRuntimePromise = import(/* @vite-ignore */ pagefindPath)
+      .then((module) => module as unknown as PagefindRuntime)
+      .catch(() => null);
+  }
+  return pagefindRuntimePromise;
+};
+
+const pagefindHits = async (query: string, localHits: WikiSearchHit[]) => {
+  const runtime = await loadPagefind();
+  if (!runtime) return localHits;
+  try {
+    const result = await runtime.search(query);
+    const localById = new Map(searchWikiDocuments(query, 128).map((hit) => [hit.document.id, hit]));
+    const hits = await Promise.all(result.results.slice(0, 8).map(async (rawResult) => {
+      const data = await rawResult.data();
+      const id = data.meta?.id;
+      const localHit = id ? localById.get(id) : undefined;
+      if (!localHit) return undefined;
+      const pagefindExcerpt = data.plain_excerpt || data.excerpt?.replace(/<[^>]+>/g, "");
+      return { ...localHit, excerpt: pagefindExcerpt || localHit.excerpt };
+    }));
+    const resolved = hits.filter((hit): hit is WikiSearchHit => Boolean(hit));
+    return resolved.length ? resolved : localHits;
+  } catch {
+    return localHits;
+  }
+};
+
 type RulesRoute = "home" | "rules" | "appendix" | "faq" | "wiki";
+
+const rulesToc = (className = "rules-toc") => `<nav class="${className}" aria-label="规则章节导航"><p>CASE INDEX</p><a href="#quick-start" class="is-current"><span>00</span>快速游玩</a><a href="#briefing"><span>01</span>任务简报</a><a href="#components"><span>02</span>游戏配件</a><a href="#setup"><span>03</span>游戏准备</a><a href="#round"><span>04</span>一轮游戏</a><a href="#operation"><span>05</span>操作阶段</a><a href="#san"><span>06</span>SAN 与疯狂</a><a href="#victory"><span>07</span>胜负判定</a><a href="#appendix"><span>08</span>调查附录</a><a href="#faq"><span>09</span>FAQ</a></nav>`;
 
 const routeLinks = (active: RulesRoute) => `
   <nav class="rules-route-nav" aria-label="调查深入资料导航">
@@ -37,6 +84,7 @@ const routeLinks = (active: RulesRoute) => `
         <a class="${active === "faq" ? "is-current" : ""}" href="/investigation-delve-boardgame/faq">FAQ<span>RULINGS</span></a>
         <a class="${active === "wiki" ? "is-current" : ""}" href="/investigation-delve-boardgame/wiki">卡牌 Wiki<span>CARD INDEX</span></a>
       </div>
+      ${active === "rules" ? rulesToc("rules-toc rules-toc-mobile") : ""}
       <div class="rules-route-tools">
         <label class="rules-language"><select id="rules-language-select" aria-label="选择语言"><option value="zh">中文</option><option value="en">English</option><option value="ja">日本語</option></select></label>
         <a href="/">返回官网 <b aria-hidden="true">↗</b></a>
@@ -69,7 +117,13 @@ const subpageShell = (active: "appendix" | "faq" | "wiki", hero: string, content
     <footer class="rules-footer"><span>© FRESHLI4 GAME STUDIO / INVESTIGATION : DELVE</span><a href="#rules">返回顶部 ↑</a><a href="/">FreshLi4 官网 ↗</a></footer>
   </div>`;
 
-const sourcePanel = (title: string, content: string, label = "SOURCE / 资料来源") => `<div class="source-panel"><p class="chapter-label">${label}</p><h3>${title}</h3><p class="rules-editorial">${content}</p><div><span>CANONICAL SOURCE</span><b>SHARED / DELVE</b></div></div>`;
+const sourceDocument = (documentId: string) => {
+  const document = wikiDocumentById[documentId];
+  if (!document) return "";
+  return `<details class="wiki-source-document"><summary>打开规范 Markdown 文档 <span>+</span></summary><div class="wiki-source-document-body" data-wiki-localize="${escapeHtml(document.id)}">${localizeWikiHtml(document.html, "zh")}</div><p class="wiki-source-path">${escapeHtml(document.sourcePath)}</p></details>`;
+};
+
+const sourcePanel = (title: string, content: string, label = "SOURCE / 资料来源", documentId = "") => `<div class="source-panel"><p class="chapter-label">${label}</p><h3>${title}</h3><p class="rules-editorial">${content}</p><div><span>CANONICAL SOURCE</span><b>SHARED / DELVE</b></div>${documentId ? sourceDocument(documentId) : ""}</div>`;
 
 const renderInvestigationHome = () => `
   <div class="rules-page rules-home">
@@ -104,6 +158,7 @@ const renderInvestigationHome = () => `
             <div><input id="rules-ai-input" type="search" placeholder="例如：调查到禁忌真相后会发生什么？" autocomplete="off" /><button type="submit">查询 <span aria-hidden="true">↗</span></button></div>
           </form>
           <div class="rules-ai-prompts" aria-label="常用问题"><button type="button" data-rules-ai-prompt="游戏支持几个人？">支持几个人？</button><button type="button" data-rules-ai-prompt="SAN 归零怎么办？">SAN 归零怎么办？</button><button type="button" data-rules-ai-prompt="怎样获胜？">怎样获胜？</button></div>
+          <div class="rules-search-results" id="rules-search-results" aria-live="polite"></div>
           <div class="rules-ai-answer" id="rules-ai-answer" aria-live="polite"><span>ASSISTANT / READY</span><p class="rules-editorial">选择一个问题，或者输入你想确认的规则。</p></div>
         </div>
       </section>
@@ -122,26 +177,10 @@ const renderInvestigationHome = () => `
   </div>`;
 
 const renderRulesPage = () => `
-  <div class="rules-page">
+  <div class="rules-page rules-rulebook">
     ${rulesHeader("rules")}
 
     <main class="rules-layout" id="rules">
-      <section class="rules-hero" aria-labelledby="rules-title">
-        <div class="rules-hero-copy">
-          <p class="rules-kicker">FIELD MANUAL / 规则指引书</p>
-          <h1 id="rules-title">调查<br /><em>深入</em></h1>
-          <p class="rules-hero-english">INVESTIGATION : DELVE</p>
-          <p class="rules-dek rules-editorial">翻开情报，真相就离你更近一步。读懂线索，也别让自己的队伍先一步陷入疯狂。</p>
-          <div class="rules-hero-actions"><a class="rules-primary-link" href="#quick-start">从这里开始 <span aria-hidden="true">↓</span></a><span class="rules-edition">规则指引书 v1.1<br />附录与 FAQ 持续更新</span></div>
-        </div>
-        <div class="rules-hero-dossier" aria-label="调查档案封面">
-          <div class="dossier-grid"></div><div class="dossier-redline"></div>
-          <div class="dossier-stamp">I.G.A.<br /><small>FILE 02—06</small></div>
-          <div class="dossier-card"><span>ANOMALY</span><strong>?</strong><small>DO NOT LOOK<br />TOO DEEP</small></div>
-          <p class="dossier-caption">ARCHIVE / 0001<br /><b>异常联合调查档案</b></p>
-        </div>
-      </section>
-
       <section class="rules-overview" aria-label="规则书概览">
         <div class="rules-overview-intro"><p class="chapter-label">READING NOTES / 阅读提示</p><h2>规则是地图，<br />不是答案。</h2><p class="rules-original">规则指引书里没说怎么办？</p><p class="rules-original">对于首次体验《调查 : 深入》的玩家，我们建议先以标注了Vol.1脚标的卡牌组成卡组，进行游戏。</p><p class="rules-original">当你熟悉了游戏流程，将标注了Vol.2脚标的卡牌加入各个卡组，以获得完整体验。</p></div>
         <div class="rules-stats">
@@ -154,7 +193,7 @@ const renderRulesPage = () => `
       <div class="rules-body">
         <aside class="rules-sidebar" aria-label="规则章节导航">
           <div class="rules-search"><label for="rules-search-input">SEARCH / 搜索</label><div><input id="rules-search-input" type="search" placeholder="搜索规则关键词" autocomplete="off" /><span aria-hidden="true">⌕</span></div><small id="rules-search-status">显示全部章节</small></div>
-          <nav class="rules-toc"><p>CASE INDEX</p><a href="#quick-start" class="is-current"><span>00</span>快速游玩</a><a href="#briefing"><span>01</span>任务简报</a><a href="#components"><span>02</span>游戏配件</a><a href="#setup"><span>03</span>游戏准备</a><a href="#round"><span>04</span>一轮游戏</a><a href="#operation"><span>05</span>操作阶段</a><a href="#san"><span>06</span>SAN 与疯狂</a><a href="#victory"><span>07</span>胜负判定</a><a href="#appendix"><span>08</span>调查附录</a><a href="#faq"><span>09</span>FAQ</a></nav>
+          ${rulesToc()}
           <div class="rules-sidebar-note"><span>CASE NOTE</span><p>规则书中没有写明的情况，请和同桌讨论后达成共识，继续调查。</p><a href="/investigation-delve-boardgame/wiki">浏览全部卡牌 →</a></div>
         </aside>
 
@@ -242,7 +281,7 @@ const renderRulesPage = () => `
           ${section("faq", "09", "FAQ / 规则判定", "遇到边界情况，先看这里。", `
             <div class="faq-list"><details open><summary>没有特殊描述时，窥探从哪里开始？<span>+</span></summary><p>默认从情报卡组顶部向下执行；「正向窥探」也指从顶部向下。</p></details><details><summary>仿生人可以成为消耗 SAN 的目标吗？<span>+</span></summary><p>不可以。仿生人没有 SAN，因此不能成为消耗队友 SAN 的指定对象，也不能恢复 SAN。</p></details><details><summary>调查到禁忌真相后又把它洗回去，降雨概率如何处理？<span>+</span></summary><p>如果通过任何手段洗回【禁忌真相】，计数不上升；若计数已经达到阈值，则下一个调查到【禁忌真相】的调查员消耗 SAN。</p></details><details><summary>卡牌印刷与规则文本冲突时怎么办？<span>+</span></summary><p>优先查阅最新版规则指引书、调查附录与 FAQ。实体卡牌的印刷问题以已公开的勘误为准。</p></details><details><summary>规则书中没有写明的情况怎么办？<span>+</span></summary><p>与同桌讨论并达成共识后继续游戏；如果该问题反复出现，建议反馈给制作团队，纳入后续规则更新。</p></details></div>
             <a class="chapter-forward-link" href="/investigation-delve-boardgame/faq">打开完整 FAQ →</a>
-            <div class="source-panel"><p class="chapter-label">SOURCE / 来源</p><h3>一份会继续生长的规则书。</h3><p>本页面根据《规则指引书 - v1.1》整理，并同步展示《调查附录》《FAQ》的核心内容。卡牌构成详见当前《调查深入 · 卡牌统计表》。</p><div><span>LAST EDITION</span><b>v1.1 + APPENDIX</b></div></div>
+            ${sourcePanel("一份会继续生长的规则书。", "本页面根据《规则指引书 - v1.1》整理，并同步展示《调查附录》《FAQ》的核心内容。卡牌构成详见当前《调查深入 · 卡牌统计表》。", "SOURCE / 来源", "rulebook")}
           `)}
         </div>
       </div>
@@ -254,7 +293,7 @@ const appendixItem = (name: string, description: string, note = "") => `<div cla
 
 const renderAppendixPage = () => subpageShell(
   "appendix",
-  subpageHero("APPENDIX / 调查附录", "把卡面上的词，读成同一种语言。", "特殊文本标识、行动词典，以及版本边界都集中在这里。它是规则书的判例层，也是查牌时最快的入口。", "appendix"),
+  subpageHero("APPENDIX / 调查附录", "定义的开始，<br />就是智慧的开始。", "特殊文本标识、行动词典，以及版本边界都集中在这里。它是规则书的判例层，也是查牌时最快的入口。", "appendix"),
   `<article class="subpage-article">
     <p class="chapter-label">TEXT MARKERS / 特殊文本标识</p>
     <h2>先识别文字的身份。</h2>
@@ -277,37 +316,44 @@ const renderAppendixPage = () => subpageShell(
       ${appendixItem("回收", "将卡牌移至其上一个所在位置；如无特殊说明，应当对上一个所在位置的卡牌进行洗切。由技能直接触发的「辅助」卡牌，其上一个所在位置为「辅助卡组」而非手牌。", "VOL.3")}
     </div>
     <div class="appendix-version-panel"><p class="chapter-label">VERSION NOTE / 版本说明</p><h3>回收从 Vol.3 开始进入规则语言。</h3><p>Vol.1、Vol.2 中未标识“回收”但受其影响的对象包括：调查员【赌徒：丹尼 · 达比】、【催眠师：哈米伦 · 修普诺斯】、【猛男：“阿诺”】、【仿生人：OP3-C】，以及辅助卡牌【胁迫 · 催眠师】、【盲从 · 催眠师】、【任务负债 · 赏金猎人】、【禁忌仪式】。</p></div>
-    ${sourcePanel("附录与卡牌 Wiki 互相校验。", "附录负责定义词汇，Wiki 负责呈现每张卡牌的效果与说明更新版本；当卡牌印刷与当前规则冲突时，先看这里，再看 FAQ 的具体判例。")}
+    ${sourcePanel("附录与卡牌 Wiki 互相校验。", "附录负责定义词汇，Wiki 负责呈现每张卡牌的效果与说明更新版本；当卡牌印刷与当前规则冲突时，先看这里，再看 FAQ 的具体判例。", "SOURCE / 资料来源", "appendix")}
   </article>`,
   `<div class="subpage-sidebar-card"><span>APPENDIX / 08</span><strong>行动词典</strong><p>8 个特殊行动，构成所有卡面文本的共同语法。</p></div><nav class="subpage-sidebar-links" aria-label="附录导航"><a href="#markers">特殊文本标识</a><a href="#actions">特殊行动列表</a><a href="/investigation-delve-boardgame/faq">FAQ 判例 →</a><a href="/investigation-delve-boardgame/wiki">卡牌 Wiki →</a></nav>`
 );
 
 const faqDetail = (question: string, answer: string, open = false) => `<details${open ? " open" : ""}><summary>${question}<span>+</span></summary><div class="faq-answer rules-original">${answer}</div></details>`;
-const faqGroup = (label: string, title: string, details: string) => `<section class="faq-group"><p class="chapter-label">${label}</p><h3>${title}</h3><div class="faq-list">${details}</div></section>`;
+const faqGroup = (label: string, details: string) => `<section class="faq-group"><p class="chapter-label">${label}</p><div class="faq-list">${details}</div></section>`;
 
 const renderFaqPage = () => subpageShell(
   "faq",
-  subpageHero("FAQ / 规则判定", "当桌面停在一个问号上。", "这里记录已经明确的机制判例、环境卡牌边界与印刷勘误。FAQ 是对规则正文的补充，不会取代最新版规则指引书。", "faq"),
+  subpageHero("FAQ / 规则判定", "明辨过往，<br />未雨绸缪。", "这里记录已经明确的机制判例、环境卡牌边界与印刷勘误。FAQ 是对规则正文的补充，不会取代最新版规则指引书。", "faq"),
   `<article class="subpage-article">
-    ${faqGroup("GAME MECHANICS / 游戏机制", "先解决最常见的行动问题。", faqDetail("没有特殊描述时，窥探从哪里开始？", "默认从情报卡组顶部向下执行；“正向窥探”也指从顶部向下。", true) + faqDetail("【照亮前路 · I】什么时候可以生效？", "它可以在以下情况下生效：即时行动打出并指定你时；个体机制打出并对你布置时；个体机制满足条件触发时（如【盲从 · I】）；个体机制持续对你生效时（如【俄罗斯转轮 · I】）。不必在俄罗斯转轮首次生效的瞬间触发照亮前路。", false) + faqDetail("【俄罗斯转轮 · I】可以和【砥砺前行 · I】互动吗？", "不可以。俄罗斯转轮必须结算完成，才能使用下一张卡牌。"))}
-    ${faqGroup("INVESTIGATORS / 调查员", "仿生人与 SAN。", faqDetail("仿生人可以成为消耗 SAN 的目标吗？", "不可以。两位仿生人的过热/过载效果是“消耗队友 (1) 点 SAN”，而仿生人没有 SAN，因此不能成为指定对象，也不能恢复 SAN。", true) + faqDetail("初火、癫火和禁忌真相对仿生人分别如何处理？", "【初火】、【癫火】结算时会略过仿生人；禁忌真相伤害加深类效果对仿生人依然有效；【献祭】不能以仿生人为指定对象。"))}
-    ${faqGroup("ENVIRONMENT / 环境卡牌", "平均分配与计数。", faqDetail("【降雨概率】遇到被洗回的【禁忌真相】怎么办？", "如果玩家通过任何手段洗回【禁忌真相】（例如使用【直视神】），降雨概率的计数不上升。如果计数已经达到 (N)，则下一个调查到禁忌真相的调查员消耗 SAN。", true) + faqDetail("【初火】如何集中同队的 SAN？", "初火只在同一队伍内结算，将所有 SAN 集中到“尽可能少”的调查员；不能超过原有 SAN 上限，也可能让清醒者疯狂或让疯狂者恢复清醒。若队友是【中之人】，则全部集中到【中之人】。例如 SAN 为 3、2、1 时，结果为 3、3、0。出现多种最小变动方案时，由对应指挥者决定。") + faqDetail("【癫火】如何平均分配 SAN？", "癫火只在同一队伍内结算。由高 SAN 调查员向低 SAN 调查员匀 SAN，例如 3、0、1 会变成 2、1、1。若存在多个满足最小变动量的结果，由指挥者决定；若当前已经平均（例如 2、3），不能为了交换位置而调整成 3、2。") + faqDetail("【许愿池】为什么不能调用【献祭】或【俄罗斯转轮】？", "因为这些卡牌的效果需要涉及 (2) 位调查员；许愿池无法满足这个调用条件。"))}
-    ${faqGroup("PRINT ERRATA / 印刷相关", "把实体印刷与当前文本对齐。", faqDetail("当前仍未修复的印刷问题是什么？", "【劳改犯】的调查员指示卡名称被错误印刷为【老侦探】的名称【菲利普 · 钱德勒】（双面皆是），实际应该为【丹泽 · 罗比】。", true) + faqDetail("标准版 2.0 已修复了哪些问题？", "【目击者】的疯狂技能【疯狂蔓延 · 目击者】中错误印刷了“紧急真相”，应为“禁忌真相”；【老侦探】的清醒技能【博学多闻】中，加入目标错误写成“手牌”，实际应为加入自己的“情报区”。") + faqDetail("卡牌印刷与规则文本冲突时怎么办？", "优先查阅最新版规则指引书、调查附录与 FAQ；实体卡牌的印刷问题以已公开的勘误为准。"))}
+    ${faqGroup("GAME MECHANICS / 游戏机制", faqDetail("没有特殊描述时，窥探从哪里开始？", "默认从情报卡组顶部向下执行；“正向窥探”也指从顶部向下。", true) + faqDetail("【照亮前路 · I】什么时候可以生效？", "它可以在以下情况下生效：即时行动打出并指定你时；个体机制打出并对你布置时；个体机制满足条件触发时（如【盲从 · I】）；个体机制持续对你生效时（如【俄罗斯转轮 · I】）。不必在俄罗斯转轮首次生效的瞬间触发照亮前路。", false) + faqDetail("【俄罗斯转轮 · I】可以和【砥砺前行 · I】互动吗？", "不可以。俄罗斯转轮必须结算完成，才能使用下一张卡牌。"))}
+    ${faqGroup("INVESTIGATORS / 调查员", faqDetail("仿生人可以成为消耗 SAN 的目标吗？", "不可以。两位仿生人的过热/过载效果是“消耗队友 (1) 点 SAN”，而仿生人没有 SAN，因此不能成为指定对象，也不能恢复 SAN。", true) + faqDetail("初火、癫火和禁忌真相对仿生人分别如何处理？", "【初火】、【癫火】结算时会略过仿生人；禁忌真相伤害加深类效果对仿生人依然有效；【献祭】不能以仿生人为指定对象。"))}
+    ${faqGroup("ENVIRONMENT / 环境卡牌", faqDetail("【降雨概率】遇到被洗回的【禁忌真相】怎么办？", "如果玩家通过任何手段洗回【禁忌真相】（例如使用【直视神】），降雨概率的计数不上升。如果计数已经达到 (N)，则下一个调查到禁忌真相的调查员消耗 SAN。", true) + faqDetail("【初火】如何集中同队的 SAN？", "初火只在同一队伍内结算，将所有 SAN 集中到“尽可能少”的调查员；不能超过原有 SAN 上限，也可能让清醒者疯狂或让疯狂者恢复清醒。若队友是【中之人】，则全部集中到【中之人】。例如 SAN 为 3、2、1 时，结果为 3、3、0。出现多种最小变动方案时，由对应指挥者决定。") + faqDetail("【癫火】如何平均分配 SAN？", "癫火只在同一队伍内结算。由高 SAN 调查员向低 SAN 调查员匀 SAN，例如 3、0、1 会变成 2、1、1。若存在多个满足最小变动量的结果，由指挥者决定；若当前已经平均（例如 2、3），不能为了交换位置而调整成 3、2。") + faqDetail("【许愿池】为什么不能调用【献祭】或【俄罗斯转轮】？", "因为这些卡牌的效果需要涉及 (2) 位调查员；许愿池无法满足这个调用条件。"))}
+    ${faqGroup("PRINT ERRATA / 印刷相关", faqDetail("当前仍未修复的印刷问题是什么？", "【劳改犯】的调查员指示卡名称被错误印刷为【老侦探】的名称【菲利普 · 钱德勒】（双面皆是），实际应该为【丹泽 · 罗比】。", true) + faqDetail("标准版 2.0 已修复了哪些问题？", "【目击者】的疯狂技能【疯狂蔓延 · 目击者】中错误印刷了“紧急真相”，应为“禁忌真相”；【老侦探】的清醒技能【博学多闻】中，加入目标错误写成“手牌”，实际应为加入自己的“情报区”。") + faqDetail("卡牌印刷与规则文本冲突时怎么办？", "优先查阅最新版规则指引书、调查附录与 FAQ；实体卡牌的印刷问题以已公开的勘误为准。"))}
     <div class="rules-callout is-ink"><span class="callout-label">OPEN CASE</span><p>规则书中没有写明的情况，请和同桌讨论并达成共识后继续游戏。如果同一问题反复出现，反馈给制作团队，纳入后续版本。</p></div>
-    ${sourcePanel("FAQ 会和规则一起更新。", "当前页面整理自共享资料库中的《FAQ》；每张卡牌的具体版本与效果请继续前往卡牌 Wiki 对照。")}
+    ${sourcePanel("FAQ 会和规则一起更新。", "当前页面整理自共享资料库中的《FAQ》；每张卡牌的具体版本与效果请继续前往卡牌 Wiki 对照。", "SOURCE / 资料来源", "rulings")}
   </article>`,
   `<div class="subpage-sidebar-card"><span>FAQ / 09</span><strong>已归档判例</strong><p>机制、调查员、环境与印刷勘误的快速查找页。</p></div><nav class="subpage-sidebar-links" aria-label="FAQ 导航"><a href="#game-mechanics">游戏机制</a><a href="#investigators">调查员</a><a href="#environment">环境卡牌</a><a href="#print-errata">印刷相关</a><a href="/investigation-delve-boardgame/appendix">调查附录 →</a></nav>`
 );
 
 const cardMeta = (label: string, value: string) => value ? `<div><span>${label}</span><b>${lineBreaks(value)}</b></div>` : "";
 const cardMarkup = (card: InvestigationCard) => {
+  const wikiDocument = wikiDocumentById[card.id];
   const meta = card.category === "investigator"
     ? [cardMeta("职业", card.type), cardMeta("调查风格", card.style), cardMeta("SAN", card.san), cardMeta("包含版本", card.edition), cardMeta("说明更新", card.update)].join("")
     : [cardMeta("类型", card.type), cardMeta("费用", card.cost), cardMeta("数量", card.quantity), cardMeta("包含版本", card.edition), cardMeta("说明更新", card.update)].join("");
   const abilities = card.category === "investigator"
     ? `<div class="card-text-block rules-original"><span>清醒技能</span><p>${lineBreaks(card.awake) || "暂无独立文本"}</p></div><div class="card-text-block rules-original is-madness"><span>疯狂技能</span><p>${lineBreaks(card.madness) || "暂无独立文本"}</p></div>`
     : `<div class="card-text-block rules-original"><span>卡牌效果</span><p>${lineBreaks(card.effect) || "暂无独立文本"}</p></div>`;
-  return `<article class="wiki-card wiki-card-${card.category}" data-card-searchable data-card-category="${card.category}" data-card-name="${escapeHtml(`${card.name} ${card.type} ${card.style} ${card.effect} ${card.awake} ${card.madness}`.toLocaleLowerCase())}"><details><summary><span class="wiki-card-index">${card.categoryLabel}</span><strong>${escapeHtml(card.name)}</strong><small>${escapeHtml(card.edition || "SHARED")}</small><i>+</i></summary><div class="wiki-card-body"><div class="wiki-card-meta">${meta}</div>${abilities}</div></details></article>`;
+  const summary = card.category === "investigator"
+    ? `<span class="wiki-card-heading"><span class="wiki-card-role">${escapeHtml(card.type || "调查员")}</span><strong>${escapeHtml(card.name)}</strong></span><small>${escapeHtml(card.edition || "SHARED")}</small><i>+</i>`
+    : `<span class="wiki-card-index">${card.categoryLabel}</span><strong>${escapeHtml(card.name)}</strong><small>${escapeHtml(card.edition || "SHARED")}</small><i>+</i>`;
+  const documentContent = wikiDocument
+    ? `<div class="wiki-card-document" data-wiki-localize="${escapeHtml(wikiDocument.id)}">${localizeWikiHtml(wikiDocument.html, "zh")}</div>`
+    : abilities;
+  return `<article class="wiki-card wiki-card-${card.category}" data-card-searchable data-card-category="${card.category}" data-card-name="${escapeHtml(`${card.name} ${card.type} ${card.style} ${card.effect} ${card.awake} ${card.madness}`.toLocaleLowerCase())}"><details><summary>${summary}</summary><div class="wiki-card-body"><div class="wiki-card-meta">${meta}</div>${documentContent}</div></details></article>`;
 };
 
 const renderWikiPage = () => {
@@ -316,7 +362,7 @@ const renderWikiPage = () => {
   const cardCards = allInvestigationCards.map(cardMarkup).join("");
   return subpageShell(
     "wiki",
-    subpageHero("卡牌索引 / CARD WIKI", "一页查清所有卡牌。", "这里收录《调查深入》的全部卡牌。你可以按类别、版本、费用和效果查找；展开卡片即可查看完整文本，说明更新版本也一并标注。", "wiki"),
+    subpageHero("卡牌索引 / CARD WIKI", "所有卡牌，<br />一览无遗。", "这里收录《调查深入》的全部卡牌。你可以按类别、版本、费用和效果查找；展开卡片即可查看完整文本，说明更新版本也一并标注。", "wiki"),
     `<article class="subpage-article wiki-article">
       <div class="wiki-intro-bar"><div><p class="chapter-label">LIVE CARD INDEX / 当前卡牌索引</p><h2>逐张查牌，不再翻箱倒柜。</h2></div><div class="wiki-counts">${categories.map((category) => `<div><strong>${cardSets[category].length}</strong><span>${cardCategoryMeta[category].label}</span></div>`).join("")}</div></div>
       <div class="wiki-controls"><label class="wiki-search"><span>SEARCH / 搜索卡牌</span><input id="wiki-search-input" type="search" placeholder="输入卡名、职业或效果" autocomplete="off" /><b>⌕</b></label><div class="wiki-filters" role="group" aria-label="卡牌类别筛选"><button type="button" class="is-active" data-card-filter="all">全部<span>${allInvestigationCards.length}</span></button>${categoryButtons}</div><p id="wiki-search-status">显示全部 ${allInvestigationCards.length} 张卡牌</p></div>
@@ -329,6 +375,7 @@ const renderWikiPage = () => {
 
 const setupRulesInteractions = () => {
   const page = document.querySelector<HTMLElement>(".rules-page");
+  let currentWikiLanguage: WikiLanguage = "zh";
   const input = document.querySelector<HTMLInputElement>("#rules-search-input");
   const status = document.querySelector<HTMLElement>("#rules-search-status");
   const chapters = [...document.querySelectorAll<HTMLElement>("[data-rule-searchable]")];
@@ -449,6 +496,17 @@ const setupRulesInteractions = () => {
     responseLine.append(thinking, paragraph);
     aiAnswer.replaceChildren(label, responseLine);
   };
+  const searchResults = document.querySelector<HTMLElement>("#rules-search-results");
+  let lastSearchHits: WikiSearchHit[] = [];
+  const renderSearchResults = (hits: WikiSearchHit[]) => {
+    if (!searchResults) return;
+    lastSearchHits = hits;
+    if (!hits.length) {
+      searchResults.innerHTML = `<div class="rules-search-results-empty"><span>SEARCH / 传统检索</span><p>没有直接命中，正在转交规则问答。</p></div>`;
+      return;
+    }
+    searchResults.innerHTML = `<div class="rules-search-results-heading"><span>SEARCH / 传统检索</span><b>${hits.length} 条资料命中</b></div><ol class="rules-search-results-list">${hits.map((hit) => `<li><a href="${escapeHtml(hit.document.route)}"><span>${escapeHtml(localizeWikiText(hit.document.category, currentWikiLanguage))}</span><strong>${escapeHtml(localizeWikiText(hit.document.title, currentWikiLanguage))}</strong><p>${escapeHtml(localizeWikiText(hit.excerpt, currentWikiLanguage))}</p></a></li>`).join("")}</ol>`;
+  };
   const answerQuestion = async (question: string) => {
     activeAiRequest?.abort();
     activeAiRequest = new AbortController();
@@ -504,23 +562,63 @@ const setupRulesInteractions = () => {
       aiPrompts.forEach((button) => { button.disabled = false; });
     }
   };
+  const submitQuestion = async (question: string) => {
+    const localHits = searchWikiDocuments(question, 8);
+    const hits = await pagefindHits(question, localHits);
+    renderSearchResults(hits);
+    if (!shouldRouteToAi(question, localHits)) {
+      renderAiAnswer("SEARCH", "已找到相关资料，请查看上方命中结果。", false);
+      return;
+    }
+    await answerQuestion(question);
+  };
   aiForm?.addEventListener("submit", (event) => {
     event.preventDefault();
     const question = aiInput?.value.trim() ?? "";
-    if (question) void answerQuestion(question);
+    if (question) void submitQuestion(question);
   });
   aiPrompts.forEach((button) => button.addEventListener("click", () => {
     const question = button.dataset.rulesAiPrompt ?? "";
     if (aiInput) aiInput.value = question;
-    void answerQuestion(question);
+    void submitQuestion(question);
   }));
 
   const routeMenu = document.querySelector<HTMLElement>(".rules-route-nav");
   const routeMenuToggle = routeMenu?.querySelector<HTMLButtonElement>(".rules-route-menu-toggle");
+  const rulebookHeader = document.querySelector<HTMLElement>(".rules-rulebook .rules-header");
+  const mobileViewport = window.matchMedia("(max-width: 640px)");
+  let previousScrollY = window.scrollY;
+  let scrollFrame: number | null = null;
   const setRouteMenuOpen = (isOpen: boolean) => {
     routeMenu?.classList.toggle("is-open", isOpen);
     routeMenuToggle?.setAttribute("aria-expanded", String(isOpen));
+    if (isOpen) rulebookHeader?.classList.remove("is-scroll-hidden");
   };
+  const updateRulebookHeader = () => {
+    if (!rulebookHeader || !mobileViewport.matches) {
+      rulebookHeader?.classList.remove("is-scroll-hidden");
+      previousScrollY = window.scrollY;
+      return;
+    }
+    const currentScrollY = window.scrollY;
+    if (routeMenu?.classList.contains("is-open") || currentScrollY <= 8) {
+      rulebookHeader.classList.remove("is-scroll-hidden");
+    } else if (currentScrollY > previousScrollY + 2) {
+      rulebookHeader.classList.add("is-scroll-hidden");
+    } else if (currentScrollY < previousScrollY - 2) {
+      rulebookHeader.classList.remove("is-scroll-hidden");
+    }
+    previousScrollY = currentScrollY;
+  };
+  const handleRulebookScroll = () => {
+    if (scrollFrame !== null) return;
+    scrollFrame = window.requestAnimationFrame(() => {
+      scrollFrame = null;
+      updateRulebookHeader();
+    });
+  };
+  window.addEventListener("scroll", handleRulebookScroll, { passive: true });
+  window.addEventListener("resize", updateRulebookHeader);
   routeMenuToggle?.addEventListener("click", () => {
     setRouteMenuOpen(!routeMenu?.classList.contains("is-open"));
   });
@@ -535,9 +633,27 @@ const setupRulesInteractions = () => {
   const languageSelect = document.querySelector<HTMLSelectElement>("#rules-language-select");
   const savedLanguage = localStorage.getItem("freshli4-language");
   if (languageSelect && (savedLanguage === "zh" || savedLanguage === "en" || savedLanguage === "ja")) languageSelect.value = savedLanguage;
+  const applyRulesLanguage = (language: WikiLanguage) => {
+    currentWikiLanguage = language;
+    document.documentElement.lang = language === "zh" ? "zh-CN" : language;
+    document.body.dataset.lang = language;
+    document.querySelectorAll<HTMLElement>("[data-wiki-localize]").forEach((element) => {
+      const documentId = element.dataset.wikiLocalize ?? "";
+      const source = wikiDocumentById[documentId];
+      if (source) element.innerHTML = localizeWikiHtml(source.html, language);
+    });
+    if (lastSearchHits.length) renderSearchResults(lastSearchHits);
+    if (languageSelect) {
+      languageSelect.value = language;
+      languageSelect.title = language === "zh" ? "中文" : language === "en" ? "English" : "日本語";
+    }
+  };
+  const initialLanguage = savedLanguage === "en" || savedLanguage === "ja" ? savedLanguage : "zh";
+  applyRulesLanguage(initialLanguage);
   languageSelect?.addEventListener("change", () => {
-    localStorage.setItem("freshli4-language", languageSelect.value);
-    document.documentElement.lang = languageSelect.value === "zh" ? "zh-CN" : languageSelect.value;
+    const language = languageSelect.value === "en" || languageSelect.value === "ja" ? languageSelect.value : "zh";
+    localStorage.setItem("freshli4-language", language);
+    applyRulesLanguage(language);
   });
 };
 
