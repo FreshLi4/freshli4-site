@@ -480,14 +480,14 @@ const readCardDocuments = async (cards) => {
 };
 
 const parsePo = (source) => {
-  const entries = { term: {}, text: {} };
+  const entries = { term: {}, text: {}, fragment: {} };
   let context = "";
   let msgid = null;
   let msgstr = null;
   let active = null;
   const finish = () => {
     if (msgid && msgstr !== null && msgid !== "") {
-      const bucket = context === "text" ? entries.text : entries.term;
+      const bucket = context === "text" ? entries.text : context === "fragment" ? entries.fragment : entries.term;
       bucket[msgid] = msgstr || msgid;
     }
     context = "";
@@ -524,9 +524,9 @@ const parsePo = (source) => {
 
 const readTranslations = async () => {
   const result = {
-    zh: { term: {}, text: {} },
-    en: { term: {}, text: {} },
-    ja: { term: {}, text: {} },
+    zh: { term: {}, text: {}, fragment: {} },
+    en: { term: {}, text: {}, fragment: {} },
+    ja: { term: {}, text: {}, fragment: {} },
   };
   for (const language of ["zh", "en", "ja"]) {
     const filePath = join(translationRoot, `${language}.po`);
@@ -586,7 +586,7 @@ const writeGeneratedTypeScript = async ({ cards, documents, translations }) => {
   await mkdir(generatedRoot, { recursive: true });
   const typedSource = source.replace(
     'export const termTranslations = wikiData.termTranslations as Record<"zh" | "en" | "ja", Record<string, string>>;',
-    `export type WikiTranslations = { term: Record<string, string>; text: Record<string, string> };
+    `export type WikiTranslations = { term: Record<string, string>; text: Record<string, string>; fragment: Record<string, string> };
 export const termTranslations = wikiData.termTranslations as Record<"zh" | "en" | "ja", WikiTranslations>;`,
   );
   await writeFile(join(generatedRoot, "investigation-wiki.ts"), typedSource, "utf8");

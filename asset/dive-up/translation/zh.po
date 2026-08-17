@@ -1,111 +1,216 @@
+# Translation draft generated from the Chinese source; hand-edit this file for final copy.
 msgid ""
 msgstr ""
-"Language: zh-CN\n"
+"Language: zh\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-
+"X-Translation-Status: machine-draft\n"
 msgctxt "term"
-msgid "调查深入"
-msgstr "调查深入"
-
-msgctxt "term"
-msgid "调查员"
-msgstr "调查员"
-
-msgctxt "term"
-msgid "指挥者"
-msgstr "指挥者"
-
-msgctxt "term"
-msgid "调查"
-msgstr "调查"
-
-msgctxt "term"
-msgid "窥探"
-msgstr "窥探"
-
-msgctxt "term"
-msgid "调整"
-msgstr "调整"
-
-msgctxt "term"
-msgid "跳过"
-msgstr "跳过"
-
-msgctxt "term"
-msgid "反转"
-msgstr "反转"
-
-msgctxt "term"
-msgid "胁迫"
-msgstr "胁迫"
-
-msgctxt "term"
-msgid "盲从"
-msgstr "盲从"
-
-msgctxt "term"
-msgid "回收"
-msgstr "回收"
-
-msgctxt "term"
-msgid "情报"
-msgstr "情报"
-
-msgctxt "term"
-msgid "策略"
-msgstr "策略"
-
-msgctxt "term"
-msgid "环境"
-msgstr "环境"
-
-msgctxt "term"
-msgid "辅助"
-msgstr "辅助"
-
-msgctxt "term"
-msgid "禁忌真相"
-msgstr "禁忌真相"
-
-msgctxt "term"
-msgid "陷入疯狂"
-msgstr "陷入疯狂"
-
-msgctxt "term"
-msgid "恢复清醒"
-msgstr "恢复清醒"
+msgid "包含版本"
+msgstr "包含版本"
 
 msgctxt "term"
 msgid "操作阶段"
 msgstr "操作阶段"
 
 msgctxt "term"
+msgid "策略"
+msgstr "策略"
+
+msgctxt "term"
+msgid "策略卡组"
+msgstr "策略卡组"
+
+msgctxt "term"
+msgid "策略弃牌区"
+msgstr "策略弃牌区"
+
+msgctxt "term"
+msgid "创作背景"
+msgstr "创作背景"
+
+msgctxt "term"
+msgid "创作故事"
+msgstr "创作故事"
+
+msgctxt "term"
+msgid "调查"
+msgstr "调查"
+
+msgctxt "term"
+msgid "调查范围"
+msgstr "调查范围"
+
+msgctxt "term"
+msgid "调查风格"
+msgstr "调查风格"
+
+msgctxt "term"
+msgid "调查附录"
+msgstr "调查附录"
+
+msgctxt "term"
+msgid "调查深入"
+msgstr "调查深入"
+
+msgctxt "term"
 msgid "调查顺位"
 msgstr "调查顺位"
 
 msgctxt "term"
-msgid "情报区"
-msgstr "情报区"
+msgid "调查员"
+msgstr "调查员"
+
+msgctxt "term"
+msgid "调查员指示卡"
+msgstr "调查员指示卡"
+
+msgctxt "term"
+msgid "调整"
+msgstr "调整"
+
+msgctxt "term"
+msgid "反转"
+msgstr "反转"
+
+msgctxt "term"
+msgid "费用"
+msgstr "费用"
+
+msgctxt "term"
+msgid "疯狂技能"
+msgstr "疯狂技能"
+
+msgctxt "term"
+msgid "辅助"
+msgstr "辅助"
+
+msgctxt "term"
+msgid "辅助卡组"
+msgstr "辅助卡组"
+
+msgctxt "term"
+msgid "个体机制"
+msgstr "个体机制"
+
+msgctxt "term"
+msgid "规则书"
+msgstr "规则书"
+
+msgctxt "term"
+msgid "规则指引书"
+msgstr "规则指引书"
+
+msgctxt "term"
+msgid "环境"
+msgstr "环境"
+
+msgctxt "term"
+msgid "环境卡组"
+msgstr "环境卡组"
+
+msgctxt "term"
+msgid "恢复清醒"
+msgstr "恢复清醒"
+
+msgctxt "term"
+msgid "回收"
+msgstr "回收"
+
+msgctxt "term"
+msgid "角色故事"
+msgstr "角色故事"
+
+msgctxt "term"
+msgid "禁忌真相"
+msgstr "禁忌真相"
+
+msgctxt "term"
+msgid "卡牌"
+msgstr "卡牌"
+
+msgctxt "term"
+msgid "卡牌效果"
+msgstr "卡牌效果"
+
+msgctxt "term"
+msgid "窥探"
+msgstr "窥探"
+
+msgctxt "term"
+msgid "盲从"
+msgstr "盲从"
+
+msgctxt "term"
+msgid "判例"
+msgstr "判例"
+
+msgctxt "term"
+msgid "弃牌区"
+msgstr "弃牌区"
+
+msgctxt "term"
+msgid "清醒技能"
+msgstr "清醒技能"
+
+msgctxt "term"
+msgid "情报"
+msgstr "情报"
 
 msgctxt "term"
 msgid "情报卡组"
 msgstr "情报卡组"
 
 msgctxt "term"
+msgid "情报弃牌区"
+msgstr "情报弃牌区"
+
+msgctxt "term"
+msgid "情报区"
+msgstr "情报区"
+
+msgctxt "term"
+msgid "手牌"
+msgstr "手牌"
+
+msgctxt "term"
+msgid "数量"
+msgstr "数量"
+
+msgctxt "term"
+msgid "说明更新版本"
+msgstr "说明更新版本"
+
+msgctxt "term"
+msgid "跳过"
+msgstr "跳过"
+
+msgctxt "term"
+msgid "陷入疯狂"
+msgstr "陷入疯狂"
+
+msgctxt "term"
+msgid "胁迫"
+msgstr "胁迫"
+
+msgctxt "term"
+msgid "职业"
+msgstr "职业"
+
+msgctxt "term"
+msgid "指挥者"
+msgstr "指挥者"
+
+msgctxt "text"
 msgid "调查附录"
 msgstr "调查附录"
 
-msgctxt "term"
-msgid "判例"
-msgstr "判例"
+msgctxt "text"
+msgid "规则书中没有写明的情况，请与同桌讨论并达成共识后继续游戏；同一问题反复出现时，记录进下一版判例。"
+msgstr "规则书中没有写明的情况，请与同桌讨论并达成共识后继续游戏；同一问题反复出现时，记录进下一版判例。"
 
 msgctxt "text"
 msgid "规则指引书"
 msgstr "规则指引书"
-
-msgctxt "text"
-msgid "调查附录"
-msgstr "调查附录"
 
 msgctxt "text"
 msgid "判例"
@@ -115,6 +220,3582 @@ msgctxt "text"
 msgid "输入任意问题，获得规则解答或者指引"
 msgstr "输入任意问题，获得规则解答或者指引"
 
-msgctxt "text"
+msgctxt "fragment"
+msgid "“阿诺”"
+msgstr "“阿诺”"
+
+msgctxt "fragment"
+msgid "“斑点鸽”"
+msgstr "“斑点鸽”"
+
+msgctxt "fragment"
+msgid "“乌鸦”"
+msgstr "“乌鸦”"
+
+msgctxt "fragment"
+msgid "“约翰”"
+msgstr "“约翰”"
+
+msgctxt "fragment"
+msgid "(1)~(2)：随机选择你前、后「调查顺位」的「调查员」，弃置任意(1)张对其布置的「个体机制」。"
+msgstr "(1)~(2)：随机选择你前、后「调查顺位」的「调查员」，弃置任意(1)张对其布置的「个体机制」。"
+
+msgctxt "fragment"
+msgid "(3)~(4)：随机选择你前、后「调查顺位」的「指挥者」，弃置其(1)张手牌。"
+msgstr "(3)~(4)：随机选择你前、后「调查顺位」的「指挥者」，弃置其(1)张手牌。"
+
+msgctxt "fragment"
+msgid "(5)~(6)：累积(1)点「运势」。"
+msgstr "(5)~(6)：累积(1)点「运势」。"
+
+msgctxt "fragment"
+msgid "(N) = 场上清醒的「调查员」"
+msgstr "(N) = 场上清醒的「调查员」"
+
+msgctxt "fragment"
+msgid "(N) = 累计的「深潜」点数"
+msgstr "(N) = 累计的「深潜」点数"
+
+msgctxt "fragment"
+msgid "(N) = 你已损失的「SAN」+ (1)"
+msgstr "(N) = 你已损失的「SAN」+ (1)"
+
+msgctxt "fragment"
+msgid "(N) = 你支付的费用"
+msgstr "(N) = 你支付的费用"
+
+msgctxt "fragment"
+msgid "(N) = 清醒「调查员」数量"
+msgstr "(N) = 清醒「调查员」数量"
+
+msgctxt "fragment"
+msgid "(N) = 掷出的骰子点数"
+msgstr "(N) = 掷出的骰子点数"
+
+msgctxt "fragment"
+msgid "(N)由你指定"
+msgstr "(N)由你指定"
+
+msgctxt "fragment"
+msgid "《调查 : 深入》支持2~6名玩家游玩。若是组队对战，同一队伍的各位「指挥者」会共享「情报区」的「情报」卡牌（使用或消耗），共享获得的信息（手牌或「情报」相关），但只能指挥自己的「调查员」、使用自己的手牌。"
+msgstr "《调查 : 深入》支持2~6名玩家游玩。若是组队对战，同一队伍的各位「指挥者」会共享「情报区」的「情报」卡牌（使用或消耗），共享获得的信息（手牌或「情报」相关），但只能指挥自己的「调查员」、使用自己的手牌。"
+
+msgctxt "fragment"
+msgid "《调查深入》打开的游戏盒与配件"
+msgstr "《调查深入》打开的游戏盒与配件"
+
+msgctxt "fragment"
+msgid "《调查深入》的卡面把名称、概念和行动分开标记。看到不同的括号与字形时，不要只按日常语义理解；它们对应的是不同的规则入口。"
+msgstr "《调查深入》的卡面把名称、概念和行动分开标记。看到不同的括号与字形时，不要只按日常语义理解；它们对应的是不同的规则入口。"
+
+msgctxt "fragment"
+msgid "《调查深入》盒内的卡牌与骰子配件"
+msgstr "《调查深入》盒内的卡牌与骰子配件"
+
+msgctxt "fragment"
+msgid "《调查深入》情报卡牌与禁忌真相示例"
+msgstr "《调查深入》情报卡牌与禁忌真相示例"
+
+msgctxt "fragment"
+msgid "《调查深入》是一款支持 2—6 人游玩的非直接对战美式桌游。FreshLi4 新鲜李四游戏工作室。"
+msgstr "《调查深入》是一款支持 2—6 人游玩的非直接对战美式桌游。FreshLi4 新鲜李四游戏工作室。"
+
+msgctxt "fragment"
+msgid "《调查深入》游戏配件与卡牌"
+msgstr "《调查深入》游戏配件与卡牌"
+
+msgctxt "fragment"
+msgid "《调查深入》Wiki 资料组织"
+msgstr "《调查深入》Wiki 资料组织"
+
+msgctxt "fragment"
+msgid "「0」| 深度学习：弃置(1)张手牌，从「策略弃牌区」选取(1)张卡牌，加入手牌，不能选择由你在当前「操作阶段」中打出的卡牌，你累计(1)点「过热」。"
+msgstr "「0」| 深度学习：弃置(1)张手牌，从「策略弃牌区」选取(1)张卡牌，加入手牌，不能选择由你在当前「操作阶段」中打出的卡牌，你累计(1)点「过热」。"
+
+msgctxt "fragment"
+msgid "「0」| 神经网络：你在使用「策略」卡牌时，可以使其消耗 = (0)，你累计(1)点「过热」。"
+msgstr "「0」| 神经网络：你在使用「策略」卡牌时，可以使其消耗 = (0)，你累计(1)点「过热」。"
+
+msgctxt "fragment"
+msgid "「0」| 数据预演：你使用「策略」卡牌时，可以不消耗「情报」卡牌，而是累积(N)点「过热」，(N) = 使用的「策略」卡牌的费用。"
+msgstr "「0」| 数据预演：你使用「策略」卡牌时，可以不消耗「情报」卡牌，而是累积(N)点「过热」，(N) = 使用的「策略」卡牌的费用。"
+
+msgctxt "fragment"
+msgid "「1」| 过载：本「轮」游戏结束时，指定友方「调查员」消耗(N)点「SAN」, (N) =「过热」点数 ÷ (2)，向上取整；若你选择不指定，或没有可指定的「调查员」，你「陷入疯狂」。"
+msgstr "「1」| 过载：本「轮」游戏结束时，指定友方「调查员」消耗(N)点「SAN」, (N) =「过热」点数 ÷ (2)，向上取整；若你选择不指定，或没有可指定的「调查员」，你「陷入疯狂」。"
+
+msgctxt "fragment"
+msgid "「1」| 回报：仅(1)次；你调查到【禁忌真相】时，不消耗「SAN」，将【禁忌真相】洗回剩余的「情报卡组」。若你的「SAN」变化，可以重新使用(1)次此技能。"
+msgstr "「1」| 回报：仅(1)次；你调查到【禁忌真相】时，不消耗「SAN」，将【禁忌真相】洗回剩余的「情报卡组」。若你的「SAN」变化，可以重新使用(1)次此技能。"
+
+msgctxt "fragment"
+msgid "「1」| 举一反三：你的每个「操作阶段」使用的第(1)张「策略」卡牌消耗 = (0)；若你执行了调查，额外使你当前「操作阶段」的下一张「策略」卡牌消耗 = (0)。"
+msgstr "「1」| 举一反三：你的每个「操作阶段」使用的第(1)张「策略」卡牌消耗 = (0)；若你执行了调查，额外使你当前「操作阶段」的下一张「策略」卡牌消耗 = (0)。"
+
+msgctxt "fragment"
+msgid "「1」| 傀儡：每「轮」游戏开始时；指定(1)位「调查员」对其布置「辅助」卡牌：【傀儡 · 催眠师】；本轮结束后回收该「辅助」卡牌。"
+msgstr "「1」| 傀儡：每「轮」游戏开始时；指定(1)位「调查员」对其布置「辅助」卡牌：【傀儡 · 催眠师】；本轮结束后回收该「辅助」卡牌。"
+
+msgctxt "fragment"
+msgid "「1」| 蛮横：弃置(N)张手牌；选择对除你以外「调查员」布置的(1)张「个体机制」卡牌，纳入你的手牌；(N) = 该卡牌的消耗；你在当前「操作阶段」使用此卡牌时无消耗。无法选择无法被弃置的卡牌。"
+msgstr "「1」| 蛮横：弃置(N)张手牌；选择对除你以外「调查员」布置的(1)张「个体机制」卡牌，纳入你的手牌；(N) = 该卡牌的消耗；你在当前「操作阶段」使用此卡牌时无消耗。无法选择无法被弃置的卡牌。"
+
+msgctxt "fragment"
+msgid "「1」| 任务导向：每「轮」开始时可用；指定(1)位「调查员」；若其调查到【禁忌真相】，你指定(1)位「调查员」，消耗(1)点「SAN」，你减少(1)点「任务负债」；不可连续指定同一队伍的「调查员」。"
+msgstr "「1」| 任务导向：每「轮」开始时可用；指定(1)位「调查员」；若其调查到【禁忌真相】，你指定(1)位「调查员」，消耗(1)点「SAN」，你减少(1)点「任务负债」；不可连续指定同一队伍的「调查员」。"
+
+msgctxt "fragment"
+msgid "「1」| 虔诚：若你调查的「情报」卡牌数量 > (4)，你调查到【禁忌真相】时消耗的「SAN」- (1)。"
+msgstr "「1」| 虔诚：若你调查的「情报」卡牌数量 > (4)，你调查到【禁忌真相】时消耗的「SAN」- (1)。"
+
+msgctxt "fragment"
+msgid "「1」| 食髓知味：弃置总计(12)张「情报」或「策略」卡牌，恢复(1)点「SAN」。"
+msgstr "「1」| 食髓知味：弃置总计(12)张「情报」或「策略」卡牌，恢复(1)点「SAN」。"
+
+msgctxt "fragment"
+msgid "「1」| 数据验证：弃置任意数量的「情报」卡牌，减少(N)点「过热」，(N) = 被弃置卡牌的费用总和 。"
+msgstr "「1」| 数据验证：弃置任意数量的「情报」卡牌，减少(N)点「过热」，(N) = 被弃置卡牌的费用总和 。"
+
+msgctxt "fragment"
+msgid "「1」| 梭哈：每个「赌」技能掷出奇数之前，可以无限使用。"
+msgstr "「1」| 梭哈：每个「赌」技能掷出奇数之前，可以无限使用。"
+
+msgctxt "fragment"
+msgid "「1」| 行乞：除你以外的「调查员」开始「操作阶段」时；你可以请求其「指挥者」给你(1)张手牌，若其同意，则可以额外抽(2)张手牌。"
+msgstr "「1」| 行乞：除你以外的「调查员」开始「操作阶段」时；你可以请求其「指挥者」给你(1)张手牌，若其同意，则可以额外抽(2)张手牌。"
+
+msgctxt "fragment"
+msgid "「1」| 演绎法：每当你消耗了(N)张「情报」卡牌，窥探(N)张「情报」卡牌。"
+msgstr "「1」| 演绎法：每当你消耗了(N)张「情报」卡牌，窥探(N)张「情报」卡牌。"
+
+msgctxt "fragment"
+msgid "「1」| 鱼死网破：你进行调查时，若受到胁迫效果，每调查(1)张「情报」卡牌，弃置任意「指挥者」(1)张手牌。"
+msgstr "「1」| 鱼死网破：你进行调查时，若受到胁迫效果，每调查(1)张「情报」卡牌，弃置任意「指挥者」(1)张手牌。"
+
+msgctxt "fragment"
+msgid "「1」| 致命窥探：你调查到【禁忌真相】也无需公示；其他「指挥者」可以质疑你已经调查到【禁忌真相】；若质疑成功：该「指挥者」抽取你(2)张手牌；若质疑失败：你从该「指挥者」抽取手牌和「情报」卡牌各(1)张；若无人质疑你，在「操作阶段」结束时，将【禁忌真相】洗回「情报卡组」。"
+msgstr "「1」| 致命窥探：你调查到【禁忌真相】也无需公示；其他「指挥者」可以质疑你已经调查到【禁忌真相】；若质疑成功：该「指挥者」抽取你(2)张手牌；若质疑失败：你从该「指挥者」抽取手牌和「情报」卡牌各(1)张；若无人质疑你，在「操作阶段」结束时，将【禁忌真相】洗回「情报卡组」。"
+
+msgctxt "fragment"
+msgid "「2」| 博学多闻：若你在当前「操作阶段」使用过「情报」卡牌，在你结束「操作阶段」后，从「情报弃牌区」选取(1)张「情报」卡牌，加入你的手牌。"
+msgstr "「2」| 博学多闻：若你在当前「操作阶段」使用过「情报」卡牌，在你结束「操作阶段」后，从「情报弃牌区」选取(1)张「情报」卡牌，加入你的手牌。"
+
+msgctxt "fragment"
+msgid "「2」| 抽丝剥茧：你的「操作阶段」开始时，窥探(N)张「情报」卡牌，(N) = (你当前拥有的「情报」卡牌和手牌数量绝对差值) ÷ 2，向上取整。"
+msgstr "「2」| 抽丝剥茧：你的「操作阶段」开始时，窥探(N)张「情报」卡牌，(N) = (你当前拥有的「情报」卡牌和手牌数量绝对差值) ÷ 2，向上取整。"
+
+msgctxt "fragment"
+msgid "「2」| 赌！！：掷(1)个骰子，如为奇数，窥探(3)张「情报」卡牌并分别对其调整；如为偶数，你在当前「操作阶段」受到胁迫 + (3)。"
+msgstr "「2」| 赌！！：掷(1)个骰子，如为奇数，窥探(3)张「情报」卡牌并分别对其调整；如为偶数，你在当前「操作阶段」受到胁迫 + (3)。"
+
+msgctxt "fragment"
+msgid "「2」| 极度苦痛：消耗(1)点「SAN」；从「策略卡组」抽(7)张「策略」卡牌，从「情报弃牌区」选取(7)张情报卡牌，加入手牌。"
+msgstr "「2」| 极度苦痛：消耗(1)点「SAN」；从「策略卡组」抽(7)张「策略」卡牌，从「情报弃牌区」选取(7)张情报卡牌，加入手牌。"
+
+msgctxt "fragment"
+msgid "「2」| 勒索：弃置(2)张手牌；从任意(1)位「指挥者」的手牌抽(1)张牌，纳入你的手牌；你在当前「操作阶段」使用此卡牌时无消耗。"
+msgstr "「2」| 勒索：弃置(2)张手牌；从任意(1)位「指挥者」的手牌抽(1)张牌，纳入你的手牌；你在当前「操作阶段」使用此卡牌时无消耗。"
+
+msgctxt "fragment"
+msgid "「2」| 祈祷：若你在当前「操作阶段」进行调查后消耗了「情报」卡牌，你可以额外执行(1)次调查；每次调查的「情报」卡牌数量需要大于上一次。"
+msgstr "「2」| 祈祷：若你在当前「操作阶段」进行调查后消耗了「情报」卡牌，你可以额外执行(1)次调查；每次调查的「情报」卡牌数量需要大于上一次。"
+
+msgctxt "fragment"
+msgid "「2」| 全身而退：立即结束你的「操作阶段」，你不进行本「轮」后续操作，累计(1)点「任务负债」；若你累计(3)点「任务负债」，你在「操作阶段」结束后「陷入疯狂」。"
+msgstr "「2」| 全身而退：立即结束你的「操作阶段」，你不进行本「轮」后续操作，累计(1)点「任务负债」；若你累计(3)点「任务负债」，你在「操作阶段」结束后「陷入疯狂」。"
+
+msgctxt "fragment"
+msgid "「2」| 神秘适应：你调查到【禁忌真相】时，最多只会消耗(1)点「SAN」。"
+msgstr "「2」| 神秘适应：你调查到【禁忌真相】时，最多只会消耗(1)点「SAN」。"
+
+msgctxt "fragment"
+msgid "「2」| 失控：你使用「策略」卡牌时，从「策略卡组」顶部翻出(1)张卡牌，也对该「调查员」使用。"
+msgstr "「2」| 失控：你使用「策略」卡牌时，从「策略卡组」顶部翻出(1)张卡牌，也对该「调查员」使用。"
+
+msgctxt "fragment"
+msgid "「2」| 拾荒：其他「调查员」弃置手牌时，你可以将其中的一半 (向下取整，不小于1) 加入手牌。"
+msgstr "「2」| 拾荒：其他「调查员」弃置手牌时，你可以将其中的一半 (向下取整，不小于1) 加入手牌。"
+
+msgctxt "fragment"
+msgid "「2」| 势大力沉：当有【胁迫】被布置时，你可以弃置(N) + (1)张手牌，将该【胁迫】布置给任意(1)位「调查员」；(N) = 使用该【胁迫】时支付的费用。"
+msgstr "「2」| 势大力沉：当有【胁迫】被布置时，你可以弃置(N) + (1)张手牌，将该【胁迫】布置给任意(1)位「调查员」；(N) = 使用该【胁迫】时支付的费用。"
+
+msgctxt "fragment"
+msgid "「2」| 袖手旁观：仅(1)次；你调查到【禁忌真相】时，可弃置所有手牌和「情报区」的「情报」卡牌，然后将【禁忌真相】洗回剩余的「情报卡组」。若你的「SAN」发生变化，可以重新使用(1)次此技能。"
+msgstr "「2」| 袖手旁观：仅(1)次；你调查到【禁忌真相】时，可弃置所有手牌和「情报区」的「情报」卡牌，然后将【禁忌真相】洗回剩余的「情报卡组」。若你的「SAN」发生变化，可以重新使用(1)次此技能。"
+
+msgctxt "fragment"
+msgid "「2」| 选召：每「轮」游戏开始时，指定其他队伍的(1)位「调查员」；若其接受【选召】，你们对彼此使用「策略」卡牌时没有消耗；你可以消耗(1)点「SAN」，使其强制接受【选召】，即使这会使你「陷入疯狂」。"
+msgstr "「2」| 选召：每「轮」游戏开始时，指定其他队伍的(1)位「调查员」；若其接受【选召】，你们对彼此使用「策略」卡牌时没有消耗；你可以消耗(1)点「SAN」，使其强制接受【选召】，即使这会使你「陷入疯狂」。"
+
+msgctxt "fragment"
+msgid "「2」| 掩饰：弃置(N)张手牌；交换你和(1)位「调查员」的全部「个体机制」；(N) = 你和其「调查顺位」的差值。"
+msgstr "「2」| 掩饰：弃置(N)张手牌；交换你和(1)位「调查员」的全部「个体机制」；(N) = 你和其「调查顺位」的差值。"
+
+msgctxt "fragment"
+msgid "「2」| 诱导：每个「操作阶段」一次；弃置(3)张手牌；指定(1)位「调查员」；对其布置「辅助」卡牌：【盲从 · 催眠师】。若你与其「指挥者」手牌数量相同，则视作你已经弃置了(2)张手牌。"
+msgstr "「2」| 诱导：每个「操作阶段」一次；弃置(3)张手牌；指定(1)位「调查员」；对其布置「辅助」卡牌：【盲从 · 催眠师】。若你与其「指挥者」手牌数量相同，则视作你已经弃置了(2)张手牌。"
+
+msgctxt "fragment"
+msgid "「2」| 专注：你不会因为【禁忌真相】以外的原因被动消耗「SAN」，也不能主动消耗「SAN」。"
+msgstr "「2」| 专注：你不会因为【禁忌真相】以外的原因被动消耗「SAN」，也不能主动消耗「SAN」。"
+
+msgctxt "fragment"
+msgid "「3」| 刁难：每个「操作阶段」一次，当你使用「策略」卡牌，你可以弃置任意(1)位「指挥者」的(1)张手牌。"
+msgstr "「3」| 刁难：每个「操作阶段」一次，当你使用「策略」卡牌，你可以弃置任意(1)位「指挥者」的(1)张手牌。"
+
+msgctxt "fragment"
+msgid "「3」| 恫吓：每个「操作阶段」一次；弃置(N)张手牌；指定(1)位「调查员」；对其布置「辅助」卡牌：【胁迫 · 催眠师】。若你与其「指挥者」手牌数量相同，则视作你已经弃置了(2)张手牌。"
+msgstr "「3」| 恫吓：每个「操作阶段」一次；弃置(N)张手牌；指定(1)位「调查员」；对其布置「辅助」卡牌：【胁迫 · 催眠师】。若你与其「指挥者」手牌数量相同，则视作你已经弃置了(2)张手牌。"
+
+msgctxt "fragment"
+msgid "「3」| 赌！：掷(1)个骰子，如为奇数，窥探(3)张「情报」卡牌；如为偶数，弃置(2)张「情报区」的「情报」。"
+msgstr "「3」| 赌！：掷(1)个骰子，如为奇数，窥探(3)张「情报」卡牌；如为偶数，弃置(2)张「情报区」的「情报」。"
+
+msgctxt "fragment"
+msgid "「3」| 负罪：你的友方「调查员」需要消耗「SAN」时，你可以代替其消耗「SAN」。"
+msgstr "「3」| 负罪：你的友方「调查员」需要消耗「SAN」时，你可以代替其消耗「SAN」。"
+
+msgctxt "fragment"
+msgid "「3」| 过热降频：当你在当前「操作阶段」首次累计到(3)点「过热」或没有执行过操作时可用；调查(3)张「情报」卡牌，减少(1)点「过热」，立即结束当前的「操作阶段」。"
+msgstr "「3」| 过热降频：当你在当前「操作阶段」首次累计到(3)点「过热」或没有执行过操作时可用；调查(3)张「情报」卡牌，减少(1)点「过热」，立即结束当前的「操作阶段」。"
+
+msgctxt "fragment"
+msgid "「3」| 见微知著：使用【窥探】时额外窥探的(1)张「情报」。"
+msgstr "「3」| 见微知著：使用【窥探】时额外窥探的(1)张「情报」。"
+
+msgctxt "fragment"
+msgid "「3」| 九条命：当你要消耗「SAN」，你可以消耗(3)点运势，使你消耗的「SAN」- (1)。该技能只能使用最多(9)次。"
+msgstr "「3」| 九条命：当你要消耗「SAN」，你可以消耗(3)点运势，使你消耗的「SAN」- (1)。该技能只能使用最多(9)次。"
+
+msgctxt "fragment"
+msgid "「3」| 巨人肩膀：你进行调查时，从「策略卡组」抽(1)张「策略」卡牌。"
+msgstr "「3」| 巨人肩膀：你进行调查时，从「策略卡组」抽(1)张「策略」卡牌。"
+
+msgctxt "fragment"
+msgid "「3」| 力大砖飞：你可以使用多张「情报」卡牌支付【胁迫】的费用。"
+msgstr "「3」| 力大砖飞：你可以使用多张「情报」卡牌支付【胁迫】的费用。"
+
+msgctxt "fragment"
+msgid "「3」| 明哲保身：你调查到【禁忌真相】时，可以选择(1)位有足够「SAN」的友方「调查员」，由其代为消耗「SAN」。"
+msgstr "「3」| 明哲保身：你调查到【禁忌真相】时，可以选择(1)位有足够「SAN」的友方「调查员」，由其代为消耗「SAN」。"
+
+msgctxt "fragment"
+msgid "「3」| 深度苦痛：消耗(1)点「SAN」；从「策略卡组」抽(5)张「策略」卡牌，从「情报弃牌区」选取(5)张情报卡牌，加入手牌。"
+msgstr "「3」| 深度苦痛：消耗(1)点「SAN」；从「策略卡组」抽(5)张「策略」卡牌，从「情报弃牌区」选取(5)张情报卡牌，加入手牌。"
+
+msgctxt "fragment"
+msgid "「3」| 四海为家：弃置(2)张手牌；你在当前的「操作阶段」无需且不能调查。你最多可以使用(N)次此技能，(N) = 本局游戏参与的「调查员」数量。"
+msgstr "「3」| 四海为家：弃置(2)张手牌；你在当前的「操作阶段」无需且不能调查。你最多可以使用(N)次此技能，(N) = 本局游戏参与的「调查员」数量。"
+
+msgctxt "fragment"
+msgid "「3」| 随心所欲：每个「操作阶段」使用(N)次，掷(1)个骰子，(N) = 你已经损失的「SAN」+ (1)。根据骰出的点数，使用以下技能："
+msgstr "「3」| 随心所欲：每个「操作阶段」使用(N)次，掷(1)个骰子，(N) = 你已经损失的「SAN」+ (1)。根据骰出的点数，使用以下技能："
+
+msgctxt "fragment"
+msgid "「3」| 虚张声势：你可以盖置打出「情报」卡牌，以支付「策略」卡牌的费用。其他「指挥者」可以质疑你打出的费用不足。若费用足够：收回该「情报」卡牌，「策略」卡牌视作成功打出；若费用不足：弃置该「情报」卡牌，「策略」卡牌收回手牌，你在当前「操作阶段」无法再次使用此技能。"
+msgstr "「3」| 虚张声势：你可以盖置打出「情报」卡牌，以支付「策略」卡牌的费用。其他「指挥者」可以质疑你打出的费用不足。若费用足够：收回该「情报」卡牌，「策略」卡牌视作成功打出；若费用不足：弃置该「情报」卡牌，「策略」卡牌收回手牌，你在当前「操作阶段」无法再次使用此技能。"
+
+msgctxt "fragment"
+msgid "「3」| 有备无患：你的「操作阶段」结束时，选择(1)位「指挥者」，将手牌抽取到与对方一致。"
+msgstr "「3」| 有备无患：你的「操作阶段」结束时，选择(1)位「指挥者」，将手牌抽取到与对方一致。"
+
+msgctxt "fragment"
+msgid "「4」| 超载：你的「操作阶段」结束时，指定(1)位友方「调查员」，消耗(1)点「SAN」；若你选择不指定，或没有可指定的「调查员」，你「陷入疯狂」。"
+msgstr "「4」| 超载：你的「操作阶段」结束时，指定(1)位友方「调查员」，消耗(1)点「SAN」；若你选择不指定，或没有可指定的「调查员」，你「陷入疯狂」。"
+
+msgctxt "fragment"
+msgid "「4」| 苦痛： 消耗(1)点「SAN」；从「策略卡组」抽(3)张「策略」卡牌，从「情报弃牌区」选取(3)张情报卡牌，加入手牌。"
+msgstr "「4」| 苦痛： 消耗(1)点「SAN」；从「策略卡组」抽(3)张「策略」卡牌，从「情报弃牌区」选取(3)张情报卡牌，加入手牌。"
+
+msgctxt "fragment"
+msgid "「4」| 逃避：弃置(N)张手牌；交换你和(1)位「调查员」的「调查顺位」；(N) = 你和其「调查顺位」的差值。"
+msgstr "「4」| 逃避：弃置(N)张手牌；交换你和(1)位「调查员」的「调查顺位」；(N) = 你和其「调查顺位」的差值。"
+
+msgctxt "fragment"
+msgid "「4」| 祖传手艺：你可以自由选择从「情报卡组」的最上或最下，进行正向或反向调查。"
+msgstr "「4」| 祖传手艺：你可以自由选择从「情报卡组」的最上或最下，进行正向或反向调查。"
+
+msgctxt "fragment"
+msgid "「操作阶段」分为三个步骤："
+msgstr "「操作阶段」分为三个步骤："
+
+msgctxt "fragment"
+msgid "「操作阶段」结束后累计(1)点「深潜」"
+msgstr "「操作阶段」结束后累计(1)点「深潜」"
+
+msgctxt "fragment"
+msgid "「操作阶段」结束时"
+msgstr "「操作阶段」结束时"
+
+msgctxt "fragment"
+msgid "「操作阶段」开始、进入与结束时，依照规则执行对应操作"
+msgstr "「操作阶段」开始、进入与结束时，依照规则执行对应操作"
+
+msgctxt "fragment"
+msgid "「操作阶段」开始后必须首先进行调查。如果「调查员」因【跳过】或其他效果无需调查，盲从视为未生效。"
+msgstr "「操作阶段」开始后必须首先进行调查。如果「调查员」因【跳过】或其他效果无需调查，盲从视为未生效。"
+
+msgctxt "fragment"
+msgid "「操作阶段」开始时，「调查员」可以窥探(N)张「情报」卡牌。(N) =「调查员」已损失的「SAN」。"
+msgstr "「操作阶段」开始时，「调查员」可以窥探(N)张「情报」卡牌。(N) =「调查员」已损失的「SAN」。"
+
+msgctxt "fragment"
+msgid "「策略卡组」的底部"
+msgstr "「策略卡组」的底部"
+
+msgctxt "fragment"
+msgid "「调查」是从「情报卡组」顶部顺序翻看并公示 (1)—(3) 张「情报」卡牌，然后纳入自己的「情报区」。"
+msgstr "「调查」是从「情报卡组」顶部顺序翻看并公示 (1)—(3) 张「情报」卡牌，然后纳入自己的「情报区」。"
+
+msgctxt "fragment"
+msgid "「调查顺位」"
+msgstr "「调查顺位」"
+
+msgctxt "fragment"
+msgid "「调查员」，消耗(1)点「SAN」"
+msgstr "「调查员」，消耗(1)点「SAN」"
+
+msgctxt "fragment"
+msgid "「调查员」不公示其调查到的「情报」卡牌（包括【禁忌真相】），「情报区」的「情报」卡牌面朝下盖置。"
+msgstr "「调查员」不公示其调查到的「情报」卡牌（包括【禁忌真相】），「情报区」的「情报」卡牌面朝下盖置。"
+
+msgctxt "fragment"
+msgid "「调查员」的「操作阶段」开始后，必须首先进行调查。若调查员因【跳过】或【异时癖】等效果无需调查，盲从视为未生效。"
+msgstr "「调查员」的「操作阶段」开始后，必须首先进行调查。若调查员因【跳过】或【异时癖】等效果无需调查，盲从视为未生效。"
+
+msgctxt "fragment"
+msgid "「调查员」的「指挥者」需要将手牌弃置到 ≤ (8)张。"
+msgstr "「调查员」的「指挥者」需要将手牌弃置到 ≤ (8)张。"
+
+msgctxt "fragment"
+msgid "「调查员」的「SAN」 分散到"
+msgstr "「调查员」的「SAN」 分散到"
+
+msgctxt "fragment"
+msgid "「调查员」的「SAN」 集中于"
+msgstr "「调查员」的「SAN」 集中于"
+
+msgctxt "fragment"
+msgid "「调查员」调查到【禁忌真相】会损失「SAN」，「SAN」消耗完的「调查员」会「陷入疯狂」。"
+msgstr "「调查员」调查到【禁忌真相】会损失「SAN」，「SAN」消耗完的「调查员」会「陷入疯狂」。"
+
+msgctxt "fragment"
+msgid "「调查员」调查到【禁忌真相】会损失「SAN」；「SAN」消耗完的「调查员」会「陷入疯狂」。自己的队伍需要规避真相，同时诱导其他队伍更早触及它。"
+msgstr "「调查员」调查到【禁忌真相】会损失「SAN」；「SAN」消耗完的「调查员」会「陷入疯狂」。自己的队伍需要规避真相，同时诱导其他队伍更早触及它。"
+
+msgctxt "fragment"
+msgid "「调查员」调查到【禁忌真相】时"
+msgstr "「调查员」调查到【禁忌真相】时"
+
+msgctxt "fragment"
+msgid "「调查员」调查到【禁忌真相】时，你可以选择使其额外消耗(1)点「SAN」。之后，你立即指定另一队伍的(1)位「调查员」，使其消耗(1)点「SAN」。"
+msgstr "「调查员」调查到【禁忌真相】时，你可以选择使其额外消耗(1)点「SAN」。之后，你立即指定另一队伍的(1)位「调查员」，使其消耗(1)点「SAN」。"
+
+msgctxt "fragment"
+msgid "「调查员」会因此「恢复清醒」"
+msgstr "「调查员」会因此「恢复清醒」"
+
+msgctxt "fragment"
+msgid "「调查员」会因此「陷入疯狂」"
+msgstr "「调查员」会因此「陷入疯狂」"
+
+msgctxt "fragment"
+msgid "「调查员」结束「操作阶段」时"
+msgstr "「调查员」结束「操作阶段」时"
+
+msgctxt "fragment"
+msgid "「调查员」可以清空自己的「深潜」点数"
+msgstr "「调查员」可以清空自己的「深潜」点数"
+
+msgctxt "fragment"
+msgid "「调查员」可以选择消耗哪个「SAN」"
+msgstr "「调查员」可以选择消耗哪个「SAN」"
+
+msgctxt "fragment"
+msgid "「调查员」每消耗(2)点费用"
+msgstr "「调查员」每消耗(2)点费用"
+
+msgctxt "fragment"
+msgid "「调查员」若没有以「调查范围」上限的数量进行调查，则调查到【禁忌真相】时，消耗的「SAN」+ (1)。"
+msgstr "「调查员」若没有以「调查范围」上限的数量进行调查，则调查到【禁忌真相】时，消耗的「SAN」+ (1)。"
+
+msgctxt "fragment"
+msgid "「调查员」依照「调查顺位」轮流进行「操作阶段」"
+msgstr "「调查员」依照「调查顺位」轮流进行「操作阶段」"
+
+msgctxt "fragment"
+msgid "「调查员」在当前「操作阶段」可以(0)费用"
+msgstr "「调查员」在当前「操作阶段」可以(0)费用"
+
+msgctxt "fragment"
+msgid "「概念词汇」"
+msgstr "「概念词汇」"
+
+msgctxt "fragment"
+msgid "「概念词汇」表示《调查深入》的专用概念，例如「SAN」「情报区」和「陷入疯狂」。"
+msgstr "「概念词汇」表示《调查深入》的专用概念，例如「SAN」「情报区」和「陷入疯狂」。"
+
+msgctxt "fragment"
+msgid "「个体机制」"
+msgstr "「个体机制」"
+
+msgctxt "fragment"
+msgid "「公共手牌区」的卡牌"
+msgstr "「公共手牌区」的卡牌"
+
+msgctxt "fragment"
+msgid "「恢复清醒」并获得(1)点「SAN」"
+msgstr "「恢复清醒」并获得(1)点「SAN」"
+
+msgctxt "fragment"
+msgid "「回收」从 Vol.3 开始进入规则语言。早期卡牌若没有标注“回收”但受到其影响，以卡牌 Wiki 中的说明更新版本和当前判例共同判定。"
+msgstr "「回收」从 Vol.3 开始进入规则语言。早期卡牌若没有标注“回收”但受到其影响，以卡牌 Wiki 中的说明更新版本和当前判例共同判定。"
+
+msgctxt "fragment"
+msgid "「傀儡」需要在另一位「傀儡」"
+msgstr "「傀儡」需要在另一位「傀儡」"
+
+msgctxt "fragment"
+msgid "「情报」卡牌，并将其原样放回"
+msgstr "「情报」卡牌，并将其原样放回"
+
+msgctxt "fragment"
+msgid "「情报卡组」与「策略卡组」翻转"
+msgstr "「情报卡组」与「策略卡组」翻转"
+
+msgctxt "fragment"
+msgid "「陷入疯狂」的「调查员」具有额外的【禁忌知识】和【疯狂蔓延】技能，如无特殊说明，在「调查员」「陷入疯狂」时立即触发。"
+msgstr "「陷入疯狂」的「调查员」具有额外的【禁忌知识】和【疯狂蔓延】技能，如无特殊说明，在「调查员」「陷入疯狂」时立即触发。"
+
+msgctxt "fragment"
+msgid "「陷入疯狂」的「调查员」没有「操作阶段」，其调查顺位在所有判定中被自然跳过（如：下一顺位的「调查员」「陷入疯狂」，则针对下一顺位的效果将顺延到下下顺位）。"
+msgstr "「陷入疯狂」的「调查员」没有「操作阶段」，其调查顺位在所有判定中被自然跳过（如：下一顺位的「调查员」「陷入疯狂」，则针对下一顺位的效果将顺延到下下顺位）。"
+
+msgctxt "fragment"
+msgid "「陷入疯狂」的「调查员」若通过任意手段恢复「SAN」，其将会「恢复清醒」并拥有恢复点数的「SAN」，没有「SAN」的特殊「调查员」无法用此手段「恢复清醒」。"
+msgstr "「陷入疯狂」的「调查员」若通过任意手段恢复「SAN」，其将会「恢复清醒」并拥有恢复点数的「SAN」，没有「SAN」的特殊「调查员」无法用此手段「恢复清醒」。"
+
+msgctxt "fragment"
+msgid "「指挥者」抽取(4)张初始手牌"
+msgstr "「指挥者」抽取(4)张初始手牌"
+
+msgctxt "fragment"
+msgid "「指挥者」可以将手牌"
+msgstr "「指挥者」可以将手牌"
+
+msgctxt "fragment"
+msgid "「指挥者」可以随时质疑另(1)个队伍已经调查到【禁忌真相】；若属实：发起质疑的「指挥者」指定(1)位「调查员」，视作其调查到【禁忌真相】。消耗的「SAN」+ (1)。若不属实：发起质疑的「指挥者」弃置所有的手牌和「情报区」卡牌。"
+msgstr "「指挥者」可以随时质疑另(1)个队伍已经调查到【禁忌真相】；若属实：发起质疑的「指挥者」指定(1)位「调查员」，视作其调查到【禁忌真相】。消耗的「SAN」+ (1)。若不属实：发起质疑的「指挥者」弃置所有的手牌和「情报区」卡牌。"
+
+msgctxt "fragment"
+msgid "「指挥者」确认组队情况，选择「调查员」，随机分配「调查顺位」"
+msgstr "「指挥者」确认组队情况，选择「调查员」，随机分配「调查顺位」"
+
+msgctxt "fragment"
+msgid "「指挥者」需将同一队伍"
+msgstr "「指挥者」需将同一队伍"
+
+msgctxt "fragment"
+msgid "「SAN」归零的「调查员」"
+msgstr "「SAN」归零的「调查员」"
+
+msgctxt "fragment"
+msgid "「SAN」归零的「调查员」会「陷入疯狂」，翻转其角色牌和指示卡，弃置其身上的个体机制，并在后续判定中跳过其「调查顺位」。疯狂的「调查员」拥有额外的【禁忌知识】和【疯狂蔓延】技能，通常不能成为卡牌或技能的指定对象。"
+msgstr "「SAN」归零的「调查员」会「陷入疯狂」，翻转其角色牌和指示卡，弃置其身上的个体机制，并在后续判定中跳过其「调查顺位」。疯狂的「调查员」拥有额外的【禁忌知识】和【疯狂蔓延】技能，通常不能成为卡牌或技能的指定对象。"
+
+msgctxt "fragment"
+msgid "【初火】、【癫火】结算时会略过仿生人；禁忌真相伤害加深类效果对仿生人依然有效；【献祭】不能以仿生人为指定对象。"
+msgstr "【初火】、【癫火】结算时会略过仿生人；禁忌真相伤害加深类效果对仿生人依然有效；【献祭】不能以仿生人为指定对象。"
+
+msgctxt "fragment"
+msgid "【初火】和【癫火】结算时会略过仿生人；禁忌真相伤害加深类效果对仿生人仍然有效；【献祭】不能以仿生人为指定对象。"
+msgstr "【初火】和【癫火】结算时会略过仿生人；禁忌真相伤害加深类效果对仿生人仍然有效；【献祭】不能以仿生人为指定对象。"
+
+msgctxt "fragment"
+msgid "【初火】如何集中同队的 SAN？"
+msgstr "【初火】如何集中同队的 SAN？"
+
+msgctxt "fragment"
+msgid "【癫火】如何平均分配 SAN？"
+msgstr "【癫火】如何平均分配 SAN？"
+
+msgctxt "fragment"
+msgid "【俄罗斯转轮 · I】可以和【砥砺前行 · I】互动吗？"
+msgstr "【俄罗斯转轮 · I】可以和【砥砺前行 · I】互动吗？"
+
+msgctxt "fragment"
+msgid "【疯狂蔓延 · 催眠师】"
+msgstr "【疯狂蔓延 · 催眠师】"
+
+msgctxt "fragment"
+msgid "【疯狂蔓延 · 地痞】"
+msgstr "【疯狂蔓延 · 地痞】"
+
+msgctxt "fragment"
+msgid "【疯狂蔓延 · 赌徒】"
+msgstr "【疯狂蔓延 · 赌徒】"
+
+msgctxt "fragment"
+msgid "【疯狂蔓延 · 仿生人】"
+msgstr "【疯狂蔓延 · 仿生人】"
+
+msgctxt "fragment"
+msgid "【疯狂蔓延 · 苦行僧】"
+msgstr "【疯狂蔓延 · 苦行僧】"
+
+msgctxt "fragment"
+msgid "【疯狂蔓延 · 劳改犯】"
+msgstr "【疯狂蔓延 · 劳改犯】"
+
+msgctxt "fragment"
+msgid "【疯狂蔓延 · 老侦探】"
+msgstr "【疯狂蔓延 · 老侦探】"
+
+msgctxt "fragment"
+msgid "【疯狂蔓延 · 流浪汉】"
+msgstr "【疯狂蔓延 · 流浪汉】"
+
+msgctxt "fragment"
+msgid "【疯狂蔓延 · 猫？】"
+msgstr "【疯狂蔓延 · 猫？】"
+
+msgctxt "fragment"
+msgid "【疯狂蔓延 · 猛男】"
+msgstr "【疯狂蔓延 · 猛男】"
+
+msgctxt "fragment"
+msgid "【疯狂蔓延 · 目击者】"
+msgstr "【疯狂蔓延 · 目击者】"
+
+msgctxt "fragment"
+msgid "【疯狂蔓延 · 欺诈师】"
+msgstr "【疯狂蔓延 · 欺诈师】"
+
+msgctxt "fragment"
+msgid "【疯狂蔓延 · 赏金猎人】"
+msgstr "【疯狂蔓延 · 赏金猎人】"
+
+msgctxt "fragment"
+msgid "【疯狂蔓延 · 信徒】"
+msgstr "【疯狂蔓延 · 信徒】"
+
+msgctxt "fragment"
+msgid "【疯狂蔓延 · 研究员】"
+msgstr "【疯狂蔓延 · 研究员】"
+
+msgctxt "fragment"
+msgid "【疯狂蔓延 · 职业调查员】"
+msgstr "【疯狂蔓延 · 职业调查员】"
+
+msgctxt "fragment"
+msgid "【疯狂蔓延 · 中之人】"
+msgstr "【疯狂蔓延 · 中之人】"
+
+msgctxt "fragment"
+msgid "【降雨概率】遇到被洗回的【禁忌真相】怎么办？"
+msgstr "【降雨概率】遇到被洗回的【禁忌真相】怎么办？"
+
+msgctxt "fragment"
+msgid "【禁忌真相】被调查，（或基于其他「环境」效果本「轮」结束）"
+msgstr "【禁忌真相】被调查，（或基于其他「环境」效果本「轮」结束）"
+
+msgctxt "fragment"
+msgid "【禁忌知识】"
+msgstr "【禁忌知识】"
+
+msgctxt "fragment"
+msgid "【卡牌名称】"
+msgstr "【卡牌名称】"
+
+msgctxt "fragment"
+msgid "【卡牌名称】表示卡牌（包括「调查员」）名称；【禁忌真相】有特殊颜色标识。"
+msgstr "【卡牌名称】表示卡牌（包括「调查员」）名称；【禁忌真相】有特殊颜色标识。"
+
+msgctxt "fragment"
+msgid "【劳改犯】的「调查员」指示卡名称曾被错误印刷为【老侦探】的名称；实际应以当前 Wiki 中的卡牌资料为准。"
+msgstr "【劳改犯】的「调查员」指示卡名称曾被错误印刷为【老侦探】的名称；实际应以当前 Wiki 中的卡牌资料为准。"
+
+msgctxt "fragment"
+msgid "【劳改犯】的调查员指示卡名称被错误印刷为【老侦探】的名称【菲利普 · 钱德勒】（双面皆是），实际应该为【丹泽 · 罗比】。"
+msgstr "【劳改犯】的调查员指示卡名称被错误印刷为【老侦探】的名称【菲利普 · 钱德勒】（双面皆是），实际应该为【丹泽 · 罗比】。"
+
+msgctxt "fragment"
+msgid "【目击者】的疯狂技能【疯狂蔓延 · 目击者】中错误印刷了“紧急真相”，应为“禁忌真相”；【老侦探】的清醒技能【博学多闻】中，加入目标错误写成“手牌”，实际应为加入自己的“情报区”。"
+msgstr "【目击者】的疯狂技能【疯狂蔓延 · 目击者】中错误印刷了“紧急真相”，应为“禁忌真相”；【老侦探】的清醒技能【博学多闻】中，加入目标错误写成“手牌”，实际应为加入自己的“情报区”。"
+
+msgctxt "fragment"
+msgid "【受控】"
+msgstr "【受控】"
+
+msgctxt "fragment"
+msgid "【许愿池】为什么不能调用【献祭】或【俄罗斯转轮】？"
+msgstr "【许愿池】为什么不能调用【献祭】或【俄罗斯转轮】？"
+
+msgctxt "fragment"
+msgid "【异常认知】"
+msgstr "【异常认知】"
+
+msgctxt "fragment"
+msgid "【应召】"
+msgstr "【应召】"
+
+msgctxt "fragment"
+msgid "【圆滑】被使用时，同时交换被指定的(2)位「调查员」的全部「个体机制」。"
+msgstr "【圆滑】被使用时，同时交换被指定的(2)位「调查员」的全部「个体机制」。"
+
+msgctxt "fragment"
+msgid "【照亮前路 · I】什么时候可以生效？"
+msgstr "【照亮前路 · I】什么时候可以生效？"
+
+msgctxt "fragment"
+msgid "│ └── 辅助卡牌/卡名/"
+msgstr "│ └── 辅助卡牌/卡名/"
+
+msgctxt "fragment"
+msgid "│ ├── 策略卡牌/卡名/"
+msgstr "│ ├── 策略卡牌/卡名/"
+
+msgctxt "fragment"
+msgid "│ ├── 调查员/职业名字/"
+msgstr "│ ├── 调查员/职业名字/"
+
+msgctxt "fragment"
+msgid "│ ├── 环境卡牌/卡名/"
+msgstr "│ ├── 环境卡牌/卡名/"
+
+msgctxt "fragment"
+msgid "│ ├── 情报卡牌/卡名/"
+msgstr "│ ├── 情报卡牌/卡名/"
+
+msgctxt "fragment"
+msgid "1. 「指挥者」确认组队情况，选择「调查员」，随机分配「调查顺位」。"
+msgstr "1. 「指挥者」确认组队情况，选择「调查员」，随机分配「调查顺位」。"
+
+msgctxt "fragment"
+msgid "1. 开始阶段：结算需要在阶段开始时触发的「环境」、个体机制和技能，并从「策略卡组」抽取 (1) 张牌。"
+msgstr "1. 开始阶段：结算需要在阶段开始时触发的「环境」、个体机制和技能，并从「策略卡组」抽取 (1) 张牌。"
+
+msgctxt "fragment"
+msgid "1. 页面正文、卡面效果、故事和规则解释：对应 Markdown。"
+msgstr "1. 页面正文、卡面效果、故事和规则解释：对应 Markdown。"
+
+msgctxt "fragment"
+msgid "2 位玩家"
+msgstr "2 位玩家"
+
+msgctxt "fragment"
+msgid "2—6 人"
+msgstr "2—6 人"
+
+msgctxt "fragment"
+msgid "2. 「指挥者」抽取 (4) 张初始「策略」手牌。"
+msgstr "2. 「指挥者」抽取 (4) 张初始「策略」手牌。"
+
+msgctxt "fragment"
+msgid "2. 卡牌名称、职业、费用、数量、版本等筛选字段：类别 CSV。"
+msgstr "2. 卡牌名称、职业、费用、数量、版本等筛选字段：类别 CSV。"
+
+msgctxt "fragment"
+msgid "2. 主要阶段：必须进行一次「调查」，随后可以使用「情报区」卡牌、手牌中的「策略」卡牌、个体机制和「调查员」技能。"
+msgstr "2. 主要阶段：必须进行一次「调查」，随后可以使用「情报区」卡牌、手牌中的「策略」卡牌、个体机制和「调查员」技能。"
+
+msgctxt "fragment"
+msgid "3 位玩家"
+msgstr "3 位玩家"
+
+msgctxt "fragment"
+msgid "3. 传统搜索和 AI：由构建脚本读取上述 Markdown，自动生成统一资料索引。"
+msgstr "3. 传统搜索和 AI：由构建脚本读取上述 Markdown，自动生成统一资料索引。"
+
+msgctxt "fragment"
+msgid "3. 结束阶段：结算阶段结束时触发的效果，并将手牌弃置到不超过 (8) 张。"
+msgstr "3. 结束阶段：结算阶段结束时触发的效果，并将手牌弃置到不超过 (8) 张。"
+
+msgctxt "fragment"
+msgid "3. 开始一「轮」游戏，触发一张新的「环境」卡牌。"
+msgstr "3. 开始一「轮」游戏，触发一张新的「环境」卡牌。"
+
+msgctxt "fragment"
+msgid "4 位玩家"
+msgstr "4 位玩家"
+
+msgctxt "fragment"
+msgid "4. 「调查员」依照「调查顺位」轮流进行「操作阶段」。"
+msgstr "4. 「调查员」依照「调查顺位」轮流进行「操作阶段」。"
+
+msgctxt "fragment"
+msgid "4. src/generated/ 与 public/wiki-search/ 是构建产物，不要手工修改。"
+msgstr "4. src/generated/ 与 public/wiki-search/ 是构建产物，不要手工修改。"
+
+msgctxt "fragment"
+msgid "5. 「操作阶段」开始、进入与结束时，执行对应的卡牌和技能效果。"
+msgstr "5. 「操作阶段」开始、进入与结束时，执行对应的卡牌和技能效果。"
+
+msgctxt "fragment"
+msgid "6 位玩家"
+msgstr "6 位玩家"
+
+msgctxt "fragment"
+msgid "6. 【禁忌真相】被调查，或因其他「环境」效果结束本「轮」。"
+msgstr "6. 【禁忌真相】被调查，或因其他「环境」效果结束本「轮」。"
+
+msgctxt "fragment"
+msgid "7. 结算「SAN」消耗，收回场上所有「情报」卡牌，开始下一「轮」。"
+msgstr "7. 结算「SAN」消耗，收回场上所有「情报」卡牌，开始下一「轮」。"
+
+msgctxt "fragment"
+msgid "8 个特殊行动，构成所有卡面文本的共同语法。"
+msgstr "8 个特殊行动，构成所有卡面文本的共同语法。"
+
+msgctxt "fragment"
+msgid "8. 仅剩一个队伍的「调查员」保持清醒时，胜负已定。"
+msgstr "8. 仅剩一个队伍的「调查员」保持清醒时，胜负已定。"
+
+msgctxt "fragment"
+msgid "阿诺姆"
+msgstr "阿诺姆"
+
+msgctxt "fragment"
+msgid "艾琳 · 卡特"
+msgstr "艾琳 · 卡特"
+
+msgctxt "fragment"
+msgid "按卡牌右上角的骰子点数记录每位「调查员」的「SAN」，再依顺位抽取 (4) 张「策略」卡牌。"
+msgstr "按卡牌右上角的骰子点数记录每位「调查员」的「SAN」，再依顺位抽取 (4) 张「策略」卡牌。"
+
+msgctxt "fragment"
+msgid "把桌面变成调查现场。"
+msgstr "把桌面变成调查现场。"
+
+msgctxt "fragment"
+msgid "版本边界"
+msgstr "版本边界"
+
+msgctxt "fragment"
+msgid "包含版本"
+msgstr "包含版本"
+
+msgctxt "fragment"
+msgid "包含版本：Vol.1"
+msgstr "包含版本：Vol.1"
+
+msgctxt "fragment"
+msgid "包含版本：Vol.2"
+msgstr "包含版本：Vol.2"
+
+msgctxt "fragment"
+msgid "包含版本：Vol.3"
+msgstr "包含版本：Vol.3"
+
+msgctxt "fragment"
+msgid "包含版本：Vol.Special"
+msgstr "包含版本：Vol.Special"
+
+msgctxt "fragment"
+msgid "保持清醒"
+msgstr "保持清醒"
+
+msgctxt "fragment"
+msgid "被布置【傀儡 · 催眠师】的「调查员」"
+msgstr "被布置【傀儡 · 催眠师】的「调查员」"
+
+msgctxt "fragment"
+msgid "被消耗的「情报」卡牌不会被弃置"
+msgstr "被消耗的「情报」卡牌不会被弃置"
+
+msgctxt "fragment"
+msgid "本「轮」调查会在"
+msgstr "本「轮」调查会在"
+
+msgctxt "fragment"
+msgid "本「轮」游戏继续"
+msgstr "本「轮」游戏继续"
+
+msgctxt "fragment"
+msgid "本「轮」游戏结束后"
+msgstr "本「轮」游戏结束后"
+
+msgctxt "fragment"
+msgid "本「轮」游戏结束后回收"
+msgstr "本「轮」游戏结束后回收"
+
+msgctxt "fragment"
+msgid "本「轮」游戏结束时"
+msgstr "本「轮」游戏结束时"
+
+msgctxt "fragment"
+msgid "本「轮」游戏开始时"
+msgstr "本「轮」游戏开始时"
+
+msgctxt "fragment"
+msgid "本「轮」游戏中"
+msgstr "本「轮」游戏中"
+
+msgctxt "fragment"
+msgid "本操作阶段无需且不能调查。"
+msgstr "本操作阶段无需且不能调查。"
+
+msgctxt "fragment"
+msgid "本页面根据《规则指引书 - v1.1》整理，并同步展示《调查附录》《FAQ》的核心内容。卡牌构成详见当前《调查深入 · 卡牌统计表》。"
+msgstr "本页面根据《规则指引书 - v1.1》整理，并同步展示《调查附录》《FAQ》的核心内容。卡牌构成详见当前《调查深入 · 卡牌统计表》。"
+
+msgctxt "fragment"
+msgid "必须首先进行调查"
+msgstr "必须首先进行调查"
+
+msgctxt "fragment"
+msgid "标准版 2.0 已修复了哪些问题？"
+msgstr "标准版 2.0 已修复了哪些问题？"
+
+msgctxt "fragment"
+msgid "并从「策略卡组」顶部"
+msgstr "并从「策略卡组」顶部"
+
+msgctxt "fragment"
+msgid "并回收所有对你布置的【任务负债】"
+msgstr "并回收所有对你布置的【任务负债】"
+
+msgctxt "fragment"
+msgid "并私下分别对其调整"
+msgstr "并私下分别对其调整"
+
+msgctxt "fragment"
+msgid "不可超过「SAN」上限"
+msgstr "不可超过「SAN」上限"
+
+msgctxt "fragment"
+msgid "不可以。俄罗斯转轮必须结算完成，才能使用下一张卡牌。"
+msgstr "不可以。俄罗斯转轮必须结算完成，才能使用下一张卡牌。"
+
+msgctxt "fragment"
+msgid "不可以。仿生人没有 SAN，因此不能成为消耗队友 SAN 的指定对象，也不能恢复 SAN。"
+msgstr "不可以。仿生人没有 SAN，因此不能成为消耗队友 SAN 的指定对象，也不能恢复 SAN。"
+
+msgctxt "fragment"
+msgid "不可以。仿生人没有「SAN」，因此不能成为消耗队友「SAN」的指定对象，也不能恢复「SAN」。"
+msgstr "不可以。仿生人没有「SAN」，因此不能成为消耗队友「SAN」的指定对象，也不能恢复「SAN」。"
+
+msgctxt "fragment"
+msgid "不可以。两位仿生人的过热/过载效果是“消耗队友 (1) 点 SAN”，而仿生人没有 SAN，因此不能成为指定对象，也不能恢复 SAN。"
+msgstr "不可以。两位仿生人的过热/过载效果是“消耗队友 (1) 点 SAN”，而仿生人没有 SAN，因此不能成为指定对象，也不能恢复 SAN。"
+
+msgctxt "fragment"
+msgid "不可直视神 · I"
+msgstr "不可直视神 · I"
+
+msgctxt "fragment"
+msgid "不能超过其「SAN」上限"
+msgstr "不能超过其「SAN」上限"
+
+msgctxt "fragment"
+msgid "不是答案。"
+msgstr "不是答案。"
+
+msgctxt "fragment"
+msgid "不消耗「SAN」"
+msgstr "不消耗「SAN」"
+
+msgctxt "fragment"
+msgid "布局 · I"
+msgstr "布局 · I"
+
+msgctxt "fragment"
+msgid "部分早期卡牌沿用了普通字形，但后续版本已经把对应词汇定义为特殊行动。请以本附录的行动列表与卡牌 Wiki 的说明更新版本共同判定。"
+msgstr "部分早期卡牌沿用了普通字形，但后续版本已经把对应词汇定义为特殊行动。请以本附录的行动列表与卡牌 Wiki 的说明更新版本共同判定。"
+
+msgctxt "fragment"
+msgid "操作阶段"
+msgstr "操作阶段"
+
+msgctxt "fragment"
+msgid "操作阶段开始后，必须首先进行调查。"
+msgstr "操作阶段开始后，必须首先进行调查。"
+
+msgctxt "fragment"
+msgid "策略"
+msgstr "策略"
+
+msgctxt "fragment"
+msgid "策略 · 调查 · 卡牌"
+msgstr "策略 · 调查 · 卡牌"
+
+msgctxt "fragment"
+msgid "策略卡组"
+msgstr "策略卡组"
+
+msgctxt "fragment"
+msgid "查看常见机制、调查员与印刷判例。"
+msgstr "查看常见机制、调查员与印刷判例。"
+
+msgctxt "fragment"
+msgid "查询"
+msgstr "查询"
+
+msgctxt "fragment"
+msgid "常用问题"
+msgstr "常用问题"
+
+msgctxt "fragment"
+msgid "沉沦 · I"
+msgstr "沉沦 · I"
+
+msgctxt "fragment"
+msgid "沉沦 · II"
+msgstr "沉沦 · II"
+
+msgctxt "fragment"
+msgid "抽同样数量的牌，加入手牌"
+msgstr "抽同样数量的牌，加入手牌"
+
+msgctxt "fragment"
+msgid "初火"
+msgstr "初火"
+
+msgctxt "fragment"
+msgid "初火、癫火和禁忌真相对仿生人分别如何处理？"
+msgstr "初火、癫火和禁忌真相对仿生人分别如何处理？"
+
+msgctxt "fragment"
+msgid "初火、癫火和禁忌真相对仿生人如何处理？"
+msgstr "初火、癫火和禁忌真相对仿生人如何处理？"
+
+msgctxt "fragment"
+msgid "初火只在同一队伍内结算，将所有 SAN 集中到“尽可能少”的调查员；不能超过原有 SAN 上限，也可能让清醒者疯狂或让疯狂者恢复清醒。若队友是【中之人】，则全部集中到【中之人】。例如 SAN 为 3、2、1 时，结果为 3、3、0。出现多种最小变动方案时，由对应指挥者决定。"
+msgstr "初火只在同一队伍内结算，将所有 SAN 集中到“尽可能少”的调查员；不能超过原有 SAN 上限，也可能让清醒者疯狂或让疯狂者恢复清醒。若队友是【中之人】，则全部集中到【中之人】。例如 SAN 为 3、2、1 时，结果为 3、3、0。出现多种最小变动方案时，由对应指挥者决定。"
+
+msgctxt "fragment"
+msgid "初火只在同一队伍内结算，将所有「SAN」集中到尽可能少的「调查员」，不能超过原有「SAN」上限，也可能让清醒者疯狂或让疯狂者恢复清醒。"
+msgstr "初火只在同一队伍内结算，将所有「SAN」集中到尽可能少的「调查员」，不能超过原有「SAN」上限，也可能让清醒者疯狂或让疯狂者恢复清醒。"
+
+msgctxt "fragment"
+msgid "触发「环境」卡牌"
+msgstr "触发「环境」卡牌"
+
+msgctxt "fragment"
+msgid "触发可以或必须在「操作阶段」使用的的「个体机制」，如无特殊说明，可以不限数量使用所有布置在当前「调查员」身上的「个体机制」。"
+msgstr "触发可以或必须在「操作阶段」使用的的「个体机制」，如无特殊说明，可以不限数量使用所有布置在当前「调查员」身上的「个体机制」。"
+
+msgctxt "fragment"
+msgid "创作背景"
+msgstr "创作背景"
+
+msgctxt "fragment"
+msgid "创作故事"
+msgstr "创作故事"
+
+msgctxt "fragment"
+msgid "此卡牌被使用或弃置后"
+msgstr "此卡牌被使用或弃置后"
+
+msgctxt "fragment"
+msgid "从(1)个其他队伍的「情报区」"
+msgstr "从(1)个其他队伍的「情报区」"
+
+msgctxt "fragment"
+msgid "从「策略卡组」抽(2)张牌"
+msgstr "从「策略卡组」抽(2)张牌"
+
+msgctxt "fragment"
+msgid "从「策略卡组」顶部抽(1)张牌，加入手牌。"
+msgstr "从「策略卡组」顶部抽(1)张牌，加入手牌。"
+
+msgctxt "fragment"
+msgid "从「策略卡组」翻(1)张牌"
+msgstr "从「策略卡组」翻(1)张牌"
+
+msgctxt "fragment"
+msgid "从「策略弃牌区」选择(2)张卡牌"
+msgstr "从「策略弃牌区」选择(2)张卡牌"
+
+msgctxt "fragment"
+msgid "从「情报卡组」底部向上"
+msgstr "从「情报卡组」底部向上"
+
+msgctxt "fragment"
+msgid "从「情报卡组」顶部，顺序翻看并公示 (1)～(3) 张「情报」卡牌，然后纳入自己的「情报区」。如无特殊描述，每位「调查员」每个「操作阶段」必须、且只能执行一次调查。"
+msgstr "从「情报卡组」顶部，顺序翻看并公示 (1)～(3) 张「情报」卡牌，然后纳入自己的「情报区」。如无特殊描述，每位「调查员」每个「操作阶段」必须、且只能执行一次调查。"
+
+msgctxt "fragment"
+msgid "从「情报卡组」顶部，顺序翻看并公示(1)~(3)张「情报」卡牌，然后纳入自己的「情报区」。如无特殊描述，每位「调查员」每个「操作阶段」必须、且只能执行一次调查。"
+msgstr "从「情报卡组」顶部，顺序翻看并公示(1)~(3)张「情报」卡牌，然后纳入自己的「情报区」。如无特殊描述，每位「调查员」每个「操作阶段」必须、且只能执行一次调查。"
+
+msgctxt "fragment"
+msgid "从「情报卡组」顶部顺序翻看并公示 (1)—(3) 张「情报」卡牌，然后纳入自己的「情报区」。没有特殊描述时，每位「调查员」每个「操作阶段」必须且只能执行一次调查。"
+msgstr "从「情报卡组」顶部顺序翻看并公示 (1)—(3) 张「情报」卡牌，然后纳入自己的「情报区」。没有特殊描述时，每位「调查员」每个「操作阶段」必须且只能执行一次调查。"
+
+msgctxt "fragment"
+msgid "从「情报弃牌区」"
+msgstr "从「情报弃牌区」"
+
+msgctxt "fragment"
+msgid "从不同角度继续调查。"
+msgstr "从不同角度继续调查。"
+
+msgctxt "fragment"
+msgid "从顶部弃置剩「情报卡组」的一半"
+msgstr "从顶部弃置剩「情报卡组」的一半"
+
+msgctxt "fragment"
+msgid "从快速游玩开始，按章节了解完整流程。"
+msgstr "从快速游玩开始，按章节了解完整流程。"
+
+msgctxt "fragment"
+msgid "从情报卡组顶部翻看并公示 1—3 张。"
+msgstr "从情报卡组顶部翻看并公示 1—3 张。"
+
+msgctxt "fragment"
+msgid "打出(N)张手牌"
+msgstr "打出(N)张手牌"
+
+msgctxt "fragment"
+msgid "打开规范 Markdown 文档"
+msgstr "打开规范 Markdown 文档"
+
+msgctxt "fragment"
+msgid "打开完整 FAQ →"
+msgstr "打开完整 FAQ →"
+
+msgctxt "fragment"
+msgid "打开完整调查附录 →"
+msgstr "打开完整调查附录 →"
+
+msgctxt "fragment"
+msgid "待补充"
+msgstr "待补充"
+
+msgctxt "fragment"
+msgid "丹尼 · 达比"
+msgstr "丹尼 · 达比"
+
+msgctxt "fragment"
+msgid "丹泽 · 罗比"
+msgstr "丹泽 · 罗比"
+
+msgctxt "fragment"
+msgid "当此卡牌被从场上移除"
+msgstr "当此卡牌被从场上移除"
+
+msgctxt "fragment"
+msgid "当你熟悉了游戏流程，将标注了Vol.2脚标的卡牌加入各个卡组，以获得完整体验。"
+msgstr "当你熟悉了游戏流程，将标注了Vol.2脚标的卡牌加入各个卡组，以获得完整体验。"
+
+msgctxt "fragment"
+msgid "当其他队伍的所有「调查员」都「陷入疯狂」时，最后保持清醒的队伍及其「指挥者」获得游戏胜利。如果一次操作让所有剩余「调查员」同时疯狂，则最后陷入疯狂的「调查员」所在队伍获胜。"
+msgstr "当其他队伍的所有「调查员」都「陷入疯狂」时，最后保持清醒的队伍及其「指挥者」获得游戏胜利。如果一次操作让所有剩余「调查员」同时疯狂，则最后陷入疯狂的「调查员」所在队伍获胜。"
+
+msgctxt "fragment"
+msgid "当前「操作阶段」每张「情报」卡牌"
+msgstr "当前「操作阶段」每张「情报」卡牌"
+
+msgctxt "fragment"
+msgid "当前「操作阶段」无需且不能调查。跳过可以在操作阶段的任意节点生效，并持续到该阶段结束。"
+msgstr "当前「操作阶段」无需且不能调查。跳过可以在操作阶段的任意节点生效，并持续到该阶段结束。"
+
+msgctxt "fragment"
+msgid "当前仍未修复的印刷问题是什么？"
+msgstr "当前仍未修复的印刷问题是什么？"
+
+msgctxt "fragment"
+msgid "当前数据源包含 20 位调查员、39 种策略、21 种环境、8 种辅助，以及 25 张情报牌（其中包含 1 张【禁忌真相】）。"
+msgstr "当前数据源包含 20 位调查员、39 种策略、21 种环境、8 种辅助，以及 25 张情报牌（其中包含 1 张【禁忌真相】）。"
+
+msgctxt "fragment"
+msgid "当前页面整理自共享资料库中的《FAQ》；每张卡牌的具体版本与效果请继续前往卡牌 Wiki 对照。"
+msgstr "当前页面整理自共享资料库中的《FAQ》；每张卡牌的具体版本与效果请继续前往卡牌 Wiki 对照。"
+
+msgctxt "fragment"
+msgid "当有「策略」卡牌对其布置或生效时"
+msgstr "当有「策略」卡牌对其布置或生效时"
+
+msgctxt "fragment"
+msgid "砥砺前行 · I"
+msgstr "砥砺前行 · I"
+
+msgctxt "fragment"
+msgid "第(N)个调查到【禁忌真相】的"
+msgstr "第(N)个调查到【禁忌真相】的"
+
+msgctxt "fragment"
+msgid "第一次调查到并消耗完「SAN」后"
+msgstr "第一次调查到并消耗完「SAN」后"
+
+msgctxt "fragment"
+msgid "癫火"
+msgstr "癫火"
+
+msgctxt "fragment"
+msgid "癫火只在同一队伍内结算，由高「SAN」调查员向低「SAN」调查员匀 SAN；如果存在多个满足最小变动量的结果，由对应「指挥者」决定。"
+msgstr "癫火只在同一队伍内结算，由高「SAN」调查员向低「SAN」调查员匀 SAN；如果存在多个满足最小变动量的结果，由对应「指挥者」决定。"
+
+msgctxt "fragment"
+msgid "癫火只在同一队伍内结算。由高 SAN 调查员向低 SAN 调查员匀 SAN，例如 3、0、1 会变成 2、1、1。若存在多个满足最小变动量的结果，由指挥者决定；若当前已经平均（例如 2、3），不能为了交换位置而调整成 3、2。"
+msgstr "癫火只在同一队伍内结算。由高 SAN 调查员向低 SAN 调查员匀 SAN，例如 3、0、1 会变成 2、1、1。若存在多个满足最小变动量的结果，由指挥者决定；若当前已经平均（例如 2、3），不能为了交换位置而调整成 3、2。"
+
+msgctxt "fragment"
+msgid "调查"
+msgstr "调查"
+
+msgctxt "fragment"
+msgid "调查到(2)次【禁忌真相】后结束"
+msgstr "调查到(2)次【禁忌真相】后结束"
+
+msgctxt "fragment"
+msgid "调查到【禁忌真相】的「调查员」可以对(1)位「调查员」布置(1)张「辅助」卡牌：【任务负债 · 赏金猎人】。"
+msgstr "调查到【禁忌真相】的「调查员」可以对(1)位「调查员」布置(1)张「辅助」卡牌：【任务负债 · 赏金猎人】。"
+
+msgctxt "fragment"
+msgid "调查到【禁忌真相】后不消耗「SAN」"
+msgstr "调查到【禁忌真相】后不消耗「SAN」"
+
+msgctxt "fragment"
+msgid "调查到【禁忌真相】时"
+msgstr "调查到【禁忌真相】时"
+
+msgctxt "fragment"
+msgid "调查到禁忌真相后又把它洗回去，降雨概率如何处理？"
+msgstr "调查到禁忌真相后又把它洗回去，降雨概率如何处理？"
+
+msgctxt "fragment"
+msgid "调查的「情报」卡牌数量 + (N)，N 取决于胁迫后的数字。所有对同一位「调查员」布置的胁迫，在其最近一次调查中累加；若没有调查，胁迫视为未生效。"
+msgstr "调查的「情报」卡牌数量 + (N)，N 取决于胁迫后的数字。所有对同一位「调查员」布置的胁迫，在其最近一次调查中累加；若没有调查，胁迫视为未生效。"
+
+msgctxt "fragment"
+msgid "调查风格"
+msgstr "调查风格"
+
+msgctxt "fragment"
+msgid "调查风格：待补充"
+msgstr "调查风格：待补充"
+
+msgctxt "fragment"
+msgid "调查风格：实证,谨慎,独立,抵触"
+msgstr "调查风格：实证,谨慎,独立,抵触"
+
+msgctxt "fragment"
+msgid "调查风格：实证,谨慎,独立,认可"
+msgstr "调查风格：实证,谨慎,独立,认可"
+
+msgctxt "fragment"
+msgid "调查风格：实证,谨慎,协作,认可"
+msgstr "调查风格：实证,谨慎,协作,认可"
+
+msgctxt "fragment"
+msgid "调查风格：实证,冒险,独立,抵触"
+msgstr "调查风格：实证,冒险,独立,抵触"
+
+msgctxt "fragment"
+msgid "调查风格：实证,冒险,独立,认可"
+msgstr "调查风格：实证,冒险,独立,认可"
+
+msgctxt "fragment"
+msgid "调查风格：直觉,谨慎,独立,抵触"
+msgstr "调查风格：直觉,谨慎,独立,抵触"
+
+msgctxt "fragment"
+msgid "调查风格：直觉,谨慎,独立,认可"
+msgstr "调查风格：直觉,谨慎,独立,认可"
+
+msgctxt "fragment"
+msgid "调查风格：直觉,谨慎,协作,认可"
+msgstr "调查风格：直觉,谨慎,协作,认可"
+
+msgctxt "fragment"
+msgid "调查风格：直觉,冒险,独立,抵触"
+msgstr "调查风格：直觉,冒险,独立,抵触"
+
+msgctxt "fragment"
+msgid "调查风格：直觉,冒险,独立,认可"
+msgstr "调查风格：直觉,冒险,独立,认可"
+
+msgctxt "fragment"
+msgid "调查风格：直觉,冒险,协作,认可"
+msgstr "调查风格：直觉,冒险,协作,认可"
+
+msgctxt "fragment"
+msgid "调查附录"
+msgstr "调查附录"
+
+msgctxt "fragment"
+msgid "调查附录 →"
+msgstr "调查附录 →"
+
+msgctxt "fragment"
+msgid "调查改为掷(1)个骰子"
+msgstr "调查改为掷(1)个骰子"
+
+msgctxt "fragment"
+msgid "调查深入"
+msgstr "调查深入"
+
+msgctxt "fragment"
+msgid "调查深入 ·"
+msgstr "调查深入 ·"
+
+msgctxt "fragment"
+msgid "调查深入 · 调查附录"
+msgstr "调查深入 · 调查附录"
+
+msgctxt "fragment"
+msgid "调查深入 · 规则指引书"
+msgstr "调查深入 · 规则指引书"
+
+msgctxt "fragment"
+msgid "调查深入 · 卡牌 Wiki"
+msgstr "调查深入 · 卡牌 Wiki"
+
+msgctxt "fragment"
+msgid "调查深入 · FAQ"
+msgstr "调查深入 · FAQ"
+
+msgctxt "fragment"
+msgid "调查深入资料导航"
+msgstr "调查深入资料导航"
+
+msgctxt "fragment"
+msgid "调查异常环境，"
+msgstr "调查异常环境，"
+
+msgctxt "fragment"
+msgid "调查员"
+msgstr "调查员"
+
+msgctxt "fragment"
+msgid "调查员、策略、环境、情报与辅助五类数据都从《调查深入 · 卡牌统计表》导入；“说明更新版本”用于判断当前文本应匹配哪一版规则。"
+msgstr "调查员、策略、环境、情报与辅助五类数据都从《调查深入 · 卡牌统计表》导入；“说明更新版本”用于判断当前文本应匹配哪一版规则。"
+
+msgctxt "fragment"
+msgid "调查员顺位"
+msgstr "调查员顺位"
+
+msgctxt "fragment"
+msgid "调查掷的骰子数量 + (1)"
+msgstr "调查掷的骰子数量 + (1)"
+
+msgctxt "fragment"
+msgid "调整"
+msgstr "调整"
+
+msgctxt "fragment"
+msgid "调整 · I"
+msgstr "调整 · I"
+
+msgctxt "fragment"
+msgid "调整：将卡牌放回对应卡组的"
+msgstr "调整：将卡牌放回对应卡组的"
+
+msgctxt "fragment"
+msgid "定义的开始， 就是智慧的开始。"
+msgstr "定义的开始， 就是智慧的开始。"
+
+msgctxt "fragment"
+msgid "对(1)位「调查员」布置"
+msgstr "对(1)位「调查员」布置"
+
+msgctxt "fragment"
+msgid "对(1)位「调查员」布置，持续生效"
+msgstr "对(1)位「调查员」布置，持续生效"
+
+msgctxt "fragment"
+msgid "对你前、后顺位的「调查员」各布置(1)张「辅助」卡牌：【机器学习 · 仿生人】；若你前、后顺位的「调查员」发生变化或「陷入疯狂」，回收场上的【机器学习 · 仿生人】并重新使用此技能。若你恢复「清醒」，回收所有的【机器学习 · 仿生人】。"
+msgstr "对你前、后顺位的「调查员」各布置(1)张「辅助」卡牌：【机器学习 · 仿生人】；若你前、后顺位的「调查员」发生变化或「陷入疯狂」，回收场上的【机器学习 · 仿生人】并重新使用此技能。若你恢复「清醒」，回收所有的【机器学习 · 仿生人】。"
+
+msgctxt "fragment"
+msgid "对你自己布置，持续生效"
+msgstr "对你自己布置，持续生效"
+
+msgctxt "fragment"
+msgid "对于首次体验《调查 : 深入》的玩家，我们建议先以标注了Vol.1脚标的卡牌组成卡组，进行游戏。"
+msgstr "对于首次体验《调查 : 深入》的玩家，我们建议先以标注了Vol.1脚标的卡牌组成卡组，进行游戏。"
+
+msgctxt "fragment"
+msgid "对自己使用一次跳过"
+msgstr "对自己使用一次跳过"
+
+msgctxt "fragment"
+msgid "俄罗斯转轮 · I"
+msgstr "俄罗斯转轮 · I"
+
+msgctxt "fragment"
+msgid "而是放置到另(1)队伍的「情报区」"
+msgstr "而是放置到另(1)队伍的「情报区」"
+
+msgctxt "fragment"
+msgid "反向执行(1)次调查"
+msgstr "反向执行(1)次调查"
+
+msgctxt "fragment"
+msgid "反转"
+msgstr "反转"
+
+msgctxt "fragment"
+msgid "反转 · I"
+msgstr "反转 · I"
+
+msgctxt "fragment"
+msgid "反转 · II"
+msgstr "反转 · II"
+
+msgctxt "fragment"
+msgid "反转：反转当前的调查顺序"
+msgstr "反转：反转当前的调查顺序"
+
+msgctxt "fragment"
+msgid "反转并跳过"
+msgstr "反转并跳过"
+
+msgctxt "fragment"
+msgid "反转当前的「调查顺位」，将所有「顺位指示卡」翻面。"
+msgstr "反转当前的「调查顺位」，将所有「顺位指示卡」翻面。"
+
+msgctxt "fragment"
+msgid "反转当前的调查顺序，将所有「顺位指示卡」翻面。"
+msgstr "反转当前的调查顺序，将所有「顺位指示卡」翻面。"
+
+msgctxt "fragment"
+msgid "反转当前调查顺序，将顺位指示卡翻面。"
+msgstr "反转当前调查顺序，将顺位指示卡翻面。"
+
+msgctxt "fragment"
+msgid "返回调查深入桌游首页"
+msgstr "返回调查深入桌游首页"
+
+msgctxt "fragment"
+msgid "返回顶部 ↑"
+msgstr "返回顶部 ↑"
+
+msgctxt "fragment"
+msgid "返回官网"
+msgstr "返回官网"
+
+msgctxt "fragment"
+msgid "方括号表示卡牌（包括调查员）名称；【禁忌真相】有特殊颜色标识。"
+msgstr "方括号表示卡牌（包括调查员）名称；【禁忌真相】有特殊颜色标识。"
+
+msgctxt "fragment"
+msgid "仿生人可以成为消耗 SAN 的目标吗？"
+msgstr "仿生人可以成为消耗 SAN 的目标吗？"
+
+msgctxt "fragment"
+msgid "放在「情报卡组」的底部"
+msgstr "放在「情报卡组」的底部"
+
+msgctxt "fragment"
+msgid "放置到哪个队伍的「情报区」"
+msgstr "放置到哪个队伍的「情报区」"
+
+msgctxt "fragment"
+msgid "放置到消耗它的「调查员」卡牌进行计数"
+msgstr "放置到消耗它的「调查员」卡牌进行计数"
+
+msgctxt "fragment"
+msgid "菲利普 · 钱德勒"
+msgstr "菲利普 · 钱德勒"
+
+msgctxt "fragment"
+msgid "费用"
+msgstr "费用"
+
+msgctxt "fragment"
+msgid "费用：0"
+msgstr "费用：0"
+
+msgctxt "fragment"
+msgid "费用：1"
+msgstr "费用：1"
+
+msgctxt "fragment"
+msgid "费用：2"
+msgstr "费用：2"
+
+msgctxt "fragment"
+msgid "费用：3"
+msgstr "费用：3"
+
+msgctxt "fragment"
+msgid "费用：4"
+msgstr "费用：4"
+
+msgctxt "fragment"
+msgid "分别在2个队伍；每人指挥1位「调查员」"
+msgstr "分别在2个队伍；每人指挥1位「调查员」"
+
+msgctxt "fragment"
+msgid "分别在2个队伍；每人指挥2位「调查员」"
+msgstr "分别在2个队伍；每人指挥2位「调查员」"
+
+msgctxt "fragment"
+msgid "分别在2个或3个队伍；每人指挥1位「调查员」"
+msgstr "分别在2个或3个队伍；每人指挥1位「调查员」"
+
+msgctxt "fragment"
+msgid "分别在3个队伍；每人指挥2位「调查员」"
+msgstr "分别在3个队伍；每人指挥2位「调查员」"
+
+msgctxt "fragment"
+msgid "分配「调查顺位」"
+msgstr "分配「调查顺位」"
+
+msgctxt "fragment"
+msgid "分配「调查员」"
+msgstr "分配「调查员」"
+
+msgctxt "fragment"
+msgid "疯狂"
+msgstr "疯狂"
+
+msgctxt "fragment"
+msgid "疯狂技能"
+msgstr "疯狂技能"
+
+msgctxt "fragment"
+msgid "辅助"
+msgstr "辅助"
+
+msgctxt "fragment"
+msgid "辅助卡组"
+msgstr "辅助卡组"
+
+msgctxt "fragment"
+msgid "附录导航"
+msgstr "附录导航"
+
+msgctxt "fragment"
+msgid "附录负责定义词汇，Wiki 负责呈现每张卡牌的效果与说明更新版本；当卡牌印刷与当前规则冲突时，先看这里，再看 FAQ 的具体判例。"
+msgstr "附录负责定义词汇，Wiki 负责呈现每张卡牌的效果与说明更新版本；当卡牌印刷与当前规则冲突时，先看这里，再看 FAQ 的具体判例。"
+
+msgctxt "fragment"
+msgid "富饶之罪"
+msgstr "富饶之罪"
+
+msgctxt "fragment"
+msgid "该「轮」游戏继续"
+msgstr "该「轮」游戏继续"
+
+msgctxt "fragment"
+msgid "该效果晚于其他相关效果结算"
+msgstr "该效果晚于其他相关效果结算"
+
+msgctxt "fragment"
+msgid "各位「指挥者」的手牌、场上已布置的「个体机制」均不变。此后，下一「轮」游戏开始。"
+msgstr "各位「指挥者」的手牌、场上已布置的「个体机制」均不变。此后，下一「轮」游戏开始。"
+
+msgctxt "fragment"
+msgid "各位「指挥者」需要按「调查员」的「调查顺位」，依次从「策略卡组」抽取(4)张「策略」卡牌纳入手牌。"
+msgstr "各位「指挥者」需要按「调查员」的「调查顺位」，依次从「策略卡组」抽取(4)张「策略」卡牌纳入手牌。"
+
+msgctxt "fragment"
+msgid "工会总有答案"
+msgstr "工会总有答案"
+
+msgctxt "fragment"
+msgid "关于卡牌的详细介绍，以及众筹版/补充包信息，请参考《调查深入 · 卡牌统计表》。"
+msgstr "关于卡牌的详细介绍，以及众筹版/补充包信息，请参考《调查深入 · 卡牌统计表》。"
+
+msgctxt "fragment"
+msgid "观测异常：你在自己的「操作阶段」只能补充手牌；所有其他队伍「调查员」的「操作阶段」你都可以进行操作。你的「调查范围」等于该「调查员」在当前「操作阶段」已调查的数量。若操作冲突，由该「调查员」决定先后顺序。"
+msgstr "观测异常：你在自己的「操作阶段」只能补充手牌；所有其他队伍「调查员」的「操作阶段」你都可以进行操作。你的「调查范围」等于该「调查员」在当前「操作阶段」已调查的数量。若操作冲突，由该「调查员」决定先后顺序。"
+
+msgctxt "fragment"
+msgid "归去来兮：你不会因为消耗「SAN」而「陷入疯狂」。若你调查到【禁忌真相】，恢复(1)点「SAN」。每(2)「轮」游戏，你需要额外增加(1)点「SAN」，否则「陷入疯狂」。"
+msgstr "归去来兮：你不会因为消耗「SAN」而「陷入疯狂」。若你调查到【禁忌真相】，恢复(1)点「SAN」。每(2)「轮」游戏，你需要额外增加(1)点「SAN」，否则「陷入疯狂」。"
+
+msgctxt "fragment"
+msgid "规则是地图，"
+msgstr "规则是地图，"
+
+msgctxt "fragment"
+msgid "规则书"
+msgstr "规则书"
+
+msgctxt "fragment"
+msgid "规则书概览"
+msgstr "规则书概览"
+
+msgctxt "fragment"
+msgid "规则书中没有写明的情况，请和同桌讨论并达成共识后继续游戏。如果同一问题反复出现，反馈给制作团队，纳入后续版本。"
+msgstr "规则书中没有写明的情况，请和同桌讨论并达成共识后继续游戏。如果同一问题反复出现，反馈给制作团队，纳入后续版本。"
+
+msgctxt "fragment"
+msgid "规则书中没有写明的情况，请和同桌讨论后达成共识，继续调查。"
+msgstr "规则书中没有写明的情况，请和同桌讨论后达成共识，继续调查。"
+
+msgctxt "fragment"
 msgid "规则书中没有写明的情况，请与同桌讨论并达成共识后继续游戏；同一问题反复出现时，记录进下一版判例。"
 msgstr "规则书中没有写明的情况，请与同桌讨论并达成共识后继续游戏；同一问题反复出现时，记录进下一版判例。"
+
+msgctxt "fragment"
+msgid "规则书中没有写明的情况怎么办？"
+msgstr "规则书中没有写明的情况怎么办？"
+
+msgctxt "fragment"
+msgid "规则章节导航"
+msgstr "规则章节导航"
+
+msgctxt "fragment"
+msgid "规则指引书"
+msgstr "规则指引书"
+
+msgctxt "fragment"
+msgid "规则指引书里没说怎么办？"
+msgstr "规则指引书里没说怎么办？"
+
+msgctxt "fragment"
+msgid "规则指引书没有明确规定的情况，由同桌玩家讨论并达成共识后继续游戏；反复出现的边界情况应记录到「判例」中。"
+msgstr "规则指引书没有明确规定的情况，由同桌玩家讨论并达成共识后继续游戏；反复出现的边界情况应记录到「判例」中。"
+
+msgctxt "fragment"
+msgid "规则指引书原文"
+msgstr "规则指引书原文"
+
+msgctxt "fragment"
+msgid "哈米伦 · 修普诺斯"
+msgstr "哈米伦 · 修普诺斯"
+
+msgctxt "fragment"
+msgid "互为「傀儡」"
+msgstr "互为「傀儡」"
+
+msgctxt "fragment"
+msgid "欢迎回到调查现场。"
+msgstr "欢迎回到调查现场。"
+
+msgctxt "fragment"
+msgid "欢迎回来，这里是「异常联合调查工会」（Investigation Guild of Anomaly），通常被简称为「调查工会」。我们是一个跨国独立组织，成员围绕一些基本的规则，各自在自己的行动范围内执行任务。"
+msgstr "欢迎回来，这里是「异常联合调查工会」（Investigation Guild of Anomaly），通常被简称为「调查工会」。我们是一个跨国独立组织，成员围绕一些基本的规则，各自在自己的行动范围内执行任务。"
+
+msgctxt "fragment"
+msgid "环境"
+msgstr "环境"
+
+msgctxt "fragment"
+msgid "环境卡牌"
+msgstr "环境卡牌"
+
+msgctxt "fragment"
+msgid "环境卡组"
+msgstr "环境卡组"
+
+msgctxt "fragment"
+msgid "恢复清醒"
+msgstr "恢复清醒"
+
+msgctxt "fragment"
+msgid "回收"
+msgstr "回收"
+
+msgctxt "fragment"
+msgid "回收(1)张对你布置的【任务负债】"
+msgstr "回收(1)张对你布置的【任务负债】"
+
+msgctxt "fragment"
+msgid "回收从 Vol.3 开始进入规则语言。"
+msgstr "回收从 Vol.3 开始进入规则语言。"
+
+msgctxt "fragment"
+msgid "回溯 · I"
+msgstr "回溯 · I"
+
+msgctxt "fragment"
+msgid "混沌之路"
+msgstr "混沌之路"
+
+msgctxt "fragment"
+msgid "混洗后按「调查顺位」"
+msgstr "混洗后按「调查顺位」"
+
+msgctxt "fragment"
+msgid "或【催眠师】调查后"
+msgstr "或【催眠师】调查后"
+
+msgctxt "fragment"
+msgid "或此卡牌被弃置时"
+msgstr "或此卡牌被弃置时"
+
+msgctxt "fragment"
+msgid "或有一方拒绝调查"
+msgstr "或有一方拒绝调查"
+
+msgctxt "fragment"
+msgid "获得(1)点临时「SAN」(加一个骰子)"
+msgstr "获得(1)点临时「SAN」(加一个骰子)"
+
+msgctxt "fragment"
+msgid "机器学习 · 仿生人"
+msgstr "机器学习 · 仿生人"
+
+msgctxt "fragment"
+msgid "机制、调查员、环境与印刷勘误的快速查找页。"
+msgstr "机制、调查员、环境与印刷勘误的快速查找页。"
+
+msgctxt "fragment"
+msgid "基于投出的点数"
+msgstr "基于投出的点数"
+
+msgctxt "fragment"
+msgid "基于掷出的点数"
+msgstr "基于掷出的点数"
+
+msgctxt "fragment"
+msgid "吉姆 · 伯格"
+msgstr "吉姆 · 伯格"
+
+msgctxt "fragment"
+msgid "即使你已经玩过很多次《调查 : 深入》，即使我们已经尽力让这份《规则指引书》尽善尽美，有时也会遇到规则指引书中未明确规定的情况。请不要过于纠结，和大家商量达成共识后继续游戏。"
+msgstr "即使你已经玩过很多次《调查 : 深入》，即使我们已经尽力让这份《规则指引书》尽善尽美，有时也会遇到规则指引书中未明确规定的情况。请不要过于纠结，和大家商量达成共识后继续游戏。"
+
+msgctxt "fragment"
+msgid "集中放置、共享使用"
+msgstr "集中放置、共享使用"
+
+msgctxt "fragment"
+msgid "记录「SAN」与抽取初始手牌"
+msgstr "记录「SAN」与抽取初始手牌"
+
+msgctxt "fragment"
+msgid "加入各自的手牌"
+msgstr "加入各自的手牌"
+
+msgctxt "fragment"
+msgid "加入你的「情报区」"
+msgstr "加入你的「情报区」"
+
+msgctxt "fragment"
+msgid "加入你的手牌"
+msgstr "加入你的手牌"
+
+msgctxt "fragment"
+msgid "简 · 艾德勒"
+msgstr "简 · 艾德勒"
+
+msgctxt "fragment"
+msgid "将(1)个骰子以「SAN」上限的点数朝上，放到该处，用以记录该「调查员」的当前「SAN」。多余的骰子可以放置到一边待用。"
+msgstr "将(1)个骰子以「SAN」上限的点数朝上，放到该处，用以记录该「调查员」的当前「SAN」。多余的骰子可以放置到一边待用。"
+
+msgctxt "fragment"
+msgid "将(1)张「辅助」卡牌：【胁迫 · 猛男】布置给你自己；若有任意「调查员」【陷入疯狂】，再次布置(1)张【胁迫 · 猛男】给你自己。若你恢复「清醒」，回收所有由你的技能打出的「辅助」卡牌。"
+msgstr "将(1)张「辅助」卡牌：【胁迫 · 猛男】布置给你自己；若有任意「调查员」【陷入疯狂】，再次布置(1)张【胁迫 · 猛男】给你自己。若你恢复「清醒」，回收所有由你的技能打出的「辅助」卡牌。"
+
+msgctxt "fragment"
+msgid "将(2)张「辅助」卡牌：【傀儡 · 催眠师】布置给任意(2)位「调查员」；若其中任意(1)位「陷入疯狂」，回收场上的【傀儡 · 催眠师】并重新使用此技能。若你恢复「清醒」，立即回收所有【傀儡 · 催眠师】。"
+msgstr "将(2)张「辅助」卡牌：【傀儡 · 催眠师】布置给任意(2)位「调查员」；若其中任意(1)位「陷入疯狂」，回收场上的【傀儡 · 催眠师】并重新使用此技能。若你恢复「清醒」，立即回收所有【傀儡 · 催眠师】。"
+
+msgctxt "fragment"
+msgid "将「策略」、「情报」、「环境」、「辅助」卡牌各自洗切整理成一堆，分别组成(4)组卡组。"
+msgstr "将「策略」、「情报」、「环境」、「辅助」卡牌各自洗切整理成一堆，分别组成(4)组卡组。"
+
+msgctxt "fragment"
+msgid "将「策略」「情报」「环境」「辅助」卡牌分别洗切，组成四组卡组。"
+msgstr "将「策略」「情报」「环境」「辅助」卡牌分别洗切，组成四组卡组。"
+
+msgctxt "fragment"
+msgid "将「策略」卡牌各自洗切整理成一堆。"
+msgstr "将「策略」卡牌各自洗切整理成一堆。"
+
+msgctxt "fragment"
+msgid "将「辅助」卡牌：【禁忌仪式】"
+msgstr "将「辅助」卡牌：【禁忌仪式】"
+
+msgctxt "fragment"
+msgid "将「辅助」卡牌各自洗切整理成一堆。"
+msgstr "将「辅助」卡牌各自洗切整理成一堆。"
+
+msgctxt "fragment"
+msgid "将「环境」卡牌各自洗切整理成一堆。"
+msgstr "将「环境」卡牌各自洗切整理成一堆。"
+
+msgctxt "fragment"
+msgid "将「情报」卡牌各自洗切整理成一堆。"
+msgstr "将「情报」卡牌各自洗切整理成一堆。"
+
+msgctxt "fragment"
+msgid "将【禁忌真相】洗回"
+msgstr "将【禁忌真相】洗回"
+
+msgctxt "fragment"
+msgid "将【禁忌真相】洗入"
+msgstr "将【禁忌真相】洗入"
+
+msgctxt "fragment"
+msgid "将本「轮」游戏的【禁忌真相】"
+msgstr "将本「轮」游戏的【禁忌真相】"
+
+msgctxt "fragment"
+msgid "将场上所有已布置的「个体机制」"
+msgstr "将场上所有已布置的「个体机制」"
+
+msgctxt "fragment"
+msgid "将此卡牌回收"
+msgstr "将此卡牌回收"
+
+msgctxt "fragment"
+msgid "将调查员顺位、情报区与四类卡组拉开距离。桌面布局不是装饰，它让“谁能看见什么”变得清楚。"
+msgstr "将调查员顺位、情报区与四类卡组拉开距离。桌面布局不是装饰，它让“谁能看见什么”变得清楚。"
+
+msgctxt "fragment"
+msgid "将卡牌放回对应「卡组」的最上、最下或其原位。若对象来自「弃牌区」，可以放回所属卡组或弃牌区的最上、最下，或其在弃牌区中的原位。"
+msgstr "将卡牌放回对应「卡组」的最上、最下或其原位。若对象来自「弃牌区」，可以放回所属卡组或弃牌区的最上、最下，或其在弃牌区中的原位。"
+
+msgctxt "fragment"
+msgid "将卡牌放回对应卡组或弃牌区的顶部、底部或原位。若对象来自弃牌区，也可以放回所属卡组或弃牌区的指定位置。"
+msgstr "将卡牌放回对应卡组或弃牌区的顶部、底部或原位。若对象来自弃牌区，也可以放回所属卡组或弃牌区的指定位置。"
+
+msgctxt "fragment"
+msgid "将卡牌放回卡组或弃牌区的顶部、底部或原位。"
+msgstr "将卡牌放回卡组或弃牌区的顶部、底部或原位。"
+
+msgctxt "fragment"
+msgid "将卡牌移回上一个所在位置；若无说明，洗切该位置。"
+msgstr "将卡牌移回上一个所在位置；若无说明，洗切该位置。"
+
+msgctxt "fragment"
+msgid "将卡牌移至其上一个所在位置；没有特殊说明时，对上一个位置的卡牌进行洗切。由技能直接触发的「辅助」卡牌，其上一个所在位置为「辅助卡组」而不是手牌。"
+msgstr "将卡牌移至其上一个所在位置；没有特殊说明时，对上一个位置的卡牌进行洗切。由技能直接触发的「辅助」卡牌，其上一个所在位置为「辅助卡组」而不是手牌。"
+
+msgctxt "fragment"
+msgid "将卡牌移至其上一个所在位置；如无特殊说明，应当对上一个所在位置的卡牌进行洗切。由技能直接触发的「辅助」卡牌，其上一个所在位置为「辅助卡组」而非手牌。"
+msgstr "将卡牌移至其上一个所在位置；如无特殊说明，应当对上一个所在位置的卡牌进行洗切。由技能直接触发的「辅助」卡牌，其上一个所在位置为「辅助卡组」而非手牌。"
+
+msgctxt "fragment"
+msgid "将其洗回「策略卡组」"
+msgstr "将其洗回「策略卡组」"
+
+msgctxt "fragment"
+msgid "将其洗回「情报卡组」"
+msgstr "将其洗回「情报卡组」"
+
+msgctxt "fragment"
+msgid "将其洗回剩余的「情报卡组」"
+msgstr "将其洗回剩余的「情报卡组」"
+
+msgctxt "fragment"
+msgid "将所有「顺位指示卡」翻面"
+msgstr "将所有「顺位指示卡」翻面"
+
+msgctxt "fragment"
+msgid "降雨概率"
+msgstr "降雨概率"
+
+msgctxt "fragment"
+msgid "交换你与另一位「指挥者」的手牌"
+msgstr "交换你与另一位「指挥者」的手牌"
+
+msgctxt "fragment"
+msgid "交换任意(2)位「调查员」的"
+msgstr "交换任意(2)位「调查员」的"
+
+msgctxt "fragment"
+msgid "角色故事"
+msgstr "角色故事"
+
+msgctxt "fragment"
+msgid "杰克 · 纳皮尔"
+msgstr "杰克 · 纳皮尔"
+
+msgctxt "fragment"
+msgid "结束「操作阶段」"
+msgstr "结束「操作阶段」"
+
+msgctxt "fragment"
+msgid "结束一「轮」游戏"
+msgstr "结束一「轮」游戏"
+
+msgctxt "fragment"
+msgid "结算「SAN」消耗，收回场上所有「情报」卡牌，开始下一「轮」游戏。回到步骤3。"
+msgstr "结算「SAN」消耗，收回场上所有「情报」卡牌，开始下一「轮」游戏。回到步骤3。"
+
+msgctxt "fragment"
+msgid "仅(1)次，其他「调查员」调查到【禁忌真相】时，你可以使其不消耗「SAN」，该「轮」游戏正常结束。若你「恢复清醒」并重新「陷入疯狂」，可以重新使用此技能。"
+msgstr "仅(1)次，其他「调查员」调查到【禁忌真相】时，你可以使其不消耗「SAN」，该「轮」游戏正常结束。若你「恢复清醒」并重新「陷入疯狂」，可以重新使用此技能。"
+
+msgctxt "fragment"
+msgid "仅剩(1)点「SAN」"
+msgstr "仅剩(1)点「SAN」"
+
+msgctxt "fragment"
+msgid "仅剩一个队伍「调查员」存活，胜负已定。"
+msgstr "仅剩一个队伍「调查员」存活，胜负已定。"
+
+msgctxt "fragment"
+msgid "谨慎追寻真相。"
+msgstr "谨慎追寻真相。"
+
+msgctxt "fragment"
+msgid "进入「操作阶段」"
+msgstr "进入「操作阶段」"
+
+msgctxt "fragment"
+msgid "进行调整"
+msgstr "进行调整"
+
+msgctxt "fragment"
+msgid "禁忌仪式"
+msgstr "禁忌仪式"
+
+msgctxt "fragment"
+msgid "禁忌仪式 · I"
+msgstr "禁忌仪式 · I"
+
+msgctxt "fragment"
+msgid "禁忌真相"
+msgstr "禁忌真相"
+
+msgctxt "fragment"
+msgid "拒绝调查的「调查员」受到胁迫 + (4)"
+msgstr "拒绝调查的「调查员」受到胁迫 + (4)"
+
+msgctxt "fragment"
+msgid "决定调查的「情报」卡牌的数量"
+msgstr "决定调查的「情报」卡牌的数量"
+
+msgctxt "fragment"
+msgid "卡面中的特殊行动使用固定含义。若某张卡牌没有额外说明，就按以下定义处理。"
+msgstr "卡面中的特殊行动使用固定含义。若某张卡牌没有额外说明，就按以下定义处理。"
+
+msgctxt "fragment"
+msgid "卡牌 Wiki"
+msgstr "卡牌 Wiki"
+
+msgctxt "fragment"
+msgid "卡牌 Wiki →"
+msgstr "卡牌 Wiki →"
+
+msgctxt "fragment"
+msgid "卡牌类别筛选"
+msgstr "卡牌类别筛选"
+
+msgctxt "fragment"
+msgid "卡牌索引 / CARD WIKI"
+msgstr "卡牌索引 / CARD WIKI"
+
+msgctxt "fragment"
+msgid "卡牌统计"
+msgstr "卡牌统计"
+
+msgctxt "fragment"
+msgid "卡牌效果"
+msgstr "卡牌效果"
+
+msgctxt "fragment"
+msgid "卡牌印刷与规则文本冲突时怎么办？"
+msgstr "卡牌印刷与规则文本冲突时怎么办？"
+
+msgctxt "fragment"
+msgid "开始「操作阶段」"
+msgstr "开始「操作阶段」"
+
+msgctxt "fragment"
+msgid "开始一「轮」游戏，触发一张新的「环境」卡牌"
+msgstr "开始一「轮」游戏，触发一张新的「环境」卡牌"
+
+msgctxt "fragment"
+msgid "可以对「陷入疯狂」的「调查员」使用"
+msgstr "可以对「陷入疯狂」的「调查员」使用"
+
+msgctxt "fragment"
+msgid "可以使该卡牌无效，并直接弃置"
+msgstr "可以使该卡牌无效，并直接弃置"
+
+msgctxt "fragment"
+msgid "可以使用多张「情报」卡牌"
+msgstr "可以使用多张「情报」卡牌"
+
+msgctxt "fragment"
+msgid "快速游玩"
+msgstr "快速游玩"
+
+msgctxt "fragment"
+msgid "快速游玩流程"
+msgstr "快速游玩流程"
+
+msgctxt "fragment"
+msgid "快速游玩流程指南。"
+msgstr "快速游玩流程指南。"
+
+msgctxt "fragment"
+msgid "窥探"
+msgstr "窥探"
+
+msgctxt "fragment"
+msgid "窥探 · I"
+msgstr "窥探 · I"
+
+msgctxt "fragment"
+msgid "窥探 · II"
+msgstr "窥探 · II"
+
+msgctxt "fragment"
+msgid "窥探 · III"
+msgstr "窥探 · III"
+
+msgctxt "fragment"
+msgid "窥探 · IV"
+msgstr "窥探 · IV"
+
+msgctxt "fragment"
+msgid "窥探：私下（队内）顺序查看(N)张"
+msgstr "窥探：私下（队内）顺序查看(N)张"
+
+msgctxt "fragment"
+msgid "窥探(3)张「情报」卡牌"
+msgstr "窥探(3)张「情报」卡牌"
+
+msgctxt "fragment"
+msgid "窥探(N)张「情报」卡牌"
+msgstr "窥探(N)张「情报」卡牌"
+
+msgctxt "fragment"
+msgid "窥探的「情报」卡牌数量累加"
+msgstr "窥探的「情报」卡牌数量累加"
+
+msgctxt "fragment"
+msgid "窥探的信息由所有「指挥者」共享"
+msgstr "窥探的信息由所有「指挥者」共享"
+
+msgctxt "fragment"
+msgid "窥探第(N)张「情报」卡牌"
+msgstr "窥探第(N)张「情报」卡牌"
+
+msgctxt "fragment"
+msgid "傀儡 · 催眠师"
+msgstr "傀儡 · 催眠师"
+
+msgctxt "fragment"
+msgid "傀儡 · I"
+msgstr "傀儡 · I"
+
+msgctxt "fragment"
+msgid "来生"
+msgstr "来生"
+
+msgctxt "fragment"
+msgid "类型"
+msgstr "类型"
+
+msgctxt "fragment"
+msgid "类型：策略：个体机制"
+msgstr "类型：策略：个体机制"
+
+msgctxt "fragment"
+msgid "类型：个体机制"
+msgstr "类型：个体机制"
+
+msgctxt "fragment"
+msgid "类型：环境"
+msgstr "类型：环境"
+
+msgctxt "fragment"
+msgid "类型：即时行动"
+msgstr "类型：即时行动"
+
+msgctxt "fragment"
+msgid "类型：情报"
+msgstr "类型：情报"
+
+msgctxt "fragment"
+msgid "理智压力"
+msgstr "理智压力"
+
+msgctxt "fragment"
+msgid "立即调查同样数量的「情报」卡牌"
+msgstr "立即调查同样数量的「情报」卡牌"
+
+msgctxt "fragment"
+msgid "立即激活「辅助」卡牌:【命定之人 · 赌徒】这一额外「环境」；若你恢复「清醒」，立即回收【命定之人 · 赌徒】。"
+msgstr "立即激活「辅助」卡牌:【命定之人 · 赌徒】这一额外「环境」；若你恢复「清醒」，立即回收【命定之人 · 赌徒】。"
+
+msgctxt "fragment"
+msgid "立刻进行调查"
+msgstr "立刻进行调查"
+
+msgctxt "fragment"
+msgid "例如：调查到禁忌真相后会发生什么？"
+msgstr "例如：调查到禁忌真相后会发生什么？"
+
+msgctxt "fragment"
+msgid "临时「SAN」不影响技能触发"
+msgstr "临时「SAN」不影响技能触发"
+
+msgctxt "fragment"
+msgid "浏览全部卡牌 →"
+msgstr "浏览全部卡牌 →"
+
+msgctxt "fragment"
+msgid "轮流进行「操作阶段」"
+msgstr "轮流进行「操作阶段」"
+
+msgctxt "fragment"
+msgid "罗利 · 西泽"
+msgstr "罗利 · 西泽"
+
+msgctxt "fragment"
+msgid "埋葬过去 · I"
+msgstr "埋葬过去 · I"
+
+msgctxt "fragment"
+msgid "蛮横无理"
+msgstr "蛮横无理"
+
+msgctxt "fragment"
+msgid "盲从"
+msgstr "盲从"
+
+msgctxt "fragment"
+msgid "盲从 · 催眠师"
+msgstr "盲从 · 催眠师"
+
+msgctxt "fragment"
+msgid "盲从 · I"
+msgstr "盲从 · I"
+
+msgctxt "fragment"
+msgid "盲从：「操作阶段」开始后"
+msgstr "盲从：「操作阶段」开始后"
+
+msgctxt "fragment"
+msgid "盲从：进入「操作阶段」后"
+msgstr "盲从：进入「操作阶段」后"
+
+msgctxt "fragment"
+msgid "没有打出「策略」卡牌"
+msgstr "没有打出「策略」卡牌"
+
+msgctxt "fragment"
+msgid "没有特殊描述时，窥探从哪里开始？"
+msgstr "没有特殊描述时，窥探从哪里开始？"
+
+msgctxt "fragment"
+msgid "没有直接命中，正在转交规则问答。"
+msgstr "没有直接命中，正在转交规则问答。"
+
+msgctxt "fragment"
+msgid "每「轮」游戏开始前，从「环境卡组」顶部抽取(1)张「环境」卡牌，该卡牌卡面效果在本「轮」内会对所有「调查员」持续生效。若本「轮」并非第一「轮」游戏，这张新的「环境」卡牌会代替上一轮的「环境」卡牌生效（上一「轮」的「环境」卡牌不洗回「环境卡组」）。"
+msgstr "每「轮」游戏开始前，从「环境卡组」顶部抽取(1)张「环境」卡牌，该卡牌卡面效果在本「轮」内会对所有「调查员」持续生效。若本「轮」并非第一「轮」游戏，这张新的「环境」卡牌会代替上一轮的「环境」卡牌生效（上一「轮」的「环境」卡牌不洗回「环境卡组」）。"
+
+msgctxt "fragment"
+msgid "每「轮」游戏开始时，由你决定本轮触发的「环境」卡牌，你可以从未触发或已触发的「环境」卡牌中选择，但不能连续选择同一张「环境」卡牌。"
+msgstr "每「轮」游戏开始时，由你决定本轮触发的「环境」卡牌，你可以从未触发或已触发的「环境」卡牌中选择，但不能连续选择同一张「环境」卡牌。"
+
+msgctxt "fragment"
+msgid "每「轮」游戏开始时，指定其他队伍的(1)位「调查员」；你们对彼此使用「策略」卡牌时没有消耗；若该「调查员」调查到【禁忌真相】，你「恢复清醒」并获得(2)点「SAN」；该「调查员」可以消耗(1)点「SAN」，强制拒绝【应召】。"
+msgstr "每「轮」游戏开始时，指定其他队伍的(1)位「调查员」；你们对彼此使用「策略」卡牌时没有消耗；若该「调查员」调查到【禁忌真相】，你「恢复清醒」并获得(2)点「SAN」；该「调查员」可以消耗(1)点「SAN」，强制拒绝【应召】。"
+
+msgctxt "fragment"
+msgid "每「轮」游戏由上一「轮」调查到【禁忌真相】的「调查员」先执行「操作阶段」。如果这是第一「轮」游戏，第(1)顺位的「调查员」先执行「操作阶段」。"
+msgstr "每「轮」游戏由上一「轮」调查到【禁忌真相】的「调查员」先执行「操作阶段」。如果这是第一「轮」游戏，第(1)顺位的「调查员」先执行「操作阶段」。"
+
+msgctxt "fragment"
+msgid "每次调查(1)张「情报」卡牌"
+msgstr "每次调查(1)张「情报」卡牌"
+
+msgctxt "fragment"
+msgid "每次经过你的「调查顺位」时，掷(1)个骰子。若为奇数：弃置你前、后顺位「指挥者」的(1)张手牌；若为偶数：弃置你对前、后顺位的「调查员」布置的随机(1)张「个体机制」。"
+msgstr "每次经过你的「调查顺位」时，掷(1)个骰子。若为奇数：弃置你前、后顺位「指挥者」的(1)张手牌；若为偶数：弃置你对前、后顺位的「调查员」布置的随机(1)张「个体机制」。"
+
+msgctxt "fragment"
+msgid "每次任务中，你都需要应对不同的异常「环境」，你将会揭示其中的【禁忌真相】所在。「情报」虽然是多多益善，但调查到【禁忌真相】却十分危险，频繁调查到【禁忌真相】的「调查员」往往都会「陷入疯狂」。"
+msgstr "每次任务中，你都需要应对不同的异常「环境」，你将会揭示其中的【禁忌真相】所在。「情报」虽然是多多益善，但调查到【禁忌真相】却十分危险，频繁调查到【禁忌真相】的「调查员」往往都会「陷入疯狂」。"
+
+msgctxt "fragment"
+msgid "每放入(N)张"
+msgstr "每放入(N)张"
+
+msgctxt "fragment"
+msgid "每个「操作阶段」开始时"
+msgstr "每个「操作阶段」开始时"
+
+msgctxt "fragment"
+msgid "每个「操作阶段」只能使用一个「赌」技能。"
+msgstr "每个「操作阶段」只能使用一个「赌」技能。"
+
+msgctxt "fragment"
+msgid "每经过(N)个「操作阶段」"
+msgstr "每经过(N)个「操作阶段」"
+
+msgctxt "fragment"
+msgid "每局游戏开始后，将以多「轮」游戏进行推进。"
+msgstr "每局游戏开始后，将以多「轮」游戏进行推进。"
+
+msgctxt "fragment"
+msgid "每位「调查员」的"
+msgstr "每位「调查员」的"
+
+msgctxt "fragment"
+msgid "每位「调查员」的「操作阶段」结束时，其「指挥者」需要弃置(2)张手牌，否则该「调查员」消耗(1)点「SAN」。若其「指挥者」剩余手牌不足(2)张，无需弃置。"
+msgstr "每位「调查员」的「操作阶段」结束时，其「指挥者」需要弃置(2)张手牌，否则该「调查员」消耗(1)点「SAN」。若其「指挥者」剩余手牌不足(2)张，无需弃置。"
+
+msgctxt "fragment"
+msgid "每位「指挥者」从候选「调查员」中选取需要指挥的角色，并随机分配「调查顺位」。"
+msgstr "每位「指挥者」从候选「调查员」中选取需要指挥的角色，并随机分配「调查顺位」。"
+
+msgctxt "fragment"
+msgid "每位玩家扮演一位「指挥者」，通过「策略」指令引领自己的「调查员」。每一「轮」游戏都会出现新的「环境」，玩家需要从「情报卡组」中调查并了解【禁忌真相】的位置。"
+msgstr "每位玩家扮演一位「指挥者」，通过「策略」指令引领自己的「调查员」。每一「轮」游戏都会出现新的「环境」，玩家需要从「情报卡组」中调查并了解【禁忌真相】的位置。"
+
+msgctxt "fragment"
+msgid "每一「轮」包含不限数量的「操作阶段」。任意「调查员」调查到【禁忌真相】时，本「轮」结束，按照效果减少该「调查员」的「SAN」，并将场上的「情报」卡牌收回、洗切成新的「情报卡组」。"
+msgstr "每一「轮」包含不限数量的「操作阶段」。任意「调查员」调查到【禁忌真相】时，本「轮」结束，按照效果减少该「调查员」的「SAN」，并将场上的「情报」卡牌收回、洗切成新的「情报卡组」。"
+
+msgctxt "fragment"
+msgid "每一「轮」游戏包含不限数量的「操作阶段」，每位「指挥者」指挥对应「调查员」在其「操作阶段」内行动。"
+msgstr "每一「轮」游戏包含不限数量的「操作阶段」，每位「指挥者」指挥对应「调查员」在其「操作阶段」内行动。"
+
+msgctxt "fragment"
+msgid "每一「轮」游戏包含不限数量的「操作阶段」，每位「指挥者」指挥对应「调查员」在其「操作阶段」内行动。「操作阶段」分为以下3个步骤："
+msgstr "每一「轮」游戏包含不限数量的「操作阶段」，每位「指挥者」指挥对应「调查员」在其「操作阶段」内行动。「操作阶段」分为以下3个步骤："
+
+msgctxt "fragment"
+msgid "每一「轮」游戏开始前，从「环境卡组」顶部抽取一张「环境」卡牌，本「轮」持续生效。第一「轮」由第 (1) 顺位的「调查员」开始；之后由上一「轮」调查到【禁忌真相】的「调查员」开始。"
+msgstr "每一「轮」游戏开始前，从「环境卡组」顶部抽取一张「环境」卡牌，本「轮」持续生效。第一「轮」由第 (1) 顺位的「调查员」开始；之后由上一「轮」调查到【禁忌真相】的「调查员」开始。"
+
+msgctxt "fragment"
+msgid "每一次真相命中，压力都会留下痕迹。"
+msgstr "每一次真相命中，压力都会留下痕迹。"
+
+msgctxt "fragment"
+msgid "每一轮，真相都更近一点。"
+msgstr "每一轮，真相都更近一点。"
+
+msgctxt "fragment"
+msgid "每张卡牌的文件夹名是稳定的人类可读路径；调查员姓名中的中点 · 统一替换为连字符 -。index.csv 是总索引，类别 CSV 继续保留原始字段，并追加 Wiki相对目录。"
+msgstr "每张卡牌的文件夹名是稳定的人类可读路径；调查员姓名中的中点 · 统一替换为连字符 -。index.csv 是总索引，类别 CSV 继续保留原始字段，并追加 Wiki相对目录。"
+
+msgctxt "fragment"
+msgid "明辨过往， 未雨绸缪。"
+msgstr "明辨过往， 未雨绸缪。"
+
+msgctxt "fragment"
+msgid "明示放入「公共手牌区」"
+msgstr "明示放入「公共手牌区」"
+
+msgctxt "fragment"
+msgid "命定之人"
+msgstr "命定之人"
+
+msgctxt "fragment"
+msgid "命定之人 · 赌徒"
+msgstr "命定之人 · 赌徒"
+
+msgctxt "fragment"
+msgid "默认从「情报卡组」顶部向下执行；“正向窥探”也指从顶部向下。"
+msgstr "默认从「情报卡组」顶部向下执行；“正向窥探”也指从顶部向下。"
+
+msgctxt "fragment"
+msgid "默认从情报卡组顶部向下执行；“正向窥探”也指从顶部向下。"
+msgstr "默认从情报卡组顶部向下执行；“正向窥探”也指从顶部向下。"
+
+msgctxt "fragment"
+msgid "默认从情报卡组顶部向下执行；「正向窥探」也指从顶部向下。"
+msgstr "默认从情报卡组顶部向下执行；「正向窥探」也指从顶部向下。"
+
+msgctxt "fragment"
+msgid "目录约定"
+msgstr "目录约定"
+
+msgctxt "fragment"
+msgid "内化 · I"
+msgstr "内化 · I"
+
+msgctxt "fragment"
+msgid "内容来源优先级"
+msgstr "内容来源优先级"
+
+msgctxt "fragment"
+msgid "你「陷入疯狂」"
+msgstr "你「陷入疯狂」"
+
+msgctxt "fragment"
+msgid "你「陷入疯狂」后无需弃置对你布置的「个体机制」，你也能正常进行「操作阶段」。"
+msgstr "你「陷入疯狂」后无需弃置对你布置的「个体机制」，你也能正常进行「操作阶段」。"
+
+msgctxt "fragment"
+msgid "你被视作调查到了【禁忌真相】"
+msgstr "你被视作调查到了【禁忌真相】"
+
+msgctxt "fragment"
+msgid "你不能恢复或主动消耗「SAN」；当被迫消耗(1)点「SAN」时，累计(2)点「过热」。"
+msgstr "你不能恢复或主动消耗「SAN」；当被迫消耗(1)点「SAN」时，累计(2)点「过热」。"
+
+msgctxt "fragment"
+msgid "你触及了【禁忌真相】！！！「SAN」- (1)"
+msgstr "你触及了【禁忌真相】！！！「SAN」- (1)"
+
+msgctxt "fragment"
+msgid "你从其手牌抽(2)张牌"
+msgstr "你从其手牌抽(2)张牌"
+
+msgctxt "fragment"
+msgid "你的「操作阶段」结束后"
+msgstr "你的「操作阶段」结束后"
+
+msgctxt "fragment"
+msgid "你的「操作阶段」结束时"
+msgstr "你的「操作阶段」结束时"
+
+msgctxt "fragment"
+msgid "你的调查范围上限 = (N × 4)"
+msgstr "你的调查范围上限 = (N × 4)"
+
+msgctxt "fragment"
+msgid "你的调查范围为(0)~(0)"
+msgstr "你的调查范围为(0)~(0)"
+
+msgctxt "fragment"
+msgid "你的调查范围为(0)~(0)；你不能恢复或主动消耗「SAN」；当被迫消耗(1)点「SAN」时，累计(2)点「过热」。"
+msgstr "你的调查范围为(0)~(0)；你不能恢复或主动消耗「SAN」；当被迫消耗(1)点「SAN」时，累计(2)点「过热」。"
+
+msgctxt "fragment"
+msgid "你的每个技能，每个「操作阶段」可使用(1)次。"
+msgstr "你的每个技能，每个「操作阶段」可使用(1)次。"
+
+msgctxt "fragment"
+msgid "你的友方「调查员」开始「操作阶段」时，其「指挥者」可以从「情报弃牌区」选取(1)张「情报」卡牌，并从「策略卡组」抽(1)张「策略」卡牌，加入其手牌。"
+msgstr "你的友方「调查员」开始「操作阶段」时，其「指挥者」可以从「情报弃牌区」选取(1)张「情报」卡牌，并从「策略卡组」抽(1)张「策略」卡牌，加入其手牌。"
+
+msgctxt "fragment"
+msgid "你调查到【禁忌真相】时，消耗的「SAN」+ (1)。"
+msgstr "你调查到【禁忌真相】时，消耗的「SAN」+ (1)。"
+
+msgctxt "fragment"
+msgid "你调查到【禁忌真相】时，掷(1)个骰子；若点数为奇数：你「恢复清醒」并获得(1)点「SAN」；若点数为偶数：指定同队的(1)位「调查员」，视作其调查到【禁忌真相】。"
+msgstr "你调查到【禁忌真相】时，掷(1)个骰子；若点数为奇数：你「恢复清醒」并获得(1)点「SAN」；若点数为偶数：指定同队的(1)位「调查员」，视作其调查到【禁忌真相】。"
+
+msgctxt "fragment"
+msgid "你进行调查时，除非调查到【禁忌真相】，否则无需公示「情报」卡牌。"
+msgstr "你进行调查时，除非调查到【禁忌真相】，否则无需公示「情报」卡牌。"
+
+msgctxt "fragment"
+msgid "你可以知道很多，但不能承受一切。"
+msgstr "你可以知道很多，但不能承受一切。"
+
+msgctxt "fragment"
+msgid "你立刻进行调查"
+msgstr "你立刻进行调查"
+
+msgctxt "fragment"
+msgid "你每个「操作阶段」"
+msgstr "你每个「操作阶段」"
+
+msgctxt "fragment"
+msgid "你是「调查工会」的一名「指挥者」，能有这样的身份，说明你已经熬过了最困难的头几年，不仅活了下来，而且还神志清醒地坚持留在了这里。坐到这个位置，你已经不需要实地执行任务，你的工作就是为你的「调查员」在任务过程中下发「策略」指令，通过经验、直觉和智慧引领他们完成任务。"
+msgstr "你是「调查工会」的一名「指挥者」，能有这样的身份，说明你已经熬过了最困难的头几年，不仅活了下来，而且还神志清醒地坚持留在了这里。坐到这个位置，你已经不需要实地执行任务，你的工作就是为你的「调查员」在任务过程中下发「策略」指令，通过经验、直觉和智慧引领他们完成任务。"
+
+msgctxt "fragment"
+msgid "你受到盲从效果"
+msgstr "你受到盲从效果"
+
+msgctxt "fragment"
+msgid "你下一次调查受到胁迫 + (N)"
+msgstr "你下一次调查受到胁迫 + (N)"
+
+msgctxt "fragment"
+msgid "你与其立刻轮流进行不中断的调查"
+msgstr "你与其立刻轮流进行不中断的调查"
+
+msgctxt "fragment"
+msgid "你在「操作阶段」结束时"
+msgstr "你在「操作阶段」结束时"
+
+msgctxt "fragment"
+msgid "你在当前的「操作阶段」无需且不能调查。跳过可以在操作阶段的任意节点生效，效果持续到该操作阶段结束。"
+msgstr "你在当前的「操作阶段」无需且不能调查。跳过可以在操作阶段的任意节点生效，效果持续到该操作阶段结束。"
+
+msgctxt "fragment"
+msgid "凝视 · I"
+msgstr "凝视 · I"
+
+msgctxt "fragment"
+msgid "判例"
+msgstr "判例"
+
+msgctxt "fragment"
+msgid "贫瘠之罪"
+msgstr "贫瘠之罪"
+
+msgctxt "fragment"
+msgid "平衡 · I"
+msgstr "平衡 · I"
+
+msgctxt "fragment"
+msgid "平衡 · II"
+msgstr "平衡 · II"
+
+msgctxt "fragment"
+msgid "平衡 · III"
+msgstr "平衡 · III"
+
+msgctxt "fragment"
+msgid "破釜沉舟 · I"
+msgstr "破釜沉舟 · I"
+
+msgctxt "fragment"
+msgid "破釜沉舟 · II"
+msgstr "破釜沉舟 · II"
+
+msgctxt "fragment"
+msgid "普奇耶拉"
+msgstr "普奇耶拉"
+
+msgctxt "fragment"
+msgid "其「调查员」（任选）"
+msgstr "其「调查员」（任选）"
+
+msgctxt "fragment"
+msgid "其「指挥者」需要将手牌放回"
+msgstr "其「指挥者」需要将手牌放回"
+
+msgctxt "fragment"
+msgid "其不能成为"
+msgstr "其不能成为"
+
+msgctxt "fragment"
+msgid "其调查到【禁忌真相】时"
+msgstr "其调查到【禁忌真相】时"
+
+msgctxt "fragment"
+msgid "其可以在任意(1)个「操作阶段」"
+msgstr "其可以在任意(1)个「操作阶段」"
+
+msgctxt "fragment"
+msgid "其他「调查员」使用「策略」卡牌时，你可以代为支付该卡牌的费用，然后掷(1)个骰子，随机决定该卡牌的指定对象。"
+msgstr "其他「调查员」使用「策略」卡牌时，你可以代为支付该卡牌的费用，然后掷(1)个骰子，随机决定该卡牌的指定对象。"
+
+msgctxt "fragment"
+msgid "其他队伍的所有「调查员」都「陷入疯狂」时，最后一只队伍及其「指挥者」获得游戏胜利。"
+msgstr "其他队伍的所有「调查员」都「陷入疯狂」时，最后一只队伍及其「指挥者」获得游戏胜利。"
+
+msgctxt "fragment"
+msgid "其下(1)个「操作阶段」"
+msgstr "其下(1)个「操作阶段」"
+
+msgctxt "fragment"
+msgid "其下一次调查受到胁迫 + (N)"
+msgstr "其下一次调查受到胁迫 + (N)"
+
+msgctxt "fragment"
+msgid "其下一个「操作阶段」"
+msgstr "其下一个「操作阶段」"
+
+msgctxt "fragment"
+msgid "弃置(1)张对其布置的「个体机制」"
+msgstr "弃置(1)张对其布置的「个体机制」"
+
+msgctxt "fragment"
+msgid "弃置(1)张手牌"
+msgstr "弃置(1)张手牌"
+
+msgctxt "fragment"
+msgid "弃置(2)张手牌"
+msgstr "弃置(2)张手牌"
+
+msgctxt "fragment"
+msgid "弃置并重新翻牌"
+msgstr "弃置并重新翻牌"
+
+msgctxt "fragment"
+msgid "弃置场上所有已布置的"
+msgstr "弃置场上所有已布置的"
+
+msgctxt "fragment"
+msgid "弃置所有「指挥者」的手牌"
+msgstr "弃置所有「指挥者」的手牌"
+
+msgctxt "fragment"
+msgid "乔 · 奇普"
+msgstr "乔 · 奇普"
+
+msgctxt "fragment"
+msgid "清醒"
+msgstr "清醒"
+
+msgctxt "fragment"
+msgid "清醒技能"
+msgstr "清醒技能"
+
+msgctxt "fragment"
+msgid "情报"
+msgstr "情报"
+
+msgctxt "fragment"
+msgid "情报 · I"
+msgstr "情报 · I"
+
+msgctxt "fragment"
+msgid "情报 · II"
+msgstr "情报 · II"
+
+msgctxt "fragment"
+msgid "情报 · III"
+msgstr "情报 · III"
+
+msgctxt "fragment"
+msgid "情报 · IV"
+msgstr "情报 · IV"
+
+msgctxt "fragment"
+msgid "情报卡组"
+msgstr "情报卡组"
+
+msgctxt "fragment"
+msgid "情报区"
+msgstr "情报区"
+
+msgctxt "fragment"
+msgid "情报区应当保持公示；禁忌真相是这一轮的警示线。"
+msgstr "情报区应当保持公示；禁忌真相是这一轮的警示线。"
+
+msgctxt "fragment"
+msgid "全部"
+msgstr "全部"
+
+msgctxt "fragment"
+msgid "全能侦探"
+msgstr "全能侦探"
+
+msgctxt "fragment"
+msgid "确定「指挥者」人数"
+msgstr "确定「指挥者」人数"
+
+msgctxt "fragment"
+msgid "确认完成以上步骤后，你们可以参照下图“场地布置”，设置你们的桌面（以6位玩家，分属2个队伍为例），或选择适合你们的布局。"
+msgstr "确认完成以上步骤后，你们可以参照下图“场地布置”，设置你们的桌面（以6位玩家，分属2个队伍为例），或选择适合你们的布局。"
+
+msgctxt "fragment"
+msgid "群体思维"
+msgstr "群体思维"
+
+msgctxt "fragment"
+msgid "然后私下对窥探的「情报」卡牌"
+msgstr "然后私下对窥探的「情报」卡牌"
+
+msgctxt "fragment"
+msgid "然后指定另(1)位「调查员」"
+msgstr "然后指定另(1)位「调查员」"
+
+msgctxt "fragment"
+msgid "让别人的调查先结束。"
+msgstr "让别人的调查先结束。"
+
+msgctxt "fragment"
+msgid "任何「策略」卡牌的指定对象"
+msgstr "任何「策略」卡牌的指定对象"
+
+msgctxt "fragment"
+msgid "任务负债 · 赏金猎人"
+msgstr "任务负债 · 赏金猎人"
+
+msgctxt "fragment"
+msgid "任务简报"
+msgstr "任务简报"
+
+msgctxt "fragment"
+msgid "任意「调查员」调查到【禁忌真相】时，本「轮」游戏结束。该「调查员」的「SAN」将相应减少（无特殊效果时，减少(1)点「SAN」）。"
+msgstr "任意「调查员」调查到【禁忌真相】时，本「轮」游戏结束。该「调查员」的「SAN」将相应减少（无特殊效果时，减少(1)点「SAN」）。"
+
+msgctxt "fragment"
+msgid "任意「调查员」调查到【禁忌真相】时，本「轮」游戏结束。该「调查员」的「SAN」将相应减少（无特殊效果时，减少(1)点「SAN」）。收回场上所有的「情报」卡牌，洗切组成新的「情报卡组」。"
+msgstr "任意「调查员」调查到【禁忌真相】时，本「轮」游戏结束。该「调查员」的「SAN」将相应减少（无特殊效果时，减少(1)点「SAN」）。收回场上所有的「情报」卡牌，洗切组成新的「情报卡组」。"
+
+msgctxt "fragment"
+msgid "日本語"
+msgstr "日本語"
+
+msgctxt "fragment"
+msgid "如果翻出涉及超过(1)个对象的卡牌"
+msgstr "如果翻出涉及超过(1)个对象的卡牌"
+
+msgctxt "fragment"
+msgid "如果通过任何手段洗回【禁忌真相】，计数不上升；若计数已经达到阈值，则下一个调查到【禁忌真相】的调查员消耗 SAN。"
+msgstr "如果通过任何手段洗回【禁忌真相】，计数不上升；若计数已经达到阈值，则下一个调查到【禁忌真相】的调查员消耗 SAN。"
+
+msgctxt "fragment"
+msgid "如果玩家通过任何手段洗回【禁忌真相】，降雨概率的计数不上升；如果计数已经达到阈值，则下一个调查到禁忌真相的「调查员」消耗「SAN」。"
+msgstr "如果玩家通过任何手段洗回【禁忌真相】，降雨概率的计数不上升；如果计数已经达到阈值，则下一个调查到禁忌真相的「调查员」消耗「SAN」。"
+
+msgctxt "fragment"
+msgid "如果玩家通过任何手段洗回【禁忌真相】（例如使用【直视神】），降雨概率的计数不上升。如果计数已经达到 (N)，则下一个调查到禁忌真相的调查员消耗 SAN。"
+msgstr "如果玩家通过任何手段洗回【禁忌真相】（例如使用【直视神】），降雨概率的计数不上升。如果计数已经达到 (N)，则下一个调查到禁忌真相的调查员消耗 SAN。"
+
+msgctxt "fragment"
+msgid "如果有超过(2)个队伍在场"
+msgstr "如果有超过(2)个队伍在场"
+
+msgctxt "fragment"
+msgid "如无特殊说明，「陷入疯狂」的「调查员」无法成为卡牌的指定对象、也不受卡牌或技能的效果影响。"
+msgstr "如无特殊说明，「陷入疯狂」的「调查员」无法成为卡牌的指定对象、也不受卡牌或技能的效果影响。"
+
+msgctxt "fragment"
+msgid "若「调查员」在「操作阶段」"
+msgstr "若「调查员」在「操作阶段」"
+
+msgctxt "fragment"
+msgid "若「指挥者」在调查到【禁忌真相】时主动公示，则不触发此技能。"
+msgstr "若「指挥者」在调查到【禁忌真相】时主动公示，则不触发此技能。"
+
+msgctxt "fragment"
+msgid "若【禁忌真相】在被弃置的卡牌中"
+msgstr "若【禁忌真相】在被弃置的卡牌中"
+
+msgctxt "fragment"
+msgid "若本「轮」已经触发【命定之人】"
+msgstr "若本「轮」已经触发【命定之人】"
+
+msgctxt "fragment"
+msgid "若出现一个操作导致所有剩余「调查员」都「陷入疯狂」的情况，最后「陷入疯狂」的「调查员」及其所在队伍获得游戏胜利。"
+msgstr "若出现一个操作导致所有剩余「调查员」都「陷入疯狂」的情况，最后「陷入疯狂」的「调查员」及其所在队伍获得游戏胜利。"
+
+msgctxt "fragment"
+msgid "若你「陷入疯狂」，你可以将手牌给(1)名「指挥者」。"
+msgstr "若你「陷入疯狂」，你可以将手牌给(1)名「指挥者」。"
+
+msgctxt "fragment"
+msgid "若你调查到【禁忌真相】"
+msgstr "若你调查到【禁忌真相】"
+
+msgctxt "fragment"
+msgid "若你在当前「操作阶段」未进行调查"
+msgstr "若你在当前「操作阶段」未进行调查"
+
+msgctxt "fragment"
+msgid "若其调查到【禁忌真相】"
+msgstr "若其调查到【禁忌真相】"
+
+msgctxt "fragment"
+msgid "若其调查到【禁忌真相】时"
+msgstr "若其调查到【禁忌真相】时"
+
+msgctxt "fragment"
+msgid "若同时使用多张【窥探 · I】"
+msgstr "若同时使用多张【窥探 · I】"
+
+msgctxt "fragment"
+msgid "若同时使用多张【窥探 · II】"
+msgstr "若同时使用多张【窥探 · II】"
+
+msgctxt "fragment"
+msgid "若同时使用多张【窥探 · III】"
+msgstr "若同时使用多张【窥探 · III】"
+
+msgctxt "fragment"
+msgid "若同时使用多张【窥探 · IV】"
+msgstr "若同时使用多张【窥探 · IV】"
+
+msgctxt "fragment"
+msgid "若无人质疑，在「操作阶段」结束时，将【禁忌真相】洗回「情报卡组」。"
+msgstr "若无人质疑，在「操作阶段」结束时，将【禁忌真相】洗回「情报卡组」。"
+
+msgctxt "fragment"
+msgid "若有≥3张【任务负债】对你布置"
+msgstr "若有≥3张【任务负债】对你布置"
+
+msgctxt "fragment"
+msgid "弱肉强食"
+msgstr "弱肉强食"
+
+msgctxt "fragment"
+msgid "三段式行动，顺序很重要。"
+msgstr "三段式行动，顺序很重要。"
+
+msgctxt "fragment"
+msgid "深潜"
+msgstr "深潜"
+
+msgctxt "fragment"
+msgid "深入"
+msgstr "深入"
+
+msgctxt "fragment"
+msgid "生效后弃置"
+msgstr "生效后弃置"
+
+msgctxt "fragment"
+msgid "圣诞节"
+msgstr "圣诞节"
+
+msgctxt "fragment"
+msgid "胜负判定"
+msgstr "胜负判定"
+
+msgctxt "fragment"
+msgid "盛宴"
+msgstr "盛宴"
+
+msgctxt "fragment"
+msgid "剩余的「情报卡组」"
+msgstr "剩余的「情报卡组」"
+
+msgctxt "fragment"
+msgid "使其「恢复清醒」"
+msgstr "使其「恢复清醒」"
+
+msgctxt "fragment"
+msgid "使其消耗(1)点「SAN」"
+msgstr "使其消耗(1)点「SAN」"
+
+msgctxt "fragment"
+msgid "使其增加(1)点「SAN」"
+msgstr "使其增加(1)点「SAN」"
+
+msgctxt "fragment"
+msgid "使用「调查员」的技能，如无特殊说明，可以不限次数使用任意技能。"
+msgstr "使用「调查员」的技能，如无特殊说明，可以不限次数使用任意技能。"
+
+msgctxt "fragment"
+msgid "使用「情报区」的「情报」卡牌，执行其卡面效果。该行动可以不限次数自由执行。"
+msgstr "使用「情报区」的「情报」卡牌，执行其卡面效果。该行动可以不限次数自由执行。"
+
+msgctxt "fragment"
+msgid "使用的前(2)张「策略」消耗为(0)"
+msgstr "使用的前(2)张「策略」消耗为(0)"
+
+msgctxt "fragment"
+msgid "使用自己手牌中的「策略」卡牌（通常需要消耗「情报区」的「情报」卡牌），该行动可以不限次数自由执行。"
+msgstr "使用自己手牌中的「策略」卡牌（通常需要消耗「情报区」的「情报」卡牌），该行动可以不限次数自由执行。"
+
+msgctxt "fragment"
+msgid "视作指定当前「调查员」使用"
+msgstr "视作指定当前「调查员」使用"
+
+msgctxt "fragment"
+msgid "手牌与「情报区」卡牌数总和"
+msgstr "手牌与「情报区」卡牌数总和"
+
+msgctxt "fragment"
+msgid "受到盲从效果"
+msgstr "受到盲从效果"
+
+msgctxt "fragment"
+msgid "受到胁迫 + (1)"
+msgstr "受到胁迫 + (1)"
+
+msgctxt "fragment"
+msgid "受到胁迫的「调查员」调查到【禁忌真相】时，消耗的「SAN」+ (1)。"
+msgstr "受到胁迫的「调查员」调查到【禁忌真相】时，消耗的「SAN」+ (1)。"
+
+msgctxt "fragment"
+msgid "输入卡名、职业或效果"
+msgstr "输入卡名、职业或效果"
+
+msgctxt "fragment"
+msgid "输入任意问题，获得规则解答或者指引"
+msgstr "输入任意问题，获得规则解答或者指引"
+
+msgctxt "fragment"
+msgid "数量"
+msgstr "数量"
+
+msgctxt "fragment"
+msgid "数量：1"
+msgstr "数量：1"
+
+msgctxt "fragment"
+msgid "数量：2"
+msgstr "数量：2"
+
+msgctxt "fragment"
+msgid "数量：3"
+msgstr "数量：3"
+
+msgctxt "fragment"
+msgid "数量：4"
+msgstr "数量：4"
+
+msgctxt "fragment"
+msgid "数量：5"
+msgstr "数量：5"
+
+msgctxt "fragment"
+msgid "数量：6"
+msgstr "数量：6"
+
+msgctxt "fragment"
+msgid "数量：8"
+msgstr "数量：8"
+
+msgctxt "fragment"
+msgid "数量等同于你调查的数量"
+msgstr "数量等同于你调查的数量"
+
+msgctxt "fragment"
+msgid "数量最多的「指挥者」(们)"
+msgstr "数量最多的「指挥者」(们)"
+
+msgctxt "fragment"
+msgid "数量最少的「指挥者」(们)"
+msgstr "数量最少的「指挥者」(们)"
+
+msgctxt "fragment"
+msgid "说明更新"
+msgstr "说明更新"
+
+msgctxt "fragment"
+msgid "说明更新版本：v1.0"
+msgstr "说明更新版本：v1.0"
+
+msgctxt "fragment"
+msgid "私下（队内）查看指定数量的情报牌后原样放回。"
+msgstr "私下（队内）查看指定数量的情报牌后原样放回。"
+
+msgctxt "fragment"
+msgid "私下（队内）顺序查看 (N) 张「情报」卡牌，并将其原样放回。没有特殊描述时，默认从情报卡组顶部向下执行。"
+msgstr "私下（队内）顺序查看 (N) 张「情报」卡牌，并将其原样放回。没有特殊描述时，默认从情报卡组顶部向下执行。"
+
+msgctxt "fragment"
+msgid "私下（队内）顺序查看指定数量的「情报」卡牌，再将其原样放回。没有特殊描述时，默认从「情报卡组」顶部向下执行。"
+msgstr "私下（队内）顺序查看指定数量的「情报」卡牌，再将其原样放回。没有特殊描述时，默认从「情报卡组」顶部向下执行。"
+
+msgctxt "fragment"
+msgid "私下对其调整"
+msgstr "私下对其调整"
+
+msgctxt "fragment"
+msgid "私下放入「情报卡组」的任意位置"
+msgstr "私下放入「情报卡组」的任意位置"
+
+msgctxt "fragment"
+msgid "四个页面，"
+msgstr "四个页面，"
+
+msgctxt "fragment"
+msgid "四类卡组"
+msgstr "四类卡组"
+
+msgctxt "fragment"
+msgid "四类卡组，一张真相。"
+msgstr "四类卡组，一张真相。"
+
+msgctxt "fragment"
+msgid "搜索调查员、策略、环境、情报与辅助卡牌。"
+msgstr "搜索调查员、策略、环境、情报与辅助卡牌。"
+
+msgctxt "fragment"
+msgid "搜索规则关键词"
+msgstr "搜索规则关键词"
+
+msgctxt "fragment"
+msgid "搜索与筛选"
+msgstr "搜索与筛选"
+
+msgctxt "fragment"
+msgid "所有「策略」卡牌的消耗 - (N)，(N) = 已「陷入疯狂」的「调查员」数量 ÷ (2)，向下取整。"
+msgstr "所有「策略」卡牌的消耗 - (N)，(N) = 已「陷入疯狂」的「调查员」数量 ÷ (2)，向下取整。"
+
+msgctxt "fragment"
+msgid "所有「调查员」的「调查范围」 + (1)"
+msgstr "所有「调查员」的「调查范围」 + (1)"
+
+msgctxt "fragment"
+msgid "所有「调查员」调查的范围 + (1)"
+msgstr "所有「调查员」调查的范围 + (1)"
+
+msgctxt "fragment"
+msgid "所有「调查员」可以自由使用"
+msgstr "所有「调查员」可以自由使用"
+
+msgctxt "fragment"
+msgid "所有「调查员」可以自由选择从「情报卡组」最上或最下进行正向或反向调查。"
+msgstr "所有「调查员」可以自由选择从「情报卡组」最上或最下进行正向或反向调查。"
+
+msgctxt "fragment"
+msgid "所有「调查员」受到胁迫 + (2)"
+msgstr "所有「调查员」受到胁迫 + (2)"
+
+msgctxt "fragment"
+msgid "所有「指挥者」公示手牌"
+msgstr "所有「指挥者」公示手牌"
+
+msgctxt "fragment"
+msgid "所有「指挥者」立即按「调查顺位」"
+msgstr "所有「指挥者」立即按「调查顺位」"
+
+msgctxt "fragment"
+msgid "所有「指挥者」轮流抽回(1)张手牌"
+msgstr "所有「指挥者」轮流抽回(1)张手牌"
+
+msgctxt "fragment"
+msgid "所有「指挥者」需轮流给出(1)张手牌"
+msgstr "所有「指挥者」需轮流给出(1)张手牌"
+
+msgctxt "fragment"
+msgid "所有「SAN」不满的清醒「调查员」"
+msgstr "所有「SAN」不满的清醒「调查员」"
+
+msgctxt "fragment"
+msgid "所有队伍的「情报」卡牌"
+msgstr "所有队伍的「情报」卡牌"
+
+msgctxt "fragment"
+msgid "所有卡牌， 一览无遗。"
+msgstr "所有卡牌， 一览无遗。"
+
+msgctxt "fragment"
+msgid "它可以在即时行动打出并指定你时、个体机制打出并对你布置时、个体机制满足条件触发时，以及个体机制持续对你生效时触发。不必在【俄罗斯转轮 · I】首次生效的瞬间触发照亮前路。"
+msgstr "它可以在即时行动打出并指定你时、个体机制打出并对你布置时、个体机制满足条件触发时，以及个体机制持续对你生效时触发。不必在【俄罗斯转轮 · I】首次生效的瞬间触发照亮前路。"
+
+msgctxt "fragment"
+msgid "它可以在以下情况下生效：即时行动打出并指定你时；个体机制打出并对你布置时；个体机制满足条件触发时（如【盲从 · I】）；个体机制持续对你生效时（如【俄罗斯转轮 · I】）。不必在俄罗斯转轮首次生效的瞬间触发照亮前路。"
+msgstr "它可以在以下情况下生效：即时行动打出并指定你时；个体机制打出并对你布置时；个体机制满足条件触发时（如【盲从 · I】）；个体机制持续对你生效时（如【俄罗斯转轮 · I】）。不必在俄罗斯转轮首次生效的瞬间触发照亮前路。"
+
+msgctxt "fragment"
+msgid "特殊文本标识"
+msgstr "特殊文本标识"
+
+msgctxt "fragment"
+msgid "特殊文本标识、行动词典，以及版本边界都集中在这里。它是规则书的判例层，也是查牌时最快的入口。"
+msgstr "特殊文本标识、行动词典，以及版本边界都集中在这里。它是规则书的判例层，也是查牌时最快的入口。"
+
+msgctxt "fragment"
+msgid "特殊行动"
+msgstr "特殊行动"
+
+msgctxt "fragment"
+msgid "特殊行动词典 →"
+msgstr "特殊行动词典 →"
+
+msgctxt "fragment"
+msgid "特殊行动词典。"
+msgstr "特殊行动词典。"
+
+msgctxt "fragment"
+msgid "特殊行动列表"
+msgstr "特殊行动列表"
+
+msgctxt "fragment"
+msgid "提供的费用 + (N)"
+msgstr "提供的费用 + (N)"
+
+msgctxt "fragment"
+msgid "条资料命中"
+msgstr "条资料命中"
+
+msgctxt "fragment"
+msgid "跳过"
+msgstr "跳过"
+
+msgctxt "fragment"
+msgid "跳过 · I"
+msgstr "跳过 · I"
+
+msgctxt "fragment"
+msgid "跳过 · II"
+msgstr "跳过 · II"
+
+msgctxt "fragment"
+msgid "跳过：你在当前的「操作阶段」"
+msgstr "跳过：你在当前的「操作阶段」"
+
+msgctxt "fragment"
+msgid "通过任意手段恢复「SAN」的疯狂「调查员」会「恢复清醒」；没有「SAN」的特殊「调查员」不能用这种方式恢复清醒。"
+msgstr "通过任意手段恢复「SAN」的疯狂「调查员」会「恢复清醒」；没有「SAN」的特殊「调查员」不能用这种方式恢复清醒。"
+
+msgctxt "fragment"
+msgid "统一行动词典、文本标识与版本边界。"
+msgstr "统一行动词典、文本标识与版本边界。"
+
+msgctxt "fragment"
+msgid "偷天换日 · I"
+msgstr "偷天换日 · I"
+
+msgctxt "fragment"
+msgid "投掷的骰子数量累加"
+msgstr "投掷的骰子数量累加"
+
+msgctxt "fragment"
+msgid "骰子记录 SAN，卡牌按类型分区。"
+msgstr "骰子记录 SAN，卡牌按类型分区。"
+
+msgctxt "fragment"
+msgid "玩家人数"
+msgstr "玩家人数"
+
+msgctxt "fragment"
+msgid "维姬 · 雪莱"
+msgstr "维姬 · 雪莱"
+
+msgctxt "fragment"
+msgid "问你想问的，"
+msgstr "问你想问的，"
+
+msgctxt "fragment"
+msgid "无法被弃置"
+msgstr "无法被弃置"
+
+msgctxt "fragment"
+msgid "无法给出手牌的「指挥者」也无法抽牌"
+msgstr "无法给出手牌的「指挥者」也无法抽牌"
+
+msgctxt "fragment"
+msgid "无法指定「SAN」≤ (1)的「调查员」"
+msgstr "无法指定「SAN」≤ (1)的「调查员」"
+
+msgctxt "fragment"
+msgid "无需且不能调查"
+msgstr "无需且不能调查"
+
+msgctxt "fragment"
+msgid "五个类别，一套可搜索的规则资料索引。"
+msgstr "五个类别，一套可搜索的规则资料索引。"
+
+msgctxt "fragment"
+msgid "兀自沉沦"
+msgstr "兀自沉沦"
+
+msgctxt "fragment"
+msgid "先给每一叠牌找到位置。"
+msgstr "先给每一叠牌找到位置。"
+
+msgctxt "fragment"
+msgid "先认出四类卡组，再开始布置。"
+msgstr "先认出四类卡组，再开始布置。"
+
+msgctxt "fragment"
+msgid "先识别文字的身份。"
+msgstr "先识别文字的身份。"
+
+msgctxt "fragment"
+msgid "显示全部 张卡牌"
+msgstr "显示全部 张卡牌"
+
+msgctxt "fragment"
+msgid "显示全部章节"
+msgstr "显示全部章节"
+
+msgctxt "fragment"
+msgid "献祭 · I"
+msgstr "献祭 · I"
+
+msgctxt "fragment"
+msgid "献祭 · II"
+msgstr "献祭 · II"
+
+msgctxt "fragment"
+msgid "向调查助手提问"
+msgstr "向调查助手提问"
+
+msgctxt "fragment"
+msgid "消耗(1)点「SAN」"
+msgstr "消耗(1)点「SAN」"
+
+msgctxt "fragment"
+msgid "消耗的「情报」卡牌不弃置"
+msgstr "消耗的「情报」卡牌不弃置"
+
+msgctxt "fragment"
+msgid "消耗的「SAN」+ (1)"
+msgstr "消耗的「SAN」+ (1)"
+
+msgctxt "fragment"
+msgid "消耗的「SAN」翻倍"
+msgstr "消耗的「SAN」翻倍"
+
+msgctxt "fragment"
+msgid "胁迫"
+msgstr "胁迫"
+
+msgctxt "fragment"
+msgid "胁迫 · 催眠师"
+msgstr "胁迫 · 催眠师"
+
+msgctxt "fragment"
+msgid "胁迫 · 猛男"
+msgstr "胁迫 · 猛男"
+
+msgctxt "fragment"
+msgid "胁迫 · I"
+msgstr "胁迫 · I"
+
+msgctxt "fragment"
+msgid "胁迫：调查的「情报」卡牌 + (N)"
+msgstr "胁迫：调查的「情报」卡牌 + (N)"
+
+msgctxt "fragment"
+msgid "斜体加粗的词表示特殊行动；普通文本中出现同名词汇，不自动获得特殊行动含义。"
+msgstr "斜体加粗的词表示特殊行动；普通文本中出现同名词汇，不自动获得特殊行动含义。"
+
+msgctxt "fragment"
+msgid "斜体加粗的词才指代特殊行动。普通文本中出现同名词汇，不自动获得特殊行动含义。"
+msgstr "斜体加粗的词才指代特殊行动。普通文本中出现同名词汇，不自动获得特殊行动含义。"
+
+msgctxt "fragment"
+msgid "新一「轮」游戏开始"
+msgstr "新一「轮」游戏开始"
+
+msgctxt "fragment"
+msgid "新增或修改资料后运行 npm run generate:wiki；部署构建会自动运行同一流程。"
+msgstr "新增或修改资料后运行 npm run generate:wiki；部署构建会自动运行同一流程。"
+
+msgctxt "fragment"
+msgid "信仰 · I"
+msgstr "信仰 · I"
+
+msgctxt "fragment"
+msgid "行动词典"
+msgstr "行动词典"
+
+msgctxt "fragment"
+msgid "虚假信仰 · I"
+msgstr "虚假信仰 · I"
+
+msgctxt "fragment"
+msgid "许愿池"
+msgstr "许愿池"
+
+msgctxt "fragment"
+msgid "选取(1)张「情报」卡牌"
+msgstr "选取(1)张「情报」卡牌"
+
+msgctxt "fragment"
+msgid "选择一个问题，或者输入你想确认的规则。"
+msgstr "选择一个问题，或者输入你想确认的规则。"
+
+msgctxt "fragment"
+msgid "选择语言"
+msgstr "选择语言"
+
+msgctxt "fragment"
+msgid "一个人的笼中鸟"
+msgstr "一个人的笼中鸟"
+
+msgctxt "fragment"
+msgid "一款支持 2–6 人游玩的非直接对战美式桌游。你将扮演“指挥者”，操控调查员，在调查中规避禁忌真相，并诱导对手比你更早陷入疯狂。"
+msgstr "一款支持 2–6 人游玩的非直接对战美式桌游。你将扮演“指挥者”，操控调查员，在调查中规避禁忌真相，并诱导对手比你更早陷入疯狂。"
+
+msgctxt "fragment"
+msgid "一轮游戏"
+msgstr "一轮游戏"
+
+msgctxt "fragment"
+msgid "移除所有临时「SAN」"
+msgstr "移除所有临时「SAN」"
+
+msgctxt "fragment"
+msgid "已「陷入疯狂」的「调查员」参与游戏"
+msgstr "已「陷入疯狂」的「调查员」参与游戏"
+
+msgctxt "fragment"
+msgid "已归档判例"
+msgstr "已归档判例"
+
+msgctxt "fragment"
+msgid "已找到相关资料，请查看上方命中结果。"
+msgstr "已找到相关资料，请查看上方命中结果。"
+
+msgctxt "fragment"
+msgid "异时癖 · I"
+msgstr "异时癖 · I"
+
+msgctxt "fragment"
+msgid "因为这些卡牌的效果需要涉及 (2) 位调查员；许愿池无法满足这个调用条件。"
+msgstr "因为这些卡牌的效果需要涉及 (2) 位调查员；许愿池无法满足这个调用条件。"
+
+msgctxt "fragment"
+msgid "阴阳魔界"
+msgstr "阴阳魔界"
+
+msgctxt "fragment"
+msgid "印刷相关"
+msgstr "印刷相关"
+
+msgctxt "fragment"
+msgid "优先查阅最新版规则指引书、调查附录与 FAQ；实体卡牌的印刷问题以已公开的勘误为准。"
+msgstr "优先查阅最新版规则指引书、调查附录与 FAQ；实体卡牌的印刷问题以已公开的勘误为准。"
+
+msgctxt "fragment"
+msgid "优先查阅最新版规则指引书、调查附录与 FAQ。实体卡牌的印刷问题以已公开的勘误为准。"
+msgstr "优先查阅最新版规则指引书、调查附录与 FAQ。实体卡牌的印刷问题以已公开的勘误为准。"
+
+msgctxt "fragment"
+msgid "优先查阅最新版规则指引书、调查附录与判例；实体卡牌的印刷问题以已公开的勘误为准。"
+msgstr "优先查阅最新版规则指引书、调查附录与判例；实体卡牌的印刷问题以已公开的勘误为准。"
+
+msgctxt "fragment"
+msgid "由「调查员」的【疯狂蔓延】技能带来的「辅助」卡牌，依旧可以受到其他「策略」卡牌的影响，但需要检查其卡面文本。"
+msgstr "由「调查员」的【疯狂蔓延】技能带来的「辅助」卡牌，依旧可以受到其他「策略」卡牌的影响，但需要检查其卡面文本。"
+
+msgctxt "fragment"
+msgid "由累计最多费用的「调查员」"
+msgstr "由累计最多费用的「调查员」"
+
+msgctxt "fragment"
+msgid "由你指定每「轮」内每种【窥探】卡牌可以窥探的「情报」卡牌数量 ，范围为(1) ~ (6)。需要在每种【窥探】卡牌第一次被使用时进行指定，指定的数量在每「轮」内不能变更。"
+msgstr "由你指定每「轮」内每种【窥探】卡牌可以窥探的「情报」卡牌数量 ，范围为(1) ~ (6)。需要在每种【窥探】卡牌第一次被使用时进行指定，指定的数量在每「轮」内不能变更。"
+
+msgctxt "fragment"
+msgid "由消耗「情报」卡牌的「指挥者」决定"
+msgstr "由消耗「情报」卡牌的「指挥者」决定"
+
+msgctxt "fragment"
+msgid "游戏机制"
+msgstr "游戏机制"
+
+msgctxt "fragment"
+msgid "游戏配件"
+msgstr "游戏配件"
+
+msgctxt "fragment"
+msgid "游戏支持 2—6 名玩家；同一队伍的「指挥者」共享公开的「情报」信息，但只能指挥自己的「调查员」。"
+msgstr "游戏支持 2—6 名玩家；同一队伍的「指挥者」共享公开的「情报」信息，但只能指挥自己的「调查员」。"
+
+msgctxt "fragment"
+msgid "游戏支持几个人？"
+msgstr "游戏支持几个人？"
+
+msgctxt "fragment"
+msgid "游戏准备"
+msgstr "游戏准备"
+
+msgctxt "fragment"
+msgid "与同桌讨论并达成共识后继续游戏；如果该问题反复出现，建议反馈给制作团队，纳入后续规则更新。"
+msgstr "与同桌讨论并达成共识后继续游戏；如果该问题反复出现，建议反馈给制作团队，纳入后续规则更新。"
+
+msgctxt "fragment"
+msgid "欲加之罪"
+msgstr "欲加之罪"
+
+msgctxt "fragment"
+msgid "遇到边界情况，先看这里。"
+msgstr "遇到边界情况，先看这里。"
+
+msgctxt "fragment"
+msgid "原则上，同一队伍的信息共享仅限于窥探的信息，队友间不可互相检视手牌，沟通信息需公开对话。但玩家们可以按照实际游戏情况，选择合适的信息共享规则。"
+msgstr "原则上，同一队伍的信息共享仅限于窥探的信息，队友间不可互相检视手牌，沟通信息需公开对话。但玩家们可以按照实际游戏情况，选择合适的信息共享规则。"
+
+msgctxt "fragment"
+msgid "圆滑 · I"
+msgstr "圆滑 · I"
+
+msgctxt "fragment"
+msgid "再次与其交换"
+msgstr "再次与其交换"
+
+msgctxt "fragment"
+msgid "再指定(1)位「调查员」消耗(1)点「SAN」"
+msgstr "再指定(1)位「调查员」消耗(1)点「SAN」"
+
+msgctxt "fragment"
+msgid "在《调查 : 深入》的游戏中，每名玩家扮演一位「指挥者」，指挥「调查员」对「情报卡组」进行调查，尝试了解【禁忌真相】在「情报卡组」中的位置，让自己的「调查员」规避它，并让其他队伍的「调查员」调查到【禁忌真相】。"
+msgstr "在《调查 : 深入》的游戏中，每名玩家扮演一位「指挥者」，指挥「调查员」对「情报卡组」进行调查，尝试了解【禁忌真相】在「情报卡组」中的位置，让自己的「调查员」规避它，并让其他队伍的「调查员」调查到【禁忌真相】。"
+
+msgctxt "fragment"
+msgid "则不消耗而是恢复(1)点「SAN」"
+msgstr "则不消耗而是恢复(1)点「SAN」"
+
+msgctxt "fragment"
+msgid "怎样获胜？"
+msgstr "怎样获胜？"
+
+msgctxt "fragment"
+msgid "张卡牌"
+msgstr "张卡牌"
+
+msgctxt "fragment"
+msgid "张数向下取整"
+msgstr "张数向下取整"
+
+msgctxt "fragment"
+msgid "照亮前路 · I"
+msgstr "照亮前路 · I"
+
+msgctxt "fragment"
+msgid "这里保留创作资料入口，内容待补充。"
+msgstr "这里保留创作资料入口，内容待补充。"
+
+msgctxt "fragment"
+msgid "这里记录已经明确的机制判例、环境卡牌边界与印刷勘误。FAQ 是对规则正文的补充，不会取代最新版规则指引书。"
+msgstr "这里记录已经明确的机制判例、环境卡牌边界与印刷勘误。FAQ 是对规则正文的补充，不会取代最新版规则指引书。"
+
+msgctxt "fragment"
+msgid "这里是网站规则与卡牌资料的内容源。以后优先修改 Markdown；CSV 只保存适合筛选、统计和排序的结构化字段。"
+msgstr "这里是网站规则与卡牌资料的内容源。以后优先修改 Markdown；CSV 只保存适合筛选、统计和排序的结构化字段。"
+
+msgctxt "fragment"
+msgid "这里收录《调查深入》的全部卡牌。你可以按类别、版本、费用和效果查找；展开卡片即可查看完整文本，说明更新版本也一并标注。"
+msgstr "这里收录《调查深入》的全部卡牌。你可以按类别、版本、费用和效果查找；展开卡片即可查看完整文本，说明更新版本也一并标注。"
+
+msgctxt "fragment"
+msgid "正面朝上放置"
+msgstr "正面朝上放置"
+
+msgctxt "fragment"
+msgid "正向窥探(2)张「情报」卡牌"
+msgstr "正向窥探(2)张「情报」卡牌"
+
+msgctxt "fragment"
+msgid "正在查阅规则指引书和卡牌资料……"
+msgstr "正在查阅规则指引书和卡牌资料……"
+
+msgctxt "fragment"
+msgid "支持几个人？"
+msgstr "支持几个人？"
+
+msgctxt "fragment"
+msgid "支付【胁迫】的费用"
+msgstr "支付【胁迫】的费用"
+
+msgctxt "fragment"
+msgid "执行(2)次调查"
+msgstr "执行(2)次调查"
+
+msgctxt "fragment"
+msgid "执行一次跳过"
+msgstr "执行一次跳过"
+
+msgctxt "fragment"
+msgid "直角引号表示特有概念；「SAN」与「陷入疯狂」有特殊颜色标识。"
+msgstr "直角引号表示特有概念；「SAN」与「陷入疯狂」有特殊颜色标识。"
+
+msgctxt "fragment"
+msgid "直接被跳过"
+msgstr "直接被跳过"
+
+msgctxt "fragment"
+msgid "直视神 · I"
+msgstr "直视神 · I"
+
+msgctxt "fragment"
+msgid "直至共计调查(6)张"
+msgstr "直至共计调查(6)张"
+
+msgctxt "fragment"
+msgid "职业"
+msgstr "职业"
+
+msgctxt "fragment"
+msgid "职业：催眠师"
+msgstr "职业：催眠师"
+
+msgctxt "fragment"
+msgid "职业：地痞"
+msgstr "职业：地痞"
+
+msgctxt "fragment"
+msgid "职业：赌徒"
+msgstr "职业：赌徒"
+
+msgctxt "fragment"
+msgid "职业：仿生人"
+msgstr "职业：仿生人"
+
+msgctxt "fragment"
+msgid "职业：精神病人"
+msgstr "职业：精神病人"
+
+msgctxt "fragment"
+msgid "职业：苦行僧"
+msgstr "职业：苦行僧"
+
+msgctxt "fragment"
+msgid "职业：劳改犯"
+msgstr "职业：劳改犯"
+
+msgctxt "fragment"
+msgid "职业：老侦探"
+msgstr "职业：老侦探"
+
+msgctxt "fragment"
+msgid "职业：流浪汉"
+msgstr "职业：流浪汉"
+
+msgctxt "fragment"
+msgid "职业：猫？"
+msgstr "职业：猫？"
+
+msgctxt "fragment"
+msgid "职业：猛男"
+msgstr "职业：猛男"
+
+msgctxt "fragment"
+msgid "职业：目击者"
+msgstr "职业：目击者"
+
+msgctxt "fragment"
+msgid "职业：欺诈师"
+msgstr "职业：欺诈师"
+
+msgctxt "fragment"
+msgid "职业：赏金猎人"
+msgstr "职业：赏金猎人"
+
+msgctxt "fragment"
+msgid "职业：信徒"
+msgstr "职业：信徒"
+
+msgctxt "fragment"
+msgid "职业：选民"
+msgstr "职业：选民"
+
+msgctxt "fragment"
+msgid "职业：研究员"
+msgstr "职业：研究员"
+
+msgctxt "fragment"
+msgid "职业：职业调查员"
+msgstr "职业：职业调查员"
+
+msgctxt "fragment"
+msgid "职业：中之人"
+msgstr "职业：中之人"
+
+msgctxt "fragment"
+msgid "只能用(1)张「情报」卡牌支付此卡费用"
+msgstr "只能用(1)张「情报」卡牌支付此卡费用"
+
+msgctxt "fragment"
+msgid "只剩一个队伍"
+msgstr "只剩一个队伍"
+
+msgctxt "fragment"
+msgid "指定(1)位「调查员」"
+msgstr "指定(1)位「调查员」"
+
+msgctxt "fragment"
+msgid "指定(1)位「调查员」，消耗(1)点「SAN」"
+msgstr "指定(1)位「调查员」，消耗(1)点「SAN」"
+
+msgctxt "fragment"
+msgid "指定(1)位「指挥者」"
+msgstr "指定(1)位「指挥者」"
+
+msgctxt "fragment"
+msgid "指定(1)位其他队伍的「调查员」"
+msgstr "指定(1)位其他队伍的「调查员」"
+
+msgctxt "fragment"
+msgid "指挥者"
+msgstr "指挥者"
+
+msgctxt "fragment"
+msgid "掷(1)个骰子"
+msgstr "掷(1)个骰子"
+
+msgctxt "fragment"
+msgid "中文"
+msgstr "中文"
+
+msgctxt "fragment"
+msgid "逐张查牌，不再翻箱倒柜。"
+msgstr "逐张查牌，不再翻箱倒柜。"
+
+msgctxt "fragment"
+msgid "转移布置到你身上"
+msgstr "转移布置到你身上"
+
+msgctxt "fragment"
+msgid "追名逐利"
+msgstr "追名逐利"
+
+msgctxt "fragment"
+msgid "准备卡组"
+msgstr "准备卡组"
+
+msgctxt "fragment"
+msgid "资料导航"
+msgstr "资料导航"
+
+msgctxt "fragment"
+msgid "资料库中没有明确记载，可以换一种问法，或查看规则书、调查附录、FAQ 和卡牌 Wiki。"
+msgstr "资料库中没有明确记载，可以换一种问法，或查看规则书、调查附录、FAQ 和卡牌 Wiki。"
+
+msgctxt "fragment"
+msgid "钻研 · I"
+msgstr "钻研 · I"
+
+msgctxt "fragment"
+msgid "钻研 · II"
+msgstr "钻研 · II"
+
+msgctxt "fragment"
+msgid "最多人数的「调查员」"
+msgstr "最多人数的「调查员」"
+
+msgctxt "fragment"
+msgid "最近一次调查的「情报」卡牌数量增加指定数值。对同一位「调查员」布置的胁迫在其最近一次调查中累加；若没有调查，胁迫视为未生效。"
+msgstr "最近一次调查的「情报」卡牌数量增加指定数值。对同一位「调查员」布置的胁迫在其最近一次调查中累加；若没有调查，胁迫视为未生效。"
+
+msgctxt "fragment"
+msgid "最近一次调查的情报牌数量增加指定数值。"
+msgstr "最近一次调查的情报牌数量增加指定数值。"
+
+msgctxt "fragment"
+msgid "最上、最下、或其原位"
+msgstr "最上、最下、或其原位"
+
+msgctxt "fragment"
+msgid "最小人数的「调查员」"
+msgstr "最小人数的「调查员」"
+
+msgctxt "fragment"
+msgid "ACTION INDEX / 特殊行动列表"
+msgstr "ACTION INDEX / 特殊行动列表"
+
+msgctxt "fragment"
+msgid "AI 没有返回可读取的回答。"
+msgstr "AI 没有返回可读取的回答。"
+
+msgctxt "fragment"
+msgid "AI 暂时无法回答，请稍后再试。"
+msgstr "AI 暂时无法回答，请稍后再试。"
+
+msgctxt "fragment"
+msgid "AI 正在思考"
+msgstr "AI 正在思考"
+
+msgctxt "fragment"
+msgid "AI Q&A / 规则问答"
+msgstr "AI Q&A / 规则问答"
+
+msgctxt "fragment"
+msgid "APPENDIX / 调查附录"
+msgstr "APPENDIX / 调查附录"
+
+msgctxt "fragment"
+msgid "BRIEFING / 任务简报"
+msgstr "BRIEFING / 任务简报"
+
+msgctxt "fragment"
+msgid "CASE FILES / 资料入口"
+msgstr "CASE FILES / 资料入口"
+
+msgctxt "fragment"
+msgid "COMPONENTS / 游戏配件"
+msgstr "COMPONENTS / 游戏配件"
+
+msgctxt "fragment"
+msgid "DATA / 数据来源"
+msgstr "DATA / 数据来源"
+
+msgctxt "fragment"
+msgid "ENVIRONMENT / 环境卡牌"
+msgstr "ENVIRONMENT / 环境卡牌"
+
+msgctxt "fragment"
+msgid "FAQ / 规则判定"
+msgstr "FAQ / 规则判定"
+
+msgctxt "fragment"
+msgid "FAQ 导航"
+msgstr "FAQ 导航"
+
+msgctxt "fragment"
+msgid "FAQ 判例 →"
+msgstr "FAQ 判例 →"
+
+msgctxt "fragment"
+msgid "FIG. 02-A / 配件索引"
+msgstr "FIG. 02-A / 配件索引"
+
+msgctxt "fragment"
+msgid "FIG. 06-A / 情报牌面"
+msgstr "FIG. 06-A / 情报牌面"
+
+msgctxt "fragment"
+msgid "FreshLi4 官网 ↗"
+msgstr "FreshLi4 官网 ↗"
+
+msgctxt "fragment"
+msgid "GAME MECHANICS / 游戏机制"
+msgstr "GAME MECHANICS / 游戏机制"
+
+msgctxt "fragment"
+msgid "INVESTIGATION : DELVE / 调查深入"
+msgstr "INVESTIGATION : DELVE / 调查深入"
+
+msgctxt "fragment"
+msgid "INVESTIGATORS / 调查员"
+msgstr "INVESTIGATORS / 调查员"
+
+msgctxt "fragment"
+msgid "LIVE CARD INDEX / 当前卡牌索引"
+msgstr "LIVE CARD INDEX / 当前卡牌索引"
+
+msgctxt "fragment"
+msgid "N取决于胁迫后的数字"
+msgstr "N取决于胁迫后的数字"
+
+msgctxt "fragment"
+msgid "OPERATION / 操作阶段"
+msgstr "OPERATION / 操作阶段"
+
+msgctxt "fragment"
+msgid "PRINT ERRATA / 印刷相关"
+msgstr "PRINT ERRATA / 印刷相关"
+
+msgctxt "fragment"
+msgid "QUICK START / 快速游玩流程"
+msgstr "QUICK START / 快速游玩流程"
+
+msgctxt "fragment"
+msgid "READING NOTES / 阅读提示"
+msgstr "READING NOTES / 阅读提示"
+
+msgctxt "fragment"
+msgid "ROUND / 轮次结构"
+msgstr "ROUND / 轮次结构"
+
+msgctxt "fragment"
+msgid "SAN / 理智与疯狂"
+msgstr "SAN / 理智与疯狂"
+
+msgctxt "fragment"
+msgid "SAN 归零怎么办？"
+msgstr "SAN 归零怎么办？"
+
+msgctxt "fragment"
+msgid "SAN 与疯狂"
+msgstr "SAN 与疯狂"
+
+msgctxt "fragment"
+msgid "SAN：待补充"
+msgstr "SAN：待补充"
+
+msgctxt "fragment"
+msgid "SEARCH / 传统检索"
+msgstr "SEARCH / 传统检索"
+
+msgctxt "fragment"
+msgid "SEARCH / 搜索"
+msgstr "SEARCH / 搜索"
+
+msgctxt "fragment"
+msgid "SEARCH / 搜索卡牌"
+msgstr "SEARCH / 搜索卡牌"
+
+msgctxt "fragment"
+msgid "SETUP / 游戏准备"
+msgstr "SETUP / 游戏准备"
+
+msgctxt "fragment"
+msgid "SOURCE / 来源"
+msgstr "SOURCE / 来源"
+
+msgctxt "fragment"
+msgid "SOURCE / 资料来源"
+msgstr "SOURCE / 资料来源"
+
+msgctxt "fragment"
+msgid "TABLE MAP / 桌面布置"
+msgstr "TABLE MAP / 桌面布置"
+
+msgctxt "fragment"
+msgid "TEXT MARKERS / 特殊文本标识"
+msgstr "TEXT MARKERS / 特殊文本标识"
+
+msgctxt "fragment"
+msgid "VERSION NOTE / 版本说明"
+msgstr "VERSION NOTE / 版本说明"
+
+msgctxt "fragment"
+msgid "VICTORY / 胜负判定"
+msgstr "VICTORY / 胜负判定"
+
+msgctxt "fragment"
+msgid "Vol.1、Vol.2 中未标识“回收”但受其影响的对象包括：调查员【赌徒：丹尼 · 达比】、【催眠师：哈米伦 · 修普诺斯】、【猛男：“阿诺”】、【仿生人：OP3-C】，以及辅助卡牌【胁迫 · 催眠师】、【盲从 · 催眠师】、【任务负债 · 赏金猎人】、【禁忌仪式】。"
+msgstr "Vol.1、Vol.2 中未标识“回收”但受其影响的对象包括：调查员【赌徒：丹尼 · 达比】、【催眠师：哈米伦 · 修普诺斯】、【猛男：“阿诺”】、【仿生人：OP3-C】，以及辅助卡牌【胁迫 · 催眠师】、【盲从 · 催眠师】、【任务负债 · 赏金猎人】、【禁忌仪式】。"
+
+msgctxt "fragment"
+msgid "Wiki 导航"
+msgstr "Wiki 导航"
+
+msgctxt "fragment"
+msgid "Wiki 的每一张卡牌都有来源。"
+msgstr "Wiki 的每一张卡牌都有来源。"

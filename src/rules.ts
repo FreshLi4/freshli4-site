@@ -1,7 +1,7 @@
 import "./rules.css";
 import { allInvestigationCards, cardCategoryMeta, cardSets, wikiDocumentById, type CardCategory, type InvestigationCard } from "./investigation-data";
 import { searchWikiDocuments, shouldRouteToAi, type WikiSearchHit } from "./wiki-search";
-import { localizeWikiHtml, localizeWikiText, type WikiLanguage } from "./wiki-i18n";
+import { localizeWikiHtml, localizeWikiText, localizeWikiTree, type WikiLanguage } from "./wiki-i18n";
 
 const investigationVisualFiles = import.meta.glob("/asset/investigation-delve/visual-content/*", { eager: true, query: "?url", import: "default" }) as Record<string, string>;
 const investigationVisual = (fileName: string) => investigationVisualFiles[`/asset/investigation-delve/visual-content/${fileName}`] ?? "";
@@ -120,7 +120,7 @@ const subpageShell = (active: "appendix" | "faq" | "wiki", hero: string, content
 const sourceDocument = (documentId: string) => {
   const document = wikiDocumentById[documentId];
   if (!document) return "";
-  return `<details class="wiki-source-document"><summary>打开规范 Markdown 文档 <span>+</span></summary><div class="wiki-source-document-body" data-wiki-localize="${escapeHtml(document.id)}">${localizeWikiHtml(document.html, "zh")}</div><p class="wiki-source-path">${escapeHtml(document.sourcePath)}</p></details>`;
+  return `<details class="wiki-source-document"><summary>打开规范 Markdown 文档 <span>+</span></summary><div class="wiki-source-document-body" data-wiki-localize="${escapeHtml(document.id)}">${document.html}</div><p class="wiki-source-path">${escapeHtml(document.sourcePath)}</p></details>`;
 };
 
 const sourcePanel = (title: string, content: string, label = "SOURCE / 资料来源", documentId = "") => `<div class="source-panel"><p class="chapter-label">${label}</p><h3>${title}</h3><p class="rules-editorial">${content}</p><div><span>CANONICAL SOURCE</span><b>SHARED / DELVE</b></div>${documentId ? sourceDocument(documentId) : ""}</div>`;
@@ -631,6 +631,7 @@ const setupRulesInteractions = () => {
   });
 
   const languageSelect = document.querySelector<HTMLSelectElement>("#rules-language-select");
+  const rulesPage = document.querySelector<HTMLElement>(".rules-page");
   const savedLanguage = localStorage.getItem("freshli4-language");
   if (languageSelect && (savedLanguage === "zh" || savedLanguage === "en" || savedLanguage === "ja")) languageSelect.value = savedLanguage;
   const applyRulesLanguage = (language: WikiLanguage) => {
@@ -640,8 +641,9 @@ const setupRulesInteractions = () => {
     document.querySelectorAll<HTMLElement>("[data-wiki-localize]").forEach((element) => {
       const documentId = element.dataset.wikiLocalize ?? "";
       const source = wikiDocumentById[documentId];
-      if (source) element.innerHTML = localizeWikiHtml(source.html, language);
+      if (source) element.innerHTML = source.html;
     });
+    if (rulesPage) localizeWikiTree(rulesPage, language);
     if (lastSearchHits.length) renderSearchResults(lastSearchHits);
     if (languageSelect) {
       languageSelect.value = language;

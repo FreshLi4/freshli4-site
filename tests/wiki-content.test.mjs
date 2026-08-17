@@ -117,6 +117,29 @@ test("deployment inputs include PO translations and Pagefind records", async () 
   assert.match(firstSearchRecord, /data-pagefind-meta="id:/);
 });
 
+test("English and Japanese PO drafts cover the rendered Wiki and rules text", async () => {
+  const sources = {};
+  for (const language of ["zh", "en", "ja"]) {
+    sources[language] = await readFile(join(translationRoot, `${language}.po`), "utf8");
+  }
+  const fragmentBlocks = (source) => source.split(/\n\n+/u).filter((block) => block.includes('msgctxt "fragment"'));
+  const counts = Object.fromEntries(Object.entries(sources).map(([language, source]) => [language, fragmentBlocks(source).length]));
+  assert.ok(counts.en >= 850, `expected a full English draft, got ${counts.en} fragments`);
+  assert.equal(counts.en, counts.ja);
+  assert.equal(counts.en, counts.zh);
+  for (const language of ["en", "ja"]) {
+    assert.ok(fragmentBlocks(sources[language]).every((block) => /(?:^|\n)msgstr "(?:\\.|[^"\\])+"/u.test(block)), `${language} has an empty fragment translation`);
+  }
+  assert.match(sources.en, /Giant's Shoulders/);
+  assert.match(sources.ja, /巨人の肩/);
+  const generated = await readFile(join(projectRoot, "src", "generated", "investigation-wiki.ts"), "utf8");
+  const i18n = await readFile(join(projectRoot, "src", "wiki-i18n.ts"), "utf8");
+  const rules = await readFile(join(projectRoot, "src", "rules.ts"), "utf8");
+  assert.match(generated, /fragment/);
+  assert.match(i18n, /localizeWikiTree/);
+  assert.match(rules, /localizeWikiTree\(rulesPage, language\)/);
+});
+
 test("search fallback has an explicit relevance decision", async () => {
   const search = await readFile(join(projectRoot, "src", "wiki-search.ts"), "utf8");
   const client = await readFile(join(projectRoot, "src", "rules.ts"), "utf8");
