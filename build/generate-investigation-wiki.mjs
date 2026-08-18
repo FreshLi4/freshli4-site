@@ -451,14 +451,16 @@ const readCardDocuments = async (cards) => {
     const textParts = [];
     for (const entry of entries) {
       const document = await readMarkdown(join(directory, entry.name));
-      parts.push(`## ${entry.name.replace(/\.md$/, "")}\n\n${document.body.trim()}`);
       const isCardFace = entry.name === "卡面.md";
       const isPlaceholder = document.body.includes("> 这里保留创作资料入口，内容待补充。");
+      if (!isPlaceholder) {
+        parts.push(`## ${entry.name.replace(/\.md$/, "")}\n\n${document.body.trim()}`);
+        textParts.push(`${entry.name.replace(/\.md$/, "")}：${document.plainText}`);
+      }
       if (!isCardFace && !isPlaceholder) {
         const supplementalHtml = document.html.replace(/^<h1\b[^>]*>[\s\S]*?<\/h1>/, "");
         if (supplementalHtml.trim()) htmlParts.push(`<section><h2>${escapeHtml(entry.name.replace(/\.md$/, ""))}</h2>${supplementalHtml}</section>`);
       }
-      textParts.push(`${entry.name.replace(/\.md$/, "")}：${document.plainText}`);
     }
     documents.push({
       id: card.id,
@@ -547,6 +549,9 @@ const readTranslations = async () => {
 const searchHtml = (document) => {
   const fileName = `${slugify(document.id)}.html`;
   const route = document.route;
+  const searchBody = document.kind === "card"
+    ? `<p>${escapeHtml(document.plainText)}</p>`
+    : document.html;
   const meta = [
     `id:${document.id}`,
     `route:${route}`,
@@ -555,7 +560,7 @@ const searchHtml = (document) => {
   ];
   return {
     fileName,
-    source: `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>${escapeHtml(document.title)}</title></head><body><main data-pagefind-body><span hidden data-pagefind-meta="${escapeAttribute(meta[0])}"></span><span hidden data-pagefind-meta="${escapeAttribute(meta[1])}"></span><span hidden data-pagefind-meta="${escapeAttribute(meta[2])}"></span><span hidden data-pagefind-meta="${escapeAttribute(meta[3])}"></span><h1 data-pagefind-meta="title">${escapeHtml(document.title)}</h1><p>${escapeHtml(document.category)} · ${escapeHtml(document.relativePath)}</p>${document.html}</main></body></html>`,
+    source: `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>${escapeHtml(document.title)}</title></head><body><main data-pagefind-body><span hidden data-pagefind-meta="${escapeAttribute(meta[0])}"></span><span hidden data-pagefind-meta="${escapeAttribute(meta[1])}"></span><span hidden data-pagefind-meta="${escapeAttribute(meta[2])}"></span><span hidden data-pagefind-meta="${escapeAttribute(meta[3])}"></span><h1 data-pagefind-meta="title">${escapeHtml(document.title)}</h1><p>${escapeHtml(document.category)}</p>${searchBody}</main></body></html>`,
   };
 };
 

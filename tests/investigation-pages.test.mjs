@@ -42,10 +42,10 @@ test("investigation reference pages are source-driven and routed", async () => {
   assert.doesNotMatch(server, /provider\.name === "OpenRouter" \? \{ reasoning:/);
   assert.match(server, /<answer>/);
   assert.match(server, /reasoning_content/);
-  assert.match(server, /快速游玩流程/);
-  assert.match(server, /rules#quick-start/);
-  assert.match(server, /卡牌 Wiki/);
-  assert.match(server, /investigation-delve-boardgame\/wiki/);
+  assert.match(server, /buildAnswerSources/);
+  assert.match(server, /sources/);
+  assert.match(server, /不要输出 Markdown 链接/);
+  assert.match(server, /stripAiLinks/);
   assert.match(server, /searchWikiDocuments/);
   assert.match(server, /buildRetrievedContext/);
   assert.doesNotMatch(server, /src\/data\/investigation\/调查员\.csv/);

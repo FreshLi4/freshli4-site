@@ -115,6 +115,12 @@ test("deployment inputs include PO translations and Pagefind records", async () 
   const firstSearchRecord = await readFile(join(projectRoot, "dist", "_wiki-search", distSearch[0]), "utf8");
   assert.match(firstSearchRecord, /data-pagefind-body/);
   assert.match(firstSearchRecord, /data-pagefind-meta="id:/);
+  for (const root of ["public", "dist"]) {
+    const meowSearchRecord = await readFile(join(projectRoot, root, "_wiki-search", "investigator-meow-19.html"), "utf8");
+    assert.match(meowSearchRecord, /职业：猫？/);
+    assert.match(meowSearchRecord, /随心所欲/);
+    assert.doesNotMatch(meowSearchRecord, /card\/调查员\/猫|这里保留创作资料入口/);
+  }
 });
 
 test("English and Japanese PO drafts cover the rendered Wiki and rules text", async () => {
@@ -181,7 +187,10 @@ test("search fallback has an explicit relevance decision", async () => {
   assert.match(client, /shouldRouteToAi\(question, localHits\)/);
   assert.match(client, /pagefindHits\(question, localHits\)\)\.slice\(0, 1\)/);
   assert.match(client, /rules-link-icon/);
+  assert.match(client, /hit\.route/);
   assert.match(client, /pagefindPath = "\/pagefind\/pagefind\.js"/);
-  assert.match(server, /buildRetrievedContext\(searchWikiDocuments\(question, 5\)\)/);
+  assert.match(server, /const hits = searchWikiDocuments\(question, 5\)/);
+  assert.match(server, /buildRetrievedContext\(hits\)/);
+  assert.match(server, /buildAnswerSources\(hits\)/);
   assert.doesNotMatch(server, /KNOWLEDGE_FILES/);
 });

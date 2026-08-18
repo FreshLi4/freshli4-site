@@ -1,4 +1,5 @@
 import { wikiDocuments, type WikiDocument } from "./generated/investigation-wiki.js";
+import { bestSearchPassage, normalizeSearchText, tokenizeSearchQuery } from "./wiki-search-utils.js";
 
 export type WikiSearchHit = {
   document: WikiDocument;
@@ -7,6 +8,8 @@ export type WikiSearchHit = {
   exactTitle: boolean;
   exactTag: boolean;
   excerpt: string;
+  route: string;
+  section: string;
 };
 
 // A direct title hit is enough; otherwise the fallback needs either a
@@ -14,64 +17,47 @@ export type WikiSearchHit = {
 export const TRADITIONAL_SEARCH_SCORE_THRESHOLD = 0.35;
 export const TRADITIONAL_SEARCH_STRONG_HIT_COUNT = 2;
 
-const normalize = (value: string) => value
-  .normalize("NFKC")
-  .toLocaleLowerCase()
-  .replace(/[「」【】《》“”‘’、，。！？：；（）()［］[\]「」·…—–-]/g, " ")
-  .replace(/\s+/g, " ")
-  .trim();
-
-const tokenize = (value: string) => {
-  const tokens = new Set<string>();
-  const normalized = normalize(value);
-  for (const chunk of normalized.match(/[a-z0-9]+|[\u4e00-\u9fff]+/gi) ?? []) {
-    if (/^[a-z0-9]+$/i.test(chunk)) {
-      tokens.add(chunk);
-      continue;
-    }
-    if (chunk.length <= 3) {
-      tokens.add(chunk);
-    } else {
-      tokens.add(chunk);
-      for (let index = 0; index < chunk.length - 1; index += 1) tokens.add(chunk.slice(index, index + 2));
-    }
-  }
-  return [...tokens].filter((token) => token.length > 0);
+const rulebookSectionRoutes: Record<string, string> = {
+  快速游玩流程: "quick-start",
+  任务简报: "briefing",
+  游戏准备: "setup",
+  一轮游戏: "round",
+  操作阶段: "operation",
+  "SAN 与疯狂": "san",
+  胜负判定: "victory",
 };
 
-const excerptFor = (document: WikiDocument, query: string) => {
-  const text = document.plainText.replace(/\s+/g, " ").trim();
-  const normalizedText = normalize(text);
-  const normalizedQuery = normalize(query);
-  const index = normalizedQuery ? normalizedText.indexOf(normalizedQuery) : -1;
-  if (index < 0) return text.slice(0, 220) + (text.length > 220 ? "…" : "");
-  const start = Math.max(0, index - 80);
-  const end = Math.min(text.length, index + Math.max(120, normalizedQuery.length + 100));
-  return `${start > 0 ? "…" : ""}${text.slice(start, end)}${end < text.length ? "…" : ""}`;
+const routeForSection = (document: WikiDocument, section: string) => {
+  if (document.id !== "rulebook") return document.route;
+  const anchor = rulebookSectionRoutes[section];
+  return anchor ? `${document.route}#${anchor}` : document.route;
 };
 
 export const searchWikiDocuments = (query: string, limit = 8): WikiSearchHit[] => {
-  const normalizedQuery = normalize(query);
+  const normalizedQuery = normalizeSearchText(query);
   if (!normalizedQuery) return [];
-  const terms = tokenize(query);
+  const terms = tokenizeSearchQuery(query);
   return wikiDocuments.map((document) => {
-    const title = normalize(document.title);
-    const body = normalize(`${document.title} ${document.category} ${document.tags.join(" ")} ${document.plainText}`);
+    const title = normalizeSearchText(document.title);
+    const body = normalizeSearchText(`${document.title} ${document.category} ${document.tags.join(" ")} ${document.plainText}`);
     const titleTerms = terms.filter((term) => title.includes(term));
     const matchedTerms = terms.filter((term) => body.includes(term));
     const coverage = terms.length ? matchedTerms.length / terms.length : 0;
     const titleCoverage = terms.length ? titleTerms.length / terms.length : 0;
     const exactTitle = title === normalizedQuery || title.includes(normalizedQuery);
-    const exactTag = document.tags.some((tag) => normalize(tag) === normalizedQuery);
+    const exactTag = document.tags.some((tag) => normalizeSearchText(tag) === normalizedQuery);
     const exactPhrase = body.includes(normalizedQuery);
     const score = Math.min(1, coverage * 0.55 + titleCoverage * 0.2 + (exactTitle ? 0.2 : 0) + (exactPhrase ? 0.05 : 0));
+    const passage = bestSearchPassage(document.markdown, document.plainText, query);
     return {
       document,
       score,
       coverage,
       exactTitle,
       exactTag,
-      excerpt: excerptFor(document, query),
+      excerpt: passage.excerpt,
+      route: routeForSection(document, passage.heading),
+      section: passage.heading,
     };
   })
     .filter((hit) => hit.score > 0)

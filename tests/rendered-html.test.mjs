@@ -103,7 +103,7 @@ test("source exposes the investigation rulebook as a second-level page", async (
   assert.match(rulesStyles, /\.wiki-card-investigator details > summary \{ grid-template-columns: minmax\(0, 1fr\) auto 20px; \}/);
   assert.match(rulesStyles, /\.wiki-card-role \{[^}]*font: 700 12px\/1\.1/);
   assert.match(rules, /const renderAiContent = \(paragraph: HTMLElement, content: string\)/);
-  assert.match(rules, /matchAll\(linkPattern\)/);
+  assert.match(rules, /parseAiContent\(content\)/);
   assert.match(rules, /资料库中没有明确记载.*\[规则书\]\(\/investigation-delve-boardgame\/rules\)/);
   assert.match(aiServer, /const OPENCODE_URL = "https:\/\/opencode\.ai\/zen\/v1\/chat\/completions"/);
   assert.match(aiServer, /const OPENCODE_MODEL = "deepseek-v4-pro"/);

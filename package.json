@@ -13,7 +13,7 @@
     "build": "vite build",
     "postbuild": "pagefind --site dist --output-path dist/pagefind",
     "preview": "vite preview",
-    "test": "npm run build && node --test tests/rendered-html.test.mjs tests/investigation-pages.test.mjs tests/wiki-content.test.mjs",
+    "test": "npm run build && node --test tests/rendered-html.test.mjs tests/investigation-pages.test.mjs tests/wiki-content.test.mjs tests/search-and-ai-format.test.mjs",
     "pretypecheck": "npm run generate:wiki",
     "typecheck": "tsc --noEmit"
   },

@@ -116,9 +116,12 @@ body.is-rules-page a { text-decoration: none; }
 .rules-ai-answer { min-height: 112px; margin-top: 25px; padding-top: 18px; border-top: 1px solid var(--rules-line); }
 .rules-ai-answer > span:first-child { color: var(--rules-red); font: 800 8px/1 var(--font-jetbrains); letter-spacing: .13em; }
 .rules-ai-answer p { max-width: 720px; margin-top: 15px; color: var(--rules-ink); font-size: 16px; line-height: 1.75; }
-.rules-ai-response { white-space: pre-wrap; overflow-wrap: anywhere; }
+.rules-ai-response { white-space: pre-wrap; overflow-wrap: break-word; word-break: normal; line-break: strict; }
 .rules-ai-response a { color: var(--rules-brass); text-decoration: underline; text-decoration-color: rgba(196, 160, 106, .65); text-underline-offset: .14em; }
 .rules-ai-response a:hover { color: var(--rules-red); }
+.rules-ai-sources { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 12px; }
+.rules-ai-sources a { color: var(--rules-brass); font-size: 12px; text-decoration: underline; text-decoration-color: rgba(196, 160, 106, .65); text-underline-offset: .14em; }
+.rules-ai-sources a:hover { color: var(--rules-red); }
 .rules-ai-response-line { display: flex; align-items: center; gap: 12px; margin-top: 15px; }
 .rules-ai-response-line .rules-ai-response { flex: 1 1 auto; min-width: 0; margin-top: 0; margin-bottom: 0; }
 .rules-ai-thinking { position: relative; flex: 0 0 1.75em; width: 1.75em; height: 1.75em; margin-top: 0; color: var(--rules-brass); }

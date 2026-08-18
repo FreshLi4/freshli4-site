@@ -2,6 +2,7 @@ import "./rules.css";
 import { allInvestigationCards, cardCategoryMeta, cardSets, wikiDocumentById, type CardCategory, type InvestigationCard } from "./investigation-data";
 import { searchWikiDocuments, shouldRouteToAi, type WikiSearchHit } from "./wiki-search";
 import { localizeWikiHtml, localizeWikiText, localizeWikiTree, type WikiLanguage } from "./wiki-i18n";
+import { parseAiContent, type RulesAiSource } from "./rules-ai-format";
 
 const investigationVisualFiles = import.meta.glob("/asset/investigation-delve/visual-content/*", { eager: true, query: "?url", import: "default" }) as Record<string, string>;
 const investigationVisual = (fileName: string) => investigationVisualFiles[`/asset/investigation-delve/visual-content/${fileName}`] ?? "";
@@ -60,8 +61,7 @@ const pagefindHits = async (query: string, localHits: WikiSearchHit[]) => {
       const id = data.meta?.id;
       const localHit = id ? localById.get(id) : undefined;
       if (!localHit) return undefined;
-      const pagefindExcerpt = data.plain_excerpt || data.excerpt?.replace(/<[^>]+>/g, "");
-      return { ...localHit, excerpt: pagefindExcerpt || localHit.excerpt };
+      return localHit;
     }));
     const resolved = hits.filter((hit): hit is WikiSearchHit => Boolean(hit));
     return resolved.length ? resolved : localHits;
@@ -451,51 +451,36 @@ const setupRulesInteractions = () => {
   const aiAnswer = document.querySelector<HTMLElement>("#rules-ai-answer");
   const aiPrompts = [...document.querySelectorAll<HTMLButtonElement>("[data-rules-ai-prompt]")];
   let activeAiRequest: AbortController | undefined;
-  const formatAiContent = (content: string) => {
-    const normalized = content
-      .replace(/\r\n?/g, "\n")
-      .replace(/\*\*/g, "")
-      .replace(/\s*>\s*/g, "\n")
-      .replace(/\s+(?=[-•]\s+)/g, "\n")
-      .replace(/\n{3,}/g, "\n\n")
-      .trim();
-    if (normalized.includes("\n") || normalized.length <= 80) return normalized;
-    return normalized.replace(/([。！？；])\s*/g, "$1\n").replace(/\n{3,}/g, "\n").trim();
-  };
   const isSafeAiLink = (href: string) => {
     if (href.startsWith("/") && !href.startsWith("//")) return true;
     if (href.startsWith("#")) return true;
     return /^https?:\/\//i.test(href);
   };
-  const renderAiContent = (paragraph: HTMLElement, content: string) => {
-    const normalized = formatAiContent(content);
-    const linkPattern = /\[([^\]\n]+)\]\(([^)\s]+)\)/g;
-    let cursor = 0;
-    for (const match of normalized.matchAll(linkPattern)) {
-      const [fullMatch, label, href] = match;
-      const matchIndex = match.index ?? 0;
-      paragraph.append(document.createTextNode(normalized.slice(cursor, matchIndex)));
-      if (isSafeAiLink(href)) {
-        const link = document.createElement("a");
-        link.href = href;
-        const icon = document.createElement("span");
-        icon.className = "rules-link-icon";
-        icon.setAttribute("aria-hidden", "true");
-        icon.textContent = "↗";
-        link.append(icon, document.createTextNode(label));
-        if (/^https?:\/\//i.test(href)) {
-          link.target = "_blank";
-          link.rel = "noopener noreferrer";
-        }
-        paragraph.append(link);
-      } else {
-        paragraph.append(document.createTextNode(fullMatch));
-      }
-      cursor = matchIndex + fullMatch.length;
+  const createAiLink = (label: string, href: string) => {
+    if (!isSafeAiLink(href)) return undefined;
+    const link = document.createElement("a");
+    link.href = href;
+    const icon = document.createElement("span");
+    icon.className = "rules-link-icon";
+    icon.setAttribute("aria-hidden", "true");
+    icon.textContent = "↗";
+    link.append(icon, document.createTextNode(label));
+    if (/^https?:\/\//i.test(href)) {
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
     }
-    paragraph.append(document.createTextNode(normalized.slice(cursor)));
+    return link;
   };
-  const renderAiAnswer = (status: string, content: string, pending = false) => {
+  const renderAiContent = (paragraph: HTMLElement, content: string) => {
+    for (const segment of parseAiContent(content)) {
+      if (segment.type === "text") {
+        paragraph.append(document.createTextNode(segment.text));
+        continue;
+      }
+      paragraph.append(createAiLink(segment.label, segment.href) ?? document.createTextNode(segment.label));
+    }
+  };
+  const renderAiAnswer = (status: string, content: string, pending = false, sources: RulesAiSource[] = []) => {
     if (!aiAnswer) return;
     aiAnswer.classList.toggle("is-pending", pending);
     const label = document.createElement("span");
@@ -503,8 +488,14 @@ const setupRulesInteractions = () => {
     const paragraph = document.createElement("p");
     paragraph.className = "rules-ai-response";
     renderAiContent(paragraph, content);
+    const sourceLinks = document.createElement("div");
+    sourceLinks.className = "rules-ai-sources";
+    sources.forEach((source) => {
+      const link = createAiLink(localizeWikiText(source.label, currentWikiLanguage), source.href);
+      if (link) sourceLinks.append(link);
+    });
     if (!pending) {
-      aiAnswer.replaceChildren(label, paragraph);
+      aiAnswer.replaceChildren(label, paragraph, ...(sourceLinks.childElementCount ? [sourceLinks] : []));
       return;
     }
     const thinking = document.createElement("span");
@@ -530,7 +521,7 @@ const setupRulesInteractions = () => {
       searchResults.innerHTML = `<div class="rules-search-results-empty"><span>SEARCH / 传统检索</span><p>没有直接命中，正在转交规则问答。</p></div>`;
       return;
     }
-    searchResults.innerHTML = `<div class="rules-search-results-heading"><span>SEARCH / 传统检索</span><b>${hits.length} 条资料命中</b></div><ol class="rules-search-results-list">${hits.map((hit) => `<li><a href="${escapeHtml(hit.document.route)}"><span class="rules-search-result-category"><span class="rules-link-icon" aria-hidden="true">↗</span>${escapeHtml(localizeWikiText(hit.document.category, currentWikiLanguage))}</span><strong>${escapeHtml(localizeWikiText(hit.document.title, currentWikiLanguage))}</strong><p>${escapeHtml(localizeWikiText(hit.excerpt, currentWikiLanguage))}</p></a></li>`).join("")}</ol>`;
+    searchResults.innerHTML = `<div class="rules-search-results-heading"><span>SEARCH / 传统检索</span><b>${hits.length} 条资料命中</b></div><ol class="rules-search-results-list">${hits.map((hit) => `<li><a href="${escapeHtml(hit.route)}"><span class="rules-search-result-category"><span class="rules-link-icon" aria-hidden="true">↗</span>${escapeHtml(localizeWikiText(hit.document.category, currentWikiLanguage))}</span><strong>${escapeHtml(localizeWikiText(hit.document.title, currentWikiLanguage))}</strong><p>${escapeHtml(localizeWikiText(hit.excerpt, currentWikiLanguage))}</p></a></li>`).join("")}</ol>`;
   };
   const answerQuestion = async (question: string) => {
     activeAiRequest?.abort();
@@ -553,17 +544,19 @@ const setupRulesInteractions = () => {
       const decoder = new TextDecoder();
       let buffer = "";
       let answer = "";
+      let answerSources: RulesAiSource[] = [];
       const consume = (event: string) => {
         for (const line of event.split("\n")) {
           if (!line.startsWith("data:")) continue;
           const data = line.slice(5).trim();
           if (!data || data === "[DONE]") continue;
           try {
-            const chunk = JSON.parse(data) as { choices?: Array<{ delta?: { content?: string } }> };
+            const chunk = JSON.parse(data) as { choices?: Array<{ delta?: { content?: string } }>; sources?: RulesAiSource[] };
+            if (Array.isArray(chunk.sources)) answerSources = chunk.sources;
             const content = chunk.choices?.[0]?.delta?.content;
             if (content) {
               answer += content;
-              renderAiAnswer("STREAMING", answer);
+              renderAiAnswer("STREAMING", answer, false, answerSources);
             }
           } catch {
             // Ignore incomplete SSE payloads; the next chunk completes them.
@@ -579,7 +572,7 @@ const setupRulesInteractions = () => {
         if (done) break;
       }
       if (buffer) consume(buffer);
-      renderAiAnswer("ANSWER", answer || "资料库中没有明确记载，可以换一种问法，或查看[规则书](/investigation-delve-boardgame/rules)、[调查附录](/investigation-delve-boardgame/appendix)、[FAQ](/investigation-delve-boardgame/faq) 和[卡牌 Wiki](/investigation-delve-boardgame/wiki)。");
+      renderAiAnswer("ANSWER", answer || "资料库中没有明确记载，可以换一种问法，或查看[规则书](/investigation-delve-boardgame/rules)、[调查附录](/investigation-delve-boardgame/appendix)、[FAQ](/investigation-delve-boardgame/faq) 和[卡牌 Wiki](/investigation-delve-boardgame/wiki)。", false, answerSources);
     } catch (error) {
       if (error instanceof DOMException && error.name === "AbortError") return;
       renderAiAnswer("ERROR", error instanceof Error ? error.message : "AI 暂时无法回答，请稍后再试。");
