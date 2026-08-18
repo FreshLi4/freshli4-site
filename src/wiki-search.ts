@@ -1,10 +1,11 @@
-import { wikiDocuments, type WikiDocument } from "./generated/investigation-wiki";
+import { wikiDocuments, type WikiDocument } from "./generated/investigation-wiki.js";
 
 export type WikiSearchHit = {
   document: WikiDocument;
   score: number;
   coverage: number;
   exactTitle: boolean;
+  exactTag: boolean;
   excerpt: string;
 };
 
@@ -61,6 +62,7 @@ export const searchWikiDocuments = (query: string, limit = 8): WikiSearchHit[] =
     const coverage = terms.length ? matchedTerms.length / terms.length : 0;
     const titleCoverage = terms.length ? titleTerms.length / terms.length : 0;
     const exactTitle = title === normalizedQuery || title.includes(normalizedQuery);
+    const exactTag = document.tags.some((tag) => normalize(tag) === normalizedQuery);
     const exactPhrase = body.includes(normalizedQuery);
     const score = Math.min(1, coverage * 0.55 + titleCoverage * 0.2 + (exactTitle ? 0.2 : 0) + (exactPhrase ? 0.05 : 0));
     return {
@@ -68,6 +70,7 @@ export const searchWikiDocuments = (query: string, limit = 8): WikiSearchHit[] =
       score,
       coverage,
       exactTitle,
+      exactTag,
       excerpt: excerptFor(document, query),
     };
   })
@@ -83,6 +86,6 @@ export const shouldRouteToAi = (query: string, hits: WikiSearchHit[]) => {
   if (isQuestionLike(query)) return true;
   const strongHits = hits.filter((hit) => hit.score >= TRADITIONAL_SEARCH_SCORE_THRESHOLD);
   const topHit = hits[0];
-  if (topHit.exactTitle || topHit.score >= 0.65) return false;
+  if (topHit.exactTitle || topHit.exactTag || topHit.score >= 0.65) return false;
   return topHit.score < TRADITIONAL_SEARCH_SCORE_THRESHOLD || strongHits.length < TRADITIONAL_SEARCH_STRONG_HIT_COUNT;
 };

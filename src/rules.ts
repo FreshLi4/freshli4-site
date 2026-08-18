@@ -478,7 +478,11 @@ const setupRulesInteractions = () => {
       if (isSafeAiLink(href)) {
         const link = document.createElement("a");
         link.href = href;
-        link.textContent = label;
+        const icon = document.createElement("span");
+        icon.className = "rules-link-icon";
+        icon.setAttribute("aria-hidden", "true");
+        icon.textContent = "↗";
+        link.append(icon, document.createTextNode(label));
         if (/^https?:\/\//i.test(href)) {
           link.target = "_blank";
           link.rel = "noopener noreferrer";
@@ -526,7 +530,7 @@ const setupRulesInteractions = () => {
       searchResults.innerHTML = `<div class="rules-search-results-empty"><span>SEARCH / 传统检索</span><p>没有直接命中，正在转交规则问答。</p></div>`;
       return;
     }
-    searchResults.innerHTML = `<div class="rules-search-results-heading"><span>SEARCH / 传统检索</span><b>${hits.length} 条资料命中</b></div><ol class="rules-search-results-list">${hits.map((hit) => `<li><a href="${escapeHtml(hit.document.route)}"><span>${escapeHtml(localizeWikiText(hit.document.category, currentWikiLanguage))}</span><strong>${escapeHtml(localizeWikiText(hit.document.title, currentWikiLanguage))}</strong><p>${escapeHtml(localizeWikiText(hit.excerpt, currentWikiLanguage))}</p></a></li>`).join("")}</ol>`;
+    searchResults.innerHTML = `<div class="rules-search-results-heading"><span>SEARCH / 传统检索</span><b>${hits.length} 条资料命中</b></div><ol class="rules-search-results-list">${hits.map((hit) => `<li><a href="${escapeHtml(hit.document.route)}"><span class="rules-search-result-category"><span class="rules-link-icon" aria-hidden="true">↗</span>${escapeHtml(localizeWikiText(hit.document.category, currentWikiLanguage))}</span><strong>${escapeHtml(localizeWikiText(hit.document.title, currentWikiLanguage))}</strong><p>${escapeHtml(localizeWikiText(hit.excerpt, currentWikiLanguage))}</p></a></li>`).join("")}</ol>`;
   };
   const answerQuestion = async (question: string) => {
     activeAiRequest?.abort();
@@ -585,7 +589,7 @@ const setupRulesInteractions = () => {
   };
   const submitQuestion = async (question: string) => {
     const localHits = searchWikiDocuments(question, 8);
-    const hits = await pagefindHits(question, localHits);
+    const hits = (await pagefindHits(question, localHits)).slice(0, 1);
     renderSearchResults(hits);
     if (!shouldRouteToAi(question, localHits)) {
       renderAiAnswer("SEARCH", "已找到相关资料，请查看上方命中结果。", false);

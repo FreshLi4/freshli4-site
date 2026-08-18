@@ -177,7 +177,10 @@ test("search fallback has an explicit relevance decision", async () => {
   const server = await readFile(join(projectRoot, "server", "rules-ai.ts"), "utf8");
   assert.match(search, /TRADITIONAL_SEARCH_SCORE_THRESHOLD/);
   assert.match(search, /TRADITIONAL_SEARCH_STRONG_HIT_COUNT/);
+  assert.match(search, /exactTag/);
   assert.match(client, /shouldRouteToAi\(question, localHits\)/);
+  assert.match(client, /pagefindHits\(question, localHits\)\)\.slice\(0, 1\)/);
+  assert.match(client, /rules-link-icon/);
   assert.match(client, /pagefindPath = "\/pagefind\/pagefind\.js"/);
   assert.match(server, /buildRetrievedContext\(searchWikiDocuments\(question, 5\)\)/);
   assert.doesNotMatch(server, /KNOWLEDGE_FILES/);

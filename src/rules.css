@@ -106,8 +106,11 @@ body.is-rules-page a { text-decoration: none; }
 .rules-search-results-empty p { margin: 10px 0 0; color: var(--rules-muted); font-size: 13px; line-height: 1.6; }
 .rules-search-results-list { display: grid; gap: 8px; margin: 12px 0 0; padding: 0; list-style: none; }
 .rules-search-results-list a { display: block; padding: 10px 0; border-bottom: 1px solid var(--rules-line); color: inherit; text-decoration: none; }
+.rules-search-results-list li:last-child a { border-bottom: 0; }
 .rules-search-results-list a:hover strong { color: var(--rules-red); }
 .rules-search-results-list a > span { display: block; color: var(--rules-red); font: 700 8px/1.2 var(--font-jetbrains); letter-spacing: .1em; }
+.rules-link-icon { display: inline-block; margin-right: .4em; color: var(--rules-red); font: 700 .95em/1 var(--font-jetbrains); text-decoration: none; }
+.rules-search-result-category .rules-link-icon { margin-right: .5em; }
 .rules-search-results-list strong { display: block; margin-top: 4px; color: var(--rules-ink); font-size: 15px; }
 .rules-search-results-list p { margin: 6px 0 0; color: var(--rules-muted); font-size: 12px; line-height: 1.65; }
 .rules-ai-answer { min-height: 112px; margin-top: 25px; padding-top: 18px; border-top: 1px solid var(--rules-line); }
