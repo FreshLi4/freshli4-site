@@ -3799,3 +3799,163 @@ msgstr "Wiki ナビゲーション"
 msgctxt "fragment"
 msgid "Wiki 的每一张卡牌都有来源。"
 msgstr "Wiki 内のすべてのカードには出典があります。"
+
+msgctxt "fragment"
+msgid "规则 / 百科"
+msgstr "ルール / WIKI"
+
+msgctxt "term"
+msgid "即时行动"
+msgstr "インスタント・ストラテジー"
+
+msgctxt "text"
+msgid "你的工作就是为你的「调查员」在任务过程中下发「策略」指令，通过经验、直觉和智慧引领他们完成任务。"
+msgstr "あなたの任務は、作戦中に「調査員」へ「ストラテジー」の指示を出し、経験と直感と知恵で任務達成へ導くことです。"
+
+msgctxt "text"
+msgid "每一「轮」游戏都伴随与众不同的「环境」卡牌开展，给玩家们带来新的威胁（又或者机遇？）。"
+msgstr "各「ラウンド」は異なる「環境」カードのもとで進み、プレイヤーに新たな脅威——あるいは好機——をもたらします。"
+
+msgctxt "fragment"
+msgid "所有卡牌，"
+msgstr "すべてのカードを、"
+
+msgctxt "fragment"
+msgid "一览无遗。"
+msgstr "一目で確認。"
+
+msgctxt "fragment"
+msgid "定义的开始，"
+msgstr "定義は"
+
+msgctxt "fragment"
+msgid "就是智慧的开始。"
+msgstr "知恵の始まり。"
+
+msgctxt "fragment"
+msgid "即时行动"
+msgstr "インスタント・ストラテジー"
+
+msgctxt "fragment"
+msgid "个体机制"
+msgstr "継続ストラテジー"
+
+msgctxt "fragment"
+msgid "策略：个体机制"
+msgstr "継続ストラテジー"
+
+msgctxt "fragment"
+msgid "老侦探"
+msgstr "ベテラン探偵"
+
+msgctxt "fragment"
+msgid "职业调查员"
+msgstr "プロの調査員"
+
+msgctxt "fragment"
+msgid "研究员"
+msgstr "研究者"
+
+msgctxt "fragment"
+msgid "流浪汉"
+msgstr "放浪者"
+
+msgctxt "fragment"
+msgid "赏金猎人"
+msgstr "賞金稼ぎ"
+
+msgctxt "fragment"
+msgid "赌徒"
+msgstr "ギャンブラー"
+
+msgctxt "fragment"
+msgid "苦行僧"
+msgstr "苦行者"
+
+msgctxt "fragment"
+msgid "信徒"
+msgstr "信徒"
+
+msgctxt "fragment"
+msgid "地痞"
+msgstr "ごろつき"
+
+msgctxt "fragment"
+msgid "催眠师"
+msgstr "催眠術師"
+
+msgctxt "fragment"
+msgid "劳改犯"
+msgstr "受刑者"
+
+msgctxt "fragment"
+msgid "猛男"
+msgstr "マッチョマン"
+
+msgctxt "fragment"
+msgid "仿生人"
+msgstr "アンドロイド"
+
+msgctxt "fragment"
+msgid "欺诈师"
+msgstr "詐欺師"
+
+msgctxt "fragment"
+msgid "目击者"
+msgstr "目撃者"
+
+msgctxt "fragment"
+msgid "选民"
+msgstr "有権者"
+
+msgctxt "fragment"
+msgid "精神病人"
+msgstr "精神科患者"
+
+msgctxt "fragment"
+msgid "猫？"
+msgstr "猫？"
+
+msgctxt "fragment"
+msgid "中之人"
+msgstr "中の人"
+
+msgctxt "fragment"
+msgid "附录与卡牌 Wiki 互相校验。"
+msgstr "付録とカード Wiki を照合する。"
+
+msgctxt "fragment"
+msgid "每位「指挥者」会被派发(2 × N)张候选的「调查员」卡牌，从中选取指挥(N)位「调查员」，建议以如下配比进行游戏："
+msgstr "各「指揮官」には候補となる「調査員」カードが (2 × N) 枚配られ、その中から指揮する (N) 人の「調査員」を選びます。推奨人数配分は次のとおりです。"
+
+msgctxt "fragment"
+msgid "玩家也可以其他配比开始游戏，场上开局时调查员数量需≥4。"
+msgstr "別の人数配分でも開始できますが、ゲーム開始時に場の「調査員」は (4) 人以上必要です。"
+
+msgctxt "fragment"
+msgid "将参与本局游戏的「调查员指示卡」洗切，随机布置到场上的「顺位指示卡」边。"
+msgstr "このゲームで使用する「調査員トークン」をシャッフルし、場の「順番トークン」の隣にランダムに配置します。"
+
+msgctxt "fragment"
+msgid "卡牌右上角的骰子点数，标识该「调查员」的「SAN」上限。"
+msgstr "カード右上のダイス目は、その「調査員」の「SAN」上限を示します。"
+
+msgctxt "fragment"
+msgid "判定「环境」、已经对「调查员」布置的「个体机制」或「调查员」技能，是否有可以/必须触发生效的，如有，触发卡牌或技能。"
+msgstr "「環境」、その「調査員」に配置済みの「持続戦略」、および「調査員」の能力を確認し、発動できる／発動しなければならないカードや能力を解決します。"
+
+msgctxt "fragment"
+msgid "对「情报卡组」进行调查（从「情报卡组」顶部，顺序翻看并公示(1)~(3)张「情报」卡牌，然后纳入自己的「情报区」）。如无特殊描述，每位「调查员」每个「操作阶段」必须、且只能执行一次调查。"
+msgstr "「情報デッキ」を調査します（上から順に (1)～(3) 枚の「情報」カードを公開し、自分の「情報エリア」に加えます）。特別な記述がない限り、各「調査員」は各「操作フェーズ」に必ず、かつ一度だけ調査します。"
+
+msgctxt "fragment"
+msgid "判定「环境」卡牌、已经对「调查员」布置的「个体机制」，或「调查员」技能是否有可以/必须触发生效的，如有，触发卡牌或技能。"
+msgstr "「環境」カード、その「調査員」に配置済みの「持続戦略」、および「調査員」の能力を確認し、発動できる／発動しなければならないカードや能力を解決します。"
+
+msgctxt "fragment"
+msgid "若「调查员」因此导致「SAN」归零，其将会「陷入疯狂」。将其「调查员」卡牌与「调查员指示卡」翻面，所有对其布置的「个体机制」被弃置。"
+msgstr "その結果「調査員」の「SAN」が 0 になった場合、その調査員は「狂気に陥る」。その「調査員」カードと「調査員トークン」を裏返し、配置されているすべての「持続戦略」を捨てます。"
+
+msgctxt "fragment"
+msgid "一份会继续生长的规则书。"
+msgstr "これからも成長し続けるルールブック。"

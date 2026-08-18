@@ -17,6 +17,10 @@ msgid "策略"
 msgstr "Strategy"
 
 msgctxt "term"
+msgid "即时行动"
+msgstr "Instant Strategy"
+
+msgctxt "term"
 msgid "策略卡组"
 msgstr "Strategy Deck"
 
@@ -90,7 +94,7 @@ msgstr "Support Deck"
 
 msgctxt "term"
 msgid "个体机制"
-msgstr "Personal Mechanism"
+msgstr "Deferred Strategy"
 
 msgctxt "term"
 msgid "规则书"
@@ -134,11 +138,11 @@ msgstr "Card Effect"
 
 msgctxt "term"
 msgid "窥探"
-msgstr "Peek"
+msgstr "Pry"
 
 msgctxt "term"
 msgid "盲从"
-msgstr "Blind Obedience"
+msgstr "Conform"
 
 msgctxt "term"
 msgid "判例"
@@ -154,19 +158,19 @@ msgstr "Awake Ability"
 
 msgctxt "term"
 msgid "情报"
-msgstr "Intel"
+msgstr "Intelligence"
 
 msgctxt "term"
 msgid "情报卡组"
-msgstr "Intel Deck"
+msgstr "Intelligence Deck"
 
 msgctxt "term"
 msgid "情报弃牌区"
-msgstr "Intel Discard"
+msgstr "Intelligence Discard"
 
 msgctxt "term"
 msgid "情报区"
-msgstr "Intel Area"
+msgstr "Intelligence Area"
 
 msgctxt "term"
 msgid "手牌"
@@ -190,7 +194,7 @@ msgstr "Fall Into Madness"
 
 msgctxt "term"
 msgid "胁迫"
-msgstr "Pressure"
+msgstr "Coercion"
 
 msgctxt "term"
 msgid "职业"
@@ -220,9 +224,17 @@ msgctxt "text"
 msgid "输入任意问题，获得规则解答或者指引"
 msgstr "Ask anything to get a rule answer or a pointer."
 
+msgctxt "text"
+msgid "你的工作就是为你的「调查员」在任务过程中下发「策略」指令，通过经验、直觉和智慧引领他们完成任务。"
+msgstr "Your task is to issue \"Strategy\" directives to your \"Investigator\" during missions, guiding them with experience, intuition, and wisdom."
+
+msgctxt "text"
+msgid "每一「轮」游戏都伴随与众不同的「环境」卡牌开展，给玩家们带来新的威胁（又或者机遇？）。"
+msgstr "Each \"Round\" unfolds under a different \"Environment\" card, bringing players new threats—or perhaps opportunities."
+
 msgctxt "fragment"
 msgid "“阿诺”"
-msgstr "\"Arnold\""
+msgstr "\"Arno\""
 
 msgctxt "fragment"
 msgid "“斑点鸽”"
@@ -230,7 +242,7 @@ msgstr "\"Spotted Pigeon\""
 
 msgctxt "fragment"
 msgid "“乌鸦”"
-msgstr "\"crow\""
+msgstr "\"Crow\""
 
 msgctxt "fragment"
 msgid "“约翰”"
@@ -974,7 +986,7 @@ msgstr "version boundaries"
 
 msgctxt "fragment"
 msgid "包含版本"
-msgstr "Contains version"
+msgstr "Contains Version"
 
 msgctxt "fragment"
 msgid "包含版本：Vol.1"
@@ -1082,7 +1094,7 @@ msgstr "Can't. The overheat/overload effect for both androids is \"Consume (1) S
 
 msgctxt "fragment"
 msgid "不可直视神 · I"
-msgstr "Don’t look directly at God·I"
+msgstr "Do Not Look at God · I"
 
 msgctxt "fragment"
 msgid "不能超过其「SAN」上限"
@@ -1098,7 +1110,7 @@ msgstr "Does not consume \"SAN\""
 
 msgctxt "fragment"
 msgid "布局 · I"
-msgstr "Layout·I"
+msgstr "Layout · I"
 
 msgctxt "fragment"
 msgid "部分早期卡牌沿用了普通字形，但后续版本已经把对应词汇定义为特殊行动。请以本附录的行动列表与卡牌 Wiki 的说明更新版本共同判定。"
@@ -1150,7 +1162,7 @@ msgstr "Draw the same number of cards and add them to your hand"
 
 msgctxt "fragment"
 msgid "初火"
-msgstr "first fire"
+msgstr "First Flame"
 
 msgctxt "fragment"
 msgid "初火、癫火和禁忌真相对仿生人分别如何处理？"
@@ -1310,7 +1322,7 @@ msgstr "When a \"Strategy\" card is placed or takes effect on it"
 
 msgctxt "fragment"
 msgid "砥砺前行 · I"
-msgstr "Forge ahead·I"
+msgstr "Forge Ahead · I"
 
 msgctxt "fragment"
 msgid "第(N)个调查到【禁忌真相】的"
@@ -1322,7 +1334,7 @@ msgstr "After investigating and consuming \"SAN\" for the first time"
 
 msgctxt "fragment"
 msgid "癫火"
-msgstr "epilepsy"
+msgstr "Frenzied Flame"
 
 msgctxt "fragment"
 msgid "癫火只在同一队伍内结算，由高「SAN」调查员向低「SAN」调查员匀 SAN；如果存在多个满足最小变动量的结果，由对应「指挥者」决定。"
@@ -1334,7 +1346,7 @@ msgstr "Epilepsy only resolves within the same team. SAN is evened from high SAN
 
 msgctxt "fragment"
 msgid "调查"
-msgstr "investigation"
+msgstr "Investigation"
 
 msgctxt "fragment"
 msgid "调查到(2)次【禁忌真相】后结束"
@@ -1362,7 +1374,7 @@ msgstr "The number of \"Intelligence\" cards investigated + (N), N depends on th
 
 msgctxt "fragment"
 msgid "调查风格"
-msgstr "investigative style"
+msgstr "Investigation Style"
 
 msgctxt "fragment"
 msgid "调查风格：待补充"
@@ -1478,7 +1490,7 @@ msgstr "Adjustment"
 
 msgctxt "fragment"
 msgid "调整 · I"
-msgstr "Adjustment·I"
+msgstr "Adjust · I"
 
 msgctxt "fragment"
 msgid "调整：将卡牌放回对应卡组的"
@@ -1486,7 +1498,7 @@ msgstr "Adjustment: Put the cards back into the corresponding deck"
 
 msgctxt "fragment"
 msgid "定义的开始， 就是智慧的开始。"
-msgstr "The beginning of definition is the beginning of wisdom."
+msgstr "Definition Is Where Wisdom Begins."
 
 msgctxt "fragment"
 msgid "对(1)位「调查员」布置"
@@ -1514,7 +1526,7 @@ msgstr "Use skip once on yourself"
 
 msgctxt "fragment"
 msgid "俄罗斯转轮 · I"
-msgstr "Russian Wheel · I"
+msgstr "Russian Roulette · I"
 
 msgctxt "fragment"
 msgid "而是放置到另(1)队伍的「情报区」"
@@ -1526,15 +1538,15 @@ msgstr "Execute (1) survey in reverse"
 
 msgctxt "fragment"
 msgid "反转"
-msgstr "reverse"
+msgstr "Reverse"
 
 msgctxt "fragment"
 msgid "反转 · I"
-msgstr "Inversion · I"
+msgstr "Reverse · I"
 
 msgctxt "fragment"
 msgid "反转 · II"
-msgstr "Reversal · II"
+msgstr "Reverse · II"
 
 msgctxt "fragment"
 msgid "反转：反转当前的调查顺序"
@@ -1566,7 +1578,7 @@ msgstr "Return to top ↑"
 
 msgctxt "fragment"
 msgid "返回官网"
-msgstr "Return to official website"
+msgstr "Studio Home"
 
 msgctxt "fragment"
 msgid "方括号表示卡牌（包括调查员）名称；【禁忌真相】有特殊颜色标识。"
@@ -1590,11 +1602,11 @@ msgstr "The \"Investigator\" card placed until it is consumed is counted."
 
 msgctxt "fragment"
 msgid "菲利普 · 钱德勒"
-msgstr "philip chandler"
+msgstr "Philip Chandler"
 
 msgctxt "fragment"
 msgid "费用"
-msgstr "cost"
+msgstr "Cost"
 
 msgctxt "fragment"
 msgid "费用：0"
@@ -1646,7 +1658,7 @@ msgstr "crazy"
 
 msgctxt "fragment"
 msgid "疯狂技能"
-msgstr "Crazy skills"
+msgstr "Madness Ability"
 
 msgctxt "fragment"
 msgid "辅助"
@@ -1666,7 +1678,7 @@ msgstr "The appendix is ​​responsible for defining vocabulary, and the Wiki 
 
 msgctxt "fragment"
 msgid "富饶之罪"
-msgstr "crime of abundance"
+msgstr "Sin of Abundance"
 
 msgctxt "fragment"
 msgid "该「轮」游戏继续"
@@ -1706,7 +1718,7 @@ msgstr "The rules are maps,"
 
 msgctxt "fragment"
 msgid "规则书"
-msgstr "rule book"
+msgstr "Rulebook"
 
 msgctxt "fragment"
 msgid "规则书概览"
@@ -1766,7 +1778,7 @@ msgstr "Welcome back, this is the \"Investigation Guild of Anomaly\", often refe
 
 msgctxt "fragment"
 msgid "环境"
-msgstr "environment"
+msgstr "Environment"
 
 msgctxt "fragment"
 msgid "环境卡牌"
@@ -1794,11 +1806,11 @@ msgstr "Recycling enters the rules language starting with Vol.3."
 
 msgctxt "fragment"
 msgid "回溯 · I"
-msgstr "Backtrack · I"
+msgstr "Rewind · I"
 
 msgctxt "fragment"
 msgid "混沌之路"
-msgstr "path of chaos"
+msgstr "Path of Chaos"
 
 msgctxt "fragment"
 msgid "混洗后按「调查顺位」"
@@ -1822,7 +1834,7 @@ msgstr "Gain (1) temporary \"SAN\" point (plus one die)"
 
 msgctxt "fragment"
 msgid "机器学习 · 仿生人"
-msgstr "Machine Learning · Bionic Man"
+msgstr "Machine Learning · Android"
 
 msgctxt "fragment"
 msgid "机制、调查员、环境与印刷勘误的快速查找页。"
@@ -1898,7 +1910,7 @@ msgstr "Change the \"auxiliary\" card: [Forbidden Ritual]"
 
 msgctxt "fragment"
 msgid "将「辅助」卡牌各自洗切整理成一堆。"
-msgstr "Shuffle the \"auxiliary\" cards into a pile."
+msgstr "Shuffle the \"Auxiliary\" cards into a pile."
 
 msgctxt "fragment"
 msgid "将「环境」卡牌各自洗切整理成一堆。"
@@ -1974,7 +1986,7 @@ msgstr "Turn over all \"Order Instruction Cards\""
 
 msgctxt "fragment"
 msgid "降雨概率"
-msgstr "Rainfall probability"
+msgstr "Chance of Rain"
 
 msgctxt "fragment"
 msgid "交换你与另一位「指挥者」的手牌"
@@ -2030,7 +2042,7 @@ msgstr "make adjustments"
 
 msgctxt "fragment"
 msgid "禁忌仪式"
-msgstr "forbidden rituals"
+msgstr "Forbidden Ritual"
 
 msgctxt "fragment"
 msgid "禁忌仪式 · I"
@@ -2038,7 +2050,7 @@ msgstr "Forbidden Ritual · I"
 
 msgctxt "fragment"
 msgid "禁忌真相"
-msgstr "forbidden truth"
+msgstr "Forbidden Truth"
 
 msgctxt "fragment"
 msgid "拒绝调查的「调查员」受到胁迫 + (4)"
@@ -2074,7 +2086,7 @@ msgstr "Card Statistics"
 
 msgctxt "fragment"
 msgid "卡牌效果"
-msgstr "card effect"
+msgstr "Effect Text"
 
 msgctxt "fragment"
 msgid "卡牌印刷与规则文本冲突时怎么办？"
@@ -2114,23 +2126,23 @@ msgstr "Quick playthrough guide."
 
 msgctxt "fragment"
 msgid "窥探"
-msgstr "snoop"
+msgstr "Pry"
 
 msgctxt "fragment"
 msgid "窥探 · I"
-msgstr "Spy · I"
+msgstr "Pry · I"
 
 msgctxt "fragment"
 msgid "窥探 · II"
-msgstr "Spying · II"
+msgstr "Pry · II"
 
 msgctxt "fragment"
 msgid "窥探 · III"
-msgstr "Spying · III"
+msgstr "Pry · III"
 
 msgctxt "fragment"
 msgid "窥探 · IV"
-msgstr "Spy · IV"
+msgstr "Pry · IV"
 
 msgctxt "fragment"
 msgid "窥探：私下（队内）顺序查看(N)张"
@@ -2166,11 +2178,11 @@ msgstr "Puppet · I"
 
 msgctxt "fragment"
 msgid "来生"
-msgstr "afterlife"
+msgstr "Afterlife"
 
 msgctxt "fragment"
 msgid "类型"
-msgstr "type"
+msgstr "Type"
 
 msgctxt "fragment"
 msgid "类型：策略：个体机制"
@@ -2230,23 +2242,23 @@ msgstr "Raleigh Caesar"
 
 msgctxt "fragment"
 msgid "埋葬过去 · I"
-msgstr "Burying the past·I"
+msgstr "Bury the Past · I"
 
 msgctxt "fragment"
 msgid "蛮横无理"
-msgstr "Arrogant and unreasonable"
+msgstr "Brutality"
 
 msgctxt "fragment"
 msgid "盲从"
-msgstr "blindly follow"
+msgstr "Conform"
 
 msgctxt "fragment"
 msgid "盲从 · 催眠师"
-msgstr "Blind Obedience · Hypnotist"
+msgstr "Conform · Hypnotist"
 
 msgctxt "fragment"
 msgid "盲从 · I"
-msgstr "Blind obedience·I"
+msgstr "Conform · I"
 
 msgctxt "fragment"
 msgid "盲从：「操作阶段」开始后"
@@ -2370,11 +2382,11 @@ msgstr "Expressly put into the \"public hand area\""
 
 msgctxt "fragment"
 msgid "命定之人"
-msgstr "The Destined One"
+msgstr "The Chosen One"
 
 msgctxt "fragment"
 msgid "命定之人 · 赌徒"
-msgstr "The Destined Man·The Gambler"
+msgstr "The Chosen One · Gambler"
 
 msgctxt "fragment"
 msgid "默认从「情报卡组」顶部向下执行；“正向窥探”也指从顶部向下。"
@@ -2394,7 +2406,7 @@ msgstr "Directory convention"
 
 msgctxt "fragment"
 msgid "内化 · I"
-msgstr "Internalization·I"
+msgstr "Internalize · I"
 
 msgctxt "fragment"
 msgid "内容来源优先级"
@@ -2510,7 +2522,7 @@ msgstr "Jurisprudence"
 
 msgctxt "fragment"
 msgid "贫瘠之罪"
-msgstr "sin of barrenness"
+msgstr "Sin of Scarcity"
 
 msgctxt "fragment"
 msgid "平衡 · I"
@@ -2526,11 +2538,11 @@ msgstr "Balance · III"
 
 msgctxt "fragment"
 msgid "破釜沉舟 · I"
-msgstr "The Burning Cauldron·I"
+msgstr "Burn the Boats · I"
 
 msgctxt "fragment"
 msgid "破釜沉舟 · II"
-msgstr "The Burning Cauldron · II"
+msgstr "Burn the Boats · II"
 
 msgctxt "fragment"
 msgid "普奇耶拉"
@@ -2610,15 +2622,15 @@ msgstr "wide awake"
 
 msgctxt "fragment"
 msgid "清醒技能"
-msgstr "Sobriety skill"
+msgstr "Awake Ability"
 
 msgctxt "fragment"
 msgid "情报"
-msgstr "intelligence"
+msgstr "Intelligence"
 
 msgctxt "fragment"
 msgid "情报 · I"
-msgstr "Intelligence·I"
+msgstr "Intelligence · I"
 
 msgctxt "fragment"
 msgid "情报 · II"
@@ -2646,11 +2658,11 @@ msgstr "Intelligence areas should remain public; taboo truth is the warning line
 
 msgctxt "fragment"
 msgid "全部"
-msgstr "all"
+msgstr "All"
 
 msgctxt "fragment"
 msgid "全能侦探"
-msgstr "Almighty detective"
+msgstr "Omniscient Detective"
 
 msgctxt "fragment"
 msgid "确定「指挥者」人数"
@@ -2662,7 +2674,7 @@ msgstr "After confirming that the above steps are completed, you can refer to th
 
 msgctxt "fragment"
 msgid "群体思维"
-msgstr "groupthink"
+msgstr "Groupthink"
 
 msgctxt "fragment"
 msgid "然后私下对窥探的「情报」卡牌"
@@ -2790,7 +2802,7 @@ msgstr "If there are ≥3 [Task Liabilities] assigned to you"
 
 msgctxt "fragment"
 msgid "弱肉强食"
-msgstr "The weak and the strong"
+msgstr "Survival of the Fittest"
 
 msgctxt "fragment"
 msgid "三段式行动，顺序很重要。"
@@ -2798,7 +2810,7 @@ msgstr "Three-stage action, the order is very important."
 
 msgctxt "fragment"
 msgid "深潜"
-msgstr "deep dive"
+msgstr "Deep Dive"
 
 msgctxt "fragment"
 msgid "深入"
@@ -2818,7 +2830,7 @@ msgstr "Determination of victory or defeat"
 
 msgctxt "fragment"
 msgid "盛宴"
-msgstr "feast"
+msgstr "Feast"
 
 msgctxt "fragment"
 msgid "剩余的「情报卡组」"
@@ -2874,7 +2886,7 @@ msgstr "When the \"Investigator\" under duress investigates the \"Forbidden Trut
 
 msgctxt "fragment"
 msgid "输入卡名、职业或效果"
-msgstr "Enter card name, occupation or effect"
+msgstr "Enter Card Name, Role, or Effect"
 
 msgctxt "fragment"
 msgid "输入任意问题，获得规则解答或者指引"
@@ -2882,7 +2894,7 @@ msgstr "Enter any question and get rules answers or guidance"
 
 msgctxt "fragment"
 msgid "数量"
-msgstr "quantity"
+msgstr "Quantity"
 
 msgctxt "fragment"
 msgid "数量：1"
@@ -2926,7 +2938,7 @@ msgstr "The smallest number of “commanders”(s)"
 
 msgctxt "fragment"
 msgid "说明更新"
-msgstr "Description updated"
+msgstr "Description Updated"
 
 msgctxt "fragment"
 msgid "说明更新版本：v1.0"
@@ -2974,7 +2986,7 @@ msgstr "Search rule keywords"
 
 msgctxt "fragment"
 msgid "搜索与筛选"
-msgstr "Search and filter"
+msgstr "Search and Filter"
 
 msgctxt "fragment"
 msgid "所有「策略」卡牌的消耗 - (N)，(N) = 已「陷入疯狂」的「调查员」数量 ÷ (2)，向下取整。"
@@ -3026,7 +3038,7 @@ msgstr "\"Information\" cards for all teams"
 
 msgctxt "fragment"
 msgid "所有卡牌， 一览无遗。"
-msgstr "All cards at a glance."
+msgstr "All Cards, at a Glance."
 
 msgctxt "fragment"
 msgid "它可以在即时行动打出并指定你时、个体机制打出并对你布置时、个体机制满足条件触发时，以及个体机制持续对你生效时触发。不必在【俄罗斯转轮 · I】首次生效的瞬间触发照亮前路。"
@@ -3038,7 +3050,7 @@ msgstr "It can take effect under the following circumstances: when an instant ac
 
 msgctxt "fragment"
 msgid "特殊文本标识"
-msgstr "special text identifier"
+msgstr "Special Text Identifier"
 
 msgctxt "fragment"
 msgid "特殊文本标识、行动词典，以及版本边界都集中在这里。它是规则书的判例层，也是查牌时最快的入口。"
@@ -3046,19 +3058,19 @@ msgstr "Special text identifiers, action dictionaries, and version boundaries ar
 
 msgctxt "fragment"
 msgid "特殊行动"
-msgstr "special operations"
+msgstr "Special Operations"
 
 msgctxt "fragment"
 msgid "特殊行动词典 →"
-msgstr "Special Operations Dictionary →"
+msgstr "Special Actions Glossary →"
 
 msgctxt "fragment"
 msgid "特殊行动词典。"
-msgstr "Special Operations Dictionary."
+msgstr "Special Actions Glossary."
 
 msgctxt "fragment"
 msgid "特殊行动列表"
-msgstr "Special operations list"
+msgstr "Special Operations List"
 
 msgctxt "fragment"
 msgid "提供的费用 + (N)"
@@ -3070,7 +3082,7 @@ msgstr "data hits"
 
 msgctxt "fragment"
 msgid "跳过"
-msgstr "jump over"
+msgstr "Skip"
 
 msgctxt "fragment"
 msgid "跳过 · I"
@@ -3094,7 +3106,7 @@ msgstr "Unified Action Dictionary, Text Identification and Version Boundaries."
 
 msgctxt "fragment"
 msgid "偷天换日 · I"
-msgstr "Stealing the sky and changing the day · I"
+msgstr "Switcheroo · I"
 
 msgctxt "fragment"
 msgid "投掷的骰子数量累加"
@@ -3138,7 +3150,7 @@ msgstr "Five categories, a searchable index of rules data."
 
 msgctxt "fragment"
 msgid "兀自沉沦"
-msgstr "Fall into oblivion"
+msgstr "Sinking Alone"
 
 msgctxt "fragment"
 msgid "先给每一叠牌找到位置。"
@@ -3162,7 +3174,7 @@ msgstr "Show all chapters"
 
 msgctxt "fragment"
 msgid "献祭 · I"
-msgstr "Sacrifice·I"
+msgstr "Sacrifice · I"
 
 msgctxt "fragment"
 msgid "献祭 · II"
@@ -3190,7 +3202,7 @@ msgstr "The \"SAN\" consumed is doubled"
 
 msgctxt "fragment"
 msgid "胁迫"
-msgstr "coercion"
+msgstr "Coercion"
 
 msgctxt "fragment"
 msgid "胁迫 · 催眠师"
@@ -3202,7 +3214,7 @@ msgstr "Coercion · Macho Man"
 
 msgctxt "fragment"
 msgid "胁迫 · I"
-msgstr "Coercion·I"
+msgstr "Coercion · I"
 
 msgctxt "fragment"
 msgid "胁迫：调查的「情报」卡牌 + (N)"
@@ -3226,11 +3238,11 @@ msgstr "After adding or modifying information, run npm run generate:wiki; the de
 
 msgctxt "fragment"
 msgid "信仰 · I"
-msgstr "Faith·I"
+msgstr "Faith · I"
 
 msgctxt "fragment"
 msgid "行动词典"
-msgstr "mobile dictionary"
+msgstr "Mobile Dictionary"
 
 msgctxt "fragment"
 msgid "虚假信仰 · I"
@@ -3238,7 +3250,7 @@ msgstr "False Belief · I"
 
 msgctxt "fragment"
 msgid "许愿池"
-msgstr "wishing fountain"
+msgstr "Wishing Well"
 
 msgctxt "fragment"
 msgid "选取(1)张「情报」卡牌"
@@ -3254,7 +3266,7 @@ msgstr "Select language"
 
 msgctxt "fragment"
 msgid "一个人的笼中鸟"
-msgstr "One's caged bird"
+msgstr "A Lone Caged Bird"
 
 msgctxt "fragment"
 msgid "一款支持 2–6 人游玩的非直接对战美式桌游。你将扮演“指挥者”，操控调查员，在调查中规避禁忌真相，并诱导对手比你更早陷入疯狂。"
@@ -3282,7 +3294,7 @@ msgstr "Relevant information has been found, please check the hit results above.
 
 msgctxt "fragment"
 msgid "异时癖 · I"
-msgstr "Chronophilia·I"
+msgstr "Chronophilia · I"
 
 msgctxt "fragment"
 msgid "因为这些卡牌的效果需要涉及 (2) 位调查员；许愿池无法满足这个调用条件。"
@@ -3350,7 +3362,7 @@ msgstr "Continue the game after discussing with your tablemates and reaching a c
 
 msgctxt "fragment"
 msgid "欲加之罪"
-msgstr "Want to incriminate"
+msgstr "Manufactured Guilt"
 
 msgctxt "fragment"
 msgid "遇到边界情况，先看这里。"
@@ -3362,7 +3374,7 @@ msgstr "In principle, information sharing within the same team is limited to sno
 
 msgctxt "fragment"
 msgid "圆滑 · I"
-msgstr "Sleek · I"
+msgstr "Smooth Operator · I"
 
 msgctxt "fragment"
 msgid "再次与其交换"
@@ -3386,7 +3398,7 @@ msgstr "How to win?"
 
 msgctxt "fragment"
 msgid "张卡牌"
-msgstr "cards"
+msgstr "Cards"
 
 msgctxt "fragment"
 msgid "张数向下取整"
@@ -3394,7 +3406,7 @@ msgstr "Number of sheets rounded down"
 
 msgctxt "fragment"
 msgid "照亮前路 · I"
-msgstr "Light the way forward·I"
+msgstr "Light the Way · I"
 
 msgctxt "fragment"
 msgid "这里保留创作资料入口，内容待补充。"
@@ -3450,7 +3462,7 @@ msgstr "skipped directly"
 
 msgctxt "fragment"
 msgid "直视神 · I"
-msgstr "Looking directly at God·I"
+msgstr "Look Upon God · I"
 
 msgctxt "fragment"
 msgid "直至共计调查(6)张"
@@ -3458,7 +3470,7 @@ msgstr "Until a total of (6) surveys are conducted"
 
 msgctxt "fragment"
 msgid "职业"
-msgstr "Profession"
+msgstr "Role"
 
 msgctxt "fragment"
 msgid "职业：催眠师"
@@ -3562,7 +3574,7 @@ msgstr "Designate (1) \"Investigator\" from other teams"
 
 msgctxt "fragment"
 msgid "指挥者"
-msgstr "commander"
+msgstr "Commander"
 
 msgctxt "fragment"
 msgid "掷(1)个骰子"
@@ -3582,7 +3594,7 @@ msgstr "Transfer the arrangement to you"
 
 msgctxt "fragment"
 msgid "追名逐利"
-msgstr "Chasing fame and fortune"
+msgstr "Fame and Fortune"
 
 msgctxt "fragment"
 msgid "准备卡组"
@@ -3758,7 +3770,7 @@ msgstr "SEARCH / search"
 
 msgctxt "fragment"
 msgid "SEARCH / 搜索卡牌"
-msgstr "SEARCH / Search for cards"
+msgstr "SEARCH / Search for Cards"
 
 msgctxt "fragment"
 msgid "SETUP / 游戏准备"
@@ -3799,3 +3811,151 @@ msgstr "Wiki navigation"
 msgctxt "fragment"
 msgid "Wiki 的每一张卡牌都有来源。"
 msgstr "Every card in the Wiki has a source."
+
+msgctxt "fragment"
+msgid "所有卡牌，"
+msgstr "All Cards,"
+
+msgctxt "fragment"
+msgid "一览无遗。"
+msgstr "At a Glance."
+
+msgctxt "fragment"
+msgid "定义的开始，"
+msgstr "Definition Is"
+
+msgctxt "fragment"
+msgid "就是智慧的开始。"
+msgstr "Where Wisdom Begins."
+
+msgctxt "fragment"
+msgid "规则 / 百科"
+msgstr "RULE / WIKI"
+
+msgctxt "fragment"
+msgid "即时行动"
+msgstr "Instant Strategy"
+
+msgctxt "fragment"
+msgid "个体机制"
+msgstr "Deferred Strategy"
+
+msgctxt "fragment"
+msgid "策略：个体机制"
+msgstr "Deferred Strategy"
+
+msgctxt "fragment"
+msgid "老侦探"
+msgstr "Veteran Detective"
+
+msgctxt "fragment"
+msgid "职业调查员"
+msgstr "Professional Investigator"
+
+msgctxt "fragment"
+msgid "研究员"
+msgstr "Researcher"
+
+msgctxt "fragment"
+msgid "流浪汉"
+msgstr "Drifter"
+
+msgctxt "fragment"
+msgid "赏金猎人"
+msgstr "Bounty Hunter"
+
+msgctxt "fragment"
+msgid "赌徒"
+msgstr "Gambler"
+
+msgctxt "fragment"
+msgid "苦行僧"
+msgstr "Ascetic"
+
+msgctxt "fragment"
+msgid "信徒"
+msgstr "Believer"
+
+msgctxt "fragment"
+msgid "地痞"
+msgstr "Ruffian"
+
+msgctxt "fragment"
+msgid "催眠师"
+msgstr "Hypnotist"
+
+msgctxt "fragment"
+msgid "劳改犯"
+msgstr "Convict"
+
+msgctxt "fragment"
+msgid "猛男"
+msgstr "Macho Man"
+
+msgctxt "fragment"
+msgid "仿生人"
+msgstr "Android"
+
+msgctxt "fragment"
+msgid "欺诈师"
+msgstr "Con Artist"
+
+msgctxt "fragment"
+msgid "目击者"
+msgstr "Witness"
+
+msgctxt "fragment"
+msgid "选民"
+msgstr "Voter"
+
+msgctxt "fragment"
+msgid "精神病人"
+msgstr "Psychiatric Patient"
+
+msgctxt "fragment"
+msgid "猫？"
+msgstr "Cat?"
+
+msgctxt "fragment"
+msgid "中之人"
+msgstr "The Insider"
+
+msgctxt "fragment"
+msgid "附录与卡牌 Wiki 互相校验。"
+msgstr "Cross-check the Appendix Against the Card Wiki."
+
+msgctxt "fragment"
+msgid "每位「指挥者」会被派发(2 × N)张候选的「调查员」卡牌，从中选取指挥(N)位「调查员」，建议以如下配比进行游戏："
+msgstr "Each \"Commander\" is dealt (2 × N) candidate \"Investigator\" cards and selects (N) \"Investigators\" to command. We recommend the following player ratios:"
+
+msgctxt "fragment"
+msgid "玩家也可以其他配比开始游戏，场上开局时调查员数量需≥4。"
+msgstr "Other player ratios may be used, but at least (4) Investigators must be in play at setup."
+
+msgctxt "fragment"
+msgid "将参与本局游戏的「调查员指示卡」洗切，随机布置到场上的「顺位指示卡」边。"
+msgstr "Shuffle the \"Investigator Tokens\" used in this game and place them randomly beside the \"Order Tokens\"."
+
+msgctxt "fragment"
+msgid "卡牌右上角的骰子点数，标识该「调查员」的「SAN」上限。"
+msgstr "The die value in the upper-right corner of a card indicates that \"Investigator's\" maximum \"SAN\"."
+
+msgctxt "fragment"
+msgid "判定「环境」、已经对「调查员」布置的「个体机制」或「调查员」技能，是否有可以/必须触发生效的，如有，触发卡牌或技能。"
+msgstr "Check the \"Environment\", any \"Deferred Strategies\" assigned to the \"Investigator\", and the \"Investigator's\" abilities; resolve anything that may or must trigger."
+
+msgctxt "fragment"
+msgid "对「情报卡组」进行调查（从「情报卡组」顶部，顺序翻看并公示(1)~(3)张「情报」卡牌，然后纳入自己的「情报区」）。如无特殊描述，每位「调查员」每个「操作阶段」必须、且只能执行一次调查。"
+msgstr "Investigate the \"Intelligence Deck\" (reveal and announce (1)–(3) \"Intelligence\" cards in order from the top, then add them to your \"Intelligence Area\"). Unless stated otherwise, each \"Investigator\" must investigate exactly once during each \"Operation Phase\"."
+
+msgctxt "fragment"
+msgid "判定「环境」卡牌、已经对「调查员」布置的「个体机制」，或「调查员」技能是否有可以/必须触发生效的，如有，触发卡牌或技能。"
+msgstr "Check the \"Environment\" card, any \"Deferred Strategies\" assigned to the \"Investigator\", and the \"Investigator's\" abilities; resolve anything that may or must trigger."
+
+msgctxt "fragment"
+msgid "若「调查员」因此导致「SAN」归零，其将会「陷入疯狂」。将其「调查员」卡牌与「调查员指示卡」翻面，所有对其布置的「个体机制」被弃置。"
+msgstr "If an \"Investigator's\" \"SAN\" reaches zero as a result, they \"Go Mad\". Flip their \"Investigator\" card and \"Investigator Token\", then discard every \"Deferred Strategy\" assigned to them."
+
+msgctxt "fragment"
+msgid "一份会继续生长的规则书。"
+msgstr "A Rulebook That Keeps Growing."

@@ -66,4 +66,61 @@ The source and implementation were reviewed together, with the app-owned visual 
 - Wiki investigator cards: the left `调查员` category marker is removed from investigator summaries; the occupation is shown above the investigator name at a larger size. Non-investigator card summaries retain their category marker.
 - Verification evidence: desktop `heroCount = 0`, desktop sidebar `position = sticky`, mobile sidebar TOC `display = none`, mobile route TOC `display = grid` when open, and the first investigator summary has no `.wiki-card-index` while its `.wiki-card-role` is visible.
 
+
+---
+
+# Investigation: Delve annotation QA
+
+## Evidence
+
+- Source visual truth: the user's browser annotations 1–32, compared against the pre-deploy production captures:
+  - `/Users/taobe/.codex/visualizations/2026/08/18/investigation-delve-qa/source-production-wiki-738x964.png`
+  - `/Users/taobe/.codex/visualizations/2026/08/18/investigation-delve-qa/source-production-wiki-card-detail-738x964.png`
+  - `/Users/taobe/.codex/visualizations/2026/08/18/investigation-delve-qa/source-production-appendix-738x964.png`
+  - `/Users/taobe/.codex/visualizations/2026/08/18/investigation-delve-qa/source-production-rules-operation-738x964.png`
+- Implementation screenshots:
+  - `/Users/taobe/.codex/visualizations/2026/08/18/investigation-delve-qa/local-wiki-top-738x964.png`
+  - `/Users/taobe/.codex/visualizations/2026/08/18/investigation-delve-qa/local-wiki-card-detail-738x964.png`
+  - `/Users/taobe/.codex/visualizations/2026/08/18/investigation-delve-qa/local-appendix-top-738x964.png`
+  - `/Users/taobe/.codex/visualizations/2026/08/18/investigation-delve-qa/local-rules-operation-738x964.png`
+- Viewport: 738 × 964 CSS px.
+- Pixels and density: every source and implementation capture is 738 × 964 pixels at device pixel ratio 1; no density normalization or scaling was needed.
+- State: dark theme, English selected; Wiki captured at the top and with `Fall · II` expanded; Appendix captured at the top; Rules captured at `#operation`.
+
+## Comparison evidence
+
+- Full-view comparison: each production/local pair above was opened in one comparison input at the same viewport and state. The existing layout, type, spacing, texture, borders, and responsive containers remain aligned while the requested copy changes are visible.
+- Focused-region comparison: the `Fall · II` pair confirms `Effect Text` now precedes metadata, `Deferred Strategy` is used, the generated card-face duplicate is absent, and the empty story placeholder is absent.
+- The Rules operation pair confirms the three stage cards change from three columns to one vertical column at 738 px without clipping or overlap.
+
+## Interactions and runtime checks
+
+- Language selection: Wiki, Appendix, and Rules each switch to English with zero CJK characters remaining in visible page text.
+- Wiki search: `Path of Chaos` returns exactly one matching card; clearing search restores all 93 cards.
+- Wiki filters: Strategy shows 39 cards; All restores 93 cards.
+- Card disclosure: `Fall · II` opens and closes normally; its body contains one effect section and no supplemental placeholder document.
+- Responsive layout: operation cards share the same x-position and width and have increasing y-positions at 738 px.
+- Console errors checked: no application exception surfaced during page loads or tested interactions. The browser host emitted an unrelated Statsig telemetry network warning; it did not originate from this site or affect the rendered pages.
+
+## Comparison history
+
+### Iteration 1
+
+- P1: English mode retained Chinese hero and rules copy. Fixed by adding exact English fragments and card terminology to the PO source.
+- P1: card details repeated the generated card face and displayed empty story placeholders. Fixed in the Wiki generator and renderer.
+- P2: title-like labels used inconsistent casing, category labels shared one color, and middot spacing was inconsistent. Fixed in translation sources and category CSS tokens.
+- P2: the operation stages remained three columns at the annotated narrow viewport. Fixed at the existing `max-width: 980px` breakpoint.
+- Post-fix evidence: the first implementation screenshot set listed above.
+
+### Iteration 2
+
+- P1: browser verification found nine mixed-language Rules fragments and one Appendix fragment still visible. Added full-fragment translations; all three English pages now report zero CJK characters.
+- P2: card metadata still preceded the effect text and several detail labels remained lowercase. Reordered the renderer and normalized the English labels.
+- Post-fix evidence: `local-wiki-card-detail-738x964.png`, `local-appendix-top-738x964.png`, and `local-rules-operation-738x964.png`.
+
+## Findings
+
+- No actionable P0, P1, or P2 visual findings remain.
+- Residual test gap: browser verification covered the annotated 738 × 964 state and the existing automated suite; it did not exhaustively inspect every possible viewport width.
+
 final result: passed

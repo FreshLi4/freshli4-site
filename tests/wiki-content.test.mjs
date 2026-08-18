@@ -131,6 +131,12 @@ test("English and Japanese PO drafts cover the rendered Wiki and rules text", as
     assert.ok(fragmentBlocks(sources[language]).every((block) => /(?:^|\n)msgstr "(?:\\.|[^"\\])+"/u.test(block)), `${language} has an empty fragment translation`);
   }
   assert.match(sources.en, /Giant's Shoulders/);
+  assert.match(sources.en, /msgid "个体机制"\nmsgstr "Deferred Strategy"/);
+  assert.match(sources.en, /msgid "即时行动"\nmsgstr "Instant Strategy"/);
+  assert.match(sources.en, /msgid "所有卡牌，"\nmsgstr "All Cards,"/);
+  assert.match(sources.en, /msgid "规则 \/ 百科"\nmsgstr "RULE \/ WIKI"/);
+  assert.match(sources.en, /msgid "窥探"\nmsgstr "Pry"/);
+  assert.match(sources.en, /msgid "盲从"\nmsgstr "Conform"/);
   assert.match(sources.ja, /巨人の肩/);
   const generated = await readFile(join(projectRoot, "src", "generated", "investigation-wiki.ts"), "utf8");
   const i18n = await readFile(join(projectRoot, "src", "wiki-i18n.ts"), "utf8");
@@ -138,6 +144,31 @@ test("English and Japanese PO drafts cover the rendered Wiki and rules text", as
   assert.match(generated, /fragment/);
   assert.match(i18n, /localizeWikiTree/);
   assert.match(rules, /localizeWikiTree\(rulesPage, language\)/);
+});
+
+test("card details omit generated face duplication and empty story placeholders", async () => {
+  const generatedSource = await readFile(join(projectRoot, "src", "generated", "investigation-wiki.ts"), "utf8");
+  const payload = generatedSource.match(/export const wikiData = ([\s\S]*?) as const;/u);
+  assert.ok(payload, "generated Wiki payload");
+  const wikiData = JSON.parse(payload[1]);
+  const cardDocuments = wikiData.wikiDocuments.filter((document) => document.kind === "card");
+  assert.equal(cardDocuments.length, 93);
+  assert.ok(cardDocuments.every((document) => !document.html.includes("卡面")));
+  assert.ok(cardDocuments.every((document) => !document.html.includes("这里保留创作资料入口")));
+
+  const generator = await readFile(join(projectRoot, "build", "generate-investigation-wiki.mjs"), "utf8");
+  const rules = await readFile(join(projectRoot, "src", "rules.ts"), "utf8");
+  const styles = await readFile(join(projectRoot, "src", "rules.css"), "utf8");
+  assert.match(generator, /isCardFace/);
+  assert.match(generator, /isPlaceholder/);
+  assert.match(rules, /\$\{abilities\}<div class="wiki-card-meta">\$\{meta\}<\/div>\$\{supplementalContent\}/);
+  assert.match(rules, /localizeWikiText\(searchableText, "en"\)/);
+  assert.match(rules, /localizeWikiText\(searchableText, "ja"\)/);
+  assert.match(rules, /规则 \/ 百科/);
+  assert.match(styles, /wiki-card-strategy \.wiki-card-index/);
+  assert.match(styles, /wiki-card-environment \.wiki-card-index/);
+  assert.match(styles, /wiki-card-support \.wiki-card-index/);
+  assert.match(styles, /@media \(max-width: 980px\)[\s\S]*\.operation-grid \{ grid-template-columns: 1fr; \}/);
 });
 
 test("search fallback has an explicit relevance decision", async () => {

@@ -104,11 +104,15 @@ const referenceFigure = (src: string, alt: string, caption: string, note: string
     <figcaption><span>${escapeHtml(caption)}</span><b>${escapeHtml(note)}</b></figcaption>
   </figure>`;
 
-const subpageHero = (kicker: string, title: string, dek: string, active: "appendix" | "faq" | "wiki") => `
-  <section class="rules-subpage-hero" aria-labelledby="subpage-title">
-    <div><p class="rules-kicker">${kicker}</p><h1 id="subpage-title">${title}</h1><p class="rules-dek rules-editorial">${dek}</p></div>
-    <div class="subpage-index"><span>INVESTIGATION : DELVE</span><strong>FILE / ${active.toUpperCase()}</strong><small>v1.1 · LIVE REFERENCE</small></div>
-  </section>`;
+const subpageHero = (kicker: string, title: string, dek: string, active: "appendix" | "faq" | "wiki") => {
+  const indexLabel = active === "wiki" ? "规则 / 百科" : `FILE / ${active.toUpperCase()}`;
+  const versionLabel = active === "wiki" ? "v1.1" : "v1.1 · LIVE REFERENCE";
+  return `
+    <section class="rules-subpage-hero" aria-labelledby="subpage-title">
+      <div><p class="rules-kicker">${kicker}</p><h1 id="subpage-title">${title}</h1><p class="rules-dek rules-editorial">${dek}</p></div>
+      <div class="subpage-index"><span>INVESTIGATION : DELVE</span><strong>${indexLabel}</strong><small>${versionLabel}</small></div>
+    </section>`;
+};
 
 const subpageShell = (active: "appendix" | "faq" | "wiki", hero: string, content: string, sidebar: string) => `
   <div class="rules-page rules-subpage rules-subpage-${active}">
@@ -341,6 +345,8 @@ const renderFaqPage = () => subpageShell(
 const cardMeta = (label: string, value: string) => value ? `<div><span>${label}</span><b>${lineBreaks(value)}</b></div>` : "";
 const cardMarkup = (card: InvestigationCard) => {
   const wikiDocument = wikiDocumentById[card.id];
+  const searchableText = `${card.name} ${card.type} ${card.style} ${card.effect} ${card.awake} ${card.madness}`;
+  const localizedSearchText = `${searchableText} ${localizeWikiText(searchableText, "en")} ${localizeWikiText(searchableText, "ja")}`.toLocaleLowerCase();
   const meta = card.category === "investigator"
     ? [cardMeta("职业", card.type), cardMeta("调查风格", card.style), cardMeta("SAN", card.san), cardMeta("包含版本", card.edition), cardMeta("说明更新", card.update)].join("")
     : [cardMeta("类型", card.type), cardMeta("费用", card.cost), cardMeta("数量", card.quantity), cardMeta("包含版本", card.edition), cardMeta("说明更新", card.update)].join("");
@@ -350,10 +356,10 @@ const cardMarkup = (card: InvestigationCard) => {
   const summary = card.category === "investigator"
     ? `<span class="wiki-card-heading"><span class="wiki-card-role">${escapeHtml(card.type || "调查员")}</span><strong>${escapeHtml(card.name)}</strong></span><small>${escapeHtml(card.edition || "SHARED")}</small><i>+</i>`
     : `<span class="wiki-card-index">${card.categoryLabel}</span><strong>${escapeHtml(card.name)}</strong><small>${escapeHtml(card.edition || "SHARED")}</small><i>+</i>`;
-  const documentContent = wikiDocument
+  const supplementalContent = wikiDocument?.html
     ? `<div class="wiki-card-document" data-wiki-localize="${escapeHtml(wikiDocument.id)}">${localizeWikiHtml(wikiDocument.html, "zh")}</div>`
-    : abilities;
-  return `<article class="wiki-card wiki-card-${card.category}" data-card-searchable data-card-category="${card.category}" data-card-name="${escapeHtml(`${card.name} ${card.type} ${card.style} ${card.effect} ${card.awake} ${card.madness}`.toLocaleLowerCase())}"><details><summary>${summary}</summary><div class="wiki-card-body"><div class="wiki-card-meta">${meta}</div>${documentContent}</div></details></article>`;
+    : "";
+  return `<article class="wiki-card wiki-card-${card.category}" data-card-searchable data-card-category="${card.category}" data-card-name="${escapeHtml(localizedSearchText)}"><details><summary>${summary}</summary><div class="wiki-card-body">${abilities}<div class="wiki-card-meta">${meta}</div>${supplementalContent}</div></details></article>`;
 };
 
 const renderWikiPage = () => {
@@ -365,7 +371,7 @@ const renderWikiPage = () => {
     subpageHero("卡牌索引 / CARD WIKI", "所有卡牌，<br />一览无遗。", "这里收录《调查深入》的全部卡牌。你可以按类别、版本、费用和效果查找；展开卡片即可查看完整文本，说明更新版本也一并标注。", "wiki"),
     `<article class="subpage-article wiki-article">
       <div class="wiki-intro-bar"><div><p class="chapter-label">LIVE CARD INDEX / 当前卡牌索引</p><h2>逐张查牌，不再翻箱倒柜。</h2></div><div class="wiki-counts">${categories.map((category) => `<div><strong>${cardSets[category].length}</strong><span>${cardCategoryMeta[category].label}</span></div>`).join("")}</div></div>
-      <div class="wiki-controls"><label class="wiki-search"><span>SEARCH / 搜索卡牌</span><input id="wiki-search-input" type="search" placeholder="输入卡名、职业或效果" autocomplete="off" /><b>⌕</b></label><div class="wiki-filters" role="group" aria-label="卡牌类别筛选"><button type="button" class="is-active" data-card-filter="all">全部<span>${allInvestigationCards.length}</span></button>${categoryButtons}</div><p id="wiki-search-status">显示全部 ${allInvestigationCards.length} 张卡牌</p></div>
+      <div class="wiki-controls"><label class="wiki-search"><span>SEARCH / 搜索卡牌</span><input id="wiki-search-input" type="search" placeholder="输入卡名、职业或效果" autocomplete="off" /><b>⌕</b></label><div class="wiki-filters" role="group" aria-label="卡牌类别筛选"><button type="button" class="is-active" data-card-filter="all">全部<span>${allInvestigationCards.length}</span></button>${categoryButtons}</div><p id="wiki-search-status">显示 ${allInvestigationCards.length} 张卡牌</p></div>
       <div class="wiki-grid">${cardCards}</div>
       ${sourcePanel("Wiki 的每一张卡牌都有来源。", "调查员、策略、环境、情报与辅助五类数据都从《调查深入 · 卡牌统计表》导入；“说明更新版本”用于判断当前文本应匹配哪一版规则。", "DATA / 数据来源")}
     </article>`,
@@ -381,16 +387,24 @@ const setupRulesInteractions = () => {
   const chapters = [...document.querySelectorAll<HTMLElement>("[data-rule-searchable]")];
   const tocLinks = [...document.querySelectorAll<HTMLAnchorElement>(".rules-toc a")];
 
-  input?.addEventListener("input", () => {
-    const query = input.value.trim().toLocaleLowerCase();
+  const updateRuleSearch = () => {
+    const query = input?.value.trim().toLocaleLowerCase() ?? "";
     let visible = 0;
     chapters.forEach((chapter) => {
       const matches = !query || (chapter.textContent ?? "").toLocaleLowerCase().includes(query);
       chapter.hidden = !matches;
       if (matches) visible += 1;
     });
-    if (status) status.textContent = query ? `${visible} 个章节匹配“${input.value.trim()}”` : "显示全部章节";
-  });
+    if (status) {
+      const displayQuery = input?.value.trim() ?? "";
+      status.textContent = currentWikiLanguage === "en"
+        ? query ? `${visible} Chapters Match “${displayQuery}”` : "Showing All Chapters"
+        : currentWikiLanguage === "ja"
+          ? query ? `「${displayQuery}」に一致する章：${visible}` : "すべての章を表示"
+          : query ? `${visible} 个章节匹配“${displayQuery}”` : "显示全部章节";
+    }
+  };
+  input?.addEventListener("input", updateRuleSearch);
 
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
@@ -416,7 +430,14 @@ const setupRulesInteractions = () => {
       card.hidden = !(matchesCategory && matchesQuery);
       if (!card.hidden) visible += 1;
     });
-    if (wikiStatus) wikiStatus.textContent = query ? `${visible} 张卡牌匹配“${wikiInput?.value.trim() ?? ""}”` : `显示 ${visible} 张卡牌`;
+    if (wikiStatus) {
+      const displayQuery = wikiInput?.value.trim() ?? "";
+      wikiStatus.textContent = currentWikiLanguage === "en"
+        ? query ? `${visible} Cards Match “${displayQuery}”` : `Showing ${visible} Cards`
+        : currentWikiLanguage === "ja"
+          ? query ? `「${displayQuery}」に一致するカード：${visible} 枚` : `${visible} 枚のカードを表示`
+          : query ? `${visible} 张卡牌匹配“${displayQuery}”` : `显示 ${visible} 张卡牌`;
+    }
   };
   wikiInput?.addEventListener("input", updateWiki);
   filterButtons.forEach((button) => button.addEventListener("click", () => {
@@ -645,6 +666,8 @@ const setupRulesInteractions = () => {
     });
     if (rulesPage) localizeWikiTree(rulesPage, language);
     if (lastSearchHits.length) renderSearchResults(lastSearchHits);
+    updateRuleSearch();
+    updateWiki();
     if (languageSelect) {
       languageSelect.value = language;
       languageSelect.title = language === "zh" ? "中文" : language === "en" ? "English" : "日本語";

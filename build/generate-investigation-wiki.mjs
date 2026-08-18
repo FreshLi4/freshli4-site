@@ -452,7 +452,12 @@ const readCardDocuments = async (cards) => {
     for (const entry of entries) {
       const document = await readMarkdown(join(directory, entry.name));
       parts.push(`## ${entry.name.replace(/\.md$/, "")}\n\n${document.body.trim()}`);
-      htmlParts.push(`<section><h2>${escapeHtml(entry.name.replace(/\.md$/, ""))}</h2>${document.html}</section>`);
+      const isCardFace = entry.name === "卡面.md";
+      const isPlaceholder = document.body.includes("> 这里保留创作资料入口，内容待补充。");
+      if (!isCardFace && !isPlaceholder) {
+        const supplementalHtml = document.html.replace(/^<h1\b[^>]*>[\s\S]*?<\/h1>/, "");
+        if (supplementalHtml.trim()) htmlParts.push(`<section><h2>${escapeHtml(entry.name.replace(/\.md$/, ""))}</h2>${supplementalHtml}</section>`);
+      }
       textParts.push(`${entry.name.replace(/\.md$/, "")}：${document.plainText}`);
     }
     documents.push({
