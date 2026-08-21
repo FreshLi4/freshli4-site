@@ -124,3 +124,64 @@ The source and implementation were reviewed together, with the app-owned visual 
 - Residual test gap: browser verification covered the annotated 738 × 964 state and the existing automated suite; it did not exhaustively inspect every possible viewport width.
 
 final result: passed
+
+---
+
+# Design QA — Card Base Information Placement
+
+- Source visual truth: `/var/folders/x1/nj8gw6sj3tz36zt026sy8h2m0000gn/T/codex-clipboard-c0ac5daa-8fa2-4896-a8b3-55800f805a2b.png`
+- Implementation screenshot: `/tmp/freshli4-card-meta-qa-20260821/implementation-card-meta-top-desktop-focused.png`
+- Combined comparison: `/tmp/freshli4-card-meta-qa-20260821/design-qa-comparison.png`
+- Source pixels: 1034 × 1060; provided as an element crop, with no CSS viewport or density metadata.
+- Implementation browser viewport: 1440 × 1200 CSS px at device scale factor 1.
+- Implementation focused crop: 635 × 708 px.
+- Comparison normalization: source scaled proportionally to 708 px high; implementation retained at 635 × 708 px; both are top-aligned in the combined image.
+- State: Chinese Card Wiki, search query `约翰`, investigator card “约翰” expanded.
+
+## Full-view comparison evidence
+
+The combined comparison shows the same card and content state before and after the requested hierarchy change. The source places the five base-information fields after both skill sections. The implementation places the same fields immediately below the card summary, ahead of the skill text, inside a brass-accented callout.
+
+The source is an element crop rather than a full browser capture, so exact breakpoint-level pixel equivalence is not available. The comparison is limited to the requested information hierarchy and the card-detail visual language rather than treating crop-dependent type scale as a mismatch.
+
+## Focused region comparison evidence
+
+The implementation crop focuses on the summary, base-information callout, and start of the awake-skill section. This focus is necessary because the requested change is entirely within that transition. It confirms:
+
+- all five original fields remain present and in their original order;
+- the callout uses the existing brass left rule and translucent panel treatment;
+- the awake and madness text styling remains unchanged;
+- the base-information block is no longer repeated after the skill text.
+
+## Required fidelity surfaces
+
+- Fonts and typography: Existing card title, metadata label/value, and canonical skill-text font roles are unchanged.
+- Spacing and layout rhythm: The metadata callout has consistent internal padding and a clear gap before the first skill divider. No card-body horizontal overflow remains.
+- Colors and visual tokens: The block reuses `--rules-brass`, `--rules-ink`, and the existing translucent callout background rather than introducing a new palette.
+- Image quality and asset fidelity: No raster, logo, illustration, or icon assets are added or changed.
+- Copy and content: Card data and skill text are unchanged; only DOM order and containment changed.
+
+## Comparison history
+
+1. Initial pass moved metadata above the skills and added the callout treatment.
+2. Narrow-width inspection identified that long metadata values needed an explicit shrink/wrap guard. The metadata items received zero minimum width, a 100% maximum width, and `overflow-wrap: anywhere`.
+3. Post-fix narrow-width evidence measured the callout at `clientWidth = 301` and `scrollWidth = 301`; every metadata item remained within the callout. Investigator and strategy cards both rendered base information before their effect text.
+
+## Findings
+
+No actionable P0, P1, or P2 differences remain for the requested change.
+
+## Interaction and regression checks
+
+- Search and expand interaction tested for investigator “约翰”.
+- Search and expand interaction tested for strategy “沉沦 · II”.
+- Narrow and desktop card layouts inspected.
+- Browser console: no warnings or errors.
+- Automated site tests: 13 passed.
+- TypeScript typecheck: passed.
+
+## Follow-up polish
+
+No P3 follow-up is required for this scoped change.
+
+final result: passed

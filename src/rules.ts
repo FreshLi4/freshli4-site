@@ -196,7 +196,7 @@ const renderRulesPage = () => `
 
       <div class="rules-body">
         <aside class="rules-sidebar" aria-label="规则章节导航">
-          <div class="rules-search"><label for="rules-search-input">SEARCH / 搜索</label><div><input id="rules-search-input" type="search" placeholder="搜索规则关键词" autocomplete="off" /><span aria-hidden="true">⌕</span></div><small id="rules-search-status">显示全部章节</small></div>
+          <div class="rules-search"><label for="rules-search-input">SEARCH / 搜索</label><div><input id="rules-search-input" type="search" placeholder="搜索规则关键词" autocomplete="off" /><span aria-hidden="true">⌕</span></div><small id="rules-search-status" aria-live="polite"></small></div>
           ${rulesToc()}
           <div class="rules-sidebar-note"><span>CASE NOTE</span><p>规则书中没有写明的情况，请和同桌讨论后达成共识，继续调查。</p><a href="/investigation-delve-boardgame/wiki">浏览全部卡牌 →</a></div>
         </aside>
@@ -359,7 +359,7 @@ const cardMarkup = (card: InvestigationCard) => {
   const supplementalContent = wikiDocument?.html
     ? `<div class="wiki-card-document" data-wiki-localize="${escapeHtml(wikiDocument.id)}">${localizeWikiHtml(wikiDocument.html, "zh")}</div>`
     : "";
-  return `<article class="wiki-card wiki-card-${card.category}" data-card-searchable data-card-category="${card.category}" data-card-name="${escapeHtml(localizedSearchText)}"><details><summary>${summary}</summary><div class="wiki-card-body">${abilities}<div class="wiki-card-meta">${meta}</div>${supplementalContent}</div></details></article>`;
+  return `<article class="wiki-card wiki-card-${card.category}" data-card-searchable data-card-category="${card.category}" data-card-name="${escapeHtml(localizedSearchText)}"><details><summary>${summary}</summary><div class="wiki-card-body"><aside class="wiki-card-meta-callout"><div class="wiki-card-meta">${meta}</div></aside>${abilities}${supplementalContent}</div></details></article>`;
 };
 
 const renderWikiPage = () => {
@@ -395,13 +395,15 @@ const setupRulesInteractions = () => {
       chapter.hidden = !matches;
       if (matches) visible += 1;
     });
-    if (status) {
+    if (status && !query) {
+      status.textContent = "";
+    } else if (status) {
       const displayQuery = input?.value.trim() ?? "";
       status.textContent = currentWikiLanguage === "en"
-        ? query ? `${visible} Chapters Match “${displayQuery}”` : "Showing All Chapters"
+        ? `${visible} Chapters Match “${displayQuery}”`
         : currentWikiLanguage === "ja"
-          ? query ? `「${displayQuery}」に一致する章：${visible}` : "すべての章を表示"
-          : query ? `${visible} 个章节匹配“${displayQuery}”` : "显示全部章节";
+          ? `「${displayQuery}」に一致する章：${visible}`
+          : `${visible} 个章节匹配“${displayQuery}”`;
     }
   };
   input?.addEventListener("input", updateRuleSearch);

@@ -167,7 +167,9 @@ test("card details omit generated face duplication and empty story placeholders"
   const styles = await readFile(join(projectRoot, "src", "rules.css"), "utf8");
   assert.match(generator, /isCardFace/);
   assert.match(generator, /isPlaceholder/);
-  assert.match(rules, /\$\{abilities\}<div class="wiki-card-meta">\$\{meta\}<\/div>\$\{supplementalContent\}/);
+  assert.match(rules, /<aside class="wiki-card-meta-callout"><div class="wiki-card-meta">\$\{meta\}<\/div><\/aside>\$\{abilities\}\$\{supplementalContent\}/);
+  assert.match(styles, /\.wiki-card-meta-callout \{[^}]*border-left: 2px solid var\(--rules-brass\);[^}]*background: rgba\(255, 255, 255, \.035\);/);
+  assert.match(styles, /\.wiki-card-meta b \{[^}]*overflow-wrap: anywhere;/);
   assert.match(rules, /localizeWikiText\(searchableText, "en"\)/);
   assert.match(rules, /localizeWikiText\(searchableText, "ja"\)/);
   assert.match(rules, /规则 \/ 百科/);

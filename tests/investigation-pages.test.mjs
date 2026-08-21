@@ -70,6 +70,10 @@ test("rulebook teaching text keeps canonical wording and font roles", async () =
   assert.match(rulesStyles, /\.rules-page \{ font-family: var\(--font-rules-display\); \}/);
   assert.match(rulesStyles, /\.rules-page \.rules-original \{ font-family: var\(--font-rules-original\); \}/);
   assert.match(rulesStyles, /\.rules-page \.rules-editorial \{ font-family: var\(--font-rules-display\); \}/);
+  assert.match(rules, /<small id="rules-search-status" aria-live="polite"><\/small>/);
+  assert.doesNotMatch(rules, /Showing All Chapters|显示全部章节|すべての章を表示/);
+  assert.match(rulesStyles, /\.rules-search \{ padding-bottom: 0; border-bottom: 0; \}/);
+  assert.match(rulesStyles, /\.rules-search small:empty \{ display: none; \}/);
   assert.match(rulesStyles, /\.rules-ai-thinking/);
   assert.match(rulesStyles, /\.rules-ai-response a/);
   assert.match(rulesStyles, /white-space: pre-wrap/);
