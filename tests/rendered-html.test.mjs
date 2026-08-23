@@ -108,11 +108,12 @@ test("source exposes the investigation rulebook as a second-level page", async (
   assert.match(aiServer, /const OPENCODE_URL = "https:\/\/opencode\.ai\/zen\/v1\/chat\/completions"/);
   assert.match(aiServer, /const OPENCODE_MODEL = "deepseek-v4-pro"/);
   assert.match(aiServer, /const OPENROUTER_URL = "https:\/\/openrouter\.ai\/api\/v1\/chat\/completions"/);
-  assert.match(aiServer, /const OPENROUTER_MODEL = "nvidia\/nemotron-3-super-120b-a12b:free"/);
+  assert.match(aiServer, /const OPENROUTER_MODEL = "stealth\/ox-alpha"/);
+  assert.match(aiServer, /const OPENROUTER_FALLBACK_MODEL = "nvidia\/nemotron-3-super-120b-a12b:free"/);
   assert.match(aiServer, /process\.env\.OPENCODE_API_KEY/);
   assert.match(aiServer, /process\.env\.OPENROUTER_API_KEY/);
   assert.match(aiServer, /const OPENCODE_TIMEOUT_MS = 20_000/);
-  assert.match(aiServer, /falling back to OpenRouter/);
+  assert.match(aiServer, /falling back to \$\{nextProvider\.name\}/);
   assert.match(aiServer, /max_tokens: 768/);
   assert.match(aiServer, /reasoning: \{ effort: "none", exclude: true \}/);
   assert.doesNotMatch(aiServer, /provider\.name === "OpenRouter" \? \{ reasoning:/);

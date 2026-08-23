@@ -4,7 +4,8 @@ import { stripAiLinks, type RulesAiSource } from "../src/rules-ai-format.js";
 const OPENCODE_URL = "https://opencode.ai/zen/v1/chat/completions";
 const OPENCODE_MODEL = "deepseek-v4-pro";
 const OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";
-const OPENROUTER_MODEL = "nvidia/nemotron-3-super-120b-a12b:free";
+const OPENROUTER_MODEL = "stealth/ox-alpha";
+const OPENROUTER_FALLBACK_MODEL = "nvidia/nemotron-3-super-120b-a12b:free";
 const OPENCODE_TIMEOUT_MS = 20_000;
 const OPENROUTER_TIMEOUT_MS = 20_000;
 const json = (value: Record<string, string>, status: number) => new Response(JSON.stringify(value), {
@@ -199,16 +200,32 @@ export async function handleRulesAiRequest(request: Request): Promise<Response> 
     { role: "system" as const, content: systemPrompt(knowledgeBase) },
     { role: "user" as const, content: question },
   ];
-  let attempt: ProviderAttempt = { timedOut: false };
-  if (openCodeApiKey) {
-    attempt = await attemptProvider({ name: "OpenCode", url: OPENCODE_URL, model: OPENCODE_MODEL, apiKey: openCodeApiKey, timeoutMs: OPENCODE_TIMEOUT_MS }, messages);
+
+  const providers: ProviderConfig[] = [];
+  if (openRouterApiKey) {
+    providers.push({ name: "OpenRouter", url: OPENROUTER_URL, model: OPENROUTER_MODEL, apiKey: openRouterApiKey, timeoutMs: OPENROUTER_TIMEOUT_MS });
   }
-  if (!attempt.response && openRouterApiKey) {
-    if (attempt.timedOut) console.warn("OpenCode timed out; falling back to OpenRouter");
-    attempt = await attemptProvider({ name: "OpenRouter", url: OPENROUTER_URL, model: OPENROUTER_MODEL, apiKey: openRouterApiKey, timeoutMs: OPENROUTER_TIMEOUT_MS }, messages);
+  if (openCodeApiKey) {
+    providers.push({ name: "OpenCode", url: OPENCODE_URL, model: OPENCODE_MODEL, apiKey: openCodeApiKey, timeoutMs: OPENCODE_TIMEOUT_MS });
+  }
+  if (openRouterApiKey) {
+    providers.push({ name: "OpenRouter", url: OPENROUTER_URL, model: OPENROUTER_FALLBACK_MODEL, apiKey: openRouterApiKey, timeoutMs: OPENROUTER_TIMEOUT_MS });
+  }
+
+  let attempt: ProviderAttempt = { timedOut: false };
+  let allAttemptsTimedOut = true;
+  for (const [index, provider] of providers.entries()) {
+    attempt = await attemptProvider(provider, messages);
+    if (!attempt.timedOut) allAttemptsTimedOut = false;
+    if (attempt.response) break;
+    const nextProvider = providers[index + 1];
+    if (nextProvider) {
+      const reason = attempt.timedOut ? `timed out after ${provider.timeoutMs}ms` : "failed";
+      console.warn(`${provider.name} (${provider.model}) ${reason}; falling back to ${nextProvider.name} (${nextProvider.model})`);
+    }
   }
   if (!attempt.response) {
-    return json({ error: attempt.timedOut ? "AI 请求超时，请稍后再试。" : "AI 暂时无法回答，请稍后再试。" }, attempt.timedOut ? 504 : 502);
+    return json({ error: allAttemptsTimedOut ? "AI 请求超时，请稍后再试。" : "AI 暂时无法回答，请稍后再试。" }, allAttemptsTimedOut ? 504 : 502);
   }
 
   let answer = "";
