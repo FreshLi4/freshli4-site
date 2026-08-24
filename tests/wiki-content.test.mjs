@@ -179,6 +179,40 @@ test("card details omit generated face duplication and empty story placeholders"
   assert.match(styles, /@media \(max-width: 980px\)[\s\S]*\.operation-grid \{ grid-template-columns: 1fr; \}/);
 });
 
+test("card details expose a two-pane visual contract and prepared asset folders", async () => {
+  const visualRoot = join(projectRoot, "asset", "investigation-delve", "card");
+  const rules = await readFile(join(projectRoot, "src", "rules.ts"), "utf8");
+  const visuals = await readFile(join(projectRoot, "src", "card-visuals.ts"), "utf8");
+  const styles = await readFile(join(projectRoot, "src", "rules.css"), "utf8");
+  const expectedImages = {
+    "investigator/png/awake": 20,
+    "investigator/png/madness": 20,
+    "strategy/png/front": 39,
+    "environment/png/front": 21,
+    "intel/png/front": 5,
+    "support/png/front": 8,
+  };
+
+  for (const [directory, count] of Object.entries(expectedImages)) {
+    assert.equal((await fileNames(join(visualRoot, directory))).filter((file) => file.endsWith(".png")).length, count, `${directory} image count`);
+  }
+  for (const category of ["strategy", "environment", "intel", "support"]) {
+    await access(join(visualRoot, category, "png", "back.png"));
+  }
+  for (const category of ["investigator", "strategy", "environment", "intel", "support"]) {
+    await access(join(visualRoot, category, "illustrator", "png"));
+  }
+
+  assert.match(visuals, /import\.meta\.glob/);
+  assert.match(visuals, /illustrator\/png/);
+  assert.match(rules, /wiki-card-detail-grid/);
+  assert.match(rules, /data-card-visual/);
+  assert.match(rules, /gsap\.to\(flipper/);
+  assert.match(styles, /\.wiki-card\.is-expanded \{ grid-column: 1 \/ -1; \}/);
+  assert.match(styles, /\.wiki-card-detail-grid \{ display: grid; grid-template-columns: minmax\(0, 1fr\) minmax\(0, 1fr\);/);
+  assert.match(styles, /\.wiki-card-visual-flipper \{[^}]*transform-style: preserve-3d;/);
+});
+
 test("search fallback has an explicit relevance decision", async () => {
   const search = await readFile(join(projectRoot, "src", "wiki-search.ts"), "utf8");
   const client = await readFile(join(projectRoot, "src", "rules.ts"), "utf8");

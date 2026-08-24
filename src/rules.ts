@@ -1,5 +1,7 @@
 import "./rules.css";
+import { gsap } from "gsap";
 import { allInvestigationCards, cardCategoryMeta, cardSets, wikiDocumentById, type CardCategory, type InvestigationCard } from "./investigation-data";
+import { cardVisualFor, type CardVisualAsset } from "./card-visuals";
 import { searchWikiDocuments, shouldRouteToAi, type WikiSearchHit } from "./wiki-search";
 import { localizeWikiHtml, localizeWikiText, localizeWikiTree, type WikiLanguage } from "./wiki-i18n";
 import { parseAiContent, type RulesAiSource } from "./rules-ai-format";
@@ -343,8 +345,27 @@ const renderFaqPage = () => subpageShell(
 );
 
 const cardMeta = (label: string, value: string) => value ? `<div><span>${label}</span><b>${lineBreaks(value)}</b></div>` : "";
+const cardVisualFace = (src: string, label: string, alt: string, side: "front" | "back") => src
+  ? `<span class="wiki-card-visual-face wiki-card-visual-face-${side}"><img src="${src}" alt="${escapeHtml(alt)}" loading="lazy" /><span>${escapeHtml(label)}</span></span>`
+  : `<span class="wiki-card-visual-face wiki-card-visual-face-${side} wiki-card-visual-face-empty"><span>IMAGE / PENDING</span><b>${escapeHtml(label)}</b></span>`;
+const cardVisualMarkup = (card: InvestigationCard, visual: CardVisualAsset) => `
+  <div class="wiki-card-visual-column">
+    <div class="wiki-card-visual" data-card-visual data-card-id="${escapeHtml(card.id)}" data-card-visual-kind="${visual.isInvestigator ? "investigator" : "card"}">
+      <button class="wiki-card-visual-toggle" type="button" aria-pressed="false" aria-label="点击翻到${escapeHtml(visual.backLabel)}">
+        <span class="wiki-card-visual-tilt">
+          <span class="wiki-card-visual-glow" aria-hidden="true"></span>
+          <span class="wiki-card-visual-flipper">
+            ${cardVisualFace(visual.front, visual.frontLabel, `${card.name} · ${visual.frontLabel}`, "front")}
+            ${cardVisualFace(visual.back, visual.backLabel, `${card.name} · ${visual.backLabel}`, "back")}
+          </span>
+        </span>
+      </button>
+      <span class="wiki-card-visual-hint">HOVER / TILT · CLICK / FLIP</span>
+    </div>
+  </div>`;
 const cardMarkup = (card: InvestigationCard) => {
   const wikiDocument = wikiDocumentById[card.id];
+  const visual = cardVisualFor(card);
   const searchableText = `${card.name} ${card.type} ${card.style} ${card.effect} ${card.awake} ${card.madness}`;
   const localizedSearchText = `${searchableText} ${localizeWikiText(searchableText, "en")} ${localizeWikiText(searchableText, "ja")}`.toLocaleLowerCase();
   const meta = card.category === "investigator"
@@ -353,13 +374,12 @@ const cardMarkup = (card: InvestigationCard) => {
   const abilities = card.category === "investigator"
     ? `<div class="card-text-block rules-original"><span>清醒技能</span><p>${lineBreaks(card.awake) || "暂无独立文本"}</p></div><div class="card-text-block rules-original is-madness"><span>疯狂技能</span><p>${lineBreaks(card.madness) || "暂无独立文本"}</p></div>`
     : `<div class="card-text-block rules-original"><span>卡牌效果</span><p>${lineBreaks(card.effect) || "暂无独立文本"}</p></div>`;
-  const summary = card.category === "investigator"
-    ? `<span class="wiki-card-heading"><span class="wiki-card-role">${escapeHtml(card.type || "调查员")}</span><strong>${escapeHtml(card.name)}</strong></span><small>${escapeHtml(card.edition || "SHARED")}</small><i>+</i>`
-    : `<span class="wiki-card-index">${card.categoryLabel}</span><strong>${escapeHtml(card.name)}</strong><small>${escapeHtml(card.edition || "SHARED")}</small><i>+</i>`;
+  const summaryRole = card.category === "investigator" ? card.type || "调查员" : card.categoryLabel;
+  const summary = `<span class="wiki-card-heading"><span class="wiki-card-role">${escapeHtml(summaryRole)}</span><strong>${escapeHtml(card.name)}</strong></span><small>${escapeHtml(card.edition || "SHARED")}</small><i>+</i>`;
   const supplementalContent = wikiDocument?.html
     ? `<div class="wiki-card-document" data-wiki-localize="${escapeHtml(wikiDocument.id)}">${localizeWikiHtml(wikiDocument.html, "zh")}</div>`
     : "";
-  return `<article class="wiki-card wiki-card-${card.category}" data-card-searchable data-card-category="${card.category}" data-card-name="${escapeHtml(localizedSearchText)}"><details><summary>${summary}</summary><div class="wiki-card-body"><aside class="wiki-card-meta-callout"><div class="wiki-card-meta">${meta}</div></aside>${abilities}${supplementalContent}</div></details></article>`;
+  return `<article class="wiki-card wiki-card-${card.category}" data-card-searchable data-card-category="${card.category}" data-card-name="${escapeHtml(localizedSearchText)}"><details><summary>${summary}</summary><div class="wiki-card-body"><div class="wiki-card-detail-grid">${cardVisualMarkup(card, visual)}<div class="wiki-card-text-column"><aside class="wiki-card-meta-callout"><div class="wiki-card-meta">${meta}</div></aside>${abilities}${supplementalContent}</div></div></div></details></article>`;
 };
 
 const renderWikiPage = () => {
@@ -416,7 +436,49 @@ const setupRulesInteractions = () => {
     chapters.forEach((chapter) => observer.observe(chapter));
   }
 
-  page?.querySelectorAll<HTMLDetailsElement>("details").forEach((detail) => detail.addEventListener("toggle", () => detail.classList.toggle("is-open", detail.open)));
+  page?.querySelectorAll<HTMLDetailsElement>("details").forEach((detail) => {
+    const updateExpandedState = () => {
+      detail.classList.toggle("is-open", detail.open);
+      detail.closest<HTMLElement>(".wiki-card")?.classList.toggle("is-expanded", detail.open);
+    };
+    detail.addEventListener("toggle", updateExpandedState);
+    updateExpandedState();
+  });
+
+  page?.querySelectorAll<HTMLElement>("[data-card-visual]").forEach((visual) => {
+    const toggle = visual.querySelector<HTMLButtonElement>(".wiki-card-visual-toggle");
+    const tilt = visual.querySelector<HTMLElement>(".wiki-card-visual-tilt");
+    const flipper = visual.querySelector<HTMLElement>(".wiki-card-visual-flipper");
+    const glow = visual.querySelector<HTMLElement>(".wiki-card-visual-glow");
+    if (!toggle || !tilt || !flipper || !glow) return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let flipped = false;
+    const duration = () => reducedMotion.matches ? 0 : 0.6;
+    const resetTilt = () => {
+      gsap.to(tilt, { rotationX: flipped ? 14 : 0, rotationY: 0, duration: reducedMotion.matches ? 0 : 0.25, ease: "power3.out" });
+      gsap.to(glow, { opacity: 0, xPercent: 0, yPercent: 0, duration: reducedMotion.matches ? 0 : 0.25 });
+    };
+    toggle.addEventListener("pointermove", (event) => {
+      if (reducedMotion.matches) return;
+      const bounds = toggle.getBoundingClientRect();
+      const px = (event.clientX - bounds.left) / bounds.width;
+      const py = (event.clientY - bounds.top) / bounds.height;
+      const rx = (0.5 - py) * 14 + (flipped ? 14 : 0);
+      const ry = (px - 0.5) * 14;
+      gsap.to(tilt, { rotationX: rx, rotationY: ry, duration: 0.25, ease: "power2.out" });
+      gsap.to(glow, { opacity: 0.35, xPercent: (px - 0.5) * 30, yPercent: (py - 0.5) * 30, duration: 0.25 });
+    });
+    toggle.addEventListener("pointerleave", resetTilt);
+    toggle.addEventListener("click", () => {
+      flipped = !flipped;
+      visual.classList.toggle("is-flipped", flipped);
+      toggle.setAttribute("aria-pressed", String(flipped));
+      toggle.setAttribute("aria-label", `点击翻回${flipped ? "卡面" : visual.dataset.cardVisualKind === "investigator" ? "疯狂卡面" : "卡背"}`);
+      gsap.to(flipper, { rotationY: flipped ? 180 : 0, duration: duration(), ease: "power3.inOut" });
+      gsap.to(tilt, { rotationX: flipped ? 14 : 0, rotationY: 0, duration: duration(), ease: "power3.inOut" });
+    });
+    reducedMotion.addEventListener?.("change", resetTilt);
+  });
 
   const wikiInput = document.querySelector<HTMLInputElement>("#wiki-search-input");
   const wikiStatus = document.querySelector<HTMLElement>("#wiki-search-status");

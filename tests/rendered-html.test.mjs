@@ -97,10 +97,12 @@ test("source exposes the investigation rulebook as a second-level page", async (
   assert.match(rules, /const faqGroup = \(label: string, details: string\)/);
   assert.doesNotMatch(rules, /先解决最常见的行动问题。/);
   assert.doesNotMatch(rules, /仿生人与 SAN。/);
-  assert.match(rules, /const summary = card\.category === "investigator"/);
+  assert.match(rules, /const summaryRole = card\.category === "investigator"/);
   assert.match(rules, /class="wiki-card-heading"/);
   assert.match(rules, /class="wiki-card-role"/);
-  assert.match(rulesStyles, /\.wiki-card-investigator details > summary \{ grid-template-columns: minmax\(0, 1fr\) auto 20px; \}/);
+  assert.doesNotMatch(rules, /wiki-card-index/);
+  assert.match(rulesStyles, /\.wiki-card details > summary \{ grid-template-columns: minmax\(0, 1fr\) auto 20px; \}/);
+  assert.match(rulesStyles, /\.wiki-card-strategy \.wiki-card-role \{ color: var\(--rules-strategy-blue\); \}/);
   assert.match(rulesStyles, /\.wiki-card-role \{[^}]*font: 700 12px\/1\.1/);
   assert.match(rules, /const renderAiContent = \(paragraph: HTMLElement, content: string\)/);
   assert.match(rules, /parseAiContent\(content\)/);
