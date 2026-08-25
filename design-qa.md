@@ -127,6 +127,60 @@ final result: passed
 
 ---
 
+# Design QA — Stacked Card Names
+
+- Source visual truth: `/var/folders/x1/nj8gw6sj3tz36zt026sy8h2m0000gn/T/codex-clipboard-02790674-2d44-47c2-b14d-ba2a2307433c.png`
+- Implementation screenshot: `/tmp/freshli4-card-name-layout-qa-20260825/implementation-strategy-stacked-2090x1034.png`
+- Focused implementation screenshot: `/tmp/freshli4-card-name-layout-qa-20260825/implementation-strategy-stacked-viewport.png`
+- Combined comparison: `/tmp/freshli4-card-name-layout-qa-20260825/design-qa-comparison.png`
+- Source pixels: 2090 × 1034; supplied as a focused card-grid crop, so its CSS viewport and density are not known.
+- Implementation comparison viewport: 2090 × 1034 CSS px at device scale factor 1, captured at the first Strategy card.
+- Interaction viewport: 1280 × 720 CSS px. Responsive checks also covered 738 × 964 and 600 × 900 CSS px.
+- State: Chinese Card Wiki with all categories visible and all card disclosures closed.
+
+## Full-view comparison evidence
+
+The combined comparison places the supplied horizontal Strategy-card layout and the implemented stacked layout in one visual input. The card grid, border treatment, title type, edition label, and expand control remain aligned with the existing Wiki design. The intentional difference is that the category now occupies the first line and the card name occupies the second line, matching Investigator cards.
+
+## Focused region comparison evidence
+
+The focused viewport capture shows consecutive Strategy cards in both columns. Every visible card uses the same two-line heading structure, while the edition remains right-aligned and the expand control remains in the final column.
+
+## Required fidelity surfaces
+
+- Fonts and typography: Existing category and card-name type roles are retained; only their placement changed.
+- Spacing and layout rhythm: The shared heading wrapper supplies the same vertical gap and alignment for Investigator, Strategy, Environment, Intelligence, and Auxiliary cards.
+- Colors and visual tokens: Investigator and Intelligence remain red, Strategy remains blue, Environment remains purple, and Auxiliary remains gray.
+- Image quality and asset fidelity: This scoped change adds or modifies no visual assets.
+- Copy and content: Category names, card names, editions, and controls are unchanged.
+
+## Comparison history
+
+1. Initial source: non-Investigator categories and card names occupied separate horizontal grid columns.
+2. Implementation: all categories now render through the existing Investigator-style heading wrapper, with category above card name.
+3. Responsive verification: at 738 px all five categories remain stacked with no page overflow; at the existing 640 px breakpoint the edition is hidden and the summary collapses to the heading-plus-control grid without overflow.
+
+## Findings
+
+No actionable P0, P1, or P2 visual differences remain for the requested layout change.
+
+## Interaction and regression checks
+
+- Strategy card disclosure opens and closes correctly; its expanded visual content still renders.
+- Desktop and narrow layouts preserve the category color, edition, and expand control behavior.
+- Browser console: no error- or warning-level entries during the verified page loads and interaction.
+- Automated site tests: 14 passed.
+- TypeScript typecheck: passed.
+- Production build: passed.
+
+## Follow-up polish
+
+No P3 follow-up is required for this scoped change.
+
+final result: passed
+
+---
+
 # Design QA — Card Base Information Placement
 
 - Source visual truth: `/var/folders/x1/nj8gw6sj3tz36zt026sy8h2m0000gn/T/codex-clipboard-c0ac5daa-8fa2-4896-a8b3-55800f805a2b.png`
