@@ -21,13 +21,17 @@ const cardVisualFiles = import.meta.glob(
 const cardVisualUrl = (path: string) => cardVisualFiles[path] ?? "";
 const cardAssetPath = (...segments: string[]) => `/asset/investigation-delve/card/${segments.join("/")}`;
 const extensionCandidates = ["png", "jpg", "jpeg", "svg"];
+const frontAssetId = (category: CardCategory, id: string) => category === "strategy"
+  ? id.replace(/-[ivxlcdm]+-(\d+)$/, "-$1")
+  : id;
 
 const findAsset = (category: CardCategory, id: string, variant: "front" | "back" | "awake" | "madness") => {
+  const assetId = frontAssetId(category, id);
   const candidates = variant === "back"
     ? extensionCandidates.map((extension) => cardAssetPath("card-back", "blank-card", `${category}.${extension}`))
     : category === "investigator"
       ? extensionCandidates.map((extension) => cardAssetPath(category, "blank-card", variant, `${id}.${extension}`))
-      : extensionCandidates.map((extension) => cardAssetPath(category, "blank-card", `${id}.${extension}`));
+      : extensionCandidates.map((extension) => cardAssetPath(category, "blank-card", `${assetId}.${extension}`));
   return candidates.map(cardVisualUrl).find(Boolean) ?? "";
 };
 

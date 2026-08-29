@@ -42,3 +42,5 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+/asset/investigation-delve/card/environment/print_x1/
+/asset/investigation-delve/card/strategy/print_x1/
