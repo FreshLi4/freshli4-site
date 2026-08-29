@@ -141,6 +141,11 @@ test("English and Japanese PO drafts cover the rendered Wiki and rules text", as
   assert.match(sources.en, /msgid "即时行动"\nmsgstr "Instant Strategy"/);
   assert.match(sources.en, /msgid "所有卡牌，"\nmsgstr "All Cards,"/);
   assert.match(sources.en, /msgid "规则 \/ 百科"\nmsgstr "RULE \/ WIKI"/);
+  assert.match(sources.en, /msgid "深入"\nmsgstr "Delve"/);
+  assert.doesNotMatch(sources.en, /msgid "深入"\nmsgstr "go deep"/);
+  assert.match(sources.en, /msgid "禁忌真相"\nmsgstr "Forbidden Truth"/);
+  assert.match(sources.en, /msgid "【禁忌知识】"\nmsgstr "【Forbidden Knowledge】"/);
+  assert.doesNotMatch(sources.en, /Taboo knowledge/i);
   assert.match(sources.en, /msgid "窥探"\nmsgstr "Pry"/);
   assert.match(sources.en, /msgid "盲从"\nmsgstr "Conform"/);
   assert.match(sources.ja, /巨人の肩/);
@@ -168,7 +173,13 @@ test("card details omit generated face duplication and empty story placeholders"
   assert.match(generator, /isCardFace/);
   assert.match(generator, /isPlaceholder/);
   assert.match(rules, /<aside class="wiki-card-meta-callout"><div class="wiki-card-meta">\$\{meta\}<\/div><\/aside>\$\{abilities\}\$\{supplementalContent\}/);
+  assert.match(rules, /data-card-abilities="\$\{escapeHtml\(card\.id\)\}"/);
+  assert.match(rules, /cardAbilityLevel = \(value: string\) => value\.match/);
+  assert.match(rules, /wiki-ability-level/);
+  assert.match(rules, /wiki-madness-block is-title/);
   assert.match(styles, /\.wiki-card-meta-callout \{[^}]*border-left: 2px solid var\(--rules-brass\);[^}]*background: rgba\(255, 255, 255, \.035\);/);
+  assert.match(styles, /\.wiki-card-meta \{ display: grid; grid-template-columns: repeat\(6, minmax\(0, 1fr\)\);/);
+  assert.match(styles, /\.wiki-card-meta div:nth-child\(n \+ 4\) \{ grid-column: span 3; \}/);
   assert.match(styles, /\.wiki-card-meta b \{[^}]*overflow-wrap: anywhere;/);
   assert.match(rules, /localizeWikiText\(searchableText, "en"\)/);
   assert.match(rules, /localizeWikiText\(searchableText, "ja"\)/);
@@ -185,26 +196,29 @@ test("card details expose a two-pane visual contract and prepared asset folders"
   const visuals = await readFile(join(projectRoot, "src", "card-visuals.ts"), "utf8");
   const styles = await readFile(join(projectRoot, "src", "rules.css"), "utf8");
   const expectedImages = {
-    "investigator/png/awake": 20,
-    "investigator/png/madness": 20,
-    "strategy/png/front": 39,
-    "environment/png/front": 21,
-    "intel/png/front": 5,
-    "support/png/front": 8,
+    "investigator/blank-card/awake": 20,
+    "investigator/blank-card/madness": 20,
+    "strategy/blank-card": 39,
+    "environment/blank-card": 21,
+    "intel/blank-card": 5,
+    "support/blank-card": 8,
   };
 
   for (const [directory, count] of Object.entries(expectedImages)) {
     assert.equal((await fileNames(join(visualRoot, directory))).filter((file) => file.endsWith(".png")).length, count, `${directory} image count`);
   }
   for (const category of ["strategy", "environment", "intel", "support"]) {
-    await access(join(visualRoot, category, "png", "back.png"));
+    await access(join(visualRoot, "card-back", "blank-card", `${category}.png`));
   }
   for (const category of ["investigator", "strategy", "environment", "intel", "support"]) {
-    await access(join(visualRoot, category, "illustrator", "png"));
+    await access(join(visualRoot, category, "illustrator"));
   }
+  await access(join(visualRoot, "card-back", "illustrator"));
 
   assert.match(visuals, /import\.meta\.glob/);
-  assert.match(visuals, /illustrator\/png/);
+  assert.match(visuals, /blank-card/);
+  assert.match(visuals, /cardAssetPath\("card-back", "blank-card"/);
+  assert.doesNotMatch(visuals, /illustrator/);
   assert.match(rules, /wiki-card-detail-grid/);
   assert.match(rules, /data-card-visual/);
   assert.match(rules, /gsap\.to\(flipper/);

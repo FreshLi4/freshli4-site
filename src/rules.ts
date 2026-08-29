@@ -345,6 +345,28 @@ const renderFaqPage = () => subpageShell(
 );
 
 const cardMeta = (label: string, value: string) => value ? `<div><span>${label}</span><b>${lineBreaks(value)}</b></div>` : "";
+const cardAbilityLines = (value: string) => value.split(/\r?\n/u).map((line) => line.trim()).filter(Boolean);
+const cardAbilityLevel = (value: string) => value.match(/^(?:「|“|")?(\d+)(?:」|”|")?\s*\|\s*(.+)$/u);
+const cardAbilityTitle = (value: string) => value.match(/^(?:【|\[)(.+?)(?:】|\])$/u);
+const cardAwakeAbilityMarkup = (source: string, language: WikiLanguage) => {
+  const localized = localizeWikiText(source, language).trim();
+  const level = cardAbilityLevel(localized);
+  const body = (level?.[2] ?? localized).trim();
+  return `<article class="wiki-ability-block${level ? " has-level" : ""}">${level ? `<strong class="wiki-ability-level">${escapeHtml(level[1])}</strong>` : ""}<p>${escapeHtml(body)}</p></article>`;
+};
+const cardMadnessAbilityMarkup = (source: string, language: WikiLanguage) => {
+  const localized = localizeWikiText(source, language).trim();
+  const title = cardAbilityTitle(localized);
+  return title
+    ? `<div class="wiki-madness-block is-title"><strong>${escapeHtml(title[1].trim())}</strong></div>`
+    : `<div class="wiki-madness-block is-copy"><p>${escapeHtml(localized)}</p></div>`;
+};
+const investigatorAbilitiesMarkup = (card: InvestigationCard, language: WikiLanguage) => {
+  const awake = cardAbilityLines(card.awake).map((line) => cardAwakeAbilityMarkup(line, language)).join("");
+  const madness = cardAbilityLines(card.madness).map((line) => cardMadnessAbilityMarkup(line, language)).join("");
+  return `<div class="card-text-block rules-original"><span>${escapeHtml(localizeWikiText("清醒技能", language))}</span><div class="wiki-ability-list">${awake || `<article class="wiki-ability-block"><p>${escapeHtml(localizeWikiText("暂无独立文本", language))}</p></article>`}</div></div><div class="card-text-block rules-original is-madness"><span>${escapeHtml(localizeWikiText("疯狂技能", language))}</span><div class="wiki-madness-list">${madness || `<div class="wiki-madness-block is-copy"><p>${escapeHtml(localizeWikiText("暂无独立文本", language))}</p></div>`}</div></div>`;
+};
+const investigationCardById = new Map(allInvestigationCards.map((card) => [card.id, card]));
 const cardVisualFace = (src: string, label: string, alt: string, side: "front" | "back") => src
   ? `<span class="wiki-card-visual-face wiki-card-visual-face-${side}"><img src="${src}" alt="${escapeHtml(alt)}" loading="lazy" /><span>${escapeHtml(label)}</span></span>`
   : `<span class="wiki-card-visual-face wiki-card-visual-face-${side} wiki-card-visual-face-empty"><span>IMAGE / PENDING</span><b>${escapeHtml(label)}</b></span>`;
@@ -372,7 +394,7 @@ const cardMarkup = (card: InvestigationCard) => {
     ? [cardMeta("职业", card.type), cardMeta("调查风格", card.style), cardMeta("SAN", card.san), cardMeta("包含版本", card.edition), cardMeta("说明更新", card.update)].join("")
     : [cardMeta("类型", card.type), cardMeta("费用", card.cost), cardMeta("数量", card.quantity), cardMeta("包含版本", card.edition), cardMeta("说明更新", card.update)].join("");
   const abilities = card.category === "investigator"
-    ? `<div class="card-text-block rules-original"><span>清醒技能</span><p>${lineBreaks(card.awake) || "暂无独立文本"}</p></div><div class="card-text-block rules-original is-madness"><span>疯狂技能</span><p>${lineBreaks(card.madness) || "暂无独立文本"}</p></div>`
+    ? `<div class="wiki-card-abilities" data-card-abilities="${escapeHtml(card.id)}">${investigatorAbilitiesMarkup(card, "zh")}</div>`
     : `<div class="card-text-block rules-original"><span>卡牌效果</span><p>${lineBreaks(card.effect) || "暂无独立文本"}</p></div>`;
   const summaryRole = card.category === "investigator" ? card.type || "调查员" : card.categoryLabel;
   const summary = `<span class="wiki-card-heading"><span class="wiki-card-role">${escapeHtml(summaryRole)}</span><strong>${escapeHtml(card.name)}</strong></span><small>${escapeHtml(card.edition || "SHARED")}</small><i>+</i>`;
@@ -726,6 +748,10 @@ const setupRulesInteractions = () => {
       if (source) element.innerHTML = source.html;
     });
     if (rulesPage) localizeWikiTree(rulesPage, language);
+    document.querySelectorAll<HTMLElement>("[data-card-abilities]").forEach((element) => {
+      const card = investigationCardById.get(element.dataset.cardAbilities ?? "");
+      if (card) element.innerHTML = investigatorAbilitiesMarkup(card, language);
+    });
     if (lastSearchHits.length) renderSearchResults(lastSearchHits);
     updateRuleSearch();
     updateWiki();

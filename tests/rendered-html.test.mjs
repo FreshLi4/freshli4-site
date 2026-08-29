@@ -69,6 +69,7 @@ test("source exposes the investigation rulebook as a second-level page", async (
   assert.match(rules, /这里收录《调查深入》的全部卡牌。/);
   assert.match(rulesStyles, /\.rules-route-menu-toggle \{ display: none/);
   assert.match(rulesStyles, /\.rules-route-nav\.is-open \.rules-route-menu-panel \{ display: flex/);
+  assert.match(rulesStyles, /@media \(min-width: 641px\) and \(max-width: 980px\) \{\s*\.rules-route-nav \{ overflow-y: hidden; \}\s*\}/);
   assert.match(rulesStyles, /\.rules-rulebook \.rules-sidebar \{ position: sticky; top: 28px; \}/);
   assert.match(rulesStyles, /\.rules-toc-mobile \{ display: none; \}/);
   assert.match(rulesStyles, /\.rules-rulebook \.rules-header\.is-scroll-hidden \{ transform: translateY\(-100%\); \}/);

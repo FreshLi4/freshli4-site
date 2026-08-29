@@ -814,7 +814,7 @@ msgstr "[Forbidden Truth] is investigated, (or this \"round\" ends based on othe
 
 msgctxt "fragment"
 msgid "【禁忌知识】"
-msgstr "【Taboo knowledge】"
+msgstr "【Forbidden Knowledge】"
 
 msgctxt "fragment"
 msgid "【卡牌名称】"
@@ -2814,7 +2814,7 @@ msgstr "Deep Dive"
 
 msgctxt "fragment"
 msgid "深入"
-msgstr "go deep"
+msgstr "Delve"
 
 msgctxt "fragment"
 msgid "生效后弃置"

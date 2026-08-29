@@ -1,17 +1,24 @@
 # 卡牌图像资源
 
-网页使用的卡面 PNG 按卡牌稳定 ID 存放，当前结构如下：
+网页展示的完整卡面统一放在各类别的 `blank-card/`，独立插画放在同级的 `illustrator/`。网页只读取 `blank-card/`，不会把 Illustrator 素材当作卡面显示。
+
+卡背统一放在 `card-back/` 下：`card-back/blank-card/` 存放网页展示用的卡背，`card-back/illustrator/` 预留给卡背插画或其他制作素材。
 
 ```text
 card/
-├── investigator/png/awake/<card-id>.png
-├── investigator/png/madness/<card-id>.png
-├── strategy/png/front/<card-id>.png
-├── environment/png/front/<card-id>.png
-├── intel/png/front/<card-id>.png
-└── support/png/front/<card-id>.png
+├── investigator/
+│   ├── blank-card/awake/<card-id>.png
+│   ├── blank-card/madness/<card-id>.png
+│   └── illustrator/
+├── strategy/blank-card/<card-id>.png
+├── environment/blank-card/<card-id>.png
+├── intel/blank-card/<card-id>.png
+├── support/blank-card/<card-id>.png
+└── card-back/
+    ├── blank-card/<category>.png
+    └── illustrator/
 ```
 
-策略、环境、情报和辅助卡牌的卡背分别放在对应类别的 `png/back.png`。新增卡牌时，沿用生成数据中的 `id` 命名即可；暂时没有图像的卡牌会显示占位状态。
+策略、环境、情报和辅助卡牌的卡背分别命名为 `strategy.png`、`environment.png`、`intel.png` 和 `support.png`，放在 `card-back/blank-card/`。新增卡牌时，沿用生成数据中的稳定 `id` 命名即可；暂时没有图像的卡牌会显示占位状态。
 
-`illustrator/png/` 是后续补充插画的预留目录。插画准备完成后，导出为网页可用的 PNG、JPG 或 SVG：调查员使用 `<card-id>-awake.png` 和 `<card-id>-madness.png`，其他类别使用 `<card-id>.png` 或 `<card-id>-front.png`。这些文件会优先作为网页卡面显示，缺失时回退到当前完整卡面 PNG。
+后续补充网页卡面时，仍然放入对应类别的 `blank-card/`：调查员使用 `blank-card/awake/<card-id>.png` 和 `blank-card/madness/<card-id>.png`，其他类别使用 `blank-card/<card-id>.png`。插画、原稿或不直接展示的视觉素材放入对应类别的 `illustrator/`；卡背插画放入 `card-back/illustrator/`。缺少 `blank-card` 时，网页会显示占位状态，不会回退到 `illustrator`。

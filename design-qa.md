@@ -239,3 +239,111 @@ No actionable P0, P1, or P2 differences remain for the requested change.
 No P3 follow-up is required for this scoped change.
 
 final result: passed
+
+---
+
+# Design QA — Investigation Home Navigation and English Hero
+
+- Source visual truth:
+  - `/tmp/freshli4-investigation-home-qa-20260828/source-production-zh-775x863.png`
+  - `/tmp/freshli4-investigation-home-qa-20260828/source-production-en-775x863.png`
+- Implementation screenshots:
+  - `/tmp/freshli4-investigation-home-qa-20260828/implementation-local-zh-775x863.png`
+  - `/tmp/freshli4-investigation-home-qa-20260828/implementation-local-en-775x863.png`
+- Combined comparison: `/tmp/freshli4-investigation-home-qa-20260828/design-qa-comparison.png`
+- Browser viewport override: 775 × 863 CSS px at device pixel ratio 1. Browser chrome and native scrollbars leave a 760 × 846 px captured content bitmap for every source and implementation screenshot.
+- State: page top in Chinese for navigation verification and English for hero-copy verification.
+
+## Full-view and focused comparison evidence
+
+The four-panel comparison places production and local captures side by side at the same viewport and language state. The Chinese pair shows that the extra scrollbar inside the navigation row is removed while the route links, language control, header divider, hero position, and page scrollbar remain unchanged. The English pair shows the single intentional hero-copy change from `go deep` to `Delve` without changing the hero hierarchy or surrounding layout.
+
+## Required fidelity surfaces
+
+- Fonts and typography: Existing display and navigation font roles, sizes, weights, and colors are unchanged.
+- Spacing and layout rhythm: Header dimensions, wrapping, link gaps, and hero spacing remain aligned with production.
+- Responsive behavior: The 641–980 px route-nav range keeps horizontal overflow available but suppresses the accidental one-pixel vertical overflow. At 600 px the existing compact navigation still uses visible overflow and its dropdown opens normally.
+- Colors and visual tokens: No palette, border, shadow, or texture tokens changed.
+- Images and assets: No logo, hero image, or card asset changed.
+- Copy and content: Only the English fragment for `深入` changed, to the requested standard translation `Delve`.
+
+## Comparison history
+
+1. Production at 775 px computed `.rules-route-nav` as `overflow-x: auto; overflow-y: auto` with `clientHeight = 35` and `scrollHeight = 36`, producing the unwanted inner vertical scrollbar.
+2. The intermediate breakpoint now sets `overflow-y: hidden`; local verification retains `overflow-x: auto`, removes the visible inner scrollbar, and keeps document width equal to scroll width.
+3. Production English rendered the hero emphasis as `go deep`; local English renders exactly `Delve`.
+
+## Interaction and regression checks
+
+- Chinese and English language selection both update the visible home page correctly.
+- All route links remain visible at 775 px; the document has no horizontal overflow.
+- At 600 px, the navigation toggle is present, opens the route panel, and preserves `overflow: visible` from the existing mobile breakpoint.
+- Browser console: only Vite connection debug entries; no warning- or error-level application entries.
+- Automated site tests: 14 passed.
+- TypeScript typecheck: passed.
+- Production build and search index generation: passed.
+
+## Findings
+
+No actionable P0, P1, or P2 visual findings remain for the two annotated issues.
+
+final result: passed
+
+---
+
+# Design QA — Investigator Ability Blocks and Metadata Grid
+
+- Source visual truth: `/tmp/freshli4-investigation-card-blocks-qa-20260828/source-production-philip-expanded-1237x863.png`
+- Implementation screenshots:
+  - `/tmp/freshli4-investigation-card-blocks-qa-20260828/implementation-local-philip-expanded-1237x863.png`
+  - `/tmp/freshli4-investigation-card-blocks-qa-20260828/implementation-local-philip-madness-1237x863.png`
+  - `/tmp/freshli4-investigation-card-blocks-qa-20260828/implementation-local-philip-blocks-600x900.png`
+  - `/tmp/freshli4-investigation-card-blocks-qa-20260828/implementation-local-philip-blocks-390x844.png`
+- Combined comparison: `/tmp/freshli4-investigation-card-blocks-qa-20260828/design-qa-comparison.png`
+- Browser viewport override: 1237 × 863 CSS px for the production/local comparison; responsive checks at 600 × 900 and 390 × 844 CSS px.
+- Captured bitmaps: production 1237 × 863 px; local 1222 × 853 px after browser scrollbar/chrome subtraction. The combined comparison preserves both images proportionally and top-aligns the local capture without stretching.
+- State: English Card Wiki, Philip Chandler expanded, front face visible.
+
+## Full-view comparison evidence
+
+The combined comparison places production and local captures side by side in the same viewport and expanded-card state. The card grid, disclosure heading, illustration, type hierarchy, palette, and two-column detail structure remain aligned. The intentional changes are limited to the metadata arrangement and the internal treatment of ability copy.
+
+## Focused region comparison evidence
+
+The implementation detail capture confirms that the former inline awake copy is now three bordered blocks with separate `3`, `2`, and `1` mechanism badges. The madness section contains exactly four blocks: the `Forbidden Knowledge` heading, its body, the `Crazy Spread · Old Detective` heading, and its body. No leading level marker remains duplicated inside the awake paragraphs.
+
+## Required fidelity surfaces
+
+- Fonts and typography: Existing card-heading, metadata, ability-label, and body-copy font roles remain unchanged; the level badge adds a scoped monospace mechanism accent.
+- Spacing and layout rhythm: The five metadata fields form a 3-item first row and 2-item second row. Ability blocks use consistent gaps, inset borders, and paragraph padding.
+- Responsive behavior: The existing one-column card-detail breakpoint is preserved. At 600 px and 390 px the badges remain aligned with their paragraphs, all four madness blocks remain readable, and no content is clipped horizontally.
+- Colors and visual tokens: Awake blocks reuse the neutral card border and brass accent; madness title blocks reuse the existing red madness accent.
+- Images and assets: The investigator front/back artwork, tilt, glow, and flip interaction are unchanged.
+- Copy and content: `Forbidden Knowledge` replaces `Taboo knowledge`; `Forbidden Truth` remains the canonical translation for `禁忌真相`. All original ability bodies remain present.
+
+## Comparison history
+
+1. Production rendered all three awake abilities as one paragraph with quoted number prefixes and both madness titles inline with their bodies.
+2. The implementation parses only explicit line-leading level markers, removes them from paragraph copy, and renders them as dedicated badges. Unnumbered ability lines remain ordinary blocks.
+3. Madness bracket headings are separated from their following body lines and localized after every language switch, avoiding fragment-level translation breakage.
+4. The metadata callout changed from an uneven inline flow to an explicit six-column grid: the first three fields span two columns each and the last two span three columns each.
+
+## Findings
+
+No actionable P0, P1, or P2 visual findings remain for the annotated card-detail changes.
+
+## Interaction and regression checks
+
+- Philip card disclosure opens, closes, and reopens correctly.
+- Card flip toggles `aria-pressed` and the existing `is-flipped` visual state, then returns to the front face.
+- Chinese and English language switching preserves three awake blocks and four madness blocks; the English heading returns exactly `Forbidden Knowledge`.
+- Browser console: Vite connection/debug entries only; no warning- or error-level application entries.
+- Automated site tests: 14 passed.
+- TypeScript typecheck: passed.
+- Production build and search index generation: passed as part of the test run.
+
+## Follow-up polish
+
+No P3 follow-up is required for this scoped change.
+
+final result: passed
