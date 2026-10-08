@@ -1,0 +1,52 @@
+{
+  "source_root": "/Users/taobe/Projects/Gitea/ball-maze/in-game-asset/tutorial",
+  "recordings": [
+    {
+      "id": "editor",
+      "source": "关卡编辑器-back.mp4",
+      "poster_seconds": 8,
+      "start_seconds": 0,
+      "hold_last_seconds": 0,
+      "content": "In-game rail selection, placement, rotation and playtest"
+    },
+    {
+      "id": "records",
+      "source": "完成迷宫挑战-back.mp4",
+      "poster_seconds": 6,
+      "start_seconds": 4.4,
+      "end_seconds": 6.05,
+      "hold_last_seconds": 5,
+      "content": "Recorded completion screen with your record and best record; not a multiplayer ranking list"
+    },
+    {
+      "id": "solo",
+      "source": "普通球-back.mp4",
+      "poster_seconds": 2,
+      "start_seconds": 0,
+      "hold_last_seconds": 0,
+      "content": "Single-player gameplay with the ordinary ball"
+    },
+    {
+      "id": "tracks",
+      "source": "特殊轨道.mp4",
+      "poster_seconds": 3,
+      "start_seconds": 0,
+      "hold_last_seconds": 0,
+      "content": "Complete tutorial overview of special rails"
+    },
+    {
+      "id": "abilities",
+      "source": "小球能力.mp4",
+      "poster_seconds": 3,
+      "start_seconds": 0,
+      "hold_last_seconds": 0,
+      "content": "Complete tutorial overview of ball abilities"
+    }
+  ],
+  "pending_recordings": [
+    {
+      "id": "coop",
+      "reason": "No verified co-op recording in the supplied media set"
+    }
+  ]
+}

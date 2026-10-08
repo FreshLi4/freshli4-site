@@ -1,0 +1,135 @@
+{
+  "source_root": "/Users/taobe/Projects/Gitea/ball-maze/in-game-asset/tutorial",
+  "recordings": [
+    {
+      "world_id": "city",
+      "asset_id": "world-city",
+      "segments": [
+        {
+          "source": "自动电梯.mp4",
+          "source_duration": 9.520159,
+          "start_seconds": 0.25,
+          "end_seconds": 9.270159
+        },
+        {
+          "source": "摩天轮.mp4",
+          "source_duration": 9.520181,
+          "start_seconds": 0.25,
+          "end_seconds": 9.270181
+        }
+      ],
+      "duration": 18.066667,
+      "poster_seconds": 1.5
+    },
+    {
+      "world_id": "mine",
+      "asset_id": "world-mine",
+      "segments": [
+        {
+          "source": "矿车.mp4",
+          "source_duration": 7.500045,
+          "start_seconds": 0.25,
+          "end_seconds": 7.250045
+        },
+        {
+          "source": "水龙头.mp4",
+          "source_duration": 10.0078,
+          "start_seconds": 0.25,
+          "end_seconds": 9.7578
+        },
+        {
+          "source": "闸门.mp4",
+          "source_duration": 18.506304,
+          "start_seconds": 0.25,
+          "end_seconds": 18.256304
+        }
+      ],
+      "duration": 34.5,
+      "poster_seconds": 1.5
+    },
+    {
+      "world_id": "island",
+      "asset_id": "world-island",
+      "segments": [
+        {
+          "source": "海洋.mp4",
+          "source_duration": 8.266304,
+          "start_seconds": 0.25,
+          "end_seconds": 8.016304
+        },
+        {
+          "source": "浮木.mp4",
+          "source_duration": 6.501587,
+          "start_seconds": 0.25,
+          "end_seconds": 6.251587
+        },
+        {
+          "source": "间歇泉.mp4",
+          "source_duration": 9.520181,
+          "start_seconds": 0.25,
+          "end_seconds": 9.270181
+        }
+      ],
+      "duration": 22.8,
+      "poster_seconds": 1.5
+    },
+    {
+      "world_id": "valley",
+      "asset_id": "world-valley",
+      "segments": [
+        {
+          "source": "风.mp4",
+          "source_duration": 11.517075,
+          "start_seconds": 5.6,
+          "end_seconds": 11.267075
+        },
+        {
+          "source": "固定轨道.mp4",
+          "source_duration": 5.503129,
+          "start_seconds": 0.25,
+          "end_seconds": 5.253129
+        },
+        {
+          "source": "吊桥.mp4",
+          "source_duration": 8.010884,
+          "start_seconds": 0.25,
+          "end_seconds": 7.760884000000001
+        }
+      ],
+      "duration": 18.166667,
+      "poster_seconds": 1.5
+    },
+    {
+      "world_id": "black-hole",
+      "asset_id": "world-black-hole",
+      "segments": [
+        {
+          "source": "黑洞.mp4",
+          "source_duration": 3.506213,
+          "start_seconds": 0.25,
+          "end_seconds": 3.256213
+        },
+        {
+          "source": "传送门.mp4",
+          "source_duration": 5.503129,
+          "start_seconds": 0.25,
+          "end_seconds": 5.253129
+        },
+        {
+          "source": "磁力轨道.mp4",
+          "source_duration": 8.521723,
+          "start_seconds": 0.25,
+          "end_seconds": 8.271723
+        }
+      ],
+      "duration": 16.033333,
+      "poster_seconds": 1.5
+    }
+  ],
+  "pending_worlds": [
+    {
+      "id": "darkroom",
+      "reason": "No matching real tutorial footage supplied"
+    }
+  ]
+}

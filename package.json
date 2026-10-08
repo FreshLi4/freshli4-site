@@ -13,7 +13,7 @@
     "build": "vite build",
     "postbuild": "pagefind --site dist --output-path dist/pagefind",
     "preview": "vite preview",
-    "test": "npm run build && node --test tests/rendered-html.test.mjs tests/investigation-pages.test.mjs tests/wiki-content.test.mjs tests/search-and-ai-format.test.mjs",
+    "test": "npm run build && node --test tests/rendered-html.test.mjs tests/investigation-pages.test.mjs tests/wiki-content.test.mjs tests/search-and-ai-format.test.mjs tests/ball-maze.test.mjs tests/media-carousel.test.mjs tests/world-previews.test.mjs tests/ball-maze-home.test.mjs tests/ball-maze-sections.test.mjs",
     "pretypecheck": "npm run generate:wiki",
     "typecheck": "tsc --noEmit"
   },
@@ -25,6 +25,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@google/model-viewer": "^4.3.1",
     "gsap": "^3.15.0"
   }
 }

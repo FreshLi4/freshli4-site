@@ -1,0 +1,35 @@
+export type BallMazeLanguage = "zh" | "en" | "ja";
+export type BallMazeCopy = Record<BallMazeLanguage, string>;
+const copy = (zh: string, en: string, ja: string): BallMazeCopy => ({ zh, en, ja });
+
+export const ballMazeWorlds = [
+  { id: "city", english: "THE CITY", name: copy("都市", "City", "都市"), description: copy("街道与楼宇悬浮在空中。让重力穿过城市，找到下一条轨道。", "Floating streets and buildings. Follow gravity through the city to the next rail.", "宙に浮かぶ街路と建物。重力を頼りに次のレールへ。") },
+  { id: "mine", english: "THE MINE", name: copy("矿洞", "Mine", "鉱山"), description: copy("深入炽热矿洞，在矿车与机关之间读懂路线。", "Descend into a glowing mine and read the route between carts and mechanisms.", "熱い鉱山へ。トロッコと仕掛けの間に道を見つける。") },
+  { id: "island", english: "THE ISLAND", name: copy("海岛", "Island", "島"), description: copy("海水、浮木与间歇泉，让每一次旋转都掀起新的波澜。", "Water, driftwood, and geysers bring a new wave to every turn.", "海、流木、間欠泉。回すたびに新たな波が生まれる。") },
+  { id: "valley", english: "THE VALLEY", name: copy("峡谷", "Valley", "峡谷"), description: copy("穿过峡谷与吊桥，在风的推动下重新计算落点。", "Cross canyons and drawbridges, and let the wind change your landing.", "峡谷と吊り橋を越え、風を読んで着地点を見極める。") },
+  { id: "black-hole", english: "THE BLACK HOLE", name: copy("黑洞", "Black Hole", "ブラックホール"), description: copy("悬浮轨道、传送门与黑洞，把重力变成空间中的谜题。", "Floating rails, portals, and black holes turn gravity into a spatial puzzle.", "浮遊レール、ポータル、ブラックホール。重力が空間の謎になる。") },
+  { id: "darkroom", english: "THE DARKROOM", name: copy("暗室", "Darkroom", "暗室"), description: copy("在光与影之间寻找线索，凭观察与记忆走出暗室。", "Find clues between light and shadow, and navigate by observation and memory.", "光と影の間に手がかりを探し、観察と記憶で暗室を進む。") },
+] as const;
+
+export const ballMazeBalls = [
+  { id: "normal", name: copy("普通球", "Normal Ball", "ノーマルボール"), role: copy("重力与惯性", "Gravity & momentum", "重力と慣性"), description: copy("没有主动能力。利用重力与惯性滚向终点，三星过关额外奖励一枚金币。", "No active ability. Roll with gravity and momentum; a three-star finish earns an extra coin.", "能動能力はありません。重力と慣性でゴールへ。三つ星クリアで追加のコインを獲得。") },
+  { id: "attraction", name: copy("引力球", "Attraction Ball", "引力ボール"), role: copy("向中心靠拢", "Pull inward", "中心へ引き寄せる"), description: copy("按住能力键，让小球受到指向迷宫中心的引力。", "Hold the ability to pull the ball toward the maze's center.", "能力を長押しして迷路の中心へ引き寄せる。") },
+  { id: "repulsion", name: copy("斥力球", "Repulsion Ball", "斥力ボール"), role: copy("向外推开", "Push outward", "外へ押し出す"), description: copy("按住能力键，从迷宫中心向外推开，改变运动路线。", "Hold the ability to push away from the center and change your route.", "能力を長押しして中心から離れ、ルートを変える。") },
+  { id: "phase", name: copy("相位球", "Phasing Ball", "フェイズボール"), role: copy("穿越轨道", "Pass through rails", "レールを通り抜ける"), description: copy("短暂穿过轨道，寻找普通小球无法通过的路径。", "Phase through rails to find paths other balls cannot take.", "レールをすり抜け、普通のボールには通れない道へ。") },
+  { id: "basketball", name: copy("篮球", "Basketball", "バスケットボール"), role: copy("起跳越过障碍", "Jump past obstacles", "跳んで障害を越える"), description: copy("接触轨道时起跳，用弹跳跨过间隙与障碍。", "Jump from the rail to clear gaps and obstacles.", "レールから跳び、隙間や障害物を越える。") },
+  { id: "hamster", name: copy("仓鼠球", "Hamster Ball", "ハムスターボール"), role: copy("换一种控制方式", "Switch your controls", "操作を切り替える"), description: copy("切换迷宫与小球控制，让仓鼠亲自决定滚动方向。", "Switch between maze and ball controls and let the hamster choose the direction.", "迷路とボールの操作を切り替え、ハムスターが進む方向を決める。") },
+  { id: "golf", name: copy("高尔夫球", "Golf Ball", "ゴルフボール"), role: copy("瞄准，再击出", "Aim, then strike", "狙って打つ"), description: copy("在轨道上瞄准，再次触发能力，按选定方向击球。", "Aim on the rail, then trigger the ability again to strike.", "レール上で狙いを定め、もう一度能力を使って打つ。") },
+  { id: "shuttlecock", name: copy("羽毛球", "Shuttlecock", "シャトル"), role: copy("旋转，轻盈下落", "Spin and float", "回転してゆっくり落ちる"), description: copy("保持旋转，减轻重力影响，缓缓飘向下一段轨道。", "Keep spinning to reduce gravity's pull and float to the next rail.", "回転で重力の影響を抑え、次のレールへゆっくり落ちる。") },
+  { id: "tennis", name: copy("网球", "Tennis Ball", "テニスボール"), role: copy("在空中瞄准", "Aim in midair", "空中で狙う"), description: copy("在空中按下能力键减慢时间并瞄准，再次按下，将球打向目标方向。", "Press in midair to slow time and aim, then press again to strike in the chosen direction.", "空中で能力を押して時間を遅くし、狙う。もう一度押して狙った方向へ打つ。") },
+  { id: "time-stop", name: copy("时停球", "Time Stop Ball", "時止めボール"), role: copy("球停下，迷宫继续", "Stop the ball, turn the maze", "球を止め、迷路を回す"), description: copy("暂停小球与机关的运动，继续旋转迷宫安排下一步。", "Freeze the ball and mechanisms while turning the maze for your next move.", "球と仕掛けを止め、迷路を回して次の一手を用意する。") },
+  { id: "bonfire", name: copy("篝火球", "Bonfire Ball", "焚き火ボール"), role: copy("留下新的检查点", "Leave a checkpoint", "チェックポイントを残す"), description: copy("在轨道上留下临时检查点，为接下来的挑战保留退路。", "Leave a temporary checkpoint on the rail before the next challenge.", "レールに一時チェックポイントを残し、次の挑戦に備える。") },
+  { id: "rocket", name: copy("火箭球", "Rocket Ball", "ロケットボール"), role: copy("点火，飞起来", "Ignite and fly", "点火して飛ぶ"), description: copy("按住能力键点火飞行，调整方向越过难以滚过的路段。", "Hold to ignite and steer through sections that are hard to roll across.", "長押しで点火し、転がって越えにくい区間を飛ぶ。") },
+  { id: "rewind", name: copy("回溯球", "Rewind Ball", "リワインドボール"), role: copy("回到先前的位置", "Return to your past", "以前の位置へ戻る"), description: copy("沿刚刚的运动轨迹回溯，为失误后的下一次尝试留下机会。", "Rewind along your recent path and turn a mistake into another attempt.", "直前の軌跡をさかのぼり、ミスからもう一度挑戦する。") },
+  { id: "yoyo", name: copy("悠悠球", "Yo-yo", "ヨーヨー"), role: copy("拉住、旋转、收回", "Tether, spin, return", "つなぎ、回し、戻す"), description: copy("用绳索连接轨道，旋转摆动，再收回小球。", "Tether to the rail, swing around it, then reel the ball back.", "レールと糸でつなぎ、振り回してから引き戻す。") },
+  { id: "paint", name: copy("油漆球", "Paint Ball", "ペイントボール"), role: copy("给路线留下颜色", "Color your route", "ルートに色を残す"), description: copy("沿路涂抹油漆，消耗和恢复球体，留下属于你的轨迹。", "Leave paint along the route, spending and restoring the ball as you go.", "塗料を残し、球を消費・回復しながら進む。") },
+  { id: "slime", name: copy("史莱姆球", "Slime Ball", "スライムボール"), role: copy("贴住墙壁与天花板", "Stick to walls and ceilings", "壁と天井にくっつく"), description: copy("按住能力键吸附墙壁与天花板，从另一面理解路线。", "Hold to stick to walls and ceilings and read the route from the other side.", "長押しで壁や天井にくっつき、別の面からルートを読む。") },
+  { id: "bomb", name: copy("炸弹球", "Bomb Ball", "爆弾ボール"), role: copy("用爆炸突破障碍", "Blast through obstacles", "爆発で突破する"), description: copy("延时引爆，破坏附近轨道，也用爆炸冲力把自己送出去。", "Trigger a delayed blast to break nearby rails and launch yourself.", "時限爆発で近くのレールを壊し、その勢いで飛び出す。") },
+  { id: "glass", name: copy("玻璃球", "Glass Ball", "ガラスボール"), role: copy("小心每一次碰撞", "Handle with care", "衝突に気をつける"), description: copy("轻盈但易碎。控制跌落与碰撞，在风险中寻找稳妥路线。", "Light but fragile. Control falls and collisions to find a safer route.", "軽くて壊れやすい。落下と衝突を抑え、安全な道を探す。") },
+  { id: "curling", name: copy("冰壶球", "Curling Stone", "カーリングストーン"), role: copy("让滑行延续", "Keep sliding", "滑り続ける"), description: copy("低摩擦的滑行让惯性持续更久，需要提前规划转弯与停靠。", "Low friction keeps momentum going. Plan turns and stops ahead.", "摩擦が小さく勢いが続く。曲がる場所と止まる場所を先に考える。") },
+  { id: "twins", name: copy("两颗球", "Twin Balls", "ツインボール"), role: copy("两次机会", "Two chances", "二つのチャンス"), description: copy("同时生成两颗小球。任意一颗都能触发检查点和终点，只有两颗都掉落才算掉落。", "Two balls spawn together. Either can trigger checkpoints and the goal; a fall counts only when both fall.", "二つの球が同時に出現。どちらでもチェックポイントとゴールを通過でき、両方が落ちるまで失敗にならない。") },
+] as const;

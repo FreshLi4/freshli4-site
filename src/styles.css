@@ -748,3 +748,35 @@ html[lang="en"] .contact-services { grid-template-columns:max-content; }
 .media-placeholder { width:100%; height:100%; display:grid; place-items:center; align-content:center; gap:18px; color:var(--panel-ink); background:repeating-linear-gradient(135deg, rgba(0,0,0,.04) 0 2px, transparent 2px 12px), var(--panel); }
 .media-placeholder span { font:800 9px/1 var(--font-studio); letter-spacing:.16em; opacity:.68; }
 .media-placeholder strong { font:800 clamp(70px, 11vw, 160px)/.8 var(--font-studio); letter-spacing:-.08em; color:var(--accent); }
+
+/* Ball Maze keeps the studio's layered media cards with the latest landing-hero content. */
+#ball-maze .game-copy-main { padding:32px 0; }
+#ball-maze .ball-maze-home-logo {
+  display:block; width:min(280px, 80%); height:auto; margin:0 0 18px;
+  object-fit:contain;
+}
+#ball-maze .ball-maze-home-title {
+  color:var(--bm-cream); font-size:clamp(34px, 3.6vw, 58px);
+  line-height:1.12; letter-spacing:-.045em;
+}
+#ball-maze .ball-maze-home-title em {
+  margin-top:0; color:var(--bm-yellow); font-size:1em;
+  line-height:inherit; letter-spacing:inherit;
+}
+#ball-maze .game-description { margin-top:24px; font-size:clamp(16px, 1.15vw, 19px); line-height:1.75; }
+#ball-maze .ball-maze-home-media { padding:0; }
+#ball-maze .ball-maze-home-stack {
+  position:relative; perspective:1400px; padding:18px 24px 30px 0;
+}
+#ball-maze .ball-maze-home-stack .floating-note { pointer-events:none; }
+#ball-maze .media-frame, #ball-maze .media-shadow { aspect-ratio:4/3; }
+#ball-maze .media-slide video { object-fit:contain; }
+#ball-maze .bm-hero-media-controls { padding-right:24px; }
+#ball-maze .bm-hero-media-controls button { min-height:44px; }
+
+@media (max-width: 640px) {
+  #ball-maze .ball-maze-home-logo { width:min(250px, 80%); }
+  #ball-maze .ball-maze-home-title { font-size:clamp(32px, 8.5vw, 48px); }
+  #ball-maze .ball-maze-home-stack { padding:14px 12px 20px 0; }
+  #ball-maze .bm-hero-media-controls { flex-wrap:wrap; gap:10px 18px; padding-right:12px; }
+}

@@ -1,6 +1,8 @@
 import "./styles.css";
 import { bootBallMazePage } from "./ball-maze";
 import { bootRulesPage } from "./rules";
+import { setupMediaCarousel } from "./media-carousel";
+import { ballMazeHero, renderBallMazeHeroSlide } from "./ball-maze-hero";
 
 const ballMazePageBooted = bootBallMazePage();
 if (!ballMazePageBooted) bootRulesPage();
@@ -10,6 +12,9 @@ type Copy = Record<Lang, string>;
 type MediaItem = { name: string; url: string | null; kind: "image" | "video" | "placeholder" };
 
 const mediaFiles = import.meta.glob("/asset/*/visual-content/*", { eager: true, query: "?url", import: "default" }) as Record<string, string>;
+const ballMazeVisualFiles = import.meta.glob("/asset/ball-maze/visual-content/latest/*", { eager: true, query: "?url", import: "default" }) as Record<string, string>;
+const ballMazeBrandFiles = import.meta.glob("/asset/ball-maze/brand/*", { eager: true, query: "?url", import: "default" }) as Record<string, string>;
+const ballMazeVisual = (file: string) => ballMazeVisualFiles[`/asset/ball-maze/visual-content/${file}`] ?? "";
 const imageExtensions = new Set(["jpg", "jpeg", "png", "webp", "gif", "svg", "avif"]);
 const videoExtensions = new Set(["mp4", "webm", "mov", "m4v"]);
 
@@ -43,8 +48,8 @@ const knownGames: GameConfig[] = [
   },
   {
     slug: "ball-maze", aliases: ["ball-maze", "maze", "迷宫球"], theme: "ballmaze", fontClass: "maze-font", order: 2,
-    title: copy("迷宫球", "Ball Maze", "迷宮ボール"), englishTitle: "Ball Maze", status: copy("即将发售", "COMING SOON", "発売予定"), category: copy("物理 · 解谜 · 创作", "PHYSICS · PUZZLE · CREATION", "物理 · パズル · クリエイション"),
-    description: copy("旋转整座迷宫，让小球沿着轨道抵达终点。每一种球都有自己的脾气；每一条轨道，都可以被重新组合成属于你的机关。", "Rotate the entire maze and guide the ball along its track to the goal. Every ball has its own temperament, and every track can be recombined into a mechanism of your own.", "迷路全体を回転させ、ボールをゴールへ導きます。ボールには個性があり、レールは自由に組み替えられます。"),
+    title: copy("迷宫球", "Ball Maze", "迷宮ボール"), englishTitle: "Ball Maze", status: copy("即将发售", "COMING SOON", "発売予定"), category: copy(ballMazeHero.kicker, ballMazeHero.kicker),
+    description: ballMazeHero.description,
     tags: [copy("Steam", "STEAM"), copy("物理解谜", "PHYSICS PUZZLE", "物理パズル"), copy("关卡编辑器", "LEVEL EDITOR", "レベルエディター")], cta: copy("加入愿望单", "WISHLIST", "ウィッシュリストに追加"), noteA: "TURN<br />THE WORLD", noteB: "360°", link: "https://store.steampowered.com/app/3678730/_/?l=schinese",
   },
   {
@@ -97,12 +102,32 @@ const renderMedia = (game: GameConfig, item: MediaItem, index: number) => {
   return `<div class="media-slide${index === 0 ? " active" : ""}" data-slide="${index}" data-kind="${item.kind}">${content}${play}</div>`;
 };
 
+const renderBallMazeHomeMedia = (game: GameConfig) => {
+  const clips = ballMazeHero.clips;
+  for (const clip of clips) translations[`game.ball-maze.clip.${clip.id}`] = clip.label;
+  translations["game.ball-maze.autoplay"] = ballMazeHero.autoplay;
+  return `<div class="media-stage ball-maze-home-media reveal" data-game="ball-maze">
+    <div class="ball-maze-home-stack">
+      <div class="media-shadow" aria-hidden="true"></div>
+      <div class="media-frame tilt-card">
+        <div class="media-topbar"><div class="media-dots"><i></i><i></i><i></i></div><div class="media-label"></div><button class="media-expand" type="button" aria-label="切换媒体">↗</button></div>
+        <div class="media-viewport">${clips.map((clip, index) => renderBallMazeHeroSlide(clip, index, ballMazeVisual)).join("")}</div>
+      </div>
+      <div class="floating-note note-a">${game.noteA}</div><div class="floating-note note-b">${game.noteB}</div>
+    </div>
+    <div class="bm-hero-media-controls"><div class="media-pagination bm-hero-pagination">${clips.map((clip, index) => `<button type="button" data-target="${index}"><b>${String(index + 1).padStart(2, "0")}</b><span data-game-i18n="game.ball-maze.clip.${clip.id}"></span></button>`).join("")}</div><button class="bm-hero-autoplay" type="button" data-carousel-toggle aria-pressed="true"><b data-carousel-icon aria-hidden="true">Ⅱ</b><span data-game-i18n="game.ball-maze.autoplay"></span></button></div>
+  </div>`;
+};
+
 const renderGame = (game: GameConfig, index: number) => {
-  const media = collectMedia(game);
+  const isBallMaze = game.slug === "ball-maze";
+  const media = isBallMaze ? [] : collectMedia(game);
   const tags = game.tags.map((_, tagIndex) => `<span data-game-i18n="${escapeHtml(textKey(game, `tag${tagIndex}`))}"></span>`).join("");
   const titleKey = `game.${game.slug}.title`;
   translations[titleKey] = game.title;
   translations[textKey(game, "status")] = game.status; translations[textKey(game, "category")] = game.category; translations[textKey(game, "description")] = game.description; translations[textKey(game, "cta")] = game.cta;
+  if (isBallMaze) translations[textKey(game, "hero.title")] = ballMazeHero.title;
+  const heading = isBallMaze ? `<img class="ball-maze-home-logo" src="${escapeHtml(ballMazeBrandFiles[`/asset/ball-maze/brand/${ballMazeHero.logo}`] ?? "")}" alt="${escapeHtml(ballMazeHero.logoAlt)}" /><h2 id="${escapeHtml(game.slug)}-title" class="game-title ball-maze-home-title" data-game-i18n-html="${textKey(game, "hero.title")}"></h2>` : `<h2 id="${escapeHtml(game.slug)}-title" class="game-title" data-game-title="${escapeHtml(game.slug)}"></h2>`;
   for (const [tagIndex, tag] of game.tags.entries()) translations[textKey(game, `tag${tagIndex}`)] = tag;
   const rulebookKey = textKey(game, "rulebook");
   if (game.slug === "investigation-delve") translations[rulebookKey] = copy("了解详情", "READ RULEBOOK", "ルールブック");
@@ -111,7 +136,8 @@ const renderGame = (game: GameConfig, index: number) => {
   const detailsLink = game.slug === "ball-maze" ? `<a class="text-link project-cta project-details-link" href="/ball-maze"><span data-game-i18n="${detailsKey}"></span><span aria-hidden="true">↗</span></a>` : "";
   const rulebookLink = game.slug === "ball-maze" ? detailsLink : game.slug === "investigation-delve" ? `<a class="text-link project-cta project-rules-link" href="/investigation-delve-boardgame"><span data-game-i18n="${rulebookKey}"></span><span aria-hidden="true">↗</span></a>` : "";
   const purchaseLink = game.link ? `<a class="text-link project-cta" href="${escapeHtml(game.link)}" target="_blank" rel="noopener noreferrer"><span data-game-i18n="${textKey(game, "cta")}"></span><span aria-hidden="true">↗</span></a>` : `<span class="text-link project-cta is-disabled"><span data-game-i18n="${textKey(game, "cta")}"></span></span>`;
-  return `<section class="game-section${index % 2 === 1 ? " game-section-alt" : ""} theme-trigger ${game.fontClass}" id="${escapeHtml(game.slug)}" data-theme="${game.theme}" aria-labelledby="${escapeHtml(game.slug)}-title"><div class="game-layout"><article class="game-copy-panel reveal"><div class="game-meta"><span>0${index + 1}</span><span data-game-i18n="${textKey(game, "status")}"></span></div><div class="game-copy-main"><p class="game-category" data-game-i18n="${textKey(game, "category")}"></p><h2 id="${escapeHtml(game.slug)}-title" class="game-title" data-game-title="${escapeHtml(game.slug)}"></h2><p class="game-description" data-game-i18n="${textKey(game, "description")}"></p></div><div class="game-footer"><div class="tags">${tags}</div><div class="project-links">${rulebookLink}${purchaseLink}</div></div></article><div class="media-stage reveal" data-game="${escapeHtml(game.slug)}"><div class="media-shadow" aria-hidden="true"></div><div class="media-frame tilt-card"><div class="media-topbar"><div class="media-dots"><i></i><i></i><i></i></div><div class="media-label"></div><button class="media-expand" type="button" aria-label="切换媒体">↗</button></div><div class="media-viewport">${media.map((item, mediaIndex) => renderMedia(game, item, mediaIndex)).join("")}</div><div class="media-pagination">${media.map((_, mediaIndex) => `<button class="${mediaIndex === 0 ? "active" : ""}" type="button" data-target="${mediaIndex}">0${mediaIndex + 1}</button>`).join("")}</div></div><div class="floating-note note-a">${game.noteA}</div><div class="floating-note note-b">${game.noteB}</div></div></div></section>`;
+  const mediaStage = isBallMaze ? renderBallMazeHomeMedia(game) : `<div class="media-stage reveal" data-game="${escapeHtml(game.slug)}"><div class="media-shadow" aria-hidden="true"></div><div class="media-frame tilt-card"><div class="media-topbar"><div class="media-dots"><i></i><i></i><i></i></div><div class="media-label"></div><button class="media-expand" type="button" aria-label="切换媒体">↗</button></div><div class="media-viewport">${media.map((item, mediaIndex) => renderMedia(game, item, mediaIndex)).join("")}</div><div class="media-pagination">${media.map((_, mediaIndex) => `<button class="${mediaIndex === 0 ? "active" : ""}" type="button" data-target="${mediaIndex}">0${mediaIndex + 1}</button>`).join("")}</div></div><div class="floating-note note-a">${game.noteA}</div><div class="floating-note note-b">${game.noteB}</div></div>`;
+  return `<section class="game-section${index % 2 === 1 ? " game-section-alt" : ""} theme-trigger ${game.fontClass}" id="${escapeHtml(game.slug)}" data-theme="${game.theme}" aria-labelledby="${escapeHtml(game.slug)}-title"><div class="game-layout"><article class="game-copy-panel reveal"><div class="game-meta"><span>0${index + 1}</span><span data-game-i18n="${textKey(game, "status")}"></span></div><div class="game-copy-main"><p class="game-category" data-game-i18n="${textKey(game, "category")}"></p>${heading}<p class="game-description" data-game-i18n="${textKey(game, "description")}"></p></div><div class="game-footer"><div class="tags">${tags}</div><div class="project-links">${rulebookLink}${purchaseLink}</div></div></article>${mediaStage}</div></section>`;
 };
 
 const gamesMount = document.querySelector<HTMLElement>("#games-mount")!;
@@ -190,6 +216,7 @@ const applyLanguage = (language: Lang) => {
   body.dataset.lang = lang;
   document.querySelectorAll<HTMLElement>("[data-i18n]").forEach((element) => { const value = translations[element.dataset.i18n ?? ""]?.[lang]; if (value !== undefined) element.textContent = value; });
   document.querySelectorAll<HTMLElement>("[data-i18n-html]").forEach((element) => { const value = translations[element.dataset.i18nHtml ?? ""]?.[lang]; if (value !== undefined) element.innerHTML = value; });
+  document.querySelectorAll<HTMLElement>("[data-game-i18n-html]").forEach((element) => { const value = translations[element.dataset.gameI18nHtml ?? ""]?.[lang]; if (value !== undefined) element.innerHTML = value; });
   document.querySelectorAll<HTMLElement>("[data-game-i18n]").forEach((element) => { const value = translations[element.dataset.gameI18n ?? ""]?.[lang]; if (value !== undefined) element.textContent = value; });
   document.querySelectorAll<HTMLElement>("[data-game-title]").forEach((element) => { const game = games.find((item) => item.slug === element.dataset.gameTitle); if (!game) return; element.innerHTML = lang === "en" ? `<em>${escapeHtml(game.englishTitle)}</em>` : `<span>${escapeHtml(game.title[lang])}</span><em>${escapeHtml(game.englishTitle)}</em>`; });
   if (languageSelect) { languageSelect.value = lang; languageSelect.title = languageNames[lang]; }
@@ -241,18 +268,9 @@ window.addEventListener("resize", requestThemeUpdate, { passive: true });
 requestThemeUpdate();
 
 document.querySelectorAll<HTMLElement>(".media-stage").forEach((stage) => {
-  const slides = [...stage.querySelectorAll<HTMLElement>(".media-slide")]; const buttons = [...stage.querySelectorAll<HTMLButtonElement>(".media-pagination button")]; let current = 0; let timer: number | undefined; let progressFrame = 0; let startedAt = 0;
-  const setProgress = (progress: number) => buttons.forEach((button, index) => button.style.setProperty("--progress", index === current ? `${Math.max(0, Math.min(1, progress)) * 100}%` : "0%"));
-  const updateProgress = () => {
-    progressFrame = 0;
-    const active = slides[current];
-    const video = active?.querySelector<HTMLVideoElement>("video");
-    const progress = video && Number.isFinite(video.duration) && video.duration > 0 ? video.currentTime / video.duration : (performance.now() - startedAt) / 3000;
-    setProgress(progress);
-    if (progress < 1) progressFrame = window.requestAnimationFrame(updateProgress);
-  };
-  const show = (index: number) => { window.clearTimeout(timer); window.cancelAnimationFrame(progressFrame); current = (index + slides.length) % slides.length; startedAt = performance.now(); slides.forEach((slide, i) => { slide.classList.toggle("active", i === current); slide.querySelectorAll<HTMLVideoElement>("video").forEach((video) => { if (i === current) void video.play().catch(() => undefined); else { video.pause(); video.currentTime = 0; } }); }); buttons.forEach((button, i) => { button.classList.toggle("active", i === current); button.style.setProperty("--progress", "0%"); }); updateMediaLabel(stage); const active = slides[current]; const video = active.querySelector<HTMLVideoElement>("video"); if (video) { video.onended = () => { setProgress(1); show(current + 1); }; video.onerror = () => { timer = window.setTimeout(() => show(current + 1), 3000); }; } else timer = window.setTimeout(() => show(current + 1), 3000); progressFrame = window.requestAnimationFrame(updateProgress); };
-  buttons.forEach((button) => button.addEventListener("click", () => show(Number(button.dataset.target)))); stage.querySelector<HTMLButtonElement>(".media-expand")?.addEventListener("click", () => show(current + 1)); stage.querySelectorAll<HTMLButtonElement>("[data-preview-trigger]").forEach((button) => button.addEventListener("click", () => document.querySelector(".video-modal")?.classList.add("open"))); show(0);
+  const cleanup = setupMediaCarousel(stage, () => updateMediaLabel(stage));
+  import.meta.hot?.dispose(cleanup);
+  stage.querySelectorAll<HTMLButtonElement>("[data-preview-trigger]").forEach((button) => button.addEventListener("click", () => document.querySelector(".video-modal")?.classList.add("open")));
 });
 
 const closeMenu = () => { document.querySelector(".menu-button")?.setAttribute("aria-expanded", "false"); mobileMenu?.setAttribute("aria-hidden", "true"); mobileMenu?.classList.remove("open"); body.style.overflow = ""; };

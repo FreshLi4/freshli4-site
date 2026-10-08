@@ -1,0 +1,300 @@
+[
+  {
+    "id": "normal",
+    "file": "normal.glb",
+    "source_objects": [
+      "NormalBall_01"
+    ],
+    "vertices": 1472,
+    "source": "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Ball.blend",
+    "texture_sources": [
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260424/NormalBall_01_Color.png"
+    ],
+    "web_material_style": "matte-voxel",
+    "bytes": 466576
+  },
+  {
+    "id": "attraction",
+    "file": "attraction.glb",
+    "source_objects": [
+      "AttractionBall_01"
+    ],
+    "vertices": 1472,
+    "source": "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Ball.blend",
+    "texture_sources": [
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260424/AttractionBall_01_Color.png"
+    ],
+    "web_material_style": "matte-voxel",
+    "bytes": 585960
+  },
+  {
+    "id": "repulsion",
+    "file": "repulsion.glb",
+    "source_objects": [
+      "RepulsionBall_01"
+    ],
+    "vertices": 1472,
+    "source": "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Ball.blend",
+    "texture_sources": [
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260424/RepulsionBall_01_Color.png"
+    ],
+    "web_material_style": "matte-voxel",
+    "bytes": 537436
+  },
+  {
+    "id": "phase",
+    "file": "phase.glb",
+    "source_objects": [
+      "PhasingBall_01"
+    ],
+    "vertices": 1472,
+    "source": "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Ball.blend",
+    "texture_sources": [
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260424/PhasingBall_01_Color.png"
+    ],
+    "web_material_style": "matte-voxel",
+    "bytes": 453820
+  },
+  {
+    "id": "basketball",
+    "file": "basketball.glb",
+    "source_objects": [
+      "BasketBall"
+    ],
+    "vertices": 1936,
+    "source": "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Ball.blend",
+    "texture_sources": [
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260511/Basketball/BasketBall_Color.png"
+    ],
+    "web_material_style": "matte-voxel",
+    "bytes": 476192
+  },
+  {
+    "id": "hamster",
+    "file": "hamster.glb",
+    "source_objects": [
+      "HamsterBall_Glass",
+      "Hamster Ball_Cap_Green",
+      "Hamster_Stand_Yellow"
+    ],
+    "vertices": 2658,
+    "source": "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Ball.blend",
+    "texture_sources": [
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20250928/Hamster_Stand_Yellow_Color.png",
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260511/HamsterBall/Hamster Ball_Cap_Green_Color.001.png",
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260511/HamsterBall/HamsterBall_Glass_Color.001.png"
+    ],
+    "web_material_style": "matte-voxel",
+    "bytes": 589180,
+    "shell_alpha": 0.2
+  },
+  {
+    "id": "golf",
+    "file": "golf.glb",
+    "source_objects": [],
+    "vertices": 1472,
+    "source": "UE static mesh or source OBJ",
+    "texture_sources": [
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20250928/GolfBall_A_Color.png"
+    ],
+    "web_material_style": "matte-voxel",
+    "bytes": 283924
+  },
+  {
+    "id": "shuttlecock",
+    "file": "shuttlecock.glb",
+    "source_objects": [
+      "Shuttlecock_Normal_01"
+    ],
+    "vertices": 2336,
+    "source": "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Ball.blend",
+    "texture_sources": [
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260610/Shuttlecock_Normal_01_Color.png"
+    ],
+    "web_material_style": "matte-voxel",
+    "bytes": 659176
+  },
+  {
+    "id": "tennis",
+    "file": "tennis.glb",
+    "source_objects": [
+      "TennisBall"
+    ],
+    "vertices": 1544,
+    "source": "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Ball.blend",
+    "texture_sources": [
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260511/TennisBall/TennisBall_Color.png"
+    ],
+    "web_material_style": "matte-voxel",
+    "bytes": 404696
+  },
+  {
+    "id": "time-stop",
+    "file": "time-stop.glb",
+    "source_objects": [
+      "TimeStopBall_Shell_01",
+      "TimeStopBall_Rim_01",
+      "TimeStopBall_Rim_02",
+      "TimeStopBall_Rim_03",
+      "TimeStopBall_Rotor_01",
+      "TimeStopBall_Rotor_02",
+      "TimeStopBall_MinuteHand_01",
+      "TimeStopBall_HourHand_01",
+      "TimeStopBall_SecondHand_01"
+    ],
+    "vertices": 3152,
+    "source": "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Ball.blend",
+    "texture_sources": [
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260610/TimeStopBall_HourHand_01_Color.png",
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260610/TimeStopBall_MinuteHand_01_Color.png",
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260610/TimeStopBall_Rim_01_Color.png",
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260610/TimeStopBall_Rim_02_Color.png",
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260610/TimeStopBall_Rim_03_Color.png",
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260610/TimeStopBall_Rotor_01_Color.png",
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260610/TimeStopBall_Rotor_02_Color.png",
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260610/TimeStopBall_SecondHand_01_Color.png",
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260610/TimeStopBall_Shell_01_Color.png"
+    ],
+    "web_material_style": "matte-voxel",
+    "bytes": 719304
+  },
+  {
+    "id": "bonfire",
+    "file": "bonfire.glb",
+    "source_objects": [
+      "bonefire.ball_1",
+      "bonefire.ball_7"
+    ],
+    "vertices": 2109,
+    "source": "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Ball.blend",
+    "texture_sources": [
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260714-bonefire.ball/bonefire.ball_1_Color.png",
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260714-bonefire.ball/bonefire.ball_7_Color.png"
+    ],
+    "web_material_style": "matte-voxel",
+    "bytes": 891056
+  },
+  {
+    "id": "rocket",
+    "file": "rocket.glb",
+    "source_objects": [
+      "RocketBall_Ball",
+      "RocketBall_Rocket"
+    ],
+    "vertices": 1853,
+    "source": "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Ball.blend",
+    "texture_sources": [
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260709-rocketball.rewindball/RocketBall_Ball_Color.png",
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260709-rocketball.rewindball/RocketBall_Rocket_Color.001.png"
+    ],
+    "web_material_style": "matte-voxel",
+    "bytes": 532280,
+    "rocket_anchor_height_fraction": 0.25
+  },
+  {
+    "id": "rewind",
+    "file": "rewind.glb",
+    "source_objects": [
+      "RewindBall_Shell",
+      "RewindBall_Glass",
+      "RewindBall_Center"
+    ],
+    "vertices": 2584,
+    "source": "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Ball.blend",
+    "texture_sources": [
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260709-rocketball.rewindball/RewindBall_Center_Color.png",
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260709-rocketball.rewindball/RewindBall_Glass_Color.png",
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260709-rocketball.rewindball/RewindBall_Shell_Color.png"
+    ],
+    "web_material_style": "matte-voxel",
+    "bytes": 790980
+  },
+  {
+    "id": "yoyo",
+    "file": "yoyo.glb",
+    "source_objects": [
+      "yoo yoo ball_1"
+    ],
+    "vertices": 2296,
+    "source": "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Ball.blend",
+    "texture_sources": [
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260818_curling-ball_yoyo-ball/yoo yoo ball_1_Color.png"
+    ],
+    "web_material_style": "matte-voxel",
+    "bytes": 625024
+  },
+  {
+    "id": "paint",
+    "file": "paint.glb",
+    "source_objects": [
+      "paint.ball_1"
+    ],
+    "vertices": 2936,
+    "source": "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Ball.blend",
+    "texture_sources": [],
+    "web_material_style": "matte-voxel",
+    "bytes": 560840
+  },
+  {
+    "id": "slime",
+    "file": "slime.glb",
+    "source_objects": [],
+    "vertices": 4468,
+    "source": "UE static mesh or source OBJ",
+    "texture_sources": [],
+    "web_material_style": "matte-voxel",
+    "bytes": 205072
+  },
+  {
+    "id": "bomb",
+    "file": "bomb.glb",
+    "source_objects": [
+      "bomb.ball-2_3",
+      "bomb.ball-2_1",
+      "bomb.ball-2_2"
+    ],
+    "vertices": 1704,
+    "source": "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Ball.blend",
+    "texture_sources": [
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260723-bonefire.ball-bomb.ball/bomb.ball-2_1_Color.png",
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260723-bonefire.ball-bomb.ball/bomb.ball-2_2_Color.png",
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260723-bonefire.ball-bomb.ball/bomb.ball-2_3_Color.png"
+    ],
+    "web_material_style": "matte-voxel",
+    "bytes": 411364
+  },
+  {
+    "id": "glass",
+    "file": "glass.glb",
+    "source_objects": [],
+    "vertices": 4468,
+    "source": "UE static mesh or source OBJ",
+    "texture_sources": [],
+    "web_material_style": "matte-voxel",
+    "bytes": 205072
+  },
+  {
+    "id": "curling",
+    "file": "curling.glb",
+    "source_objects": [
+      "未命名"
+    ],
+    "vertices": 942,
+    "source": "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Ball.blend",
+    "texture_sources": [
+      "/Volumes/团队文件-Workspace/Taobe/GameDev_on_NAS/BallMaze/Asset/Model/Mesh/20260818_curling-ball_yoyo-ball/未命名_Color.png"
+    ],
+    "web_material_style": "matte-voxel",
+    "bytes": 361748
+  },
+  {
+    "id": "twins",
+    "file": "twins.glb",
+    "source_objects": [],
+    "vertices": 8936,
+    "source": "UE static mesh or source OBJ",
+    "texture_sources": [],
+    "web_material_style": "matte-voxel",
+    "bytes": 409856
+  }
+]

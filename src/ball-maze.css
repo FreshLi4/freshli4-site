@@ -1,5 +1,6 @@
 :root {
   --bm-teal: #45aea4;
+  --bm-world-teal: #32958d;
   --bm-deep: #073f42;
   --bm-deeper: #052d30;
   --bm-ink: #061c1d;
@@ -10,15 +11,147 @@
   --bm-display: var(--font-maze), monospace;
 }
 
+/* Home-style section index: quiet lines, labels on hover or keyboard focus. */
+.bm-side-nav {
+  --bm-nav-color: var(--bm-page-ink);
+  --bm-nav-accent: var(--bm-page-accent);
+  position: fixed;
+  z-index: 90;
+  left: clamp(12px, 2vw, 28px);
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.bm-side-tabs { display: flex; flex-direction: column; align-items: flex-start; gap: 9px; pointer-events: auto; }
+.ball-maze-page .bm-side-tabs a {
+  position: relative; display: inline-flex; align-items: baseline; gap: 8px; width: 44px; min-height: 24px;
+  padding: 5px 0; color: var(--bm-nav-color); background: none; border-bottom: 1px solid transparent;
+  font: 800 10px/1 var(--font-studio); letter-spacing: .06em; white-space: nowrap;
+  opacity: .7; transition: opacity .25s, border-color .78s var(--ease), transform .25s, color .78s var(--ease);
+}
+.bm-side-tabs a::before {
+  content: ""; position: absolute; left: 0; top: 50%; width: 24px; height: 2px;
+  background: currentColor; transition: width .25s, opacity .25s, background-color .78s var(--ease);
+}
+.bm-side-tabs a.is-current { opacity: 1; }
+.bm-side-tabs a.is-current::before { width: 40px; background: var(--bm-nav-accent); }
+.bm-side-tabs a > b, .bm-side-tabs a > span {
+  opacity: 0; visibility: hidden; transform: translateX(-4px);
+  transition: opacity .25s, transform .25s, visibility .25s;
+}
+.bm-side-tabs a b { color: var(--bm-nav-accent); font: 800 12px/1 var(--font-jetbrains); transition: color .78s var(--ease); }
+.ball-maze-page .bm-side-tabs:is(:hover, :focus-within) a { width: max-content; opacity: 1; }
+.bm-side-tabs:is(:hover, :focus-within) a::before { opacity: 0; width: 0; }
+.bm-side-tabs:is(:hover, :focus-within) a > b, .bm-side-tabs:is(:hover, :focus-within) a > span {
+  opacity: 1; visibility: visible; transform: none;
+}
+.bm-side-tabs a:hover, .bm-side-tabs a:focus-visible { opacity: 1; transform: translateX(3px); }
+.bm-side-tabs:is(:hover, :focus-within) a.is-current { border-bottom-color: var(--bm-nav-accent); }
+.bm-side-tabs a:focus-visible { outline: 2px solid var(--bm-nav-accent); outline-offset: 4px; }
+.ball-maze-page .bm-balls-heading { grid-template-columns: minmax(0,1.45fr) minmax(0,.75fr); gap: 5vw; }
+.ball-maze-page .bm-balls-heading h2 { font-size: clamp(38px,5.2vw,76px); }
+
+/* Live footage replaces the concept illustrations without changing the page rhythm. */
+.ball-maze-page video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ball-maze-page .bm-header { grid-template-columns: 1fr auto; }
+/* One media envelope everywhere: footage and a fine, theme-aware outline. */
+.bm-video-frame {
+  --bm-video-line: var(--bm-page-line, rgba(247, 240, 216, .35));
+  overflow: hidden;
+  border: 1px solid var(--bm-video-line);
+  background: var(--bm-ink);
+  box-shadow: none;
+  transition: border-color .78s var(--ease);
+}
+.bm-play-footage { position: relative; width: 100%; }
+.ball-maze-page .bm-world-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+.ball-maze-page .bm-world-card { min-height: 440px; }
+.ball-maze-page .bm-world-card video { opacity: 1; filter: none; }
+.ball-maze-page .bm-world-card::before { z-index: 1; pointer-events: none; background: linear-gradient(180deg,rgba(5,45,48,.35),transparent 40%,rgba(5,45,48,.94) 85%); }
+.ball-maze-page .bm-world-card > :not(video):not(.bm-darkroom-art) { z-index: 2; }
+.ball-maze-page .bm-world-card h3 { font-size: clamp(27px,3vw,44px); }
+.bm-darkroom-art { position: absolute !important; inset: 0; display: grid; place-items: center; background: radial-gradient(ellipse at 70% 20%,#637b85 0, #172c37 30%, #090e1b 68%); }
+.bm-darkroom-art span { color: rgba(247,240,216,.25); font-size: 160px; }
+.ball-maze-page .bm-editor-card { aspect-ratio: auto; }
+.ball-maze-page [data-bm-recording] { height: auto; aspect-ratio: 4/3; object-fit: contain; background: #061c1d; }
+.ball-maze-page .bm-hero-photo video { aspect-ratio: 4/3; }
+
+/* Section 03: real models in individual canvases, dark ink on cream. */
+.bm-model-help { max-width: 760px; margin: 36px 0 22px; color: var(--bm-page-muted); font-size: 12px; line-height: 1.8; }
+.bm-ball-canvas { position: relative; width: 100%; min-height: 180px; aspect-ratio: 1; margin-top: 12px; }
+.bm-ball-canvas model-viewer { display: block; width: 100%; height: 100%; min-height: 180px; --poster-color: transparent; --progress-bar-color: #075054; cursor: grab; }
+.bm-ball-canvas model-viewer:active { cursor: grabbing; }
+.bm-model-status { position: absolute; bottom: 14px; left: 10px; right: 10px; margin: 0; text-align: center; color: #16484b; font-size: 10px; line-height: 1.6; pointer-events: none; }
+.bm-ball-canvas[data-state="error"] .bm-model-status { bottom: 52px; color: #933a15; }
+.bm-model-retry { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); min-height: 32px; padding: 6px 12px; border: 1px solid #16484b; color: #16484b; background: var(--bm-cream); font-size: 10px; cursor: pointer; }
+.bm-model-retry[hidden], .bm-model-status[hidden] { display: none; }
+@media (max-width: 1060px) {
+  .ball-maze-page .bm-world-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 760px) {
+  .bm-side-nav { left: 5px; }
+  .bm-side-tabs { gap: 7px; }
+  .ball-maze-page .bm-side-tabs a { min-height: 28px; padding: 8px 0; width: 28px; }
+  .bm-side-tabs a::before { width: 16px; }
+  .bm-side-tabs a.is-current::before { width: 24px; }
+  .ball-maze-page .bm-world-grid { grid-template-columns: 1fr; }
+  .ball-maze-page .bm-world-card { min-height: 400px; }
+  .ball-maze-page .bm-balls-heading { grid-template-columns: 1fr; gap: 24px; }
+  .ball-maze-page .bm-balls-heading h2 { font-size: clamp(34px,8vw,54px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bm-side-tabs a, .bm-side-tabs a::before, .bm-side-tabs a > b, .bm-side-tabs a > span,
+  .bm-ball-card { transition: none; }
+}
+
 body.is-ball-maze-page {
-  --bg: var(--bm-teal);
-  --ink: var(--bm-ink);
-  --accent: var(--bm-yellow);
+  --bm-page-bg: var(--bm-teal);
+  --bm-page-ink: var(--bm-cream);
+  --bm-page-muted: rgba(247, 240, 216, .72);
+  --bm-page-accent: var(--bm-yellow);
+  --bm-page-line: rgba(247, 240, 216, .32);
+  --bg: var(--bm-page-bg);
+  --ink: var(--bm-page-ink);
+  --accent: var(--bm-page-accent);
   margin: 0;
-  background: var(--bm-teal);
-  color: var(--bm-ink);
+  background: var(--bm-page-bg);
+  color: var(--bm-page-ink);
   font-family: var(--bm-display);
   overflow-x: hidden;
+}
+
+/* One continuous canvas, with the same .78s colour easing as the studio home. */
+body.is-ball-maze-page[data-bm-section="play"] { --bm-page-bg: var(--bm-deep); }
+body.is-ball-maze-page:is([data-bm-section="worlds"], [data-bm-section="balls"], [data-bm-section="build"]) {
+  --bm-page-ink: var(--bm-ink);
+  --bm-page-muted: rgba(6, 28, 29, .72);
+  --bm-page-accent: var(--bm-deep);
+  --bm-page-line: rgba(6, 28, 29, .32);
+}
+body.is-ball-maze-page[data-bm-section="worlds"] { --bm-page-bg: var(--bm-world-teal); --bm-page-accent: var(--bm-ink); }
+body.is-ball-maze-page[data-bm-section="balls"] { --bm-page-bg: var(--bm-cream); }
+body.is-ball-maze-page[data-bm-section="modes"] { --bm-page-bg: var(--bm-deep); }
+body.is-ball-maze-page[data-bm-section="build"] { --bm-page-bg: var(--bm-yellow); --bm-page-accent: var(--bm-orange); }
+body.is-ball-maze-page[data-bm-section="records"] { --bm-page-bg: var(--bm-deeper); }
+body.is-ball-maze-page:not([data-bm-theme-ready]) { transition: none; }
+
+/* Text, fine rules and navigation change with the shared background. Boxed
+   world/ball/mode cards keep their own readable, stable surface palettes. */
+.ball-maze-page :is(.bm-hero, .bm-section, .bm-final-section) {
+  background: transparent;
+  color: var(--bm-page-ink);
+  transition: color .78s var(--ease);
+}
+.bm-kicker, .bm-section-index span:first-child, .bm-section h2 em,
+.bm-hero-copy h1 em, .bm-final-section h2 em, .bm-hero-dek,
+.bm-section-heading > p:last-child, .bm-principle-card > span, .bm-principle-card p,
+.bm-record-heading > p:last-child, .bm-model-help, .bm-world-stat-strip strong,
+.bm-world-stat-strip span, .bm-world-stat-strip > b,
+.bm-final-mark, .bm-brand span, .bm-header-steam, .bm-language::after {
+  transition: color .78s var(--ease);
+}
+.bm-play-cards, .bm-build-copy li, .bm-world-stat-strip {
+  transition: border-color .78s var(--ease);
 }
 
 body.is-ball-maze-page .noise {
@@ -37,8 +170,8 @@ body.is-ball-maze-page .cursor {
 .ball-maze-page {
   min-height: 100vh;
   overflow: hidden;
-  background: var(--bm-teal);
-  color: var(--bm-ink);
+  background: transparent;
+  color: inherit;
   font-family: var(--bm-display);
 }
 
@@ -65,7 +198,7 @@ body.is-ball-maze-page .cursor {
 }
 
 .ball-maze-page :focus-visible {
-  outline: 3px solid var(--bm-yellow);
+  outline: 3px solid var(--bm-page-accent);
   outline-offset: 4px;
 }
 
@@ -80,12 +213,26 @@ body.is-ball-maze-page .cursor {
   width: 100%;
   min-height: 72px;
   padding: 10px clamp(18px, 4vw, 64px);
-  color: var(--bm-cream);
+  color: var(--bm-page-ink);
+  transition: color .78s var(--ease);
   pointer-events: none;
 }
 
 .bm-header > * {
   pointer-events: auto;
+}
+
+/* Keep fixed controls readable over footage, fading into the same canvas. */
+.bm-header::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0 0 -24px;
+  content: "";
+  background: var(--bm-page-bg);
+  opacity: .94;
+  mask-image: linear-gradient(180deg, #000 70%, transparent);
+  pointer-events: none;
+  transition: background-color .78s var(--ease);
 }
 
 .bm-brand {
@@ -105,7 +252,7 @@ body.is-ball-maze-page .cursor {
 
 .bm-brand span {
   margin-left: -4px;
-  color: rgba(247, 240, 216, .7);
+  color: var(--bm-page-muted);
   font-size: 9px;
   letter-spacing: .14em;
   white-space: nowrap;
@@ -147,7 +294,7 @@ body.is-ball-maze-page .cursor {
 }
 
 .bm-header-steam {
-  color: var(--bm-yellow);
+  color: var(--bm-page-accent);
   font-size: 10px;
   letter-spacing: .12em;
   white-space: nowrap;
@@ -161,7 +308,7 @@ body.is-ball-maze-page .cursor {
   position: absolute;
   top: 50%;
   right: 8px;
-  color: var(--bm-yellow);
+  color: var(--bm-page-accent);
   content: "⌄";
   font-size: 11px;
   pointer-events: none;
@@ -171,25 +318,27 @@ body.is-ball-maze-page .cursor {
 .bm-language select {
   width: 82px;
   padding: 8px 22px 8px 9px;
-  border: 1px solid rgba(247, 240, 216, .35);
+  border: 1px solid var(--bm-page-line);
   border-radius: 0;
-  color: var(--bm-cream);
-  background: rgba(5, 45, 48, .42);
+  color: var(--bm-page-ink);
+  background: transparent;
+  transition: color .78s var(--ease), border-color .78s var(--ease);
   font-size: 10px;
   letter-spacing: .04em;
   cursor: pointer;
 }
 
+.bm-language option { color: var(--bm-ink); background: var(--bm-cream); }
+
 .bm-hero {
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, .88fr) minmax(320px, 1.12fr);
+  column-gap: clamp(48px, 5.5vw, 96px);
   align-items: center;
   min-height: 100svh;
   padding: 150px clamp(24px, 8vw, 132px) 86px;
   overflow: hidden;
-  color: var(--bm-cream);
-  background: var(--bm-teal);
   isolation: isolate;
 }
 
@@ -205,6 +354,7 @@ body.is-ball-maze-page .cursor {
   background-size: cover;
   opacity: .34;
   mix-blend-mode: multiply;
+  mask-image: linear-gradient(180deg, #000 60%, transparent);
 }
 
 .bm-hero-grid {
@@ -212,18 +362,20 @@ body.is-ball-maze-page .cursor {
   opacity: .28;
   background-image: linear-gradient(rgba(247, 240, 216, .14) 1px, transparent 1px), linear-gradient(90deg, rgba(247, 240, 216, .14) 1px, transparent 1px);
   background-size: 54px 54px;
-  mask-image: linear-gradient(90deg, #000, transparent 85%);
+  mask-image: linear-gradient(90deg, #000, transparent 85%), linear-gradient(180deg, #000 60%, transparent);
+  mask-composite: intersect;
 }
 
 .bm-hero-copy {
   position: relative;
   z-index: 2;
   max-width: 600px;
+  min-width: 0;
 }
 
 .bm-kicker {
   margin: 0 0 22px;
-  color: var(--bm-yellow);
+  color: var(--bm-page-accent);
   font-size: 10px;
   letter-spacing: .18em;
   line-height: 1.6;
@@ -231,16 +383,16 @@ body.is-ball-maze-page .cursor {
 }
 
 .bm-hero-logo {
-  width: min(360px, 76vw);
+  width: min(360px, 100%);
   height: auto;
-  margin: -24px 0 -25px -24px;
+  margin: -24px 0 -25px;
   object-fit: contain;
 }
 
 .bm-hero-copy h1 {
   max-width: 680px;
   margin: 0;
-  color: var(--bm-cream);
+  color: inherit;
   font-size: clamp(48px, 7.2vw, 108px);
   font-weight: 700;
   letter-spacing: -.08em;
@@ -254,14 +406,14 @@ body.is-ball-maze-page .cursor {
 .bm-hero-copy h1 em,
 .bm-section h2 em,
 .bm-final-section h2 em {
-  color: var(--bm-yellow);
+  color: var(--bm-page-accent);
   font-style: normal;
 }
 
 .bm-hero-dek {
   max-width: 440px;
   margin: 30px 0 0;
-  color: rgba(247, 240, 216, .82);
+  color: var(--bm-page-muted);
   font-family: var(--font-studio);
   font-size: 15px;
   font-weight: 600;
@@ -329,20 +481,75 @@ body.is-ball-maze-page .cursor {
   z-index: 1;
   width: min(100%, 760px);
   margin: 28px 0 0 auto;
-  border: 7px solid var(--bm-cream);
-  box-shadow: 18px 20px 0 var(--bm-yellow);
-  transform: rotate(5deg);
-  transition: transform .6s cubic-bezier(.2, .8, .2, 1);
 }
 
-.bm-hero-photo:hover {
-  transform: rotate(1deg) translate(-6px, -5px);
+.bm-hero-viewport {
+  height: auto;
+  aspect-ratio: 4/3;
 }
 
-.bm-hero-photo img {
-  aspect-ratio: 1.78;
-  object-fit: cover;
-  filter: saturate(.88) contrast(1.06);
+.bm-hero-viewport .media-slide:not(.active) {
+  pointer-events: none;
+}
+
+.ball-maze-page .bm-hero-viewport video {
+  height: 100%;
+  object-fit: contain;
+}
+
+.bm-hero-media-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.bm-hero-pagination {
+  --accent: var(--bm-yellow);
+  --panel-ink: var(--bm-cream);
+  position: static;
+  transform: none;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.bm-hero-pagination button {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  min-height: 32px;
+  text-shadow: none;
+  font: 600 11px/1.4 var(--font-studio);
+}
+
+.bm-hero-pagination button b {
+  font-family: var(--font-jetbrains);
+}
+
+.bm-hero-autoplay {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+  min-height: 32px;
+  padding: 4px 0;
+  border: 0;
+  color: var(--bm-cream);
+  background: transparent;
+  font: 600 10px/1.4 var(--font-studio);
+  cursor: pointer;
+  opacity: .75;
+}
+
+.bm-hero-autoplay[aria-pressed="false"] {
+  opacity: .45;
+}
+
+.bm-hero-media-controls button:focus-visible {
+  outline: 1px solid var(--bm-yellow);
+  outline-offset: 4px;
 }
 
 .bm-hero-side {
@@ -413,7 +620,7 @@ body.is-ball-maze-page .cursor {
 }
 
 .bm-section-index span:first-child {
-  color: var(--bm-orange);
+  color: var(--bm-page-accent);
   font-size: 14px;
 }
 
@@ -438,13 +645,22 @@ body.is-ball-maze-page .cursor {
 }
 
 .bm-play-section {
-  min-height: 900px;
-  color: var(--bm-cream);
-  background: var(--bm-deep);
+  padding-block: clamp(64px, 5vw, 84px);
 }
 
-.bm-play-section .bm-section-index span:first-child {
-  color: var(--bm-yellow);
+.bm-play-section .bm-section-index {
+  margin-bottom: 32px;
+}
+
+.bm-play-layout {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(32px, 4vw, 72px);
+}
+
+.bm-play-layout h2 {
+  font-size: clamp(32px, 4.1vw, 66px);
 }
 
 .bm-section-heading {
@@ -456,7 +672,7 @@ body.is-ball-maze-page .cursor {
 .bm-section-heading > p:last-child {
   max-width: 530px;
   margin: 30px 0 0;
-  color: rgba(247, 240, 216, .72);
+  color: var(--bm-page-muted);
   font-size: 15px;
   font-weight: 600;
   line-height: 1.9;
@@ -555,15 +771,14 @@ body.is-ball-maze-page .cursor {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1px;
-  max-width: 760px;
-  margin-top: 210px;
-  border-top: 1px solid rgba(247, 240, 216, .32);
+  margin-top: 32px;
+  border-top: 1px solid var(--bm-page-line);
 }
 
 .bm-principle-card {
-  min-height: 220px;
-  padding: 23px 20px 24px 0;
-  border-right: 1px solid rgba(247, 240, 216, .32);
+  min-height: 175px;
+  padding: 20px 20px 24px 0;
+  border-right: 1px solid var(--bm-page-line);
 }
 
 .bm-principle-card + .bm-principle-card {
@@ -576,7 +791,7 @@ body.is-ball-maze-page .cursor {
 
 .bm-principle-card > span,
 .bm-mode-card > span {
-  color: var(--bm-yellow);
+  color: var(--bm-page-accent);
   font-size: 9px;
   letter-spacing: .15em;
 }
@@ -590,23 +805,20 @@ body.is-ball-maze-page .cursor {
   line-height: 1.15;
 }
 
+.bm-principle-card h3 {
+  margin-top: 24px;
+}
+
 .bm-principle-card p,
 .bm-mode-card p {
   margin: 0;
-  color: rgba(247, 240, 216, .66);
+  color: var(--bm-page-muted);
   font-size: 13px;
   line-height: 1.7;
 }
 
-.bm-worlds-section {
-  color: var(--bm-ink);
-  background: var(--bm-teal);
-}
-
-.bm-worlds-section .bm-section-index span:first-child,
-.bm-worlds-section .bm-kicker,
-.bm-worlds-section h2 em {
-  color: var(--bm-deep);
+.ball-maze-page[data-bm-language="zh"] #bm-worlds-title em {
+  white-space: nowrap;
 }
 
 .bm-worlds-intro {
@@ -653,7 +865,7 @@ body.is-ball-maze-page .cursor {
   z-index: 1;
 }
 
-.bm-world-card img {
+.bm-world-card video {
   position: absolute;
   z-index: 0;
   inset: 0;
@@ -665,9 +877,14 @@ body.is-ball-maze-page .cursor {
   transition: transform .6s ease, opacity .6s ease;
 }
 
-.bm-world-card:hover img {
+.bm-world-card:is(:hover, :focus-visible) video {
   opacity: .9;
   transform: scale(1.05);
+}
+
+.bm-world-card:focus-visible {
+  outline: 2px solid var(--bm-yellow);
+  outline-offset: -5px;
 }
 
 .bm-world-card-label {
@@ -697,11 +914,22 @@ body.is-ball-maze-page .cursor {
   line-height: .92;
 }
 
-.bm-world-card h3 em {
+.bm-world-card h3 > span {
+  display: block;
+}
+
+.bm-world-card h3 .bm-world-english {
+  display: block;
+  margin-top: 8px;
   color: var(--bm-yellow);
   font-size: .53em;
   font-style: normal;
   letter-spacing: -.04em;
+  line-height: 1.15;
+}
+
+.ball-maze-page[data-bm-language="en"] .bm-world-english {
+  display: none;
 }
 
 .bm-world-card p {
@@ -719,7 +947,7 @@ body.is-ball-maze-page .cursor {
   background: #234d50;
 }
 
-.bm-world-mine img {
+.bm-world-mine video {
   object-position: 60% center;
 }
 
@@ -796,11 +1024,6 @@ body.is-ball-maze-page .cursor {
   text-align: right;
 }
 
-.bm-balls-section {
-  color: var(--bm-ink);
-  background: var(--bm-cream);
-}
-
 .bm-balls-heading {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(250px, .6fr);
@@ -848,37 +1071,33 @@ body.is-ball-maze-page .cursor {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1px;
-  margin-top: 1px;
+  border: 1px solid var(--bm-line);
+  margin-top: 0;
   background: var(--bm-line);
 }
 
 .bm-ball-card {
   position: relative;
-  min-height: 302px;
-  padding: 22px 19px 26px;
+  min-width: 0;
+  padding: 20px 18px 24px;
   background: var(--bm-cream);
-  transition: background .25s ease, color .25s ease, transform .25s ease;
+  color: var(--bm-ink);
 }
 
-.bm-ball-card:hover {
+.bm-ball-card:is(:hover, :has(:focus-visible)) {
   z-index: 1;
-  color: var(--bm-cream);
-  background: var(--bm-deep);
-  transform: translateY(-5px);
+  outline: 1px solid #075054;
+  outline-offset: 0;
 }
 
 .bm-ball-card-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: rgba(6, 28, 29, .55);
-  font-size: 9px;
+  gap: 10px;
+  color: #4a6260;
+  font-size: 8px;
   letter-spacing: .1em;
-}
-
-.bm-ball-card:hover .bm-ball-card-top,
-.bm-ball-card:hover p {
-  color: rgba(247, 240, 216, .62);
 }
 
 .bm-ball-dot {
@@ -901,25 +1120,24 @@ body.is-ball-maze-page .cursor {
 .bm-ball-dot-time { background: var(--bm-deep); }
 
 .bm-ball-card h3 {
-  margin: 42px 0 7px;
-  font-size: 25px;
+  margin: 18px 0 9px;
+  color: #16484b;
+  font-size: clamp(20px, 2vw, 27px);
   font-weight: 500;
   letter-spacing: -.08em;
 }
 
 .bm-ball-role {
   min-height: 18px;
-  margin: 0 0 22px !important;
-  color: var(--bm-orange) !important;
-  font-family: inherit !important;
-  font-size: 10px;
-  letter-spacing: .06em;
+  margin: 0 0 10px;
+  color: #8a3d10;
+  font-size: 12px;
+  line-height: 1.6;
 }
 
-.bm-ball-card p:not(.bm-ball-role) {
-  max-width: 220px;
+.bm-ball-description {
   margin: 0;
-  color: rgba(6, 28, 29, .67);
+  color: #385b5c;
   font-size: 12px;
   line-height: 1.7;
 }
@@ -935,63 +1153,52 @@ body.is-ball-maze-page .cursor {
 
 .bm-mode-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1px;
-  margin-top: 76px;
-  background: rgba(6, 28, 29, .22);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 48px;
 }
 
 .bm-modes-section {
-  color: var(--bm-ink);
-  background: var(--bm-orange);
-}
-
-.bm-modes-section .bm-section-index span:first-child,
-.bm-modes-section .bm-kicker {
-  color: var(--bm-deep);
-}
-
-.bm-modes-heading h2 em {
-  color: var(--bm-yellow);
+  padding-block: clamp(80px, 8vw, 128px);
 }
 
 .bm-mode-card {
   position: relative;
-  min-height: 330px;
   padding: 24px 24px 26px;
-  background: var(--bm-orange);
+  border: 1px solid rgba(247, 240, 216, .28);
+  background: var(--bm-deeper);
+  color: var(--bm-cream);
+}
+
+.bm-mode-card > span {
+  color: var(--bm-yellow);
 }
 
 .bm-mode-card h3 {
-  max-width: 270px;
-  margin-top: 80px;
+  margin-top: 24px;
   font-size: clamp(27px, 3vw, 43px);
 }
 
 .bm-mode-card p {
-  max-width: 290px;
-  color: rgba(6, 28, 29, .7);
+  color: rgba(247, 240, 216, .82);
 }
 
-.bm-mode-card strong {
-  position: absolute;
-  right: 21px;
-  bottom: 15px;
-  color: rgba(6, 28, 29, .22);
-  font-size: 88px;
-  font-weight: 400;
-  letter-spacing: -.13em;
-  line-height: .8;
+.bm-mode-footage {
+  --bm-video-line: rgba(247, 240, 216, .32);
+  margin-top: 24px;
 }
 
-.bm-build-section {
-  color: var(--bm-ink);
-  background: var(--bm-yellow);
+.bm-mode-footage-pending {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
 }
 
-.bm-build-section .bm-section-index span:first-child,
-.bm-build-section .bm-kicker {
-  color: var(--bm-orange);
+.bm-mode-footage-pending p {
+  margin: 0;
+  padding: 24px;
+  color: var(--bm-cream);
+  text-align: center;
 }
 
 .bm-build-layout {
@@ -1003,10 +1210,6 @@ body.is-ball-maze-page .cursor {
 
 .bm-build-copy {
   max-width: 520px;
-}
-
-.bm-build-copy h2 em {
-  color: var(--bm-orange);
 }
 
 .bm-build-copy > p:not(.bm-kicker) {
@@ -1027,7 +1230,7 @@ body.is-ball-maze-page .cursor {
 
 .bm-build-copy li {
   padding-top: 10px;
-  border-top: 1px solid rgba(6, 28, 29, .3);
+  border-top: 1px solid var(--bm-page-line);
   font-size: 10px;
   line-height: 1.5;
 }
@@ -1047,9 +1250,6 @@ body.is-ball-maze-page .cursor {
 
 .bm-editor-card {
   position: relative;
-  border: 1px solid rgba(6, 28, 29, .5);
-  background: var(--bm-cream);
-  box-shadow: 17px 17px 0 var(--bm-deep);
 }
 
 .bm-editor-card img {
@@ -1057,43 +1257,31 @@ body.is-ball-maze-page .cursor {
   object-fit: cover;
 }
 
-.bm-editor-card-label {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 13px 15px;
-  border-top: 1px solid rgba(6, 28, 29, .28);
-  color: var(--bm-ink);
-  font-size: 9px;
-  letter-spacing: .1em;
-}
-
-.bm-editor-card-label b {
-  color: var(--bm-orange);
-  font-weight: 400;
-}
-
-.bm-record-section {
-  color: var(--bm-cream);
-  background: var(--bm-deeper);
-}
-
-.bm-record-section .bm-section-index span:first-child,
-.bm-record-section .bm-kicker {
-  color: var(--bm-yellow);
-}
-
 .bm-record-layout {
   display: grid;
-  grid-template-columns: minmax(0, .8fr) minmax(420px, 1.2fr);
-  align-items: end;
-  gap: 10vw;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 72px);
+}
+
+#bm-record-title {
+  font-size: clamp(34px, 5.5vw, 84px);
+}
+
+#bm-record-title > span,
+#bm-record-title > em {
+  display: block;
+}
+
+.ball-maze-page[data-bm-language="zh"] #bm-record-title > span,
+.ball-maze-page[data-bm-language="zh"] #bm-record-title > em {
+  white-space: nowrap;
 }
 
 .bm-record-heading > p:last-child {
   max-width: 400px;
   margin: 30px 0 0;
-  color: rgba(247, 240, 216, .68);
+  color: var(--bm-page-muted);
   font-size: 15px;
   font-weight: 600;
   line-height: 1.9;
@@ -1160,8 +1348,6 @@ body.is-ball-maze-page .cursor {
   min-height: 640px;
   padding: 125px clamp(24px, 8vw, 132px);
   overflow: hidden;
-  color: var(--bm-cream);
-  background: var(--bm-teal);
   isolation: isolate;
 }
 
@@ -1173,6 +1359,7 @@ body.is-ball-maze-page .cursor {
   background-size: cover;
   opacity: .45;
   mix-blend-mode: multiply;
+  mask-image: linear-gradient(180deg, transparent, #000 20%, #000 75%, transparent);
 }
 
 .bm-final-section::after {
@@ -1181,6 +1368,7 @@ body.is-ball-maze-page .cursor {
   inset: 0;
   background: linear-gradient(90deg, rgba(7, 63, 66, .82), rgba(7, 63, 66, .16));
   content: "";
+  mask-image: linear-gradient(180deg, transparent, #000 20%, #000 75%, transparent);
 }
 
 .bm-final-copy {
@@ -1195,14 +1383,6 @@ body.is-ball-maze-page .cursor {
   line-height: .94;
 }
 
-.bm-final-copy > p:not(.bm-kicker) {
-  margin: 29px 0 0;
-  color: rgba(247, 240, 216, .75);
-  font-family: var(--font-studio);
-  font-size: 15px;
-  font-weight: 600;
-}
-
 .bm-final-copy .bm-button {
   margin-top: 31px;
 }
@@ -1211,7 +1391,7 @@ body.is-ball-maze-page .cursor {
   align-self: end;
   justify-self: end;
   width: min(280px, 35vw);
-  color: rgba(247, 240, 216, .7);
+  color: var(--bm-page-muted);
   text-align: right;
 }
 
@@ -1231,20 +1411,20 @@ body.is-ball-maze-page .cursor {
   justify-content: space-between;
   gap: 20px;
   padding: 24px clamp(24px, 8vw, 132px);
-  color: var(--bm-cream);
-  background: var(--bm-deeper);
+  color: inherit;
+  background: transparent;
   font-size: 9px;
   letter-spacing: .12em;
 }
 
 .bm-footer a:first-child {
-  color: var(--bm-yellow);
+  color: var(--bm-page-accent);
 }
 
 .bm-reveal {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity .7s ease, transform .7s cubic-bezier(.2, .8, .2, 1);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.2, .8, .2, 1), color .78s var(--ease), border-color .78s var(--ease);
 }
 
 .bm-reveal.is-visible {
@@ -1283,7 +1463,7 @@ body.is-ball-maze-page .cursor {
   }
 
   .bm-ball-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .bm-world-grid {
@@ -1337,11 +1517,16 @@ body.is-ball-maze-page .cursor {
     justify-content: center;
     min-height: 850px;
     padding: 132px 22px 85px;
+    gap: 0;
+  }
+
+  .bm-hero-copy {
+    order: -1;
   }
 
   .bm-hero-logo {
     width: min(280px, 78vw);
-    margin: -22px 0 -18px -18px;
+    margin: -22px 0 -18px;
   }
 
   .bm-hero-copy h1 {
@@ -1366,16 +1551,28 @@ body.is-ball-maze-page .cursor {
   }
 
   .bm-hero-photo {
-    width: 86%;
-    margin: 54px 6% 0 auto;
-    border-width: 5px;
-    box-shadow: 10px 11px 0 var(--bm-yellow);
-    transform: rotate(3deg);
+    width: 100%;
+    margin: 32px 0 0;
+  }
+
+  .bm-hero-media-controls {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .bm-hero-pagination {
+    gap: 12px;
+  }
+
+  .bm-hero-pagination button {
+    gap: 5px;
+    font-size: 10px;
   }
 
   .bm-hero-side {
-    right: 18px;
-    bottom: 142px;
+    position: static;
+    align-self: flex-end;
+    margin-top: 24px;
   }
 
   .bm-hero-side span {
@@ -1411,7 +1608,12 @@ body.is-ball-maze-page .cursor {
   }
 
   .bm-play-section {
-    min-height: auto;
+    padding-block: 64px;
+  }
+
+  .bm-play-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
   }
 
   .bm-play-diagram {
@@ -1424,7 +1626,6 @@ body.is-ball-maze-page .cursor {
 
   .bm-play-cards {
     grid-template-columns: 1fr;
-    margin-top: 60px;
   }
 
   .bm-principle-card,
@@ -1496,36 +1697,33 @@ body.is-ball-maze-page .cursor {
   }
 
   .bm-ball-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .bm-ball-card {
-    min-height: 240px;
+    padding: 14px 12px 20px;
   }
 
   .bm-ball-card h3 {
-    margin-top: 31px;
+    margin-top: 14px;
+    font-size: 20px;
   }
+
+  .bm-ball-card-top { font-size: 7px; gap: 4px; }
+  .bm-ball-canvas, .bm-ball-canvas model-viewer { min-height: 150px; }
+  .bm-ball-role, .bm-ball-description { font-size: 11px; }
 
   .bm-mode-grid {
     grid-template-columns: 1fr;
     margin-top: 49px;
   }
 
-  .bm-mode-card {
-    min-height: 260px;
-  }
-
-  .bm-mode-card h3 {
-    margin-top: 52px;
+  #bm-record-title {
+    font-size: clamp(34px, 11vw, 68px);
   }
 
   .bm-build-copy ul {
     gap: 13px;
-  }
-
-  .bm-editor-card {
-    box-shadow: 9px 10px 0 var(--bm-deep);
   }
 
   .bm-record-board {
@@ -1552,10 +1750,6 @@ body.is-ball-maze-page .cursor {
     display: grid;
     min-height: 620px;
     padding: 100px 22px 70px;
-  }
-
-  .bm-final-copy > p:not(.bm-kicker) {
-    font-size: 13px;
   }
 
   .bm-final-mark {
@@ -1602,8 +1796,8 @@ body.is-ball-maze-page .cursor {
   gap: 22px;
   margin-top: 60px;
   padding: 16px 0 14px;
-  border-top: 1px solid rgba(6, 28, 29, .35);
-  border-bottom: 1px solid rgba(6, 28, 29, .35);
+  border-top: 1px solid var(--bm-page-line);
+  border-bottom: 1px solid var(--bm-page-line);
 }
 
 .bm-world-stat-strip div {
@@ -1612,23 +1806,24 @@ body.is-ball-maze-page .cursor {
 }
 
 .bm-world-stat-strip strong {
-  color: var(--bm-deep);
+  color: var(--bm-page-accent);
   font-size: clamp(28px, 3.4vw, 48px);
   font-weight: 500;
   letter-spacing: -.08em;
   line-height: .8;
+  white-space: nowrap;
 }
 
 .bm-world-stat-strip span,
 .bm-world-stat-strip > b {
-  color: rgba(6, 28, 29, .58);
+  color: var(--bm-page-muted);
   font-size: 9px;
   letter-spacing: .1em;
   line-height: 1.45;
 }
 
 .bm-world-stat-strip > b {
-  color: var(--bm-orange);
+  color: var(--bm-page-accent);
   font-weight: 400;
   text-align: right;
   white-space: nowrap;
@@ -1639,6 +1834,10 @@ body.is-ball-maze-page .cursor {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 10px;
     margin-top: 45px;
+  }
+
+  .bm-world-stat-strip strong {
+    font-size: clamp(24px, 7.1vw, 28px);
   }
 
   .bm-world-stat-strip > b {
