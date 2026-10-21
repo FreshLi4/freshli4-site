@@ -48,9 +48,9 @@ const knownGames: GameConfig[] = [
   },
   {
     slug: "ball-maze", aliases: ["ball-maze", "maze", "迷宫球"], theme: "ballmaze", fontClass: "maze-font", order: 2,
-    title: copy("迷宫球", "Ball Maze", "迷宮ボール"), englishTitle: "Ball Maze", status: copy("即将发售", "COMING SOON", "発売予定"), category: copy(ballMazeHero.kicker, ballMazeHero.kicker),
+    title: copy("迷宫球", "Ball Maze", "迷宮ボール"), englishTitle: "Ball Maze", status: copy("现已发售", "AVAILABLE NOW", "発売中"), category: copy(ballMazeHero.kicker, ballMazeHero.kicker),
     description: ballMazeHero.description,
-    tags: [copy("Steam", "STEAM"), copy("物理解谜", "PHYSICS PUZZLE", "物理パズル"), copy("关卡编辑器", "LEVEL EDITOR", "レベルエディター")], cta: copy("加入愿望单", "WISHLIST", "ウィッシュリストに追加"), noteA: "TURN<br />THE WORLD", noteB: "360°", link: "https://store.steampowered.com/app/3678730/_/?l=schinese",
+    tags: [copy("Steam", "STEAM"), copy("物理解谜", "PHYSICS PUZZLE", "物理パズル"), copy("关卡编辑器", "LEVEL EDITOR", "レベルエディター")], cta: copy("前往 Steam", "VISIT STEAM", "Steamへ"), noteA: "TURN<br />THE WORLD", noteB: "360°", link: "https://store.steampowered.com/app/3678730/_/?l=schinese",
   },
   {
     slug: "dive-up", aliases: ["dive-up", "diveup", "跃入迷城"], theme: "diveup", fontClass: "dive-font", order: 3,
