@@ -83,3 +83,23 @@ test("Ball Maze's home player restores the studio's layered card styling without
   assert.match(styles, /#ball-maze \.ball-maze-home-title em\s*\{[^}]*font-size:1em/);
   assert.match(styles, /#ball-maze \.bm-hero-media-controls \{ flex-wrap:wrap/);
 });
+
+test("released Ball Maze uses localized store CTAs and availability on both pages", () => {
+  // Scope the home check to Ball Maze: other projects may still be unreleased.
+  const game = home.split('slug: "ball-maze"')[1].split('slug: "dive-up"')[0];
+  const cta = 'copy("前往 Steam", "VISIT STEAM", "Steamへ")';
+  const status = 'copy("现已发售", "AVAILABLE NOW", "発売中")';
+  assert.ok(game.includes(`cta: ${cta}`));
+  assert.ok(game.includes(`status: ${status}`));
+  assert.ok(detail.includes(`text("hero.status", ${status})`));
+  for (const key of ["hero.cta", "final.cta"]) {
+    assert.ok(detail.includes(`text("${key}", ${cta})`));
+  }
+  for (const source of [game, detail]) {
+    assert.doesNotMatch(source, /wishlist|愿望单|ウィッシュリスト|COMING SOON|即将发售|発売予定/i);
+    const storeLinks = [...source.matchAll(/https:\/\/store\.steampowered\.com\/app\/[^"\s]+/g)].map(([url]) => url);
+    assert.equal(storeLinks.length, source === game ? 1 : 3);
+    for (const url of storeLinks) assert.equal(url, "https://store.steampowered.com/app/3678730/_/?l=schinese");
+  }
+  assert.match(home.split('slug: "dive-up"')[1], /status: copy\("开发中", "IN DEVELOPMENT", "開発中"\)/);
+});

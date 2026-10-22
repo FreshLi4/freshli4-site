@@ -85,11 +85,11 @@ const renderBallMazePage = () => `
           </div>
         </div>
         <div class="bm-hero-copy bm-reveal">
-          <p class="bm-kicker">${ballMazeHero.kicker}</p>
+          <p class="bm-kicker">${ballMazeHero.kicker} · ${text("hero.status", copy("现已发售", "AVAILABLE NOW", "発売中"))}</p>
           <img class="bm-hero-logo" src="${escapeHtml(brand(ballMazeHero.logo))}" alt="${escapeHtml(ballMazeHero.logoAlt)}" />
           <h1 id="bm-hero-title">${html("hero.title", ballMazeHero.title, "span")}</h1>
           <p class="bm-hero-dek">${text("hero.dek", ballMazeHero.description)}</p>
-          <div class="bm-hero-actions"><a class="bm-button bm-button-primary" href="https://store.steampowered.com/app/3678730/_/?l=schinese" target="_blank" rel="noopener noreferrer">${text("hero.cta", copy("加入 Steam 愿望单", "ADD TO WISHLIST", "Steam ウィッシュリストに追加"))}<span>↗</span></a><a class="bm-button bm-button-quiet" href="#play">${text("hero.more", copy("继续往下看", "KEEP READING", "続きを読む"))}<span>↓</span></a></div>
+          <div class="bm-hero-actions"><a class="bm-button bm-button-primary" href="https://store.steampowered.com/app/3678730/_/?l=schinese" target="_blank" rel="noopener noreferrer">${text("hero.cta", copy("前往 Steam", "VISIT STEAM", "Steamへ"))}<span>↗</span></a><a class="bm-button bm-button-quiet" href="#play">${text("hero.more", copy("继续往下看", "KEEP READING", "続きを読む"))}<span>↓</span></a></div>
         </div>
         <div class="bm-hero-side bm-reveal"><span>ROLL / TILT / REPEAT</span><strong>360°</strong><small>${text("hero.side", copy("每一次旋转，都是一次新的解题。", "Every turn is a new solution.", "回すたびに、新しい答え。"))}</small></div>
         <div class="bm-hero-bottom"><span>FRESHLi4 GAME STUDIO · SHANGHAI</span><a href="#play">SCROLL <b>↓</b></a></div>
