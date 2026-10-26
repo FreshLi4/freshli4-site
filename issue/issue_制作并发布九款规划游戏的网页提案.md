@@ -1,10 +1,10 @@
 ---
 type: FE
-status: in-progress
+status: ready-for-review
 importance: p1
 emergency: p1
 created-time: 2026-10-26T19:11:49+08:00
-updated-time: 2026-10-26T21:56:53+08:00
+updated-time: 2026-10-26T22:10:14+08:00
 tags: [pitch-deck, website]
 ---
 # Description
@@ -21,8 +21,8 @@ tags: [pitch-deck, website]
 - [x] 建立并推送两个新游戏策划仓库；其他会话已补齐 1bit 开箱肉鸽仓库，九款远端均有对应。
 - [x] 完成导览、九个详情页与轻量交互。
 - [x] 检查生成结果、74 个内部资源引用、18 个返回及下一款导航、CSS 与 TypeScript；已有首页及轮播相关 10 项测试通过。
-- [ ] 确认完整仓库的生产构建成功。
-- [ ] 发布到 `https://www.freshli4.com/pitch-deck` 并读回验证。
+- [x] 确认完整仓库的生产构建成功。
+- [x] 发布到 `https://www.freshli4.com/pitch-deck` 并读回验证。
 - [ ] 用户视觉与内容验收。
 
 # Comments
@@ -34,5 +34,13 @@ tags: [pitch-deck, website]
 生成读回为 10 个 HTML、9 个项目卡片、74 个内部资源引用、18 个返回/下一款导航；CSS 解析、`node --check`、`npm run typecheck`、`git diff --check` 和既有首页/轮播 10 项测试通过。初次测试因稀疏工作副本未取回既有素材缺失，取回后重跑全部通过。发布使用完整 Git 源仓库构建，等待生产结果；未进行 GUI 视觉或用户验收。
 
 《孤堡惊情》首次推送为 `32ce29dd8019416ad04eaf0b3186aae6a7bf1ddd`；《铁甲钢拳》为 `fe294982c367f615268979c12c83ef4167392eed`。另一个用户授权的会话已完成九款 Gitea 仓库核对及 1bit 仓库补建，本任务没有重复创建。
+
+[对话内容](codex://threads/01a17788-2fe9-74c2-a147-c96b000856a3)
+
+## 20261026-221014_Codex_GPT-6
+
+网站源提交 `268c6a4ac156246b2c188959537586d4120a8a63` 已推送 main。Vercel 生产部署 `dpl_7FGiN4ASw3RA9yzcALjU7WukwhLg` 为 READY，绑定 www.freshli4.com 与 freshli4.com。
+
+正式域名读回：导览及九个详情共 10 页 HTTP 200，样式、favicon 与九张图共 11 项资源 HTTP 200；18 个返回与下一款导航正确。页面含 noindex 响应头与站内索引排除标记；首页及发布后的脚本没有导览入口，编译后的首页列表排除 dive-up。既有迷宫球与调查深入地址仍为 HTTP 200。检查为构建、代码与 HTTP 读回，不代表 GUI 视觉和用户验收；待用户查看。
 
 [对话内容](codex://threads/01a17788-2fe9-74c2-a147-c96b000856a3)
