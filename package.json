@@ -7,9 +7,10 @@
   },
   "scripts": {
     "generate:wiki": "node build/generate-investigation-wiki.mjs",
-    "predev": "npm run generate:wiki",
+    "generate:pitch-deck": "node build/generate-pitch-deck.mjs",
+    "predev": "npm run generate:wiki && npm run generate:pitch-deck",
     "dev": "vite",
-    "prebuild": "npm run generate:wiki",
+    "prebuild": "npm run generate:wiki && npm run generate:pitch-deck",
     "build": "vite build",
     "postbuild": "pagefind --site dist --output-path dist/pagefind",
     "preview": "vite preview",

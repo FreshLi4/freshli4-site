@@ -39,6 +39,8 @@ next-env.d.ts
 /dist/
 /public/_wiki-search/
 /src/generated/
+/public/pitch-deck/index.html
+/public/pitch-deck/*/index.html
 /.wrangler/
 /outputs/
 /work/

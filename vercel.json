@@ -1,4 +1,8 @@
 {
+  "headers": [
+    { "source": "/pitch-deck", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" }] },
+    { "source": "/pitch-deck/:path*", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" }] }
+  ],
   "functions": {
     "api/rules-ai.ts": {
       "maxDuration": 60,
