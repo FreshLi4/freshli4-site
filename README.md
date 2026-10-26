@@ -2,9 +2,9 @@
 
 现有官网使用 Vite + TypeScript 构建，生产站点为 [www.freshli4.com](https://www.freshli4.com)。
 
-## 规划游戏 Pitch Deck
+## 游戏项目 Pitch Deck
 
-入口为 [www.freshli4.com/pitch-deck](https://www.freshli4.com/pitch-deck)，包含九款规划游戏的导览和独立详情页。官网首页、菜单及搜索不提供该入口；《跃入迷城》移入此提案，不再出现在首页展示列表。页面设置 `noindex`，直接持有网址即可访问。
+入口为 [www.freshli4.com/pitch-deck](https://www.freshli4.com/pitch-deck)，包含十二款游戏的导览和独立详情页，按朋友同玩、沉浸体验与 Free to play 三个分区展示。官网首页、菜单及搜索不提供该入口；《跃入迷城》移入此提案，不再出现在首页展示列表。页面设置 `noindex`，直接持有网址即可访问。
 
 - 内容：`src/data/pitch-deck.mjs`。
 - 生成器：`build/generate-pitch-deck.mjs`，通过 `npm run generate:pitch-deck` 生成 HTML；开发与构建前自动执行。

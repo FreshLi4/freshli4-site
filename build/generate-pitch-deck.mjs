@@ -22,9 +22,49 @@ function card(project, index) {
   return `<a class="project-card" href="${url(project)}" style="--accent:${project.accent};--tint:${project.tint}"><div class="card-art"><img src="${image(project)}" width="1536" height="1024" alt="${escape(project.imageAlt)}" loading="${index === 0 ? "eager" : "lazy"}" decoding="async"><span class="art-label">概念视觉</span><span class="card-arrow" aria-hidden="true">↗</span></div><div class="card-meta"><span>${number(index)} / ${escape(project.category)}</span><span class="stage"><i aria-hidden="true"></i>${escape(project.stage)}</span></div><h2>${escape(project.title)}</h2><p>${escape(project.short)}</p><span class="card-link">进入项目 <span aria-hidden="true">→</span></span></a>`;
 }
 
+const overviewGroups = [
+  {
+    id: "fun-with-friends",
+    title: "Fun with friends",
+    chineseTitle: "和朋友一起玩",
+    description: "以合作、派对和轻松对抗，分享一局游戏。",
+    label: "CASUAL · CO-OP · PARTY",
+    projectSlugs: ["must-be-human", "slam-drunk", "bid-or-bust"]
+  },
+  {
+    id: "immerse-yourself",
+    title: "Immerse yourself",
+    chineseTitle: "沉浸其中",
+    description: "踏进各自的世界，在故事、战斗与探索中投入其中。",
+    label: "IMMERSIVE · STORY · ACTION",
+    projectSlugs: ["haunted-castle", "steel-fists", "double-deposition", "fog-bound", "unboxing-roguelike", "dive-up", "lebab"]
+  },
+  {
+    id: "free-to-play",
+    title: "Free to play",
+    chineseTitle: "免费开玩",
+    description: "面向免费游玩的低门槛体验，覆盖卡牌对局与信息检索推理。",
+    label: "BROWSER · PICK UP AND PLAY",
+    projectSlugs: ["roshambo", "case-pending-guanlan"]
+  }
+];
+const indexedProjects = new Map(projects.map((project, index) => [project.slug, { project, index }]));
+const groupedProjectSlugs = overviewGroups.flatMap(group => group.projectSlugs);
+if (groupedProjectSlugs.length !== projects.length || new Set(groupedProjectSlugs).size !== projects.length || groupedProjectSlugs.some(slug => !indexedProjects.has(slug))) {
+  throw new Error("Pitch deck overview groups must contain every project exactly once.");
+}
+
+function projectGroup(group, index) {
+  const cards = group.projectSlugs.map(slug => {
+    const entry = indexedProjects.get(slug);
+    return card(entry.project, entry.index);
+  }).join("");
+  return `<section class="project-group" id="${group.id}" aria-labelledby="${group.id}-title"><header class="project-group-heading"><div><span class="eyebrow">0${index + 1} / ${escape(group.label)}</span><h2 id="${group.id}-title">${escape(group.title)}</h2><span class="group-translation">${escape(group.chineseTitle)}</span></div><p>${escape(group.description)}</p></header><div class="projects-grid" aria-label="${escape(group.chineseTitle)}项目">${cards}</div></section>`;
+}
+
 function overview() {
-  const body = `<header class="site-header">${brand}<span class="header-note">PROJECT PORTFOLIO <span class="header-year">/ 2026</span></span></header><main id="main"><section class="overview-hero wrap"><div class="eyebrow"><span class="fresh-dot" aria-hidden="true"></span> FRESH IDEAS, TAKING SHAPE.</div><div class="overview-intro"><h1>新鲜想法，<br><span>正在成形。</span></h1><div class="intro-copy"><span class="edition">PITCH DECK · OCTOBER 2026</span><p>九个项目，九种走进游戏的方式。<br>从共用一个身体，到交换两个年代的证言；<br class="desktop-break">让清楚的点子，长出自己的玩法。</p><a class="browse-link" href="#projects">浏览全部项目 <span aria-hidden="true">↓</span></a></div></div><div class="catalog-heading" id="projects"><h2>规划中的游戏</h2><span>${String(projects.length).padStart(2, "0")} PROJECTS <span aria-hidden="true">↙</span></span></div></section><section class="projects-grid wrap" aria-label="游戏项目">${projects.map(card).join("")}</section><section class="closing wrap"><div><span class="eyebrow">LET’S MAKE SOMETHING FRESH.</span><h2>从一个好点子，<br>到一次想玩的体验。</h2></div><div class="closing-copy"><p>这里呈现的是正在探索和制作的游戏方向。<br>所有插画均为概念视觉，用于说明主题与玩法。</p><a class="contact-link" href="mailto:${contact}">聊聊合作 <span aria-hidden="true">↗</span></a></div></section></main>`;
-  return document("规划游戏提案", "FreshLi4 九款规划游戏：人模人样、孤堡惊情、铁甲钢拳、SLAM DRUNK、二重证言、Fog Bound、买定离手、开箱肉鸽与跃入迷城。", "/pitch-deck", body);
+  const body = `<header class="site-header overview-header">${brand}<span class="header-note">PROJECT PORTFOLIO <span class="header-year">/ 2026</span></span></header><main id="main" class="overview-page"><section class="overview-hero wrap"><div class="eyebrow"><span class="fresh-dot" aria-hidden="true"></span> FRESH IDEAS, TAKING SHAPE.</div><div class="overview-intro"><h1>新鲜想法，<br><span>正在成形。</span></h1><div class="intro-copy"><span class="edition">PITCH DECK · OCTOBER 2026</span><p>${projects.length} 个游戏项目，三个展示分区。<br>和朋友一起开玩，走进新世界，或免费开始。</p><a class="browse-link" href="#fun-with-friends">浏览游戏 <span aria-hidden="true">↓</span></a></div></div><div class="catalog-heading"><h2>游戏项目</h2><span>${String(projects.length).padStart(2, "0")} PROJECTS <span aria-hidden="true">↙</span></span></div></section>${overviewGroups.map(projectGroup).join("")}<section class="closing wrap"><div><span class="eyebrow">LET’S MAKE SOMETHING FRESH.</span><h2>从一个好点子，<br>到一次想玩的体验。</h2></div><div class="closing-copy"><p>这里展示不同阶段的游戏项目与方向。<br>插画为概念视觉，用于说明主题与玩法。</p><a class="contact-link" href="mailto:${contact}">聊聊合作 <span aria-hidden="true">↗</span></a></div></section></main>`;
+  return document("游戏项目提案", `FreshLi4 ${projects.length} 款游戏项目，分为朋友同玩、沉浸体验与 Free to play 三个展示分区。`, "/pitch-deck", body);
 }
 
 function detail(project, index) {
@@ -33,7 +73,7 @@ function detail(project, index) {
   return document(project.title, project.short, url(project), body, project.accent);
 }
 
-if (projects.length !== 9 || new Set(projects.map(p => p.slug)).size !== projects.length) throw new Error("Pitch deck must contain nine unique projects.");
+if (projects.length !== 12 || new Set(projects.map(p => p.slug)).size !== projects.length) throw new Error("Pitch deck must contain twelve unique projects.");
 await mkdir(output, { recursive: true });
 await writeFile(join(output, "index.html"), overview(), "utf8");
 for (const [index, project] of projects.entries()) {

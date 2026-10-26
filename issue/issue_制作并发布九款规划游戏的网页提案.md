@@ -4,7 +4,7 @@ status: ready-for-review
 importance: p1
 emergency: p1
 created-time: 2026-10-26T19:11:49+08:00
-updated-time: 2026-10-26T22:10:14+08:00
+updated-time: 2026-10-27T01:16:19+08:00
 tags: [pitch-deck, website]
 ---
 # Description
@@ -17,13 +17,17 @@ tags: [pitch-deck, website]
 
 视觉以 low poly + toon shading 为共同基线；SLAM DRUNK 加入美漫墨线，二重证言采用有铅笔描边和绘画质感的 3D。概念图明确标注，原始聊天不进入公开官网源码。
 
+导览页顶部与底部使用首页的 FreshLi4 品牌黄，中段随页面滚动由品牌黄过渡至纸色并回到品牌黄。项目分为 “Fun with friends”（轻松合作与派对）和 “Immerse yourself”（故事、战斗与探索）两组，每款项目只出现一次。
+
 - [x] 核对九款游戏内容和指定聊天来源；1bit 开箱肉鸽仅采用用户已确认方向，具体规则留待原型。
 - [x] 建立并推送两个新游戏策划仓库；其他会话已补齐 1bit 开箱肉鸽仓库，九款远端均有对应。
 - [x] 完成导览、九个详情页与轻量交互。
 - [x] 检查生成结果、74 个内部资源引用、18 个返回及下一款导航、CSS 与 TypeScript；已有首页及轮播相关 10 项测试通过。
 - [x] 确认完整仓库的生产构建成功。
 - [x] 发布到 `https://www.freshli4.com/pitch-deck` 并读回验证。
-- [ ] 用户视觉与内容验收。
+- [x] 更新导览页的滚动渐变背景与首尾品牌色，并按两种体验重组九款项目。
+- [x] 生成导览与详情 HTML，检查两个分组及九款项目链接。
+- [ ] 用户视觉、内容、分组与渐变验收。
 
 # Comments
 
@@ -44,3 +48,11 @@ tags: [pitch-deck, website]
 正式域名读回：导览及九个详情共 10 页 HTTP 200，样式、favicon 与九张图共 11 项资源 HTTP 200；18 个返回与下一款导航正确。页面含 noindex 响应头与站内索引排除标记；首页及发布后的脚本没有导览入口，编译后的首页列表排除 dive-up。既有迷宫球与调查深入地址仍为 HTTP 200。检查为构建、代码与 HTTP 读回，不代表 GUI 视觉和用户验收；待用户查看。
 
 [对话内容](codex://threads/01a17788-2fe9-74c2-a147-c96b000856a3)
+
+## 20261027-011619_Codex_GPT-6
+
+导览页顶部和底部使用首页品牌黄，中段加入滚动色彩过渡；项目分为 “Fun with friends”（人模人样、SLAM DRUNK、买定离手）与 “Immerse yourself”（其余六款）。九张卡片保留原项目详情链接与序号。
+
+`npm run generate:pitch-deck` 成功，生成 1 个导览页和 9 个详情页。读回导览 HTML 确认两个分组及九个项目链接；未运行测试，也未进行 GUI 视觉验收。
+
+[对话内容](codex://threads/01a17933-00a8-7021-90d0-b45d130fe044)

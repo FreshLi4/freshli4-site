@@ -1,4 +1,4 @@
-# 新增三款游戏概念图提示词
+# 新增游戏概念图提示词
 
 2026-10-26 使用内置 Image Generation 生成。输出保留为 `public/pitch-deck/media/<slug>.webp`，均为概念视觉。
 
@@ -13,3 +13,15 @@ Use case: stylized-concept. Wide 1536x1024 key art for a TOP DOWN 1-BIT UNBOXING
 ## dive-up
 
 Use case: stylized-concept. Wide 1536x1024 key art for DIVE UP, a top-down 3D cyberpunk action shooter in a futuristic Chinese industrial city. LOW POLY 3D scene, sharply faceted geometry, flat colored materials, hard single-tone TOON SHADING, polished game asset pack aesthetic, not photoreal and not soft clay. Elevated three-quarter top-down camera on a compact industrial combat zone: one agent in a dark teal coat with a visibly mechanical forearm holds a compact firearm while moving between low concrete cover, facing two angular security machines near a sealed factory entrance. Strong readable silhouettes, emphasis on tactical space rather than explosions. Behind them old brick workshop structures are layered with newer industrial towers, pipes, a narrow elevated walkway, rooftop vents and a distant dense city skyline. A small amber-lit safe room door at one edge suggests the choice of going deeper or returning. Muted teal charcoal concrete and rusty ochre, one vivid coral red light, crisp lit and shadowed planes. A few muzzle sparks, no gore. No holographic UI, health bars, text, numbers, logos, panels, watermark. Original concept visual, no existing franchise characters.
+
+## roshambo
+
+2026-10-27 使用内置 Image Generation 生成，保存为 `public/pitch-deck/media/roshambo.webp`（PNG 原图保留在会话生成目录）。
+
+Use case: stylized-concept. Wide landscape concept art for a browser card game called Roshambo, based on a compact 3×3 matrix and rock-paper-scissors counterplay. Clean high-resolution pixel art with deliberate, crisp pixel clusters and a limited retro palette, inspired by the game's sage-green board, warm cream cards, ochre borders, and blocky symbols. Show a readable 3×3 play matrix on a tabletop; a 1×3 card line is being pushed in from one edge, with simple stone, scissors, and paper symbols visibly covering one another in a short chain. Cards and grid are the focus; keep the board legible at small portfolio-card size. This is an illustrative concept image, not a fake screenshot: no readable text, menus, buttons, counters, logos, watermark, desktop browser frame, or copied game screen.
+
+## case-pending-guanlan
+
+2026-10-27 使用内置 Image Generation 生成，保存为 `public/pitch-deck/media/case-pending-guanlan.webp`（PNG 原图保留在会话生成目录）。
+
+Use case: stylized-concept. Wide landscape concept illustration for a web information-retrieval mystery about insurance claim review in a fictional 2002 company intranet. A quiet claims examiner's desk with a beige CRT computer displaying a generic abstract early-2000s business portal, a fax machine and overlapping scanned claim documents. A small apartment-building photograph and fire-inspection paperwork suggest a disputed apartment claim without depicting a confirmed culprit, exact evidence, or unverified plot event. Restrained editorial pixel-art / low-resolution computer-era texture, muted office green, aged paper, charcoal, and amber. The atmosphere is procedural and unsettling, not a detective action scene or horror spectacle. Keep the CRT and papers recognizable at small portfolio-card size. Concept illustration, not a gameplay screenshot. No legible text, case number, dates, names, logos, modern smartphone, police badge, blood, UI overlay, or watermark.
