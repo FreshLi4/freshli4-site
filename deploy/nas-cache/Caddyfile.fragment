@@ -1,0 +1,20 @@
+# BEGIN freshli4-site-cache
+https://www.freshli4.com:10444 {
+    tls /certs/www.freshli4.com.fullchain.pem /certs/www.freshli4.com.key
+    header -Alt-Svc
+    reverse_proxy freshli4-site-cache:8080
+}
+
+https://cn-cache.freshli4.com:10444 {
+    tls /certs/www.freshli4.com.fullchain.pem /certs/www.freshli4.com.key
+    header -Alt-Svc
+    header X-Robots-Tag "noindex, nofollow, noarchive"
+    reverse_proxy freshli4-site-cache:8080
+}
+
+https://freshli4.com:10444 {
+    tls /certs/www.freshli4.com.fullchain.pem /certs/www.freshli4.com.key
+    header -Alt-Svc
+    redir https://www.freshli4.com{uri} 308
+}
+# END freshli4-site-cache

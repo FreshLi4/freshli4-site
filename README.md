@@ -2,13 +2,18 @@
 
 现有官网使用 Vite + TypeScript 构建，生产站点为 [www.freshli4.com](https://www.freshli4.com)。
 
+NAS 缓存节点的部署、缓存更新和回退方式见 [部署说明](deploy/nas-cache/README.md)。
+
 ## 游戏项目 Pitch Deck
 
 入口为 [www.freshli4.com/pitch-deck](https://www.freshli4.com/pitch-deck)，包含十二款游戏的导览和独立详情页，按朋友同玩、沉浸体验与 Free to play 三个分区展示。官网首页、菜单及搜索不提供该入口；《跃入迷城》移入此提案，不再出现在首页展示列表。页面设置 `noindex`，直接持有网址即可访问。
 
 - 内容：`src/data/pitch-deck.mjs`。
 - 生成器：`build/generate-pitch-deck.mjs`，通过 `npm run generate:pitch-deck` 生成 HTML；开发与构建前自动执行。
-- 样式与图片：`public/pitch-deck/`，概念图提示词见 `asset/pitch-deck/image-briefs.md` 与 `asset/pitch-deck/added-image-briefs.md`。
+- 样式、滚动切色脚本与图片：`public/pitch-deck/`，概念图提示词见 `asset/pitch-deck/image-briefs.md` 与 `asset/pitch-deck/added-image-briefs.md`。
+- 导览与项目内页复用首页的首屏、联系区、字体与响应式样式，由 `build/generate-pitch-deck-shell.mjs` 从 `src/styles.css` 生成；生产构建复用首页已输出的字体资源。
+- 悬浮目录复用首页左侧居中的文字导航，可定位到导览分区、各款游戏或内页章节；随滚动高亮，闲置淡出，悬停或聚焦时显示。
+- 项目内页以左右分栏呈现介绍与项目资料，不展示概念图；窄屏改为纵向排列。
 - 生成的 HTML 不提交；部署使用完整仓库运行 `npm run build`，保持现有官网及规则书资源完整。
 - 项目阶段与概念视觉分别标注；两款开箱项目分别为 `bid-or-bust` 与 `unboxing-roguelike`，Fog Bound 使用现有 `project-fogbound` 世界设定。
 

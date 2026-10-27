@@ -4,7 +4,7 @@ status: ready-for-review
 importance: p1
 emergency: p1
 created-time: 2026-10-27T01:33:52+08:00
-updated-time: 2026-10-27T01:35:36+08:00
+updated-time: 2026-10-27T13:56:47+08:00
 tags: [pitch-deck, website, free-to-play]
 ---
 # Description
@@ -12,6 +12,14 @@ tags: [pitch-deck, website, free-to-play]
 在 `/pitch-deck` 导览中新增 “Free to play” 分区模块，加入 Roshambo 与《案件待处理：观澜公寓》，沿用现有卡片、独立详情页和循环导航。保留此前已完成的 Fun with friends / Immerse yourself 分区与当前工作区改动。
 
 Roshambo 内容以其 `roshambo_main` README 与 itch 页面说明为准，介绍 3×3 卡牌矩阵、Duel、Matrix、Roguelike 及在线 PvP 预览；阶段按用户说明标为“接近完成”，详情同时列出仓库资料记录的 v0.9.0 与待完善功能。《案件待处理》沿用当前项目资料确认的外包理赔审查、2002 年企业内网、证据检索与结构化报告概念；用户指定“观澜公寓”作为此次展示名。现有项目资料中的第一案仍名为“南栖公寓”，所以页面不扩写具体案件冲突。Free to play 是用户指定的展示分区，不代表本次确认了每个项目的实际发行状态。
+
+## 当前案件内容更新
+
+《观澜公寓住户失踪事件》按用户最新指定名称展示；项目详情以 `case-pending/guanlan-residence` 的 2009 年房源调查与寻找失联好友为准。此前 2002 年保险审核说明属于另一工作线，保留在历史 Comments 中，不作为当前详情的故事设定。
+
+- [x] 更新提案数据、内容依据及本地导览、详情和相邻导航显示。
+- [x] 既有 6 项 pitch-deck 检查通过。
+- [ ] 线上发布及用户内容 / 视觉验收。
 
 - [x] 新增 Free to play 分区和两张项目卡片。
 - [x] 补充 Roshambo 与《案件待处理：观澜公寓》的独立详情页内容及概念配图。
@@ -28,3 +36,19 @@ Roshambo 内容以其 `roshambo_main` README 与 itch 页面说明为准，介�
 新增两张 1536 × 1024 概念图并压缩为 WebP，分别约 214 KiB、237 KiB。`node --check`、`npm run generate:pitch-deck`、结构读回（13 个 HTML、12 张唯一卡片、三个分区、缺失页面/图片为 0）及 `git diff --check` 均通过。未运行测试、完整生产构建、部署或 GUI 视觉验收。
 
 [对话内容](codex://threads/01a1793f-e22b-7412-99c5-e8f09e9ce2b1)
+
+## 20261027-113632_Codex_Gpt-6
+
+按用户要求将提案中的案件标题改为《待办事项：观澜公寓》，并对照对应工作区的大纲与开场邮件，将概述、玩法和阶段更新为 2009 年经纪人寻找失联好友的网页调查。更新内容依据文件；原保险审核描述保留在历史记录，不混入本案。
+
+当前本地生成的提案总览、详情与相邻导航已读回新标题；`node --test tests/pitch-deck.test.mjs` 六项通过，`git diff --check` 通过。未执行完整生产构建、GUI 验收、Git commit、push 或线上发布。游戏 NAS 部署由对应游戏工作区记录。
+
+[本轮修改对话](codex://threads/01a17b5e-1ed4-7170-a93d-546d4c118311)
+
+## 20261027-135647_Codex_Gpt-6
+
+按用户最新决定，将官网提案中的游戏名称更新为《观澜公寓住户失踪事件》，保留当前案件内容，并由既有生成器更新本地总览、详情与相邻项目导航。游戏开场任务邮件仍称“待办事项：观澜公寓”，不作为游戏标题。
+
+本地目标页面名称读回、现有 7 项 pitch-deck 检查与 `git diff --check` 通过；官网线上详情 HTTP 200，但尚未包含新标题。本次未提交、推送、发布官网或进行 GUI / 用户验收。
+
+[本轮修改对话](codex://threads/01a17b5e-1ed4-7170-a93d-546d4c118311)

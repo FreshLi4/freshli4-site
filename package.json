@@ -12,15 +12,16 @@
     "dev": "vite",
     "prebuild": "npm run generate:wiki && npm run generate:pitch-deck",
     "build": "vite build",
-    "postbuild": "pagefind --site dist --output-path dist/pagefind",
+    "postbuild": "node build/generate-pitch-deck-shell.mjs && pagefind --site dist --output-path dist/pagefind",
     "preview": "vite preview",
-    "test": "npm run build && node --test tests/rendered-html.test.mjs tests/investigation-pages.test.mjs tests/wiki-content.test.mjs tests/search-and-ai-format.test.mjs tests/ball-maze.test.mjs tests/media-carousel.test.mjs tests/world-previews.test.mjs tests/ball-maze-home.test.mjs tests/ball-maze-sections.test.mjs",
+    "test": "npm run build && node --test tests/rendered-html.test.mjs tests/investigation-pages.test.mjs tests/wiki-content.test.mjs tests/search-and-ai-format.test.mjs tests/ball-maze.test.mjs tests/media-carousel.test.mjs tests/world-previews.test.mjs tests/ball-maze-home.test.mjs tests/ball-maze-sections.test.mjs tests/pitch-deck.test.mjs",
     "pretypecheck": "npm run generate:wiki",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/node": "22.19.19",
     "pagefind": "^1.5.2",
+    "postcss": "8.5.14",
     "typescript": "5.9.3",
     "vite": "8.0.13"
   },
