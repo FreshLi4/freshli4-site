@@ -74,3 +74,6 @@ body[data-overview-theme] .pitch-contents .project-tabs{max-height:calc(100svh -
 .pitch-contents .toc-group ul{list-style:none;margin:5px 0 0;padding:0 0 0 18px}
 .pitch-contents .toc-group li+li{margin-top:5px}
 body[data-overview-theme] .pitch-contents .toc-project{font-size:9px}
+
+/* 新概念尚无对应图稿时，用标题卡片保留版式，避免引用不存在或过时的图片。 */
+.card-art-pending{display:grid;place-items:center;padding:36px 24px 48px;color:#20221f}.concept-pending-title{max-width:12em;font-size:clamp(22px,2.8vw,40px);font-weight:750;line-height:1.35;letter-spacing:-.04em;text-align:center}

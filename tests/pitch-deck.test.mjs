@@ -59,7 +59,7 @@ test("overview groups include each project once and place both requested games w
   const html = await readFile(new URL("public/pitch-deck/index.html", root), "utf8");
   const groups = [...html.matchAll(/<section class="project-group wrap"[^>]*id="([^"]+)"[\s\S]*?<\/section>/g)]
     .map(match => ({ id: match[1], slugs: [...match[0].matchAll(/class="project-card" href="\/pitch-deck\/([^"]+)"/g)].map(card => card[1]) }));
-  assert.deepEqual(groups.map(group => [group.id, group.slugs.length]), [["fun-with-friends", 5], ["immerse-yourself", 5], ["free-to-play", 2]]);
+  assert.deepEqual(groups.map(group => [group.id, group.slugs.length]), [["fun-with-friends", 6], ["immerse-yourself", 7], ["free-to-play", 2]]);
   const slugs = groups.flatMap(group => group.slugs);
   assert.equal(new Set(slugs).size, projects.length);
   assert.deepEqual(new Set(slugs), new Set(projects.map(project => project.slug)));
@@ -72,7 +72,7 @@ test("overview groups include each project once and place both requested games w
   const toc = html.match(/<nav class="games-controls pitch-contents"[\s\S]*?<\/nav>/)[0];
   const ids = new Set([...html.matchAll(/\sid="([^"]+)"/g)].map(match => match[1]));
   const targets = [...toc.matchAll(/href="#([^"]+)"/g)].map(match => match[1]);
-  assert.equal(targets.length, 17);
+  assert.equal(targets.length, projects.length + groups.length + 2);
   for (const id of targets) assert.ok(ids.has(id), `missing directory target: ${id}`);
 });
 

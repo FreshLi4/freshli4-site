@@ -18,7 +18,10 @@ function document(title, description, path, body) {
 }
 
 function card(project, index) {
-  return `<a class="project-card" href="${url(project)}" id="project-${project.slug}" style="--accent:${project.accent};--tint:${project.tint}"><div class="card-art"><img src="${image(project)}" width="1536" height="1024" alt="${escape(project.imageAlt)}" loading="${index === 0 ? "eager" : "lazy"}" decoding="async"><span class="art-label">概念视觉</span><span class="card-arrow" aria-hidden="true">↗</span></div><div class="card-meta"><span>${number(index)} / ${escape(project.category)}</span><span class="stage"><i aria-hidden="true"></i>${escape(project.stage)}</span></div><h2>${escape(project.title)}</h2><p>${escape(project.short)}</p><span class="card-link">进入项目 <span aria-hidden="true">→</span></span></a>`;
+  const artwork = project.conceptImage === false
+    ? `<span class="concept-pending-title">${escape(project.title)}</span><span class="art-label">当前方向暂无概念图</span>`
+    : `<img src="${image(project)}" width="1536" height="1024" alt="${escape(project.imageAlt)}" loading="${index === 0 ? "eager" : "lazy"}" decoding="async"><span class="art-label">概念视觉</span>`;
+  return `<a class="project-card" href="${url(project)}" id="project-${project.slug}" style="--accent:${project.accent};--tint:${project.tint}"><div class="card-art${project.conceptImage === false ? " card-art-pending" : ""}">${artwork}<span class="card-arrow" aria-hidden="true">↗</span></div><div class="card-meta"><span>${number(index)} / ${escape(project.category)}</span><span class="stage"><i aria-hidden="true"></i>${escape(project.stage)}</span></div><h2>${escape(project.title)}</h2><p>${escape(project.short)}</p><span class="card-link">进入项目 <span aria-hidden="true">→</span></span></a>`;
 }
 
 const overviewGroups = [
@@ -29,7 +32,7 @@ const overviewGroups = [
     chineseTitle: "和朋友一起玩",
     description: "以合作、派对和轻松对抗，分享一局游戏。",
     label: "CASUAL · CO-OP · PARTY",
-    projectSlugs: ["must-be-human", "haunted-castle", "steel-fists", "slam-drunk", "bid-or-bust"]
+    projectSlugs: ["must-be-human", "haunted-castle", "steel-fists", "slam-drunk", "bid-or-bust", "bottoms-up"]
   },
   {
     id: "immerse-yourself",
@@ -38,7 +41,7 @@ const overviewGroups = [
     chineseTitle: "沉浸其中",
     description: "踏进各自的世界，在故事、战斗与探索中投入其中。",
     label: "IMMERSIVE · STORY · ACTION",
-    projectSlugs: ["double-deposition", "fog-bound", "unboxing-roguelike", "dive-up", "lebab"]
+    projectSlugs: ["double-deposition", "fog-bound", "for-bond", "unboxing-roguelike", "dive-up", "lebab", "cybernetic-doctor"]
   },
   {
     id: "free-to-play",
@@ -116,7 +119,7 @@ function detail(project, index) {
     { id: "top", label: "项目开场", theme: "studio", className: "hero detail-hero studio-font", content: `
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="detail-hero-layout">
-        <div class="detail-heading reveal"><span class="stage"><i aria-hidden="true"></i>${escape(project.stage)}</span><h1 class="hero-title" id="project-title">${project.title.split("：").map(escape).join("：<br>")}</h1>${project.title.toUpperCase() !== project.english ? `<p class="english-title">${escape(project.english)}</p>` : ""}<p class="detail-introduction">${escape(project.short)}</p><a class="browse-link" href="#concept">了解项目 <span aria-hidden="true">↓</span></a></div>
+        <div class="detail-heading reveal"><span class="stage"><i aria-hidden="true"></i>${escape(project.stage)}</span><h1 class="hero-title" id="project-title">${project.title.split("：").map(escape).join("：<br>")}</h1>${project.english && project.title.toUpperCase() !== project.english ? `<p class="english-title">${escape(project.english)}</p>` : ""}<p class="detail-introduction">${escape(project.short)}</p><a class="browse-link" href="#concept">了解项目 <span aria-hidden="true">↓</span></a></div>
         <div class="detail-hero-intro reveal"><p class="detail-hero-index">PROJECT ${number(index)} / ${String(projects.length).padStart(2, "0")} · ${escape(project.category)}</p><p class="detail-hook">${project.hook.map(escape).join("<br>")}</p><dl class="project-facts">${project.facts.map(([key, value]) => `<div><dt>${escape(key)}</dt><dd>${escape(value)}</dd></div>`).join("")}</dl></div>
       </div>` },
     { id: "concept", label: "项目概览", theme: "friends", className: "detail-section project-concept wrap", content: `
@@ -134,7 +137,7 @@ function detail(project, index) {
   return document(project.title, project.short, url(project), body);
 }
 
-if (projects.length !== 12 || new Set(projects.map(p => p.slug)).size !== projects.length) throw new Error("Pitch deck must contain twelve unique projects.");
+if (!projects.length || new Set(projects.map(p => p.slug)).size !== projects.length) throw new Error("Pitch deck must contain unique projects.");
 await mkdir(output, { recursive: true });
 await generatePitchDeckShell();
 await writeFile(join(output, "index.html"), overview(), "utf8");
