@@ -41,7 +41,7 @@ const overviewGroups = [
     chineseTitle: "沉浸其中",
     description: "踏进各自的世界，在故事、战斗与探索中投入其中。",
     label: "IMMERSIVE · STORY · ACTION",
-    projectSlugs: ["double-deposition", "fog-bound", "for-bond", "unboxing-roguelike", "dive-up", "lebab", "cybernetic-doctor"]
+    projectSlugs: ["double-deposition", "fog-bound", "mist-castle", "unboxing-roguelike", "dive-up", "lebab", "cybernetic-doctor"]
   },
   {
     id: "free-to-play",

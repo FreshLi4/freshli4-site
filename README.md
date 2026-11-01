@@ -8,14 +8,14 @@ NAS 缓存节点的部署、缓存更新和回退方式见 [部署说明](deploy
 
 入口为 [www.freshli4.com/pitch-deck](https://www.freshli4.com/pitch-deck)，包含十五款游戏的导览和独立详情页，按朋友同玩、沉浸体验与 Free to play 三个分区展示。官网首页、菜单及搜索不提供该入口；《跃入迷城》移入此提案，不再出现在首页展示列表。页面设置 `noindex`，直接持有网址即可访问。
 
-- 内容：`src/data/pitch-deck.mjs`。在原有十二项上新增《先干为敬》《义体医生模拟器》及独立抓宠提案 For Bond；《迷雾城堡》单独保留维护城堡方向并标为待定。中文工作名、英文候选、原型与规划内容按各页实际阶段说明。
+- 内容：`src/data/pitch-deck.mjs`。原有十二项中的抓宠与同步回合提案名称确认为 Fog Bond，继续使用 `fog-bound` 地址；新增《先干为敬》《义体医生模拟器》，并以 `mist-castle` 单独列出待定的维护城堡方向《迷雾城堡》。中文工作名、英文候选、原型与规划内容按各页实际阶段说明。
 - 生成器：`build/generate-pitch-deck.mjs`，通过 `npm run generate:pitch-deck` 生成 HTML；开发与构建前自动执行。
 - 样式、滚动切色脚本与图片：`public/pitch-deck/`，概念图提示词见 `asset/pitch-deck/image-briefs.md` 与 `asset/pitch-deck/added-image-briefs.md`。
 - 导览与项目内页复用首页的首屏、联系区、字体与响应式样式，由 `build/generate-pitch-deck-shell.mjs` 从 `src/styles.css` 生成；生产构建复用首页已输出的字体资源。
 - 悬浮目录复用首页左侧居中的文字导航，可定位到导览分区、各款游戏或内页章节；随滚动高亮，闲置淡出，悬停或聚焦时显示。
 - 项目内页以左右分栏呈现介绍与项目资料，不展示概念图；窄屏改为纵向排列。
 - 生成的 HTML 不提交；部署使用完整仓库运行 `npm run build`，保持现有官网及规则书资源完整。
-- 项目阶段与概念视觉分别标注；暂无当前图稿的概念使用标题卡片。《货柜大乱斗》与《奇货远航》分别保留 `bid-or-bust` 与 `unboxing-roguelike` 地址，《迷雾城堡》使用 `project-fogbound` 世界设定。
+- 项目阶段与概念视觉分别标注；暂无当前图稿的概念使用标题卡片。《货柜大乱斗》与《奇货远航》分别保留 `bid-or-bust` 与 `unboxing-roguelike` 地址，Fog Bond 保留原有 `/pitch-deck/fog-bound` 身份；《迷雾城堡》使用 `/pitch-deck/mist-castle`，两者玩法分开，旧世界设定仅作对应参考。
 
 以下保留原始 starter 说明，实际页面以 `src/` 与当前构建配置为准。
 

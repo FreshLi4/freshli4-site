@@ -1,4 +1,5 @@
 ---
+uid: "00006"
 type: CONTENT
 status: ready-for-review
 importance: p1

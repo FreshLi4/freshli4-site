@@ -64,6 +64,11 @@ test("overview groups include each project once and place both requested games w
   assert.equal(new Set(slugs).size, projects.length);
   assert.deepEqual(new Set(slugs), new Set(projects.map(project => project.slug)));
   for (const slug of ["haunted-castle", "steel-fists"]) assert.ok(groups[0].slugs.includes(slug));
+  const fogBond = await readFile(new URL("public/pitch-deck/fog-bound/index.html", root), "utf8");
+  const mistCastle = await readFile(new URL("public/pitch-deck/mist-castle/index.html", root), "utf8");
+  assert.match(fogBond, /<title>Fog Bond · FreshLi4<\/title>/);
+  assert.match(mistCastle, /<title>迷雾城堡 · FreshLi4<\/title>/);
+  assert.doesNotMatch(html, /href="\/pitch-deck\/for-bond"/);
   assert.match(html, /src="\/pitch-deck\/pitch-deck.js"/);
   assert.match(html, /class="overview-background"/);
   assert.match(html, /class="hero studio-font"/);
