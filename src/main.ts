@@ -5,7 +5,7 @@ import { setupMediaCarousel } from "./media-carousel";
 import { ballMazeHero, renderBallMazeHeroSlide } from "./ball-maze-hero";
 
 const ballMazePageBooted = bootBallMazePage();
-if (!ballMazePageBooted) bootRulesPage();
+const rulesPageBooted = !ballMazePageBooted && bootRulesPage();
 
 type Lang = "zh" | "ja" | "en";
 type Copy = Record<Lang, string>;
@@ -226,7 +226,7 @@ const applyLanguage = (language: Lang) => {
 };
 
 const updateMediaLabel = (stage: Element) => { const active = stage.querySelector<HTMLElement>(".media-slide.active"); const label = stage.querySelector<HTMLElement>(".media-label"); if (label) label.textContent = `${(stage as HTMLElement).dataset.game?.toUpperCase()} // PREVIEW_0${Number(active?.dataset.slide ?? 0) + 1}`; };
-applyLanguage(getLanguage());
+if (!rulesPageBooted) applyLanguage(getLanguage());
 languageSelect?.addEventListener("change", () => applyLanguage(languageSelect.value as Lang));
 
 const mobileMenu = document.querySelector<HTMLElement>("#mobile-menu");

@@ -424,6 +424,15 @@ const renderWikiPage = () => {
 const setupRulesInteractions = () => {
   const page = document.querySelector<HTMLElement>(".rules-page");
   let currentWikiLanguage: WikiLanguage = "zh";
+  const readLanguage = (value: string | null): WikiLanguage | null =>
+    value === "zh" || value === "en" || value === "ja" ? value : null;
+  let sharedLanguage = readLanguage(new URLSearchParams(window.location.search).get("lang"));
+  const shareLanguageInDelveLink = (href: string) => {
+    if (!sharedLanguage || !/^\/(?:investigation-delve-boardgame(?:\/(?:rules|appendix|faq|wiki))?|games\/investigation-delve\/rules)\/?(?:[?#]|$)/.test(href)) return href;
+    const url = new URL(href, window.location.origin);
+    url.searchParams.set("lang", sharedLanguage);
+    return url.pathname + url.search + url.hash;
+  };
   const input = document.querySelector<HTMLInputElement>("#rules-search-input");
   const status = document.querySelector<HTMLElement>("#rules-search-status");
   const chapters = [...document.querySelectorAll<HTMLElement>("[data-rule-searchable]")];
@@ -545,7 +554,7 @@ const setupRulesInteractions = () => {
   const createAiLink = (label: string, href: string) => {
     if (!isSafeAiLink(href)) return undefined;
     const link = document.createElement("a");
-    link.href = href;
+    link.href = shareLanguageInDelveLink(href);
     const icon = document.createElement("span");
     icon.className = "rules-link-icon";
     icon.setAttribute("aria-hidden", "true");
@@ -607,7 +616,7 @@ const setupRulesInteractions = () => {
       searchResults.innerHTML = `<div class="rules-search-results-empty"><span>SEARCH / 传统检索</span><p>没有直接命中，正在转交规则问答。</p></div>`;
       return;
     }
-    searchResults.innerHTML = `<div class="rules-search-results-heading"><span>SEARCH / 传统检索</span><b>${hits.length} 条资料命中</b></div><ol class="rules-search-results-list">${hits.map((hit) => `<li><a href="${escapeHtml(hit.route)}"><span class="rules-search-result-category"><span class="rules-link-icon" aria-hidden="true">↗</span>${escapeHtml(localizeWikiText(hit.document.category, currentWikiLanguage))}</span><strong>${escapeHtml(localizeWikiText(hit.document.title, currentWikiLanguage))}</strong><p>${escapeHtml(localizeWikiText(hit.excerpt, currentWikiLanguage))}</p></a></li>`).join("")}</ol>`;
+    searchResults.innerHTML = `<div class="rules-search-results-heading"><span>SEARCH / 传统检索</span><b>${hits.length} 条资料命中</b></div><ol class="rules-search-results-list">${hits.map((hit) => `<li><a href="${escapeHtml(shareLanguageInDelveLink(hit.route))}"><span class="rules-search-result-category"><span class="rules-link-icon" aria-hidden="true">↗</span>${escapeHtml(localizeWikiText(hit.document.category, currentWikiLanguage))}</span><strong>${escapeHtml(localizeWikiText(hit.document.title, currentWikiLanguage))}</strong><p>${escapeHtml(localizeWikiText(hit.excerpt, currentWikiLanguage))}</p></a></li>`).join("")}</ol>`;
   };
   const answerQuestion = async (question: string) => {
     activeAiRequest?.abort();
@@ -736,8 +745,6 @@ const setupRulesInteractions = () => {
 
   const languageSelect = document.querySelector<HTMLSelectElement>("#rules-language-select");
   const rulesPage = document.querySelector<HTMLElement>(".rules-page");
-  const savedLanguage = localStorage.getItem("freshli4-language");
-  if (languageSelect && (savedLanguage === "zh" || savedLanguage === "en" || savedLanguage === "ja")) languageSelect.value = savedLanguage;
   const applyRulesLanguage = (language: WikiLanguage) => {
     currentWikiLanguage = language;
     document.documentElement.lang = language === "zh" ? "zh-CN" : language;
@@ -752,6 +759,11 @@ const setupRulesInteractions = () => {
       const card = investigationCardById.get(element.dataset.cardAbilities ?? "");
       if (card) element.innerHTML = investigatorAbilitiesMarkup(card, language);
     });
+    rulesPage?.querySelectorAll<HTMLAnchorElement>("a[href]").forEach((link) => {
+      const href = link.getAttribute("href")!;
+      const localizedHref = shareLanguageInDelveLink(href);
+      if (localizedHref !== href) link.setAttribute("href", localizedHref);
+    });
     if (lastSearchHits.length) renderSearchResults(lastSearchHits);
     updateRuleSearch();
     updateWiki();
@@ -760,10 +772,14 @@ const setupRulesInteractions = () => {
       languageSelect.title = language === "zh" ? "中文" : language === "en" ? "English" : "日本語";
     }
   };
-  const initialLanguage = savedLanguage === "en" || savedLanguage === "ja" ? savedLanguage : "zh";
-  applyRulesLanguage(initialLanguage);
+  applyRulesLanguage(sharedLanguage ?? readLanguage(localStorage.getItem("freshli4-language")) ?? "zh");
   languageSelect?.addEventListener("change", () => {
-    const language = languageSelect.value === "en" || languageSelect.value === "ja" ? languageSelect.value : "zh";
+    const language = readLanguage(languageSelect.value);
+    if (!language) return;
+    sharedLanguage = language;
+    const url = new URL(window.location.href);
+    url.searchParams.set("lang", language);
+    window.history.replaceState(window.history.state, "", url);
     localStorage.setItem("freshli4-language", language);
     applyRulesLanguage(language);
   });
