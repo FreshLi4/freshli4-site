@@ -5,7 +5,7 @@ import { setupMediaCarousel } from "./media-carousel";
 import { ballMazeHero, renderBallMazeHeroSlide } from "./ball-maze-hero";
 
 const ballMazePageBooted = bootBallMazePage();
-if (!ballMazePageBooted) bootRulesPage();
+const rulesPageBooted = !ballMazePageBooted && bootRulesPage();
 
 type Lang = "zh" | "ja" | "en";
 type Copy = Record<Lang, string>;
@@ -43,8 +43,8 @@ const knownGames: GameConfig[] = [
   {
     slug: "investigation-delve", aliases: ["investigation-delve", "investigation", "调查深入", "调查：深入"], theme: "investigation", fontClass: "investigation-font", order: 1,
     title: copy("调查深入", "Investigation : Delve", "調査：深入"), englishTitle: "Investigation : Delve", status: copy("现已发售", "AVAILABLE NOW", "発売中"), category: copy("卡牌 · 调查 · 策略", "CARD GAME · INVESTIGATION · STRATEGY", "カード · 調査 · 戦略"),
-    description: copy("一款支持 2–6 人游玩的非直接对战美式桌游。你将扮演“指挥者”，操控调查员，在调查中规避禁忌真相，利用策略牌、角色技能与行动顺位保护己方，并诱导对手比你更早陷入疯狂。", "A non-direct-conflict American-style tabletop game for 2–6 players. As the commander, guide your investigators, avoid forbidden truths during the investigation, use strategy cards, abilities, and turn order to protect your side, and push your rivals into madness first.", "2〜6人向けの非直接対戦型アメリカンテーブルトップゲーム。指揮官として調査員を操り、調査の中で禁忌の真実を避け、味方を守りながら相手を先に狂気へ追い込みます。"),
-    tags: [copy("美式桌游", "AMERICAN TABLETOP", "アメリカンテーブルトップ"), copy("策略卡牌", "STRATEGY CARD GAME", "戦略カード"), copy("2–6 人", "2–6 PLAYERS", "2〜6人")], cta: copy("购买", "BUY", "購入"), noteA: "INVESTIGATION<br />GUILD", noteB: "ANOMALY", link: "https://xhslink.com/m/lDaRjSilOC",
+    description: copy("一款支持 2–6 人游玩的非直接对战美式桌游。你将扮演“指挥者”，操控调查员，在调查中规避禁忌真相，利用策略牌、角色技能与行动顺位保护己方，并诱导对手比你更早陷入疯狂。", "A competitive strategy card game for 2–6 players. Use strategy cards, investigator abilities, and turn order to protect your team from the Forbidden Truth and draw your rivals toward it.", "2〜6人向けの非直接対戦型アメリカンテーブルトップゲーム。指揮官として調査員を操り、調査の中で禁忌の真実を避け、味方を守りながら相手を先に狂気へ追い込みます。"),
+    tags: [copy("美式桌游", "TABLETOP GAME", "アメリカンテーブルトップ"), copy("策略卡牌", "STRATEGY CARD GAME", "戦略カード"), copy("2–6 人", "2–6 PLAYERS", "2〜6人")], cta: copy("购买", "BUY", "購入"), noteA: "INVESTIGATION<br />GUILD", noteB: "ANOMALY", link: "https://xhslink.com/m/lDaRjSilOC",
   },
   {
     slug: "ball-maze", aliases: ["ball-maze", "maze", "迷宫球"], theme: "ballmaze", fontClass: "maze-font", order: 2,
@@ -226,7 +226,7 @@ const applyLanguage = (language: Lang) => {
 };
 
 const updateMediaLabel = (stage: Element) => { const active = stage.querySelector<HTMLElement>(".media-slide.active"); const label = stage.querySelector<HTMLElement>(".media-label"); if (label) label.textContent = `${(stage as HTMLElement).dataset.game?.toUpperCase()} // PREVIEW_0${Number(active?.dataset.slide ?? 0) + 1}`; };
-applyLanguage(getLanguage());
+if (!rulesPageBooted) applyLanguage(getLanguage());
 languageSelect?.addEventListener("change", () => applyLanguage(languageSelect.value as Lang));
 
 const mobileMenu = document.querySelector<HTMLElement>("#mobile-menu");

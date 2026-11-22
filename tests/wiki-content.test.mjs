@@ -107,7 +107,8 @@ test("deployment inputs include PO translations and Pagefind records", async () 
   assert.equal(publicSearch.length, 96);
   const generated = await readFile(join(projectRoot, "src", "generated", "investigation-wiki.ts"), "utf8");
   assert.match(generated, /WikiTranslations/);
-  assert.match(generated, /Ask anything to get a rule answer/);
+  assert.match(generated, /A competitive strategy card game for 2–6 players/);
+  assert.match(generated, /Get a rules answer or find the right section of the rulebook/);
 
   await access(join(projectRoot, "dist", "pagefind", "pagefind.js"));
   const distSearch = await fileNames(join(projectRoot, "dist", "_wiki-search"));
