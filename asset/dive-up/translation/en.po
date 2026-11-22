@@ -222,7 +222,7 @@ msgstr "Rulings"
 
 msgctxt "text"
 msgid "输入任意问题，获得规则解答或者指引"
-msgstr "Ask anything to get a rule answer or a pointer."
+msgstr "Get a rules answer or find the right section of the rulebook."
 
 msgctxt "text"
 msgid "你的工作就是为你的「调查员」在任务过程中下发「策略」指令，通过经验、直觉和智慧引领他们完成任务。"
@@ -314,7 +314,7 @@ msgstr "\"Investigation Deep\" is an American board game that supports indirect 
 
 msgctxt "fragment"
 msgid "《调查深入》游戏配件与卡牌"
-msgstr "\"Investigation\" game accessories and cards"
+msgstr "Investigation: Delve game components and cards"
 
 msgctxt "fragment"
 msgid "《调查深入》Wiki 资料组织"
@@ -590,7 +590,7 @@ msgstr "\"Investigator\"'s \"SAN\" focuses on"
 
 msgctxt "fragment"
 msgid "「调查员」调查到【禁忌真相】会损失「SAN」，「SAN」消耗完的「调查员」会「陷入疯狂」。"
-msgstr "\"Investigators\" who investigate the \"Forbidden Truth\" will lose \"SAN\", and \"Investigators\" who have exhausted their \"SAN\" will \"go crazy\"."
+msgstr "Investigators who uncover the Forbidden Truth lose SAN. When an investigator’s SAN reaches zero, they fall into madness."
 
 msgctxt "fragment"
 msgid "「调查员」调查到【禁忌真相】会损失「SAN」；「SAN」消耗完的「调查员」会「陷入疯狂」。自己的队伍需要规避真相，同时诱导其他队伍更早触及它。"
@@ -898,7 +898,7 @@ msgstr "2 players"
 
 msgctxt "fragment"
 msgid "2—6 人"
-msgstr "2-6 people"
+msgstr "2–6 players"
 
 msgctxt "fragment"
 msgid "2. 「指挥者」抽取 (4) 张初始「策略」手牌。"
@@ -1138,11 +1138,11 @@ msgstr "Strategy deck"
 
 msgctxt "fragment"
 msgid "查看常见机制、调查员与印刷判例。"
-msgstr "View common mechanisms, investigators, and printed precedents."
+msgstr "Find rulings on game mechanics and investigator abilities, plus printing corrections."
 
 msgctxt "fragment"
 msgid "查询"
-msgstr "Query"
+msgstr "Search"
 
 msgctxt "fragment"
 msgid "常用问题"
@@ -1242,7 +1242,7 @@ msgstr "From the \"Information discard zone\""
 
 msgctxt "fragment"
 msgid "从不同角度继续调查。"
-msgstr "Continue the investigation from different angles."
+msgstr "for your next game."
 
 msgctxt "fragment"
 msgid "从顶部弃置剩「情报卡组」的一半"
@@ -1250,7 +1250,7 @@ msgstr "Discard the remaining half of the \"Intelligence Card Deck\" from the to
 
 msgctxt "fragment"
 msgid "从快速游玩开始，按章节了解完整流程。"
-msgstr "Start with a quick play and learn the complete process by chapter."
+msgstr "Start with Quick Start, then read the full rules."
 
 msgctxt "fragment"
 msgid "从情报卡组顶部翻看并公示 1—3 张。"
@@ -1466,7 +1466,7 @@ msgstr "Survey in-depth profile navigation"
 
 msgctxt "fragment"
 msgid "调查异常环境，"
-msgstr "Investigate abnormal circumstances,"
+msgstr "Investigate the anomaly,"
 
 msgctxt "fragment"
 msgid "调查员"
@@ -1570,7 +1570,7 @@ msgstr "Reverse the current investigation order and turn over the sequence indic
 
 msgctxt "fragment"
 msgid "返回调查深入桌游首页"
-msgstr "Return to the home page of the investigation into board games"
+msgstr "Back to the Investigation: Delve homepage"
 
 msgctxt "fragment"
 msgid "返回顶部 ↑"
@@ -1698,7 +1698,7 @@ msgstr "Each \"Commander\" needs to draw (4) \"Strategy\" cards from the \"Strat
 
 msgctxt "fragment"
 msgid "工会总有答案"
-msgstr "Unions always have the answer"
+msgstr "Ask the Guild."
 
 msgctxt "fragment"
 msgid "关于卡牌的详细介绍，以及众筹版/补充包信息，请参考《调查深入 · 卡牌统计表》。"
@@ -2030,7 +2030,7 @@ msgstr "Only one team, \"Investigators,\" is left alive, and the outcome is deci
 
 msgctxt "fragment"
 msgid "谨慎追寻真相。"
-msgstr "Carefully pursue the truth."
+msgstr "but beware what you uncover."
 
 msgctxt "fragment"
 msgid "进入「操作阶段」"
@@ -2222,7 +2222,7 @@ msgstr "Investigate immediately"
 
 msgctxt "fragment"
 msgid "例如：调查到禁忌真相后会发生什么？"
-msgstr "For example: What happens when you investigate a forbidden truth?"
+msgstr "What happens when I uncover the Forbidden Truth?"
 
 msgctxt "fragment"
 msgid "临时「SAN」不影响技能触发"
@@ -2890,7 +2890,7 @@ msgstr "Enter Card Name, Role, or Effect"
 
 msgctxt "fragment"
 msgid "输入任意问题，获得规则解答或者指引"
-msgstr "Enter any question and get rules answers or guidance"
+msgstr "Get a rules answer or find the right section of the rulebook."
 
 msgctxt "fragment"
 msgid "数量"
@@ -2966,7 +2966,7 @@ msgstr "Privately put it anywhere in the \"Information Card Deck\""
 
 msgctxt "fragment"
 msgid "四个页面，"
-msgstr "four pages,"
+msgstr "Rules and references"
 
 msgctxt "fragment"
 msgid "四类卡组"
@@ -2978,7 +2978,7 @@ msgstr "Four types of card decks, one piece of truth."
 
 msgctxt "fragment"
 msgid "搜索调查员、策略、环境、情报与辅助卡牌。"
-msgstr "Search for investigators, strategy, environment, intelligence and support cards."
+msgstr "Search Investigator, Strategy, Environment, Intelligence, and Support cards."
 
 msgctxt "fragment"
 msgid "搜索规则关键词"
@@ -3102,7 +3102,7 @@ msgstr "Crazy \"Investigators\" who restore \"SAN\" by any means will \"recover\
 
 msgctxt "fragment"
 msgid "统一行动词典、文本标识与版本边界。"
-msgstr "Unified Action Dictionary, Text Identification and Version Boundaries."
+msgstr "Look up special actions, card text conventions, and rules versions."
 
 msgctxt "fragment"
 msgid "偷天换日 · I"
@@ -3126,7 +3126,7 @@ msgstr "Vicki Shelley"
 
 msgctxt "fragment"
 msgid "问你想问的，"
-msgstr "Ask what you want to ask,"
+msgstr "Stuck on a rule?"
 
 msgctxt "fragment"
 msgid "无法被弃置"
@@ -3182,7 +3182,7 @@ msgstr "Sacrifice · II"
 
 msgctxt "fragment"
 msgid "向调查助手提问"
-msgstr "Ask a question to an investigative assistant"
+msgstr "Ask a rules question"
 
 msgctxt "fragment"
 msgid "消耗(1)点「SAN」"
@@ -3258,7 +3258,7 @@ msgstr "Select (1) \"Intelligence\" card"
 
 msgctxt "fragment"
 msgid "选择一个问题，或者输入你想确认的规则。"
-msgstr "Select a question or enter the rule you want to confirm."
+msgstr "Pick a question above or type your own."
 
 msgctxt "fragment"
 msgid "选择语言"
@@ -3270,7 +3270,7 @@ msgstr "A Lone Caged Bird"
 
 msgctxt "fragment"
 msgid "一款支持 2–6 人游玩的非直接对战美式桌游。你将扮演“指挥者”，操控调查员，在调查中规避禁忌真相，并诱导对手比你更早陷入疯狂。"
-msgstr "An indirect combat American board game that supports 2–6 players. You will play the role of the \"commander\", controlling the investigators, evading taboo truths during the investigation, and inducing your opponents to fall into madness earlier than you do."
+msgstr "A competitive strategy card game for 2–6 players. Lead your investigators, steer clear of the Forbidden Truth, and draw your rivals toward it."
 
 msgctxt "fragment"
 msgid "一轮游戏"
@@ -3386,7 +3386,7 @@ msgstr "Designating (1) more \"Investigators\" consumes (1) \"SAN\" points"
 
 msgctxt "fragment"
 msgid "在《调查 : 深入》的游戏中，每名玩家扮演一位「指挥者」，指挥「调查员」对「情报卡组」进行调查，尝试了解【禁忌真相】在「情报卡组」中的位置，让自己的「调查员」规避它，并让其他队伍的「调查员」调查到【禁忌真相】。"
-msgstr "In the game \"Investigation: In-Depth\", each player plays a \"Commander\", directing the \"Investigators\" to investigate the \"Intelligence Card Deck\", trying to understand the position of the \"Forbidden Truth\" in the \"Intelligence Card Deck\", allowing his or her \"Investigators\" to avoid it, and allowing the \"Investigators\" of other teams to investigate the \"Forbidden Truth\"."
+msgstr "Each player is a Commander leading a team of investigators. Investigate the Intelligence Deck to work out where the Forbidden Truth is hidden. Keep your team away from it and steer your rivals toward it."
 
 msgctxt "fragment"
 msgid "则不消耗而是恢复(1)点「SAN」"
@@ -3394,7 +3394,7 @@ msgstr "It will not consume but restore (1) \"SAN\" point."
 
 msgctxt "fragment"
 msgid "怎样获胜？"
-msgstr "How to win?"
+msgstr "How do I win?"
 
 msgctxt "fragment"
 msgid "张卡牌"
@@ -3438,7 +3438,7 @@ msgstr "Checking the rules guide and card information..."
 
 msgctxt "fragment"
 msgid "支持几个人？"
-msgstr "How many people do you support?"
+msgstr "How many people can play?"
 
 msgctxt "fragment"
 msgid "支付【胁迫】的费用"
@@ -3654,7 +3654,7 @@ msgstr "AI is thinking"
 
 msgctxt "fragment"
 msgid "AI Q&A / 规则问答"
-msgstr "AI Q&A / Rules Q&A"
+msgstr "RULES Q&A"
 
 msgctxt "fragment"
 msgid "APPENDIX / 调查附录"
@@ -3666,7 +3666,7 @@ msgstr "BRIEFING / mission briefing"
 
 msgctxt "fragment"
 msgid "CASE FILES / 资料入口"
-msgstr "CASE FILES / data entry"
+msgstr "CASE FILES"
 
 msgctxt "fragment"
 msgid "COMPONENTS / 游戏配件"
@@ -3710,7 +3710,7 @@ msgstr "GAME MECHANICS / game mechanics"
 
 msgctxt "fragment"
 msgid "INVESTIGATION : DELVE / 调查深入"
-msgstr "INVESTIGATION : DELVE / Investigate in depth"
+msgstr "FRESHLI4 GAME STUDIO"
 
 msgctxt "fragment"
 msgid "INVESTIGATORS / 调查员"
@@ -3750,7 +3750,7 @@ msgstr "SAN / Sanity and Madness"
 
 msgctxt "fragment"
 msgid "SAN 归零怎么办？"
-msgstr "What to do if the SAN is reset to zero?"
+msgstr "What happens when SAN reaches zero?"
 
 msgctxt "fragment"
 msgid "SAN 与疯狂"
@@ -3959,3 +3959,7 @@ msgstr "If an \"Investigator's\" \"SAN\" reaches zero as a result, they \"Go Mad
 msgctxt "fragment"
 msgid "一份会继续生长的规则书。"
 msgstr "A Rulebook That Keeps Growing."
+
+msgctxt "text"
+msgid "A NON-DIRECT-CONFLICT TABLETOP GAME"
+msgstr "A GAME OF HIDDEN INFORMATION"
